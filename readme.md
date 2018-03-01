@@ -7,7 +7,7 @@ This is clinic master project for managing some dental clinics for a doctor and 
 - **Hady Maher**
 - **Abdelrahman Mohammed**
 - **Aisha Mousa**
-- **Reham Hamdy**s
+- **Reham Hamdy**
 
 
 ## License
