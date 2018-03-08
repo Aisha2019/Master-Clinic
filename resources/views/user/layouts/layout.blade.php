@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 	@include('user.layouts.head')
-<body style="margin-top: 55px; height: 5000px">
+<body style="margin-top: 55px;">
 	@include('user.layouts.navbar')
 	
 	@section('body')
