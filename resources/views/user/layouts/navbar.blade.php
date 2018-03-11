@@ -23,6 +23,11 @@
           <a class="nav-link" href="#">Link</a>
         </li>
       </ul>
+      <ul class="list-unstyled navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
