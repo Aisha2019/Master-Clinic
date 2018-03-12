@@ -48,21 +48,21 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<i class="fa fa-building fa-3x pr-2"></i>
-						<strong style="font-size: 40px"> 10 </strong>
+						<strong class="timer" style="font-size: 40px"> 10 </strong>
 						<div>
 						 <strong style="font-size: 25px"> Clinics </strong>
 						</div>
 					</div>
 					<div class="col-sm-4">
 						<i class="fa fa-users fa-3x pr-2"></i>
-						<strong style="font-size: 40px" > 7340 </strong>
+						<strong class="timer" style="font-size: 40px" > 7340 </strong>
 						<div>
 						 <strong style="font-size: 25px"> Happy Clients </strong>
 						</div>
 					</div>
 					<div class="col-sm-4">
 						<i class="fa fa-heartbeat fa-3x pr-2"></i>
-						<strong style="font-size: 40px"> 4320 </strong>
+						<strong class="timer" style="font-size: 40px"> 4320 </strong>
 						<div>
 						 <strong style="font-size: 25px"> Operations </strong>
 						</div>
@@ -186,13 +186,6 @@
 	    </div>
 	  </div>
 	</div>
-
-
-
-
-
-
-
 @endsection
 
 
@@ -200,4 +193,10 @@
 
 @section('footer')
 {{-- here goes the js of the page --}}
+<script src="{{ asset('/user_styles/js/jquery.countTo.js') }}"></script>
+<script>
+	$('.timer').each(function(index, el) {
+		$(this).countTo({from: 0, to: $(this).text()})
+	});
+</script>
 @endsection

@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('user.index');
 });
+
+Route::get('/admin/home', function () {
+    return view('admin.home');
+});
+
+Route::get('/nurse/home', function () {
+    return view('nurse.home');
+});
