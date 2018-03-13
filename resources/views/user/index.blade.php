@@ -12,12 +12,13 @@
 @endsection
 
 @section('body')
-<div class="card p-3 p-md-5 text-white bg-dark" style="background-image: url({{ asset('/user_styles/images/dental.jpg') }});  no-repeat center center fixed;
+<div class="card p-3 p-md-5 text-white bg-dark" style="background-image: url({{ asset('/user_styles/images/back.jpeg') }});  no-repeat center center fixed;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		-o-background-size: cover;
 		background-size: cover;
 		height:600px;
+
 		" >
 		<div class="container">
 		<div class="col-md-6 px-0">
