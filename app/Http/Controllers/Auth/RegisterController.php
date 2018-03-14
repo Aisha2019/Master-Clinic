@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Patient;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -40,6 +40,17 @@ class RegisterController extends Controller
     }
 
     /**
+     * Patient can't register himself so redirect to login page
+     *
+     * @param  null
+     * @return redirect to login view
+     */
+    public function showRegistrationForm()
+    {
+        return redirect('login');
+    }
+
+    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -49,8 +60,9 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'unique:patients|required|string|max:255',
             'password' => 'required|string|min:6|confirmed',
+            'mobile' => 'required|string'
         ]);
     }
 
@@ -58,14 +70,15 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Patient
      */
     protected function create(array $data)
     {
-        return User::create([
+        return Patient::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'mobile' => $data['mobile'],
         ]);
     }
 }
