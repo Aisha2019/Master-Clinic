@@ -28,6 +28,16 @@
 						<label for="password">Password:</label>
 						<input type="password" placeholder="Type your password" class="form-control">
 					</div>
+					
+
+                    <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember"> {{ __('Remember Me') }}
+                                </label>
+                            </div>
+                    </div>
+
 					<div class="form-group">
                         <button type="submit" class="btn btn-info mr-auto">
                             {{ __('Login') }}
