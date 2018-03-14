@@ -19,7 +19,8 @@
 		<div class="row full-height align-items-center">
 			<div class="col-md-6 ml-auto mr-auto mt-3 mb-3">
 				<h2 class="text-center">User Login</h2>
-				<form action="">
+				<form method="POST" action="{{ route('login') }}">
+					@csrf
 					<div class="form-group">
 						<label for="email">Email:</label>
 						<input type="email" placeholder="Type your email" class="form-control">
