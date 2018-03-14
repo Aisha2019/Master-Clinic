@@ -4,4 +4,15 @@
 <script src="{{ asset('/user_styles/js/popper.min.js') }}"></script>
 <script src="{{ asset('/user_styles/js/bootstrap.min.js') }}"></script>
 
+  <script>
+    $(".full-height").css({
+      "min-height": $(window).height() - $("footer").innerHeight() - $("nav").innerHeight()
+    });
+    $(window).on('resize', function() {
+      $(".full-height").css({
+        "min-height": $(window).height() - $("footer").innerHeight() - $("nav").innerHeight()
+      });
+    });
+  </script>
+
 @yield('footer')
