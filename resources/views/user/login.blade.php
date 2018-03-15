@@ -23,11 +23,11 @@
 					@csrf
 					<div class="form-group">
 						<label for="email">Email:</label>
-						<input type="email" placeholder="Type your email" class="form-control">
+						<input type="email" name="email" placeholder="Type your email" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="password">Password:</label>
-						<input type="password" placeholder="Type your password" class="form-control">
+						<input type="password" name="password" placeholder="Type your password" class="form-control">
 					</div>
 					<div class="form-group">
                         <button type="submit" class="btn btn-info mr-auto">
