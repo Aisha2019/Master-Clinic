@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'patients',
         ],
 
         'admin' => [
@@ -53,7 +53,7 @@ return [
 
         'api' => [
             'driver' => 'token',
-            'provider' => 'users',
+            'provider' => 'patients',
         ],
     ],
 
@@ -75,7 +75,7 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'patients' => [
             'driver' => 'eloquent',
             'model' => App\Models\Patient::class,
         ],
@@ -112,8 +112,8 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'patients' => [
+            'provider' => 'patients',
             'table' => 'password_resets',
             'expire' => 60,
         ],

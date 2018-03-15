@@ -15,7 +15,7 @@ class Patient extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','mobile',
     ];
 
     /**

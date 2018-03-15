@@ -34,7 +34,7 @@
                     <div class="form-group">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="remember"> {{ __('Remember Me') }}
+                                    <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
                                 </label>
                             </div>
                     </div>

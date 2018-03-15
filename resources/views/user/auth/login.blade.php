@@ -19,14 +19,15 @@
 		<div class="row full-height align-items-center">
 			<div class="col-md-6 ml-auto mr-auto mt-3 mb-3">
 				<h2 class="text-center">User Login</h2>
-				<form action="/" method="POST">
+				<form method="POST" action="{{ route('login') }}">
+					@csrf
 					<div class="form-group">
 						<label for="email">Email:</label>
-						<input type="email" id="email" placeholder="Type your email" class="form-control">
+						<input type="email" name="email" placeholder="Type your email" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="password">Password:</label>
-						<input type="password" id="password" placeholder="Type your password" class="form-control">
+						<input type="password" name="password" placeholder="Type your password" class="form-control">
 					</div>
 					
 
