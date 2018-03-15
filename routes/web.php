@@ -22,3 +22,7 @@ Route::get('/admin/home', function () {
 Route::get('/nurse/home', function () {
     return view('nurse.home');
 });
+Route::get('/nurse/patient/add', function () {
+    return view('nurse.patient.add');
+});
+Route::post('/nurse/patient/add', 'nurse\PatientController@store');
