@@ -40,17 +40,6 @@ class RegisterController extends Controller
     }
 
     /**
-     * Patient can't register himself so redirect to login page
-     *
-     * @param  null
-     * @return redirect to login view
-     */
-    public function showRegistrationForm()
-    {
-        return redirect('login');
-    }
-
-    /**
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
@@ -80,5 +69,15 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
             'mobile' => $data['mobile'],
         ]);
+    }
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return redirect('login');
     }
 }
