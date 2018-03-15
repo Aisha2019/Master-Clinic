@@ -41,6 +41,16 @@ return [
             'provider' => 'users',
         ],
 
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'nurse' => [
+            'driver' => 'session',
+            'provider' => 'nurses',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -67,7 +77,17 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\Patient::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+
+        'nurses' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Nurse::class,
         ],
 
         // 'users' => [
@@ -94,6 +114,16 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+        'nurses' => [
+            'provider' => 'nurses',
             'table' => 'password_resets',
             'expire' => 60,
         ],
