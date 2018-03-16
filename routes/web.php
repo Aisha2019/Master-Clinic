@@ -31,7 +31,7 @@ Route::get('/admin/home', function () {
 
 Route::get('/nurse/home', function () {
     return view('nurse.home');
-});
+})->middleware('auth:nurse');
 
 // Admin routes
 Route::group(['namespace' => 'Admin'],function(){
@@ -50,10 +50,27 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::GET('admin-password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
 });
 
+// Nurse routes
+Route::group(['namespace' => 'Nurse'],function(){
+	// get nurse login page
+	Route::GET('nurse/login','Auth\LoginController@showLoginForm')->name('nurse.login');
+	// login with nurse
+	Route::POST('nurse/login','Auth\LoginController@login');
+	Route::post('nurse/logout', 'Auth\LoginController@logout')->name('nurse.logout');
+	// send email for nurse to change password
+	Route::POST('nurse-password/email','Auth\ForgotPasswordController@sendResetLinkEmail')->name('nurse.password.email');
+	// show page of nurse to write his email to change password
+	Route::GET('nurse-password/reset','Auth\ForgotPasswordController@showLinkRequestForm')->name('nurse.password.request');
+	// reset nurse password
+	Route::POST('nurse-password/reset','Auth\ResetPasswordController@reset');
+	// get page where nurse reset password
+	Route::GET('nurse-password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('nurse.password.reset');
+});
+
 Route::get('/nurse/patient/add', function () {
     return view('nurse.patient.add');
 });
-Route::post('/nurse/patient/add', 'nurse\PatientController@store');
+Route::post('/nurse/patient/add', 'Nurse\PatientController@store');
 
 
 Route::get('/test', function() {
