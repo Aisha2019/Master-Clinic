@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\nurse;
+namespace App\Http\Controllers\Nurse;
 
 use App\Http\Controllers\Controller;
 use App\Patient;
@@ -8,7 +8,17 @@ use Illuminate\Http\Request;
 
 class PatientController extends Controller
 {
-    //
+    
+    public function __construct()
+    {
+        $this->middleware('auth:nurse');
+    }
+
+    public function add()
+    {
+        return view('nurse.patient.add');
+    }
+
     public function store(Request $request)
     {
         // Validate the request...

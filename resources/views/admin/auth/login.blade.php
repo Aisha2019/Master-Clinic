@@ -28,11 +28,11 @@
 					@csrf
 					<div class="form-group">
 						<label for="email">Email:</label>
-						<input name="email" type="email" value="{{ old('email') }}" id="email" placeholder="Type your email" class="form-control">
+						<input required name="email" type="email" value="{{ old('email') }}" id="email" placeholder="Type your email" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="password">Password:</label>
-						<input type="password" value="{{ old('password') }}" name="password" id="password" placeholder="Type your password" class="form-control">
+						<input required type="password" value="{{ old('password') }}" name="password" id="password" placeholder="Type your password" class="form-control">
 					</div>
 					
 
@@ -48,7 +48,7 @@
                         <button type="submit" class="btn btn-info mr-auto">
                             {{ __('Login') }}
                         </button>
-                        <a class="btn btn-link pull-right" href="{{ route('password.request') }}">
+                        <a class="btn btn-link pull-right" href="{{ route('admin.password.request') }}">
                             {{ __('Forgot Your Password?') }}
                         </a>
                     </div>
