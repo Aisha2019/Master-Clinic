@@ -18,16 +18,21 @@
 	<div class="container">
 		<div class="row full-height align-items-center">
 			<div class="col-md-6 ml-auto mr-auto mt-3 mb-3">
+
+				@foreach ($errors->all() as $error)
+					<div class="card-header bg-danger text-white">{{ $error }}</div>
+				@endforeach
+
 				<h2 class="text-center">Admin Login</h2>
 				<form action="{{ route('admin.login') }}" method="POST">
 					@csrf
 					<div class="form-group">
 						<label for="email">Email:</label>
-						<input name="email" type="email" id="email" placeholder="Type your email" class="form-control">
+						<input name="email" type="email" value="{{ old('email') }}" id="email" placeholder="Type your email" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="password">Password:</label>
-						<input type="password" name="password" id="password" placeholder="Type your password" class="form-control">
+						<input type="password" value="{{ old('password') }}" name="password" id="password" placeholder="Type your password" class="form-control">
 					</div>
 					
 

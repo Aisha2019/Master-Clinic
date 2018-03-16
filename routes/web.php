@@ -13,7 +13,7 @@
 
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');   
-Route::post('logout', 'Auth\LoginController@logout');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
@@ -27,7 +27,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin/home', function () {
     return view('admin.home');
-});
+})->middleware('auth:admin');
 
 Route::get('/nurse/home', function () {
     return view('nurse.home');
@@ -39,6 +39,7 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::GET('admin/login','Auth\LoginController@showLoginForm')->name('admin.login');
 	// login with admin
 	Route::POST('admin/login','Auth\LoginController@login');
+	Route::post('admin/logout', 'Auth\LoginController@logout')->name('admin.logout');
 	// send email for admin to change password
 	Route::POST('admin-password/email','Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
 	// show page of admin to write his email to change password

@@ -82,12 +82,12 @@ return [
 
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
+            'model' => App\Models\admin::class,
         ],
 
         'nurses' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Nurse::class,
+            'model' => App\Models\nurse::class,
         ],
 
         // 'users' => [
