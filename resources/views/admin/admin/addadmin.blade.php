@@ -2,21 +2,21 @@
 
 @section('title')
 
-		Register a new client
+    Register a new Admin
 @endsection
 
 @section('css')
-	{{-- here goes the css of page --}}
+  {{-- here goes the css of page --}}
 @endsection
 
 @section('body')
-	{{-- here goes content of pages --}}
+  {{-- here goes content of pages --}}
 
   <div class="register-box-body">
-    <p class="login-box-msg">Register a new patient</p>
+    <p class="login-box-msg">Add a new Admin</p>
 
     <form action="../../index.html" method="post">
-    	@csrf
+      @csrf
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Full name">
         <span class="form-control-feedback"><i class="fa fa-user"></i></span>
@@ -43,20 +43,20 @@
               <br/>
       </div>
         <div class="form-group has-feedback">
-        <input type="date" class="form-control" placeholder=" Birthday">
+        <input type="date" class="form-control" placeholder="Admin added at">
         <span class="form-control-feedback"><i class="fas fa-calendar-alt"></i></span>
               <br/>
         </div>
       <div>
-  <input type="radio" name="gender" >    Female
+  <input type="radio" name="gender" >    Admin
   <br/>
-  <input type="radio" name="gender" >    Male
+  <input type="radio" name="gender" >    Super Admin
               <br/>
       </div>
       <br/>
       <div class="row">
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary  btn-flat" style="">Register</button>
+          <button type="submit" class="btn btn-primary  btn-flat" style="">Add Admin</button>
         </div>
         <!-- /.col -->
       </div>
@@ -69,9 +69,9 @@
 
 <!-- jQuery 2.2.3 -->
 
-	
+  
 @endsection
 
 @section('js')
-	{{-- here goes js files --}}
+  {{-- here goes js files --}}
 @endsection
