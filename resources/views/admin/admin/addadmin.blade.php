@@ -15,32 +15,39 @@
   <div class="register-box-body">
     <p class="login-box-msg">Add a new Admin</p>
 
-    <form action="../../index.html" method="post">
+    <form action="addadmin" method="post">
       @csrf
-      <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Full name">
+          <div class="form-group has-feedback">
+        <input type="text" class="form-control" placeholder="Full name" name="name">
         <span class="form-control-feedback"><i class="fa fa-user"></i></span>
         <br/>
       </div>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="email" class="form-control" placeholder="Email" name="email">
         <span class="form-control-feedback"><i class="fas fa-envelope"></i></span>
                 <br/>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control" placeholder="Password" name="password">
         <span class="form-control-feedback"><i class="fa fa-lock"></i></span>
               <br/>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Confirm password">
+        <input type="password" class="form-control" placeholder="Confirm password" name="confirmpassword">
         <span class="form-control-feedback"></span>
               <br/>
       </div>
        <div class="form-group has-feedback">
-        <input type="Mobile" class="form-control" placeholder="Mobile" >
+        <input type="Mobile" class="form-control" placeholder="Mobile"  name="mobile">
         <span class="form-control-feedback"><i class="fas fa-mobile-alt"></i></span>
               <br/>
+      </div>
+        <div class="form-group has-feedback">
+        <input type="date" class="form-control" placeholder=" Birthday" name="date">
+        <span class="form-control-feedback"><i class="fas fa-calendar-alt"></i></span>
+              <br/>
+        </div>
+        <br/>
       <div>
   <input type="radio" name="role" >    Admin
   <br/>
