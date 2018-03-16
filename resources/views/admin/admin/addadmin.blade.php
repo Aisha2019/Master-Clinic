@@ -41,16 +41,10 @@
         <input type="Mobile" class="form-control" placeholder="Mobile" >
         <span class="form-control-feedback"><i class="fas fa-mobile-alt"></i></span>
               <br/>
-      </div>
-        <div class="form-group has-feedback">
-        <input type="date" class="form-control" placeholder="Admin added at">
-        <span class="form-control-feedback"><i class="fas fa-calendar-alt"></i></span>
-              <br/>
-        </div>
       <div>
-  <input type="radio" name="gender" >    Admin
+  <input type="radio" name="role" >    Admin
   <br/>
-  <input type="radio" name="gender" >    Super Admin
+  <input type="radio" name="role" >    Super Admin
               <br/>
       </div>
       <br/>
