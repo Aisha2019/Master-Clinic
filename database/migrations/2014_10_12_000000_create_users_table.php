@@ -20,10 +20,13 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('image')->nullable();
             $table->string('mobile')->nullable();
+            $table->string('gender')->nullable();
+            $table->date('date_of_birth')->nullable();
             $table->boolean('status')->default(0);
             $table->string('verify_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
+
         });
     }
 

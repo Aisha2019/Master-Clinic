@@ -45,7 +45,17 @@ Route::get('/admin/patient/addpatient', function () {
 });
 =======
 
+Route::get('/nurse/patient/add', function () {
+    return view('nurse.patient.add');
+});
+Route::post('/nurse/patient/add', 'nurse\PatientController@store');
+
+
 Route::get('/test', function() {
     return view('test');
 });
+<<<<<<< HEAD
 >>>>>>> acf686b9ad9db5b2bdaffac614b5556aac5a15e2
+=======
+
+>>>>>>> b8ae1f53329c24c657a4c473ffd4ac8864894f76
