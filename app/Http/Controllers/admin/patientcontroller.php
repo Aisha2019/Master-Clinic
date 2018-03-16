@@ -9,6 +9,16 @@ class patientcontroller extends Controller
 {
     //
 
+
+  public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
+
+    public function add()
+    {
+        return view('admin.patient.addpatient');
+    }
         public function storePatientInfo(Request $request)
     {
         // Validate the request...

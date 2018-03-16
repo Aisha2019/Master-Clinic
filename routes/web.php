@@ -34,7 +34,6 @@ Route::post('addadmin','admin\admincontroller@storeAdminInfo');
 Route::get('/nurse/home', function () {
     return view('nurse.home');
 
-//=======
 // get home page route (it must be added to controller later)
 Route::get('/', function () {
     return view('user.index');
@@ -54,12 +53,7 @@ Route::get('/', function () {
 	Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 	Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 	Route::get('/home', 'HomeController@index')->name('home');
-//>>>>>>> 7903b621853327c819fcfbd87352a683db1eecff
 });
-
-Route::get('/admin/patient/addpatient', function () {
-    return view('admin.patient.addpatient');
-//=======
 
 
 // Admin routes
@@ -79,32 +73,28 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::POST('admin-password/reset','Auth\ResetPasswordController@reset');
 	// get page where admin reset password
 	Route::GET('admin-password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
-});
-//add a new patient
+	//add a new patient
 	Route::get('/admin/patient/addpatient', 'PatientController@add');
 	Route::post('/admin/patient/addpatient', 'patientcontroller@storePatientInfo');
 
 
 //add a new admin
-	Route::get('/admin/admin/addadmin', 'PatientController@add');
+	Route::get('/admin/admin/addadmin', 'admincontroller@add');
 	Route::post('/admin/admin/addadmin', 'admincontroller@storeAdminInfo');
 
-Route::get('/nurse/patient/add', function () {
-    return view('nurse.patient.add');
-//>>>>>>> 15d2c9b3114097cabfb7771a8f369af3f74c5e48
-});
-Route::get('/admin/admin/addadmin', function () {
+	Route::get('/admin/admin/addadmin', function () {
     return view('admin.admin.addadmin');
-});
+            });
 
 Route::get('/admin/patient/addpatient', function () {
     return view('admin.patient.addpatient');
+           });
+
+
 });
 
-/*
-=======
-=======
-*/
+
+
 // Nurse routes
     Route::group(['namespace' => 'Nurse'],function(){
 	// Get Nurse Home page
@@ -127,19 +117,16 @@ Route::get('/admin/patient/addpatient', function () {
 	Route::POST('nurse-password/reset','Auth\ResetPasswordController@reset');
 	// get page where nurse reset password
 	Route::GET('nurse-password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('nurse.password.reset');
+
+	Route::get('/nurse/patient/add', function () {
+    return view('nurse.patient.add');
 });
 
-//>>>>>>> 7903b621853327c819fcfbd87352a683db1eecff
+});
+
 
 // I don't know what is that route
 Route::get('/test', function() {
     return view('test');
 });
-
-/*<<<<<<< HEAD
->>>>>>> acf686b9ad9db5b2bdaffac614b5556aac5a15e2
-
-=======
->>>>>>> 15d2c9b3114097cabfb7771a8f369af3f74c5e48
-*/
 ?>

@@ -9,7 +9,15 @@ class admincontroller extends Controller
 {
     //
 
+  public function __construct()
+    {
+        $this->middleware('auth:admin');
+    }
 
+    public function add()
+    {
+        return view('admin.admin.addadmin');
+    }
      public function storeAdminInfo(Request $request)
     {
         // Validate the request...
