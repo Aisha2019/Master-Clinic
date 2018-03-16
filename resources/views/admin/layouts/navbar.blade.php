@@ -24,16 +24,16 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ asset('/admin_styles/images/user2-160x160.jpg') }}" class="user-image" alt="User Image">
-              <span class="hidden-xs">Alexander Pierce</span>
+              <img src="{{ (Auth::user()->image) ? Storage::disk('local')->url(Auth::user()->image) : asset('/admin_styles/images/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+              <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{ asset('/admin_styles/images/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                <img src="{{ (Auth::user()->image) ? Storage::disk('local')->url(Auth::user()->image) : asset('/admin_styles/images/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce
+                  {{ Auth::user()->name }}
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -42,7 +42,14 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{ route('admin.logout') }}"  class="btn btn-default btn-flat"
+                      onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                      Logout
+                  </a>
+                  <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
+                      {{ csrf_field() }}
+                  </form>
                 </div>
               </li>
             </ul>
