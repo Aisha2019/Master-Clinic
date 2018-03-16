@@ -2,7 +2,7 @@
 
 @section('title')
 	{{-- here goes the title of page --}}
-	Admin home
+	Nurse home
 @endsection
 
 @section('css')

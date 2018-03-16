@@ -49,3 +49,13 @@ Route::group(['namespace' => 'Admin'],function(){
 	// get page where admin reset password
 	Route::GET('admin-password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
 });
+
+Route::get('/nurse/patient/add', function () {
+    return view('nurse.patient.add');
+});
+Route::post('/nurse/patient/add', 'nurse\PatientController@store');
+
+
+Route::get('/test', function() {
+    return view('test');
+});
