@@ -1,53 +1,57 @@
-@extends('nurse.layouts.layout')
+@extends('admin.layouts.layout')
 
 @section('title')
-	{{-- here goes the title of page --}}
-	Add Patient
+
+		Register a new client
 @endsection
 
 @section('css')
 	{{-- here goes the css of page --}}
-
 @endsection
 
 @section('body')
 	{{-- here goes content of pages --}}
-<div class="register-box-body">
-  @foreach ($errors->all() as $error)
-          <div class="card-header bg-danger text-white">{{ $error }}</div>
-        @endforeach
+
+  <div class="register-box-body">
     <p class="login-box-msg">Register a new patient</p>
 
-    <form  method="post" action="{{ ('/nurse/home') }}">
+    <form action="../../index.html" method="post">
     	@csrf
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Full name" name="fullName">
+        <input type="text" class="form-control" placeholder="Full name">
         <span class="form-control-feedback"><i class="fa fa-user"></i></span>
+        <br/>
       </div>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email" name="email">
+        <input type="email" class="form-control" placeholder="Email">
         <span class="form-control-feedback"><i class="fas fa-envelope"></i></span>
+                <br/>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password" name="password">
+        <input type="password" class="form-control" placeholder="Password">
         <span class="form-control-feedback"><i class="fa fa-lock"></i></span>
+              <br/>
       </div>
       <div class="form-group has-feedback">
         <input type="password" class="form-control" placeholder="Confirm password">
         <span class="form-control-feedback"></span>
+              <br/>
       </div>
        <div class="form-group has-feedback">
-        <input type="Mobile" class="form-control" placeholder="Mobile" name="mobile">
+        <input type="Mobile" class="form-control" placeholder="Mobile" >
         <span class="form-control-feedback"><i class="fas fa-mobile-alt"></i></span>
+              <br/>
       </div>
         <div class="form-group has-feedback">
-        <input type="date" class="form-control" placeholder=" Birthday" name="birthday">
+        <input type="date" class="form-control" placeholder=" Birthday">
         <span class="form-control-feedback"><i class="fas fa-calendar-alt"></i></span>
+              <br/>
         </div>
       <div>
   <input type="radio" name="gender" >    Female
   <br/>
   <input type="radio" name="gender" >    Male
+              <br/>
       </div>
       <br/>
       <div class="row">
@@ -62,6 +66,8 @@
   </div>
   <!-- /.form-box -->
 <!-- /.register-box -->
+
+<!-- jQuery 2.2.3 -->
 
 	
 @endsection

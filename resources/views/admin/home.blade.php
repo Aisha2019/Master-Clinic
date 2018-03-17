@@ -12,6 +12,7 @@
 @section('body')
 	{{-- here goes content of pages --}}
 	Hi!! this is admin home page
+	
 @endsection
 
 @section('js')
