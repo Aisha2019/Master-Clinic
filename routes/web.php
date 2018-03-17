@@ -87,14 +87,14 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::get('/admin/admin/addadmin', 'admincontroller@add');
 	Route::post('/admin/admin/addadmin', 'admincontroller@storeAdminInfo');
 
-	Route::get('/admin/admin/addadmin', function () {
+/*	Route::get('/admin/admin/addadmin', function () {
 		return view('admin.admin.addadmin');
     });
-
-	Route::get('/admin/patient/addpatient', function () {
+*/
+/*	Route::get('/admin/patient/addpatient', function () {
 		return view('admin.patient.addpatient');
     });
-
+*/
 });
 
 
@@ -122,8 +122,8 @@ Route::group(['namespace' => 'Nurse'],function(){
 	// get page where nurse reset password
 	Route::GET('nurse-password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('nurse.password.reset');
 
-	Route::get('/nurse/patient/add', function () {
+	/*Route::get('/nurse/patient/add', function () {
 		return view('nurse.patient.add');
 	});
-
+*/
 });

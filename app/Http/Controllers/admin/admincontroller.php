@@ -28,7 +28,7 @@ class admincontroller extends Controller
         	'confirmpassword'=>'same:password',
         	'mobile'=>'nullable|numeric|size:14',
         	'date'=>'nullable|date|before:today',
-        	'role'=>'required|nullable|in(['Admin','superAdmin'])'
+        	'role'=>'required|nullable|in([Admin,superAdmin])'
         ]);
         $connection='MasterClinic';
         $admin = new Admin ;
