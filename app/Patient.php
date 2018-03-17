@@ -5,6 +5,9 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+//Notification for patient
+use App\Notifications\PatientResetPasswordNotification;
+
 class Patient extends Authenticatable
 {
     use Notifiable;
@@ -26,4 +29,10 @@ class Patient extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //Send password reset notification
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new PatientResetPasswordNotification($token));
+    }
 }

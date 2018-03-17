@@ -1,8 +1,22 @@
-@extends('layouts.app')
+@extends('user.layouts.layout')
 
-@section('content')
+@section('title')
+{{-- here goes the title of the page --}}
+	User Login
+@endsection
+
+@section('head')
+	{{-- this is for the css of this page --}}
+	<style>
+		.pull-right {
+			float: right;
+		}
+	</style>
+@endsection
+
+@section('body')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center full-height align-items-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Reset Password') }}</div>
@@ -44,4 +58,11 @@
         </div>
     </div>
 </div>
+@endsection
+
+
+
+@section('footer')
+{{-- here goes the js of the page --}}
+
 @endsection
