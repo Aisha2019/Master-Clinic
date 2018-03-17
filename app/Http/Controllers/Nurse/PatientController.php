@@ -33,7 +33,7 @@ class PatientController extends Controller
         $patient = new Patient ;
         $patient->name = $request->fullName;
         $patient->email = $request->email;
-        $patient->password = vcript($request->password);
+        $patient->password = bcrypt($request->password);
         $patient->mobile = $request->mobile;
         $patient->gender = $request->gender;
         $patient->date_of_birth = $request->birthday;

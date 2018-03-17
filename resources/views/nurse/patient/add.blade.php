@@ -13,9 +13,12 @@
 @section('body')
 	{{-- here goes content of pages --}}
 <div class="register-box-body">
+  @foreach ($errors->all() as $error)
+          <div class="card-header bg-danger text-white">{{ $error }}</div>
+        @endforeach
     <p class="login-box-msg">Register a new patient</p>
 
-    <form  method="post">
+    <form  method="post" action="{{ route('patient.store') }}">
     	@csrf
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Full name" name="fullName">

@@ -39,6 +39,10 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::POST('admin-password/reset','Auth\ResetPasswordController@reset');
 	// get page where admin reset password
 	Route::GET('admin-password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
+	// add new nurse routes
+	Route::get('/admin/nurse/add', 'NurseController@add');
+	Route::post('/admin/nurse/add', 'NurseController@store');
+
 });
 
 // Nurse routes
