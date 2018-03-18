@@ -15,7 +15,7 @@
   <div class="register-box-body">
     <p class="login-box-msg">Add a new Admin</p>
 
-    <form action="addadmin" method="post">
+    <form action="{{ route('admin.admin.add') }}" method="post">
       @csrf
           <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Full name" name="name">

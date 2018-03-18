@@ -1,26 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class patientcontroller extends Controller
+class PatientController extends Controller
 {
-    //
 
-
-  public function __construct()
-    {
+    public function __construct() {
         $this->middleware('auth:admin');
     }
 
-    public function add()
-    {
+    public function add() {
         return view('admin.patient.addpatient');
     }
-        public function storePatientInfo(Request $request)
-    {
+    
+    public function store(Request $request) {
         // Validate the request...
         $request->Validate([
         	'name'=>'required|alpha',

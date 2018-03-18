@@ -12,6 +12,9 @@
 @section('body')
 	{{-- here goes content of pages --}}
 	Hi!! this is nurse home page
+	@if (session('status'))
+		<div class="alert alert-success">{{ session('status') }}</div>
+	@endif
 @endsection
 
 @section('js')

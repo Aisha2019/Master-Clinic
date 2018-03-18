@@ -1,40 +1,5 @@
 <?php
 
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-// Route::post('login', 'Auth\LoginController@login');   
-// Route::post('logout', 'Auth\LoginController@logout')->name('logout');
-// Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-// Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
-// Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-// Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-
-Route::get('/', function () {
-    return view('user.index');
-});
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/admin/home', function () {
-    return view('admin.home');
-})->middleware('auth:admin');
-
-Route::post('addpatient','admin\patientcontroller@storePatientInfo');              
-Route::post('addadmin','admin\admincontroller@storeAdminInfo');                    
-Route::get('/nurse/home', function () {
-    return view('nurse.home');
-});
 // get home page route (it must be added to controller later)
 Route::get('/', function () {
     return view('user.index');
@@ -76,25 +41,16 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::GET('admin-password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
 
 	// add new nurse routes
-	Route::get('/admin/nurse/add', 'NurseController@add');
+	Route::get('/admin/nurse/add', 'NurseController@add')->name('admin.nurse.add');
 	Route::post('/admin/nurse/add', 'NurseController@store');
 	//add a new patient
-	Route::get('/admin/patient/addpatient', 'PatientController@add');
-	Route::post('/admin/patient/addpatient', 'patientcontroller@storePatientInfo');
+	Route::get('/admin/patient/add', 'PatientController@add')->name('admin.patient.add');
+	Route::post('/admin/patient/add', 'PatientController@store');
 
 
-//add a new admin
-	Route::get('/admin/admin/addadmin', 'admincontroller@add');
-	Route::post('/admin/admin/addadmin', 'admincontroller@storeAdminInfo');
-
-/*	Route::get('/admin/admin/addadmin', function () {
-		return view('admin.admin.addadmin');
-    });
-*/
-/*	Route::get('/admin/patient/addpatient', function () {
-		return view('admin.patient.addpatient');
-    });
-*/
+	//add a new admin
+	Route::get('/admin/admin/add', 'AdminController@add')->name('admin.admin.add');
+	Route::post('/admin/admin/add', 'AdminController@store');
 });
 
 
@@ -105,7 +61,7 @@ Route::group(['namespace' => 'Nurse'],function(){
 	Route::get('/nurse/home', 'HomeController@index');
 
 	// add new patient routes
-	Route::get('/nurse/patient/add', 'PatientController@add');
+	Route::get('/nurse/patient/add', 'PatientController@add')->name('nurse.patient.add');
 	Route::post('/nurse/patient/add', 'PatientController@store');
 
 	// get nurse login page
@@ -121,9 +77,4 @@ Route::group(['namespace' => 'Nurse'],function(){
 	Route::POST('nurse-password/reset','Auth\ResetPasswordController@reset');
 	// get page where nurse reset password
 	Route::GET('nurse-password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('nurse.password.reset');
-
-	/*Route::get('/nurse/patient/add', function () {
-		return view('nurse.patient.add');
-	});
-*/
 });

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class admincontroller extends Controller
+class AdminController extends Controller
 {
     //
 
@@ -18,7 +18,7 @@ class admincontroller extends Controller
     {
         return view('admin.admin.addadmin');
     }
-     public function storeAdminInfo(Request $request)
+    public function store(Request $request)
     {
         // Validate the request...
         $request->Validate([

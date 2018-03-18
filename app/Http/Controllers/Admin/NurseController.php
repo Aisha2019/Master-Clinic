@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Nurse;
 use App\Models\clinic;
+use App\Models\nurse;
+use Illuminate\Http\Request;
 class NurseController extends Controller
 {
     //
@@ -16,14 +16,14 @@ class NurseController extends Controller
 
     public function add()
     {
-    	$clinics = Clinic::all();
+    	$clinics = clinic::all();
         return view('admin.nurse.add',compact('clinics'));
     }
 
     public function store(Request $request)
     {
         // Validate the request...
-        $this::validate($request,[
+        $this->validate($request,[
         	'fullName'=>'required|string',
         	'email'=>'required|unique:patients|email',
         	'password'=>'required|string|confirmed',
@@ -31,9 +31,9 @@ class NurseController extends Controller
         	'birthday'=>'nullable|date|before:today',
         	'gender'=>'nullable',
         	'salary'=>'required|numeric',
-        	'clinic'=>'required'
+        	'clinic'=>'required|'
         ]);
-        $nurse = new Nurse ;
+        $nurse = new nurse;
         $nurse->name = $request->fullName;
         $nurse->email = $request->email;
         $nurse->password = bcrypt($request->password);

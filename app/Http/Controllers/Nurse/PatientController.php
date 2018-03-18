@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Nurse;
 
 use App\Http\Controllers\Controller;
-use App\Patient;
+use App\Models\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PatientController extends Controller
 {
@@ -21,16 +22,20 @@ class PatientController extends Controller
 
     public function store(Request $request)
     {
+        // return $request->all();
         // Validate the request...
-        $this::validate($request,[
-        	'fullName'=>'required|string',
+        $this->validate($request,[
+        	'fullName'=>'required|string|min:3',
         	'email'=>'required|unique:patients|email',
         	'password'=>'required|string|confirmed',
-        	'mobile'=>'nullable|numeric',
+        	'mobile'=>'nullable|numeric|min:11',
         	'birthday'=>'nullable|date|before:today',
-        	'gender'=>'nullable'
+        	'zones' => [
+                    'nullable',
+                    Rule::in(['male', 'female']),
+                ],
         ]);
-        $patient = new Patient ;
+        $patient = new Patient;
         $patient->name = $request->fullName;
         $patient->email = $request->email;
         $patient->password = bcrypt($request->password);
@@ -39,5 +44,7 @@ class PatientController extends Controller
         $patient->date_of_birth = $request->birthday;
         $patient->status = 1;
         $patient->save();
+
+        return redirect('/nurse/home')->with('status' ,'Added Successfully!!');
     }
 }
