@@ -51,6 +51,9 @@ Route::group(['namespace' => 'Admin'],function(){
 	//add a new admin
 	Route::get('/admin/admin/add', 'AdminController@add')->name('admin.admin.add');
 	Route::post('/admin/admin/add', 'AdminController@store');
+
+		Route::get('/admin/patient/update', 'PatientController@update')->name('admin.patient.update');
+
 });
 
 
@@ -63,6 +66,10 @@ Route::group(['namespace' => 'Nurse'],function(){
 	// add new patient routes
 	Route::get('/nurse/patient/add', 'PatientController@add')->name('nurse.patient.add');
 	Route::post('/nurse/patient/add', 'PatientController@store');
+
+	Route::get('/nurse/patient/update', 'PatientController@update')->name('nurse.patient.update');
+
+		Route::get('/nurse/patient/table', 'PatientController@table')->name('nurse.patient.table');
 
 	// get nurse login page
 	Route::GET('nurse/login','Auth\LoginController@showLoginForm')->name('nurse.login');
