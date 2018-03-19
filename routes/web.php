@@ -29,6 +29,7 @@ Route::group(['namespace' => 'Admin'],function(){
 
 	// Get Admin Home page
 	Route::get('/admin/profile', 'ProfileController@index')->name('admin.profile');
+	// Update Admin Profile Picture
 	Route::post('/admin/profile/update_picture', 'ProfileController@updatePicture')->name('admin.update.profile_picture');
 
 	// get admin login page
@@ -63,6 +64,11 @@ Route::group(['namespace' => 'Admin'],function(){
 Route::group(['namespace' => 'Nurse'],function(){
 	// Get Nurse Home page
 	Route::get('/nurse/home', 'HomeController@index');
+
+	// Get Admin Home page
+	Route::get('/nurse/profile', 'ProfileController@index')->name('nurse.profile');
+	// Update Admin Profile Picture
+	Route::post('/nurse/profile/update_picture', 'ProfileController@updatePicture')->name('nurse.update.profile_picture');
 
 	// add new patient routes
 	Route::get('/nurse/patient/add', 'PatientController@add')->name('nurse.patient.add');
