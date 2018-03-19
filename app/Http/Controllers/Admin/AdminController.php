@@ -36,6 +36,7 @@ class AdminController extends Controller
         $admin->email=$request->email;
         $admin->mobile=$request->mobile;
         $admin->role=$request->role;
+        $admin->image = '/admin_styles/images/defualt_male.png';
         $admin->save();
     }
 }

@@ -26,6 +26,11 @@ Route::group(['namespace' => 'Patient'],function(){
 Route::group(['namespace' => 'Admin'],function(){
 	// Get Admin Home page
 	Route::get('/admin/home', 'HomeController@index');
+
+	// Get Admin Home page
+	Route::get('/admin/profile', 'ProfileController@index')->name('admin.profile');
+	Route::post('/admin/profile/update_picture', 'ProfileController@updatePicture')->name('admin.update.profile_picture');
+
 	// get admin login page
 	Route::GET('admin/login','Auth\LoginController@showLoginForm')->name('admin.login');
 	// login with admin
@@ -46,7 +51,6 @@ Route::group(['namespace' => 'Admin'],function(){
 	//add a new patient
 	Route::get('/admin/patient/add', 'PatientController@add')->name('admin.patient.add');
 	Route::post('/admin/patient/add', 'PatientController@store');
-
 
 	//add a new admin
 	Route::get('/admin/admin/add', 'AdminController@add')->name('admin.admin.add');
