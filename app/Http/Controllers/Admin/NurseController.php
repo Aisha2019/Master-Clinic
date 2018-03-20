@@ -12,7 +12,7 @@ class NurseController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth:nurse');
+        $this->middleware('auth:admin');
     }
 
     public function add()
@@ -44,6 +44,14 @@ class NurseController extends Controller
         $nurse->salary= $request->salary;
         $nurse->clinic_id= $request->clinic;
         $nurse->status = 1;
+
+        if ($nurse->gender == 'male'){
+            $nurse->image = '/nurse_styles/images/defualt_male.png';
+        }
+        else{
+            $nurse->image = '/nurse_styles/images/defualt_female.png';
+        }
+
         $nurse->save();
         return redirect('/admin/home')->with('status' ,'Added Successfully!!');
     }
