@@ -40,6 +40,7 @@ class AdminController extends Controller
         $admin->mobile=$request->mobile;
         $admin->role=$request->role;
         $admin->status = 1;
+        $admin->image = '/admin_styles/images/defualt_male.png';
         $admin->save();
 
         return redirect('/admin/home')->with('status' ,'Admin Added Successfully!!');

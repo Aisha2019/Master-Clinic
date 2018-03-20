@@ -32,7 +32,7 @@
         <span class="form-control-feedback"><i class="fa fa-lock"></i></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Confirm password">
+        <input type="password" class="form-control" placeholder="Confirm password" name="password_confirmation">
         <span class="form-control-feedback"></span>
       </div>
        <div class="form-group has-feedback">
