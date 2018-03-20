@@ -22,23 +22,22 @@ class patientcontroller extends Controller
         public function storePatientInfo(Request $request)
     {
         // Validate the request...
-        $request->Validate([
+        $this::Validate($request,[
         	'name'=>'required|alpha',
-        	'email'=>'required|unique|email',
+        	'email'=>'required|unique:patients|email',
         	'password'=>'required',
         	'confirmpassword'=>'same:password',
         	'mobile'=>'nullable|numeric|size:14',
         	'date'=>'nullable|date|before:today',
-        	'gender'=>'required|nullable|in(['male','female'])'
+        	'gender'=>'required'
         ]);
-         $connection='MasterClinic';
          $patient = new Patient ;
          $patient->name=$request->name;
-v        $patient->email=$request->email;
+        $patient->email=$request->email;
          $patient->mobile=$request->mobile;
          $patient->name=$request->name;
          $patient->date_of_birth=$request->date;
-         $patient->$gender = something;=$request->gender;  
+         $patient->$gender =$request->gender;  
          $patient->save();
     }
 

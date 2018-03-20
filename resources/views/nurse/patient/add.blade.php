@@ -18,7 +18,7 @@
         @endforeach
     <p class="login-box-msg">Register a new patient</p>
 
-    <form  method="post" action="{{ ('/nurse/home') }}">
+    <form  method="post" action="/nurse/home">
     	@csrf
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Full name" name="fullName">

@@ -19,6 +19,8 @@ class PatientController extends Controller
         return view('nurse.patient.add');
     }
 
+
+    //Add New Patient
     public function store(Request $request)
     {
         // Validate the request...

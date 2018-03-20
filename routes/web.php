@@ -32,9 +32,7 @@ Route::get('/admin/home', function () {
 
 Route::post('addpatient','admin\patientcontroller@storePatientInfo');              
 Route::post('addadmin','admin\admincontroller@storeAdminInfo');                    
-Route::get('/nurse/home', function () {
-    return view('nurse.home');
-});
+
 // get home page route (it must be added to controller later)
 Route::get('/', function () {
     return view('user.index');
@@ -58,7 +56,7 @@ Route::group(['namespace' => 'Patient'],function(){
 
 
 // Admin routes
-Route::group(['namespace' => 'Admin'],function(){
+Route::group(['namespace' => 'admin'],function(){
 	// Get Admin Home page
 	Route::get('/admin/home', 'HomeController@index');
 	// get admin login page
@@ -79,21 +77,21 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::get('/admin/nurse/add', 'NurseController@add');
 	Route::post('/admin/nurse/add', 'NurseController@store');
 	//add a new patient
-	Route::get('/admin/patient/addpatient', 'PatientController@add');
+	Route::get('/admin/patient/addpatient', 'patientcontroller@add');
 	Route::post('/admin/patient/addpatient', 'patientcontroller@storePatientInfo');
 
 
 //add a new admin
 	Route::get('/admin/admin/addadmin', 'admincontroller@add');
 	Route::post('/admin/admin/addadmin', 'admincontroller@storeAdminInfo');
-
+/*
 	Route::get('/admin/admin/addadmin', function () {
 		return view('admin.admin.addadmin');
     });
 
 	Route::get('/admin/patient/addpatient', function () {
 		return view('admin.patient.addpatient');
-    });
+    });*/
 
 });
 
@@ -122,8 +120,6 @@ Route::group(['namespace' => 'Nurse'],function(){
 	// get page where nurse reset password
 	Route::GET('nurse-password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('nurse.password.reset');
 
-	Route::get('/nurse/patient/add', function () {
-		return view('nurse.patient.add');
-	});
+	
 
 });
