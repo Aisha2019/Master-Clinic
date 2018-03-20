@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-
+use DB;
 class PatientController extends Controller
 {
     
@@ -24,8 +24,11 @@ class PatientController extends Controller
         return view('nurse.patient.update');
     }
    public function table()
-    {
-        return view('nurse.patient.table');
+    {   
+
+            $patients = DB::table('patients')->get(); 
+            return view('/nurse/patient/table')->with('patients',$patients); 
+
     }
     public function store(Request $request)
     {

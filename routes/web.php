@@ -71,6 +71,8 @@ Route::group(['namespace' => 'Nurse'],function(){
 
 		Route::get('/nurse/patient/table', 'PatientController@table')->name('nurse.patient.table');
 
+
+
 	// get nurse login page
 	Route::GET('nurse/login','Auth\LoginController@showLoginForm')->name('nurse.login');
 	// login with nurse
