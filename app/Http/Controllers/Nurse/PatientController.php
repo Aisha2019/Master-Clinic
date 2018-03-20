@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Nurse;
 
 use App\Http\Controllers\Controller;
-use App\Patient;
+use App\Models\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class PatientController extends Controller
 {
@@ -13,26 +14,36 @@ class PatientController extends Controller
     {
         $this->middleware('auth:nurse');
     }
-
+    //Add New Patient
     public function add()
     {
         return view('nurse.patient.add');
     }
-
-
-    //Add New Patient
+    public function update()
+    {
+        return view('nurse.patient.update');
+    }
+   public function table()
+    {
+        return view('nurse.patient.table');
+    }
     public function store(Request $request)
     {
+        
         // Validate the request...
-        $this::validate($request,[
-        	'fullName'=>'required|string',
+        $this->validate($request,[
+        	'fullName'=>'required|string|min:3',
         	'email'=>'required|unique:patients|email',
         	'password'=>'required|string|confirmed',
-        	'mobile'=>'nullable|numeric',
+        	'mobile'=>'nullable|numeric|min:11',
         	'birthday'=>'nullable|date|before:today',
-        	'gender'=>'nullable'
+        	'gender' => [
+                    'nullable',
+                    Rule::in(['male', 'female']),
+                ],
         ]);
-        $patient = new Patient ;
+        $connection='MasterClinic';
+        $patient = new Patient;
         $patient->name = $request->fullName;
         $patient->email = $request->email;
         $patient->password = bcrypt($request->password);
@@ -41,5 +52,7 @@ class PatientController extends Controller
         $patient->date_of_birth = $request->birthday;
         $patient->status = 1;
         $patient->save();
+
+        return redirect('/nurse/home')->with('status' ,'Added Successfully!!');
     }
 }

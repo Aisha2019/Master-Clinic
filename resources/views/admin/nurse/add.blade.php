@@ -17,7 +17,7 @@
           <div class="card-header bg-danger text-white">{{ $error }}</div>
         @endforeach
     <p class="login-box-msg">Add a new nurse</p>
-    <form  method="post" action="{{ ('/admin/home') }}">
+    <form  method="post" action="{{ route('admin.nurse.add') }}">
    	@csrf
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="Full name" name="fullName">
