@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\clinic;
 use App\Models\nurse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 class NurseController extends Controller
 {
     //
@@ -31,7 +32,7 @@ class NurseController extends Controller
         	'birthday'=>'nullable|date|before:today',
         	'gender'=>'nullable',
         	'salary'=>'required|numeric',
-        	'clinic'=>'required|'
+        	'clinic'=>'required'
         ]);
         $nurse = new nurse;
         $nurse->name = $request->fullName;
@@ -41,8 +42,9 @@ class NurseController extends Controller
         $nurse->gender = $request->gender;
         $nurse->date_of_birth = $request->birthday;
         $nurse->salary= $request->salary;
-        $nurse->clinic= $request->clinic;
+        $nurse->clinic_id= $request->clinic;
         $nurse->status = 1;
         $nurse->save();
+        return redirect('/admin/home')->with('status' ,'Added Successfully!!');
     }
 }

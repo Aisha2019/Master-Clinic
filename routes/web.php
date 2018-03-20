@@ -35,7 +35,7 @@ Route::group(['namespace' => 'Patient'],function(){
 
 
 // Admin routes
-Route::group(['namespace' => 'admin'],function(){
+Route::group(['namespace' => 'Admin'],function(){
 	// Get Admin Home page
 	Route::get('/admin/home', 'HomeController@index');
 	// get admin login page
