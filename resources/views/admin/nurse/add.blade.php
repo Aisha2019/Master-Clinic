@@ -1,4 +1,4 @@
-@extends('nurse.layouts.layout')
+@extends('admin.layouts.layout')
 
 @section('title')
 	{{-- here goes the title of page --}}

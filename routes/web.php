@@ -69,10 +69,11 @@ Route::group(['namespace' => 'Admin'],function(){
 	//add a new admin
 	Route::get('/admin/admin/add', 'AdminController@add')->name('admin.admin.add');
 	Route::post('/admin/admin/add', 'AdminController@store');
-// update patient's info
+	// update patient's info
 		Route::get('/admin/patient/update', 'PatientController@update')->name('admin.patient.update');
-
-
+	// View Patients
+		Route::get('/admin/patient/view', 'PatientController@view')->name('admin.patient.view'); 
+	
 });
 
 

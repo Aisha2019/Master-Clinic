@@ -14,8 +14,12 @@
       </div>
       <ul class="sidebar-menu">
         <li><a href="{{ route('admin.profile') }}"><i class="fa fa-circle text-red"></i> <span>Profile</span></a></li>
-        <li><a href="#"><i class="fa fa-circle text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle text-aqua"></i> <span>Information</span></a></li>
+        <li><a href="{{ route('admin.patient.add') }}"><i class="fa fa-circle text-yellow"></i> <span>Add Patient</span></a></li>
+        <li><a href="{{ route('admin.nurse.add') }}"><i class="fa fa-circle text-yellow"></i> <span>Add Nurse</span></a></li>
+        <li><a href="{{ route('admin.admin.add') }}"><i class="fa fa-circle text-yellow"></i> <span>Add Admin</span></a></li>
+        <li><a href="{{ route('admin.patient.view') }}"><i class="fa fa-circle text-aqua"></i> <span>Patients</span></a></li>
+        <li><a href="#"><i class="fa fa-circle text-aqua"></i> <span>Nurses</span></a></li>
+        <li><a href="#"><i class="fa fa-circle text-aqua"></i> <span>Admins</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

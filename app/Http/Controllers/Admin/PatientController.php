@@ -19,6 +19,12 @@ class PatientController extends Controller
     {
         return view('admin.patient.update');
     }
+    // view a table of patients
+    public function view()
+    {
+        $patients = Patient::all();
+        return view('admin.patient.table',compact('patients'));
+    }
 
     public function store(Request $request) {
         // Validate the request...
@@ -47,6 +53,7 @@ class PatientController extends Controller
          return redirect('/admin/home')->with('status' ,'patient Added Successfully!!');
 
     }
+
 
 
 }
