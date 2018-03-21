@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\admin;
 use Auth;
-use Image;
+use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
@@ -30,15 +30,17 @@ class ProfileController extends Controller
     }
 
     public function updatePicture(Request $request) {
-        if ($request->hasFile('picture')) {
-            $picture = $request->file('picture');
-            $filename = time() . '.' . $picture->getClientOriginalExtension();
-            Image::make($picture)->resize(215, 215)->save(public_path('/admin_styles/images/' . $filename));
-            $user = Auth::user();
-            $user->image = '/admin_styles/images/' . $filename;
-            $user->save();
-        }
+        $this->validate($request, [
+            'picture' => 'required|image',
+        ]);
+        
+        // store the picture (you must run this commant to view the pictures in the views `php artisan storage:link`)
+        $filePath = $request->picture->store('/public/admins/' . Auth::id());
+        // update admin data
+        $admin = admin::find(Auth::id());
+        $admin->photo = $request->picture;
+        $admin->save();
 
-        return redirect('admin/profile');
+        return back();
     }
 }
