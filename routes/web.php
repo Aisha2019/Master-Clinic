@@ -34,6 +34,12 @@ Route::group(['namespace' => 'Patient'],function(){
 Route::group(['namespace' => 'Admin'],function(){
 	// Get Admin Home page
 	Route::get('/admin/home', 'HomeController@index');
+
+	// Get Admin Home page
+	Route::get('/admin/profile', 'ProfileController@index')->name('admin.profile');
+	// Update Admin Profile Picture
+	Route::post('/admin/profile/update_picture', 'ProfileController@updatePicture')->name('admin.update.profile_picture');
+
 	// get admin login page
 	Route::GET('admin/login','Auth\LoginController@showLoginForm')->name('admin.login');
 	// login with admin
@@ -55,10 +61,12 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::get('/admin/patient/add', 'PatientController@add')->name('admin.patient.add');
 	Route::post('/admin/patient/add', 'PatientController@store');
 
-
 	//add a new admin
 	Route::get('/admin/admin/add', 'AdminController@add')->name('admin.admin.add');
 	Route::post('/admin/admin/add', 'AdminController@store');
+
+		Route::get('/admin/patient/update', 'PatientController@update')->name('admin.patient.update');
+
 });
 
 
@@ -68,9 +76,18 @@ Route::group(['namespace' => 'Nurse'],function(){
 	// Get Nurse Home page
 	Route::get('/nurse/home', 'HomeController@index');
 
+	// Get Admin Home page
+	Route::get('/nurse/profile', 'ProfileController@index')->name('nurse.profile');
+	// Update Admin Profile Picture
+	Route::post('/nurse/profile/update_picture', 'ProfileController@updatePicture')->name('nurse.update.profile_picture');
+
 	// add new patient routes
 	Route::get('/nurse/patient/add', 'PatientController@add')->name('nurse.patient.add');
 	Route::post('/nurse/patient/add', 'PatientController@store');
+
+	Route::get('/nurse/patient/update', 'PatientController@update')->name('nurse.patient.update');
+
+		Route::get('/nurse/patient/table', 'PatientController@table')->name('nurse.patient.table');
 
 	// get nurse login page
 	Route::GET('nurse/login','Auth\LoginController@showLoginForm')->name('nurse.login');

@@ -19,7 +19,14 @@ class PatientController extends Controller
     {
         return view('nurse.patient.add');
     }
-
+    public function update()
+    {
+        return view('nurse.patient.update');
+    }
+   public function table()
+    {
+        return view('nurse.patient.table');
+    }
     public function store(Request $request)
     {
         // return $request->all();
@@ -35,6 +42,7 @@ class PatientController extends Controller
                     Rule::in(['male', 'female']),
                 ],
         ]);
+        $connection='MasterClinic';
         $patient = new Patient;
         $patient->name = $request->fullName;
         $patient->email = $request->email;
