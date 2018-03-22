@@ -7,8 +7,6 @@
 
 @section('head')
 	{{-- this is for the css of this page --}}
-	<link rel="shortcut icon" href="{{ asset('/user_styles/images/testlogo.png') }}" />
-		
 @endsection
 
 @section('body')
