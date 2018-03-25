@@ -21,15 +21,16 @@ class PatientController extends Controller
     }
     public function get()
     {
-        $patient=Patient::find(2);
+        $patient=Patient::find(3);
         return view('/nurse/patient/update', compact('patient'));
     }
 
+    
     public function update(Request $request)
     {
          $this->validate($request,[
             'fullName'=>'required|string|min:3',
-            'email' => ['required','email', Rule::unique('patients')->ignore(2)],
+            'email' => ['required','email', Rule::unique('patients')->ignore($request->id)],
             'mobile'=>'nullable|numeric|min:11',
             'birthday'=>'nullable|date|before:today',
             'gender' => [
@@ -39,7 +40,7 @@ class PatientController extends Controller
         ]);
 
          
-         $patient =Patient::find(2);
+         $patient =Patient::find($request->id);
          $patient->name=$request->fullName;
          $patient->email=$request->email;
          $patient->mobile=$request->mobile;
@@ -48,7 +49,7 @@ class PatientController extends Controller
          
          $patient->save();
 
-        return redirect('/nurse/home')->with('status' ,'patient Data updated Successfully!!');
+        return redirect('/nurse/patient/update')->with('status' ,'patient Info has been updated Successfully!!');
 
     }
    public function patient_table()
@@ -58,6 +59,7 @@ class PatientController extends Controller
             return view('/nurse/patient/patient_table')->with('patients',$patients); 
 
     }
+   
     public function store(Request $request)
     {
         // return $request->all();

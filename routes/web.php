@@ -7,6 +7,14 @@ Route::get('/', function () {
 
 // Patient routes
 Route::group(['namespace' => 'Patient'],function(){
+
+	// Change paient profile photo
+	Route::POST('/patient/photo', 'PatientController@photo');
+	// Change patient data from profile
+	Route::PATCH('/patient/update', 'PatientController@update')->name('patient.profile');
+	// Change patient password
+	Route::PATCH('/patient/password/update', 'PatientController@password')->name('patient.password.update');
+
 	// patient login routes
 	Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 	Route::post('login', 'Auth\LoginController@login');   
@@ -62,6 +70,11 @@ Route::group(['namespace' => 'Admin'],function(){
 
 		Route::get('/admin/patient/patient_table', 'PatientController@patient_table')->name('admin.patient.patient_table');
 
+		  // update patient info routes
+	Route::get('/admin/patient/update', 'PatientController@get')->name('admin.patient.update');
+	Route::post('/admin/patient/update', 'PatientController@update');
+
+
 });
 
 
@@ -79,7 +92,7 @@ Route::group(['namespace' => 'Nurse'],function(){
 	// add new patient routes
 	Route::get('/nurse/patient/add', 'PatientController@add')->name('nurse.patient.add');
 	Route::post('/nurse/patient/add', 'PatientController@store');
-
+  // update patient info routes
 	Route::get('/nurse/patient/update', 'PatientController@get')->name('nurse.patient.update');
 	Route::post('/nurse/patient/update', 'PatientController@update');
 

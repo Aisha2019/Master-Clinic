@@ -8,9 +8,7 @@
 @section('css')
 	{{-- here goes the css of page --}}
 	<style >
-		
-	
-
+		  <link rel="stylesheet" href="{{ asset('/user_styles/css/datepicker3.css') }}">
 
 	</style>
 @endsection
@@ -18,11 +16,14 @@
 @section('body')
 	{{-- here goes content of pages --}}
       @foreach ($errors->all() as $error)
-          <div class="alert alert-danger">{{ $error }}</div>
+      <div class="card-header bg-danger text-white mb-3"><i class="fa fa-times fa-lg"></i> {{ $error }}</div>
         @endforeach
 
-
-
+ @if (session('status'))
+<div class="pt-3 pb-3">
+      <div class="card-header bg-success text-white mb-3"><i class="fa fa-check fa-lg"></i> {{ session('status') }}</div>
+    </div>
+      @endif
 <?php
 $img=$patient->image;;
 if($img==NULL)
@@ -39,7 +40,8 @@ $image=asset($img);
                 <div class="form-group" >
                   <form method="post" action="{{ route('nurse.patient.update') }}">
                     @csrf
-                    {{ csrf_field() }}
+                    
+                  <input type="name" name="id" value="{{ $patient->id }}" style="display: none;">
                   <label for="inputEmail3" class="col-sm-2 control-label">Full Name</label>
                   <div class="col-sm-5">
                     <input class="form-control"  name="fullName" placeholder="" type="FullName" value="{{ $patient->name }}">

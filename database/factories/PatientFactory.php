@@ -21,6 +21,8 @@ $factory->define(Patient::class, function (Faker $faker) {
         'password' => '$2y$10$M4Mafw/eo7zJi59UuxHWEu4CjijiaJ96ckvGqUUkP6rZWEpIrUpye', // 123456
         'remember_token' => str_random(10),
         'status' => $faker->numberBetween(0, 1),
+        'date_of_birth' => $faker->date('Y-m-d', 'now'),
+        'gender' => $faker->randomElement(['male', 'female']),
         'mobile' => $faker->phoneNumber,
     ];
 });

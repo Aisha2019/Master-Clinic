@@ -25,9 +25,37 @@ class PatientController extends Controller
     public function add() {
         return view('admin.patient.addpatient');
     }
-      public function update()
+    public function get()
     {
-        return view('admin.patient.update');
+        $patient=Patient::find(3);
+        return view('/admin/patient/update', compact('patient'));
+    }
+
+    public function update(Request $request)
+    {
+         $this->validate($request,[
+            'fullName'=>'required|string|min:3',
+            'email' => ['required','email', Rule::unique('patients')->ignore($request->id)],
+            'mobile'=>'nullable|numeric|min:11',
+            'birthday'=>'nullable|date|before:today',
+            'gender' => [
+                    'nullable',
+                    Rule::in(['male', 'female']),
+                ],
+        ]);
+
+         
+         $patient =Patient::find($request->id);
+         $patient->name=$request->fullName;
+         $patient->email=$request->email;
+         $patient->mobile=$request->mobile;
+         $patient->date_of_birth=$request->birthday;
+         $patient->gender=$request->gender;
+         
+         $patient->save();
+
+        return redirect('/admin/patient/update')->with('status' ,'patient Info has been updated Successfully!!');
+
     }
 
     public function store(Request $request) {
