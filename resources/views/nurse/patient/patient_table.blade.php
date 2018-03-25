@@ -25,13 +25,12 @@
                       
                       <label>Show 
                        
-                        <select name="selectvalue"  value="10" aria-controls="example1" class="form-control input-sm">
+                        <select name="example1_length" aria-controls="example1" class="form-control input-sm">
                           <option value="10">10</option>
                           <option value="25">25</option>
                           <option value="50">50</option>
                           <option value="100">100</option>
-                        </select> 
-                       
+                        </select>                            
                       entries
                     </label>
                     
@@ -47,7 +46,7 @@
                       </div>
                       <div class="row">
                         <div class="col-sm-12">
-                          <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                          <table id="example1" class="table table-bordered table-hover" role="grid" aria-describedby="example1_info">
                 <thead>
                 <tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 181px;" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Full Name</th>
                  
@@ -60,10 +59,7 @@
                   <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 110px;" aria-label="CSS grade: activate to sort column ascending">Gender</th></tr>
                 </thead>
                 <tbody>
-               <?php
-                $i=0; 
-                $value =10;
-               ?>
+           
                @foreach($patients as  $data)
                  <tr>    
                   <th>{{$data->name}}</th>
@@ -72,14 +68,18 @@
                   <th>{{$data->date_of_birth}}</th>
                   <th>{{$data->gender}}</th> 
                  </tr>
-                  <?php
-                         $i++;
-                   if($i==$value) 
-                       break;
-                  ?>
+               
                 @endforeach
           </tbody>
-
+               <tfoot>
+                <tr>
+                  <th>Full Name</th>
+                  <th>Email</th>
+                  <th>Mobile</th>
+                  <th>Date of Birth</th>
+                  <th>Gender</th>
+                </tr>
+                </tfoot>
               </table>
             </div>
           </div>
@@ -124,11 +124,32 @@
 
 @section('js')
 	{{-- here goes js files --}}
-  <script >
-    
-    function select()
-    {
-
-    }
+  <script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<script>
+  $(function () {
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": true,
+      "searching": true,
+      "ordering": true,
+      "info": true,
+      "autoWidth": true
+    });
+  });
+</script>  
   </script>
+
 @endsection

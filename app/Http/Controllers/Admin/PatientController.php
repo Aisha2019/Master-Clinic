@@ -5,12 +5,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use App\Models\Patient;
+use DB;
 class PatientController extends Controller
 {
 
     public function __construct() {
         $this->middleware('auth:admin');
     }
+
+   public function patient_table()
+    {   
+
+            $patients = DB::table('patients')->get(); 
+            return view('/admin/patient/patient_table')->with('patients',$patients); 
+
+    }
+
 
     public function add() {
         return view('admin.patient.addpatient');
