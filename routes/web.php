@@ -45,7 +45,7 @@ Route::group(['namespace' => 'Patient'],function(){
 // Admin routes
 Route::group(['namespace' => 'Admin'],function(){
 	// Get Admin Home page
-	Route::get('/admin/home', 'HomeController@index');
+	Route::get('/admin/home', 'HomeController@index')->name('admin.home');
 
 	// Get Admin Home page
 	Route::get('/admin/profile', 'ProfileController@index')->name('admin.profile');
@@ -66,7 +66,7 @@ Route::group(['namespace' => 'Admin'],function(){
 	// get page where admin reset password
 	Route::GET('admin-password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
 
-	// add new nurse routes
+	// add new nurse 
 	Route::get('/admin/nurse/add', 'NurseController@add')->name('admin.nurse.add');
 	Route::post('/admin/nurse/add', 'NurseController@store');
 	//add a new patient
@@ -80,7 +80,17 @@ Route::group(['namespace' => 'Admin'],function(){
 	// update patient's info
 		Route::get('/admin/patient/update', 'PatientController@update')->name('admin.patient.update');
 	// View Patients
-		Route::get('/admin/patient/view', 'PatientController@view')->name('admin.patient.view'); 
+		Route::get('/admin/patient/view', 'PatientController@view')->name('admin.patient.view');
+	// View Nurses
+		Route::get('/admin/nurse/view', 'NurseController@view')->name('admin.nurse.view');
+	// update nurse's info
+		Route::get('/admin/nurse/update', 'NurseController@update')->name('admin.nurse.update');
+
+	// View Admins
+		Route::get('/admin/admin/view', 'AdminController@view')->name('admin.admin.view');
+
+	// update another admin's info
+		Route::get('/admin/admin/update', 'AdminController@update')->name('admin.admin.update');
 	
 });
 
