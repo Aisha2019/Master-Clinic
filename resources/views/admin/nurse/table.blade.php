@@ -2,7 +2,7 @@
 
 @section('title')
 	{{-- here goes the title of page --}}
-	Patients
+	Nurses
 @endsection
 
 @section('css')
@@ -32,26 +32,32 @@
 			                  <th>Mobile<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Gender<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Birthday<i class="fas fa-sort fa-xs"></i></th>
+			                  <th>Clinic<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Created At<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Updated At<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Status<i class="fas fa-sort fa-xs"></i></th>
-			                  <th> <a href="{{ route('admin.patient.add') }}"> <button type="button" class="btn btn-block btn-success btn-xs"> ADD </button> </a></th>
+			                  <th> <a href="{{ route('admin.nurse.add') }}"> <button type="button" class="btn btn-block btn-success btn-xs"> ADD </button> </a></th>
 			                </tr>
 			                </thead>
 			                <tbody>
-								@foreach ($patients as $patient)
-			                <?php $patient = (object)$patient; ?>
+								@foreach ($nurses as $nurse)
+			                <?php $nurse = (object)$nurse; ?>
 			                  <tr>
-			                  	<td>{{ $patient->id }}</td>
-			                  	<td>{{ $patient->name }}</td>
-			                  	<td>{{ $patient->email }}</td>
-			                  	<td>{{ $patient->mobile }}</td>
-			                  	<td>{{ $patient->gender }}</td>
-			                  	<td>{{ $patient->date_of_birth }}</td>
-			                  	<td>{{ $patient->created_at }}</td>
-			                  	<td>{{ $patient->updated_at }}</td>
-			                  	<td>{{ $patient->status }}</td>
-								<td><a href="{{ route('admin.patient.update') }}"><button type="button" class="btn btn-block btn-warning btn-xs">Update</button> </a><button type="button" class="btn btn-block btn-danger btn-xs">Delete</button> </td>
+			                  	<td>{{ $nurse->id }}</td>
+			                  	<td>{{ $nurse->name }}</td>
+			                  	<td>{{ $nurse->email }}</td>
+			                  	<td>{{ $nurse->mobile }}</td>
+			                  	<td>{{ $nurse->gender }}</td>
+			                  	<td>{{ $nurse->date_of_birth }}</td>
+			                  	<td>@foreach ($clinics as $clinic)
+			                			<?php $clinic = (object)$clinic; if($clinic->id==$nurse->clinic_id) {break;}?>
+			                		@endforeach
+			                		{{ $clinic->name }}
+			                	</td>
+			                  	<td>{{ $nurse->created_at }}</td>
+			                  	<td>{{ $nurse->updated_at }}</td>
+			                  	<td>{{ $nurse->status }}</td>
+								<td><a href="{{ route('admin.nurse.update') }}"><button type="button" class="btn btn-block btn-warning btn-xs">Update</button> </a><button type="button" class="btn btn-block btn-danger btn-xs">Delete</button> </td>
 			                  </tr>
 			              @endforeach
 			                </tbody>
@@ -63,6 +69,7 @@
 			                  <th>Mobile</th>
 			                  <th>Gender</th>
 			                  <th>Birthday</th>
+			                  <th>Clinic</th>
 			                  <th>Created At</th>
 			                  <th>Updated At</th>
 			                  <th>Status</th>

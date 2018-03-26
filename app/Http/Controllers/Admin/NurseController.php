@@ -55,4 +55,11 @@ class NurseController extends Controller
         $nurse->save();
         return redirect('/admin/home')->with('status' ,'Added Successfully!!');
     }
+
+    public function view(Request $request)
+        {
+            $nurses = nurse::all();
+            $clinics = clinic::all();
+            return view('admin.nurse.table',compact('nurses'),compact('clinics'));
+        }
 }

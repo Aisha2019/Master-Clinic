@@ -84,13 +84,15 @@ Route::group(['namespace' => 'Admin'],function(){
 	// View Nurses
 		Route::get('/admin/nurse/view', 'NurseController@view')->name('admin.nurse.view');
 	// update nurse's info
-		Route::get('/admin/nurse/update', 'NurseController@update')->name('admin.nurse.update');
+		Route::get('/admin/nurse/update', 'NurseController@updatepage')->name('admin.nurse.update');
+		Route::post('/admin/nurse/update', 'NurseController@update');
 
 	// View Admins
 		Route::get('/admin/admin/view', 'AdminController@view')->name('admin.admin.view');
 
 	// update another admin's info
-		Route::get('/admin/admin/update', 'AdminController@update')->name('admin.admin.update');
+		Route::get('/admin/admin/update', 'AdminController@updatepage')->name('admin.admin.update');
+		Route::post('/admin/admin/update', 'AdminController@update');
 	
 });
 
