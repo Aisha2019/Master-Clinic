@@ -10,7 +10,7 @@ Route::group(['namespace' => 'Admin'],function(){
 	// Update Admin Profile Picture
 	Route::post('/admin/profile/update', 'ProfileController@updatePicture')->name('admin.update.photo');
 	// Change admin data from profile
-	Route::PATCH('/admin/update', 'ProfileController@update')->name('admin.profile');
+	Route::PATCH('/admin/update', 'ProfileController@update')->name('admin.profile.update');
 	// Change admin password
 	Route::PATCH('/admin/password/update', 'ProfileController@password')->name('admin.password.update');
 

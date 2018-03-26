@@ -7,7 +7,11 @@ Route::group(['namespace' => 'Nurse'],function(){
 	// Get Admin Home page
 	Route::get('/nurse/profile', 'ProfileController@index')->name('nurse.profile');
 	// Update Admin Profile Picture
-	Route::post('/nurse/profile/update_picture', 'ProfileController@updatePicture')->name('nurse.update.profile_picture');
+	Route::post('/nurse/profile/update', 'ProfileController@updatePicture')->name('nurse.update.photo');
+	// Change nurse data from profile
+	Route::PATCH('/nurse/update', 'ProfileController@update')->name('nurse.profile.update');
+	// Change nurse password
+	Route::PATCH('/nurse/password/update', 'ProfileController@password')->name('nurse.password.update');
 
 	// add new patient routes
 	Route::get('/nurse/patient/add', 'PatientController@add')->name('nurse.patient.add');

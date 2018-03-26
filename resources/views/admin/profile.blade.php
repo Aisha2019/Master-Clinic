@@ -31,6 +31,7 @@
                 <div class="alert alert-danger"><i class="fa fa-times fa-lg"></i> {{ session('error') }}</div>
             </div>
         @endif
+
         <div class="col-md-3">
             <!-- Profile Image -->
             <div class="box box-primary">
@@ -87,7 +88,7 @@
                 </ul>
                 <div class="tab-content">
                     <div class="active tab-pane" id="updateData">
-                        <form class="form-horizontal" action="{{ route('admin.profile') }}" method="POST">
+                        <form class="form-horizontal" action="{{ route('admin.profile.update') }}" method="POST">
                             @csrf
                             {{ method_field('PATCH') }}
                             <div class="box-body">

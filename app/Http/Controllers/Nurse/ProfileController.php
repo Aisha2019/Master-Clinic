@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\nurse;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -26,7 +29,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('nurse.profile');
+        $clinic = DB::table('clinics')->where('id', Auth::user()->clinic_id)->value('name');
+        return view('nurse.profile',  compact('clinic'));
     }
 
     public function updatePicture(Request $request) {
@@ -37,10 +41,47 @@ class ProfileController extends Controller
         // store the picture (you must run this commant to view the pictures in the views `php artisan storage:link`)
         $filePath = $request->picture->store('/public/nurses/' . Auth::id());
         // update nurse data
-        $admin = nurse::find(Auth::id());
-        $admin->photo = $request->picture;
-        $admin->save();
+        $nurse = nurse::find(Auth::id());
+        $nurse->image = $filePath;
+        $nurse->save();
 
         return back();
     }
+
+    public function update(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|string|min:3',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('nurses', 'email')->ignore(Auth::id()),
+                ],
+            'mobile' => 'required|string|min:8',
+        ]);
+        $nurse = nurse::find(Auth::id());
+        $nurse->name = $request->name;
+        $nurse->email = $request->email;
+        $nurse->mobile = $request->mobile;;
+        $nurse->save();
+        return back()->with('status', 'updated Successfully!!');
+    }
+
+    public function password(Request $request)
+    {
+        $this->validate($request, [
+            'oldPassword' => 'required',
+            'newPassword' => 'required|min:6|same:passwordConfirm',
+        ]);
+        $nurse = nurse::find(Auth::id());
+
+        if (Hash::check($request->oldPassword, $nurse->password)) {
+            $nurse->password = $request->newPassword;
+            $nurse->save();
+            return back()->with('status', 'updated Successfully!!');
+        } else {
+            return back()->with('error', 'Old password is wrong');
+        }
+    }
+
 }
