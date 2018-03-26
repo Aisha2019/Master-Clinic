@@ -17,7 +17,6 @@
           <div class="alert alert-danger">{{ $error }}</div>
         @endforeach
     <p class="login-box-msg">Register a new patient</p>
-
     <form  method="post" action="{{ route('nurse.patient.add') }}">
     	@csrf
       <div class="form-group has-feedback">

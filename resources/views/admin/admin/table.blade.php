@@ -2,7 +2,7 @@
 
 @section('title')
 	{{-- here goes the title of page --}}
-	Patients
+	Admins
 @endsection
 
 @section('css')
@@ -32,26 +32,28 @@
 			                  <th>Mobile<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Gender<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Birthday<i class="fas fa-sort fa-xs"></i></th>
+			                  <th>Role<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Created At<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Updated At<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Status<i class="fas fa-sort fa-xs"></i></th>
-			                  <th> <a href="{{ route('admin.patient.add') }}"> <button type="button" class="btn btn-block btn-success btn-xs"> ADD </button> </a></th>
+			                  <th> <a href="{{ route('admin.admin.add') }}"> <button type="button" class="btn btn-block btn-success btn-xs"> ADD </button> </a></th>
 			                </tr>
 			                </thead>
 			                <tbody>
-								@foreach ($patients as $patient)
-			                <?php $patient = (object)$patient; ?>
+								@foreach ($admins as $admin)
+			                <?php $admin = (object)$admin; ?>
 			                  <tr>
-			                  	<td>{{ $patient->id }}</td>
-			                  	<td>{{ $patient->name }}</td>
-			                  	<td>{{ $patient->email }}</td>
-			                  	<td>{{ $patient->mobile }}</td>
-			                  	<td>{{ $patient->gender }}</td>
-			                  	<td>{{ $patient->date_of_birth }}</td>
-			                  	<td>{{ $patient->created_at }}</td>
-			                  	<td>{{ $patient->updated_at }}</td>
-			                  	<td>{{ $patient->status }}</td>
-								<td><a href="{{ route('admin.patient.update') }}"><button type="button" class="btn btn-block btn-warning btn-xs">Update</button> </a><button type="button" class="btn btn-block btn-danger btn-xs">Delete</button> </td>
+			                  	<td>{{ $admin->id }}</td>
+			                  	<td>{{ $admin->name }}</td>
+			                  	<td>{{ $admin->email }}</td>
+			                  	<td>{{ $admin->mobile }}</td>
+			                  	<td>{{ $admin->gender }}</td>
+			                  	<td>{{ $admin->date_of_birth }}</td>
+			                  	<td>{{ $admin->role }}</td>
+			                  	<td>{{ $admin->created_at }}</td>
+			                  	<td>{{ $admin->updated_at }}</td>
+			                  	<td>{{ $admin->status }}</td>
+								<td><a href="{{ route('admin.admin.update') }}"><button type="button" class="btn btn-block btn-warning btn-xs">Update</button> </a><button type="button" class="btn btn-block btn-danger btn-xs">Delete</button> </td>
 			                  </tr>
 			              @endforeach
 			                </tbody>
@@ -63,6 +65,7 @@
 			                  <th>Mobile</th>
 			                  <th>Gender</th>
 			                  <th>Birthday</th>
+			                  <th>Role</th>
 			                  <th>Created At</th>
 			                  <th>Updated At</th>
 			                  <th>Status</th>

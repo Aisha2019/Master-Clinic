@@ -14,7 +14,7 @@ class PatientController extends Controller
     {
         $this->middleware('auth:nurse');
     }
-
+    //Add New Patient
     public function add()
     {
         return view('nurse.patient.add');
@@ -29,7 +29,7 @@ class PatientController extends Controller
     }
     public function store(Request $request)
     {
-        // return $request->all();
+        
         // Validate the request...
         $this->validate($request,[
         	'fullName'=>'required|string|min:3',
@@ -37,7 +37,7 @@ class PatientController extends Controller
         	'password'=>'required|string|confirmed',
         	'mobile'=>'nullable|numeric|min:11',
         	'birthday'=>'nullable|date|before:today',
-        	'zones' => [
+        	'gender' => [
                     'nullable',
                     Rule::in(['male', 'female']),
                 ],
