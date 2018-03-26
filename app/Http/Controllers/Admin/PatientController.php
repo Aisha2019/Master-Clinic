@@ -15,20 +15,22 @@ class PatientController extends Controller
     public function add() {
         return view('admin.patient.addpatient');
     }
-      public function update()
+
+    public function update()
     {
         return view('admin.patient.update');
     }
+
     // view a table of patients
     public function view()
     {
         $patients = Patient::all();
-        return view('admin.patient.table',compact('patients'));
+        return view('admin.patient.table' ,compact('patients'));
     }
 
     public function store(Request $request) {
         // Validate the request...
-                $this->validate($request,[
+        $this->validate($request,[
             'fullName'=>'required|string|min:3',
             'email'=>'required|unique:patients|email',
             'password'=>'required|string|confirmed',
@@ -40,17 +42,16 @@ class PatientController extends Controller
                 ],
         ]);
 
-         $connection='MasterClinic';
-         $patient = new Patient ;
-         $patient->name=$request->fullName;
-         $patient->email=$request->email;
-         $patient->mobile=$request->mobile;
-         $patient->password = bcrypt($request->password);
-         $patient->status = 1;
-         $patient->date_of_birth=$request->date;
-         $patient->gender =$request->gender;  
-         $patient->save();
-         return redirect('/admin/home')->with('status' ,'patient Added Successfully!!');
+        $patient = new Patient ;
+        $patient->name=$request->fullName;
+        $patient->email=$request->email;
+        $patient->mobile=$request->mobile;
+        $patient->password = bcrypt($request->password);
+        $patient->status = 1;
+        $patient->date_of_birth=$request->date;
+        $patient->gender =$request->gender;  
+        $patient->save();
+        return redirect('/admin/home')->with('status' ,'patient Added Successfully!!');
 
     }
 
