@@ -26,14 +26,11 @@
 	        			<table id="example1" class="table table-bordered table-striped">
 	                		<thead>
 			                <tr>
-			                  <th>ID <i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Name<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Email<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Mobile<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Gender<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Birthday<i class="fas fa-sort fa-xs"></i></th>
-			                  <th>Created At<i class="fas fa-sort fa-xs"></i></th>
-			                  <th>Updated At<i class="fas fa-sort fa-xs"></i></th>
 			                  <th>Status<i class="fas fa-sort fa-xs"></i></th>
 			                  <th> <a href="{{ route('admin.patient.add') }}"> <button type="button" class="btn btn-block btn-success btn-xs"> ADD </button> </a></th>
 			                </tr>
@@ -48,10 +45,12 @@
 			                  	<td>{{ $patient->mobile }}</td>
 			                  	<td>{{ $patient->gender }}</td>
 			                  	<td>{{ $patient->date_of_birth }}</td>
-			                  	<td>{{ $patient->created_at }}</td>
-			                  	<td>{{ $patient->updated_at }}</td>
 			                  	<td>{{ $patient->status }}</td>
-								<td><a href="{{ route('admin.patient.update') }}"><button type="button" class="btn btn-block btn-warning btn-xs">Update</button> </a><button type="button" class="btn btn-block btn-danger btn-xs">Delete</button> </td>
+								<td>
+								<a href="{{ route('admin.patient.update', ['patientid', $patient->id] ) }}"  class="btn btn-block btn-warning btn-xs">Update</a>
+
+								<a href="{{ route('admin.patient.table.delete',$patient->id) }}" class="btn btn-block btn-danger btn-xs">Delete</a> 
+							   </td>
 			                  </tr>
 			              @endforeach
 			                </tbody>
@@ -63,8 +62,6 @@
 			                  <th>Mobile</th>
 			                  <th>Gender</th>
 			                  <th>Birthday</th>
-			                  <th>Created At</th>
-			                  <th>Updated At</th>
 			                  <th>Status</th>
 			                </tr>
 			                </tfoot>

@@ -14,6 +14,7 @@ class PatientController extends Controller
     {
         $this->middleware('auth:nurse');
     }
+
    
         public function change_status($id)
     {
@@ -35,14 +36,17 @@ class PatientController extends Controller
             return redirect('/nurse/patient/table')->with('patients',$patients)->with('status' ,'patient  has been deleted Successfully!!');  
 
    }
+
+    //Add New Patient
+
     public function add()
     {
         return view('nurse.patient.add');
     }
-    public function get($patientid)
+    public function getpatient($patientid)
     {
         $patient=Patient::find($patientid);
-        return view('/nurse/patient/update', compact('patient'));
+        return view('/nurse/patient/update',compact('patient')); 
     }
 
     
@@ -66,7 +70,6 @@ class PatientController extends Controller
          $patient->mobile=$request->mobile;
          $patient->date_of_birth=$request->birthday;
          $patient->gender=$request->gender;
-         
          $patient->save();
 
         return redirect('/nurse/patient/update')->with('status' ,'patient Info has been updated Successfully!!');
@@ -74,7 +77,6 @@ class PatientController extends Controller
     }
    public function patient_table()
     {   
-
             $patients = DB::table('patients')->get(); 
             return view('/nurse/patient/table')->with('patients',$patients); 
 
@@ -82,7 +84,7 @@ class PatientController extends Controller
 
     public function store(Request $request)
     {
-        // return $request->all();
+        
         // Validate the request...
         $this->validate($request,[
         	'fullName'=>'required|string|min:3',
@@ -90,7 +92,7 @@ class PatientController extends Controller
         	'password'=>'required|string|confirmed',
         	'mobile'=>'nullable|numeric|min:11',
         	'birthday'=>'nullable|date|before:today',
-        	'zones' => [
+        	'gender' => [
                     'nullable',
                     Rule::in(['male', 'female']),
                 ],

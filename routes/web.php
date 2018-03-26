@@ -1,5 +1,17 @@
 <?php
 
+
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group.
+|
+*/                  
+
 // get home page route (it must be added to controller later)
 Route::get('/', function () {
     return view('user.index');
@@ -33,7 +45,7 @@ Route::group(['namespace' => 'Patient'],function(){
 // Admin routes
 Route::group(['namespace' => 'Admin'],function(){
 	// Get Admin Home page
-	Route::get('/admin/home', 'HomeController@index');
+	Route::get('/admin/home', 'HomeController@index')->name('admin.home');
 
 	// Get Admin Home page
 	Route::get('/admin/profile', 'ProfileController@index')->name('admin.profile');
@@ -54,10 +66,11 @@ Route::group(['namespace' => 'Admin'],function(){
 	// get page where admin reset password
 	Route::GET('admin-password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
 
-	// add new nurse routes
+	// add new nurse 
 	Route::get('/admin/nurse/add', 'NurseController@add')->name('admin.nurse.add');
 	Route::post('/admin/nurse/add', 'NurseController@store');
 	//add a new patient
+
 	Route::get('/admin/patient/add', 'PatientController@add')->name('admin.patient.add');
 	Route::post('/admin/patient/add', 'PatientController@store');
 
@@ -66,11 +79,46 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::post('/admin/admin/add', 'AdminController@store');
 
 
+
 	Route::get('/admin/patient/table', 'PatientController@patient_table')->name('admin.patient.table');
-    
+
 		  // update patient info routes
-	Route::get('/admin/patient/update', 'PatientController@get')->name('admin.patient.update');
+	Route::get('/admin/patient/table', 'PatientController@get')->name('admin.patient.update');
+	
 	Route::post('/admin/patient/update', 'PatientController@update');
+
+
+
+	// update patient's info
+		Route::get('/admin/patient/update', 'PatientController@update')->name('admin.patient.update');
+//	 View Patients
+		Route::get('/admin/patient/view', 'PatientController@view')->name('admin.patient.view');
+//	 View Nurses
+		Route::get('/admin/nurse/view', 'NurseController@view')->name('admin.nurse.view');
+	// update nurse's info
+		Route::get('/admin/nurse/update', 'NurseController@updatepage')->name('admin.nurse.update');
+		Route::post('/admin/nurse/update', 'NurseController@update');
+
+	// View Admins
+		Route::get('/admin/admin/view', 'AdminController@view')->name('admin.admin.view');
+
+//	 update another admin's info
+		Route::get('/admin/admin/update', 'AdminController@updatepage')->name('admin.admin.update');
+		Route::post('/admin/admin/update', 'AdminController@update');
+	
+
+	Route::get('/admin/patient/update/{patientid}','PatientController@getpatient')->name('admin.patient.update');
+
+    
+	Route::post('/admin/patient/update', 'PatientController@update');
+
+
+	Route::get('/admin/patient/table', 'PatientController@patient_table')->name('admin.patient.table');
+
+
+    Route::get('/admin/patient/update/{id}',[  "uses" => 'PatientController@change_status'])->name('admin.patient.update.status');
+
+    Route::get('/admin/patient/table/{id}',[  "uses" => 'PatientController@delete'])->name('admin.patient.table.delete');
 
 
 });
@@ -92,9 +140,9 @@ Route::group(['namespace' => 'Nurse'],function(){
 	Route::post('/nurse/patient/add', 'PatientController@store');
   // update patient info routes
 
-	Route::get('/nurse/patient/update/{patientid}','PatientController@get')->name('nurse.patient.update');
+	Route::get('/nurse/patient/update/{patientid}','PatientController@getpatient')->name('nurse.patient.update');
 
-
+    
 	Route::post('/nurse/patient/update', 'PatientController@update');
 
 

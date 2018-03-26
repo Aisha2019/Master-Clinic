@@ -22,7 +22,7 @@
     <div class="alert alert-success">{{ session('status') }}</div>
   @endif
 <?php
-$img=$patient->image;;
+$img=$patient->image;
 if($img==NULL)
 $img='/user_styles/images/usericon.png';
 $image=asset($img);
