@@ -16,19 +16,20 @@
 @section('body')
 	{{-- here goes content of pages --}}
       @foreach ($errors->all() as $error)
-      <div class="card-header bg-danger text-white mb-3"><i class="fa fa-times fa-lg"></i> {{ $error }}</div>
+          <div class="alert alert-danger">{{ $error }}</div>
         @endforeach
-
- @if (session('status'))
-<div class="pt-3 pb-3">
-      <div class="card-header bg-success text-white mb-3"><i class="fa fa-check fa-lg"></i> {{ session('status') }}</div>
-    </div>
-      @endif
+  @if (session('status'))
+    <div class="alert alert-success">{{ session('status') }}</div>
+  @endif
 <?php
 $img=$patient->image;;
 if($img==NULL)
 $img='/user_styles/images/usericon.png';
 $image=asset($img);
+$patient_status="Deactivate Account";
+if($patient->status==0)
+$patient_status="Reactivate Account";
+
 ?>
   <div class="register-box-body">
     <h1 class="login-box-msg">User Information</h1>
@@ -86,9 +87,13 @@ $image=asset($img);
                 <br/>
                       <div class="box-footer">
                        <button type="submit" class="btn btn-default btn-md" style="margin-left: 180px">Save</button>
+
+                      <a href="{{  route('nurse.patient.update.status', [ 'id' => $patient->id ] ) }}"  class="btn btn-primary btn-md" style="margin-left: 400px"  >{{ $patient_status }}<a/>
+
                       </div>
 
                   </form>
+
                 </div>
               </div>
             

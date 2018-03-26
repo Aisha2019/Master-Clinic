@@ -29,6 +29,10 @@ $img=$patient->image;;
 if($img==NULL)
 $img='/user_styles/images/usericon.png';
 $image=asset($img);
+$patient_status="Deactivate Account";
+if($patient->status==0)
+$patient_status="Reactivate Account";
+
 ?>
   <div class="register-box-body">
     <h1 class="login-box-msg">User Information</h1>
@@ -40,9 +44,7 @@ $image=asset($img);
                 <div class="form-group" >
                   <form method="post" action="{{ route('admin.patient.update') }}">
                     @csrf
-                  <label class="btn btn-default">
-                  Browse <input type="file" hidden>
-                  </label>
+                
                   <input type="name" name="id" value="{{ $patient->id }}" style="display: none;">
                   <label for="inputEmail3" class="col-sm-2 control-label">Full Name</label>
                   <div class="col-sm-5">
@@ -97,9 +99,11 @@ $image=asset($img);
                   <br/>
                       <div class="box-footer">
                        <button type="submit" class="btn btn-default btn-md" style="margin-left: 180px">Save</button>
-                      </div>
-
+                     
+                         </div>
                   </form>
+<a href="{{action('YourController@deactivate')}}"> <button class="btn btn-primary btn-md" style="margin-left: 400px"  >{{ $patient_status }}</button>
+                     </a>
                 </div>
               </div>
             

@@ -20,7 +20,7 @@ class CreateReservationsTable extends Migration
             $table->integer('nurse_id')->unsigned()->nullable();
             $table->foreign('nurse_id')->references('id')->on('nurses');
             $table->integer('patient_id')->unsigned();
-            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->foreign('patient_id')->references('id')->on('patients')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('admin_id')->unsigned();
             $table->foreign('admin_id')->references('id')->on('admins');
             $table->timestamp('time');

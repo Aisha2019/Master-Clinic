@@ -14,15 +14,35 @@ class PatientController extends Controller
     {
         $this->middleware('auth:nurse');
     }
+   
+        public function change_status($id)
+    {
+        $patient=Patient::find($id);
+        if($patient->status==0)
+        $patient->status=1;
+        else {
+        $patient->status=0;
+        }
+        $patient->save();
+          return redirect('/nurse/patient/update')->with('status' ,'patient status has been updated Successfully!!')->with('patient',$patient);
+    }
 
+      public function delete($id)
+    {
+   $patient=Patient::find($id);
+   $patient->delete();        
+   $patients = DB::table('patients')->get(); 
+            return redirect('/nurse/patient/table')->with('patients',$patients)->with('status' ,'patient  has been deleted Successfully!!');  
+
+   }
     public function add()
     {
         return view('nurse.patient.add');
     }
-    public function get()
+    public function get($patientid)
     {
-        $patient=Patient::find(3);
-        return view('/nurse/patient/update', compact('patient'));
+        $patient=Patient::find($patientid);
+        return redirect('/nurse/patient/update', compact('patient'));
     }
 
     
@@ -56,10 +76,10 @@ class PatientController extends Controller
     {   
 
             $patients = DB::table('patients')->get(); 
-            return view('/nurse/patient/patient_table')->with('patients',$patients); 
+            return view('/nurse/patient/table')->with('patients',$patients); 
 
     }
-   
+
     public function store(Request $request)
     {
         // return $request->all();
