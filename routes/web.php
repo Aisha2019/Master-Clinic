@@ -1,4 +1,5 @@
 <?php
+
 // get home page route (it must be added to controller later)
 Route::get('/', function () {
     return view('user.index');
