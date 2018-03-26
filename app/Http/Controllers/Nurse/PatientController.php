@@ -42,7 +42,7 @@ class PatientController extends Controller
     public function get($patientid)
     {
         $patient=Patient::find($patientid);
-        return redirect('/nurse/patient/update', compact('patient'));
+        return view('/nurse/patient/update', compact('patient'));
     }
 
     
