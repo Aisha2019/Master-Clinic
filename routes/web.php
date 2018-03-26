@@ -91,7 +91,7 @@ Route::group(['namespace' => 'Admin'],function(){
 		Route::get('/admin/admin/view', 'AdminController@view')->name('admin.admin.view');
 
 	// update another admin's info
-		Route::get('/admin/admin/update', 'AdminController@updatepage')->name('admin.admin.update');
+		Route::get('/admin/admin/update/{adminid}', 'AdminController@updatepage')->name('admin.admin.update');
 		Route::post('/admin/admin/update', 'AdminController@update');
 	
 });

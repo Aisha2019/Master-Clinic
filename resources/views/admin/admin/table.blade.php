@@ -53,7 +53,7 @@
 			                  	<td>{{ $admin->created_at }}</td>
 			                  	<td>{{ $admin->updated_at }}</td>
 			                  	<td>{{ $admin->status }}</td>
-								<td><a href="{{ route('admin.admin.update') }}"><button type="button" class="btn btn-block btn-warning btn-xs">Update</button> </a><button type="button" class="btn btn-block btn-danger btn-xs">Delete</button> </td>
+								<td><a href="{{ route('admin.admin.update',$admin->id) }}"><button type="button" class="btn btn-block btn-warning btn-xs">Update</button> </a><button type="button" class="btn btn-block btn-danger btn-xs">Delete</button> </td>
 			                  </tr>
 			              @endforeach
 			                </tbody>

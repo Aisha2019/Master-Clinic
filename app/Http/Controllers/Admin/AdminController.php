@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use App\Models\Admin;
+use App\Models\admin;
 class AdminController extends Controller
 {
     //
@@ -52,9 +52,43 @@ class AdminController extends Controller
             return view('admin.admin.table',compact('admins'));
         }
  
+    public function updatepage($adminid)
+        {
+
+            $admin = admin::find($adminid);
+
+           return view('admin.admin.update',compact('admin'));
+        }
+
     public function update(Request $request)
         {
-            return view('admin.admin.update');
+             $this->validate($request,[
+                'fullName'=>'required|string|min:3',
+                'email' => ['required','email', Rule::unique('admins')->ignore($request->id)],
+                'mobile'=>'nullable|numeric|min:11',
+                'birthday'=>'nullable|date|before:today',
+                'gender' => [
+                        'nullable',
+                        Rule::in(['male', 'female']),
+                    ],
+                'role' => [
+                        'nullable',
+                        Rule::in(['Admin', 'Super Admin']),
+                    ],
+            ]);
+
+             
+             $admin =admin::find($request->id);
+             $admin->name=$request->fullName;
+             $admin->email=$request->email;
+             $admin->mobile=$request->mobile;
+             $admin->date_of_birth=$request->birthday;
+             $admin->gender=$request->gender;
+             $admin->role=$request->role;
+             
+             $admin->save();
+
+            return redirect('/admin/admin/update')->with('status' ,'Admin Info has been updated Successfully!!');   
         }
  
     public function delete(Request $request)
