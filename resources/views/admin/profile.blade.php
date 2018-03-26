@@ -13,33 +13,40 @@
 	
 <section class="content">
     <div class="row">
+
+        <div class="pt-3 pb-3">
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger"><i class="fa fa-times fa-lg"></i> {{ $error }}</div>
+            @endforeach
+        </div>
+
+        @if (session('status'))
+            <div class="pt-3 pb-3">
+                <div class="alert alert-success"><i class="fa fa-check fa-lg"></i> {{ session('status') }}</div>
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="pt-3 pb-3">
+                <div class="alert alert-danger"><i class="fa fa-times fa-lg"></i> {{ session('error') }}</div>
+            </div>
+        @endif
+
         <div class="col-md-3">
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
                   
-                    <img class="profile-user-img img-responsive img-circle" src="{{ asset(Auth::user()->image) }}" alt="User profile picture">
+                    <img class="profile-user-img img-responsive img-circle" src="{{ (Auth::user()->image) ? Storage::disk('local')->url(Auth::user()->image) : asset('/admin_styles/images/user4-128x128.jpg') }}" alt="User profile picture">
                     <h3 class="profile-username text-center">{{ Auth::user()->name }}</h3>
 
                     <p class="text-muted text-center">{{ Auth::user()->role }}</p>
                     
-                    <form action="{{ route('admin.update.profile_picture') }}" class="update-profile-picture" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.update.photo') }}" class="update-profile-picture" method="POST" enctype="multipart/form-data">
                         @csrf
                         <input type="file" id="file" style="display: none" onchange="$('.update-profile-picture').submit();" name="picture" />
                         <label for="file" class="btn btn-primary btn-block">Change Profile Picture</label>
                     </form>
-
-                    <ul class="list-group list-group-unbordered">
-                        <li class="list-group-item">
-                            <b>Email</b> <a class="pull-right">{{ Auth::user()->email }}</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Mobile</b> <a class="pull-right">{{ Auth::user()->mobile }}</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>Number Of Patients</b> <a class="pull-right">13,287</a>
-                        </li>
-                    </ul>
 
                   </div>
                 <!-- /.box-body -->
@@ -53,33 +60,19 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <strong><i class="fa fa-book margin-r-5"></i> Education</strong>
+                    <strong><i class="fa fa-envelope margin-r-5 text-success"></i> Email</strong>
 
-                    <p class="text-muted">B.S. in Computer Science from the University of Tennessee at Knoxville</p>
+                      <p class="text-muted">
+                        {{ Auth::user()->email }}
+                      </p>
 
-                    <hr>
+                      <hr>
+                      
+                      <strong><i class="fa fa-mobile margin-r-5 text-info"></i> Mobile</strong>
 
-                    <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
-
-                    <p class="text-muted">Malibu, California</p>
-
-                    <hr>
-
-                    <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
-
-                    <p>
-                        <span class="label label-danger">UI Design</span>
-                        <span class="label label-success">Coding</span>
-                        <span class="label label-info">Javascript</span>
-                        <span class="label label-warning">PHP</span>
-                        <span class="label label-primary">Node.js</span>
-                    </p>
-
-                    <hr>
-
-                    <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
-
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+                      <p class="text-muted">
+                        {{ Auth::user()->mobile }}
+                      </p>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -95,8 +88,9 @@
                 </ul>
                 <div class="tab-content">
                     <div class="active tab-pane" id="updateData">
-                        <form class="form-horizontal" action="#">
+                        <form class="form-horizontal" action="{{ route('admin.profile.update') }}" method="POST">
                             @csrf
+                            {{ method_field('PATCH') }}
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="inputName" class="col-sm-2 control-label">Full Name</label>
@@ -133,8 +127,9 @@
                     <!-- /.tab-pane -->
 
                     <div class="tab-pane" id="resetPassword">
-                        <form class="form-horizontal" action="#">
+                        <form class="form-horizontal" action="{{ route('admin.password.update') }}" method="POST">
                             @csrf
+                            {{ method_field('PATCH') }}
                             <div class="box-body">
                                 <div class="form-group">
                                     <label for="inputOldPassword" class="col-sm-2 control-label">Old Password</label>
@@ -156,7 +151,7 @@
                                     <label for="inputNewPasswordConfirm" class="col-sm-2 control-label">Confirm New Password</label>
 
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="inputNewPasswordConfirm" name="newPasswordConfirm" placeholder="Confirm New Password" required>
+                                        <input type="password" class="form-control" id="inputNewPasswordConfirm" name="passwordConfirm" placeholder="Confirm New Password" required>
                                     </div>
                                 </div>
                             </div>
