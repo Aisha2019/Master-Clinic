@@ -35,12 +35,13 @@ $admin_status="Reactivate Account";
   <div class="register-box-body">
     <h1 class="login-box-msg">Admin Information</h1>
 
+
                <img src="{{ $image }}" name="userimg" class="img-circle" />
                 <br/>
                 <br/>
               <div class="box-body">
                 <div class="form-group" >
-                  <form method="post" action="{{ route('admin.admin.view') }}">
+                  <form method="post" action="{{ route('admin.admin.update',$admin->id) }}">
                     @csrf
                     
                   <input type="name" name="id" value="{{ $admin->id }}" style="display: none;">
@@ -71,15 +72,6 @@ $admin_status="Reactivate Account";
                 <br/>
 
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Gender</label>
-
-                  <div class="col-sm-5">
-                    <input class="form-control"  placeholder="" name="gender" type="gender" value="{{ $admin->gender }}">
-                  </div>
-                </div>
-                <br/>
-                <br/>
-                <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Role</label>
 
                   <div class="col-sm-5">
@@ -88,15 +80,10 @@ $admin_status="Reactivate Account";
                 </div>
                 <br/>
                 <br/>
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Date of birth</label>
-                  <div class="col-sm-5">
-                    <input class="form-control"  placeholder="" name="birthday" type="date" value="{{ $admin->date_of_birth }}">
-                  </div>
-                  <br/>
-                <br/>
+                
                       <div class="box-footer">
                        <button type="submit" class="btn btn-default btn-md" style="margin-left: 180px">Save</button>
+                                             <a href="{{  route('admin.admin.status', $admin->id ) }}"  class="btn btn-primary btn-md" style="margin-left: 50px"  >{{ $admin_status }}<a/>
 
 
                       </div>
