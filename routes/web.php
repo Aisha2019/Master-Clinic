@@ -5,8 +5,11 @@ Route::get('/', function () {
     return view('user.index');
 });
 
+
+
 // patient routes
 include 'patientRoutes.php';
+
 
 // admin routes
 include 'adminRoutes.php';
