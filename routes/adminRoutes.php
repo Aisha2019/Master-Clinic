@@ -40,7 +40,21 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::get('/admin/admin/add', 'AdminController@add')->name('admin.admin.add');
 	Route::post('/admin/admin/add', 'AdminController@store');
 	// update patient's info
-		Route::get('/admin/patient/update', 'PatientController@update')->name('admin.patient.update');
+
+	Route::get('/admin/patient/update/{patientid}','PatientController@getpatient')->name('admin.patient.updatepatient');
+
+    Route::get('/admin/patient/update','PatientController@get')->name('admin.patient.update');
+
+	Route::post('/admin/patient/update', 'PatientController@update');
+
+
+	Route::get('/admin/patient/table', 'PatientController@patient_table')->name('admin.patient.table');
+
+
+    Route::get('/admin/patient/update/patientid/{pid}','PatientController@change_status')->name('admin.patient.update.status');
+
+    Route::get('/admin/patient/table/{id}',[  "uses" => 'PatientController@delete'])->name('admin.patient.table.delete');
+ 
 	// View Patients
 		Route::get('/admin/patient/view', 'PatientController@view')->name('admin.patient.view');
 	// View Nurses

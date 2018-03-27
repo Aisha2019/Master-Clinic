@@ -102,8 +102,7 @@ $patient_status="Reactivate Account";
                      
                          </div>
                   </form>
-<a href="{{action('PatientController@change_status')}}"> <button class="btn btn-primary btn-md" style="margin-left: 400px"  >{{ $patient_status }}</button>
-                     </a>
+<a href="{{ route('admin.patient.update.status',$patient->id)}}" class="btn btn-primary btn-md" style="margin-left: 400px"  >{{ $patient_status }}</a>
                 </div>
               </div>
             

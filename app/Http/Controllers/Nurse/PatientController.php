@@ -16,16 +16,16 @@ class PatientController extends Controller
     }
 
    
-        public function change_status($id)
+        public function change_status($pid)
     {
-        $patient=Patient::find($id);
+        $patient=Patient::find($pid);
         if($patient->status==0)
         $patient->status=1;
         else {
         $patient->status=0;
         }
         $patient->save();
-          return redirect('/nurse/patient/update')->with('status' ,'patient status has been updated Successfully!!')->with('patient',$patient);
+          return back()->with('patient',$patient)->with('status' ,'patient status has been updated Successfully!!');
     }
 
       public function delete($id)
@@ -33,7 +33,7 @@ class PatientController extends Controller
    $patient=Patient::find($id);
    $patient->delete();        
    $patients = DB::table('patients')->get(); 
-            return redirect('/nurse/patient/table')->with('patients',$patients)->with('status' ,'patient  has been deleted Successfully!!');  
+            return back()->with('patients',$patients)->with('status' ,'patient has been deleted Successfully!!');  
 
    }
 
@@ -46,10 +46,14 @@ class PatientController extends Controller
     public function getpatient($patientid)
     {
         $patient=Patient::find($patientid);
-        return view('/nurse/patient/update',compact('patient')); 
-    }
+        return view('/nurse/patient/update')->with('patient',$patient);
 
-    
+    } 
+
+    public function get()
+    {
+      return view('/nurse/patient/update');
+    }
     public function update(Request $request)
     {
          $this->validate($request,[
@@ -72,7 +76,7 @@ class PatientController extends Controller
          $patient->gender=$request->gender;
          $patient->save();
 
-        return redirect('/nurse/patient/update')->with('status' ,'patient Info has been updated Successfully!!');
+        return back()->with('patient',$patient)->with('status' ,'patient Info has been updated Successfully!!');
 
     }
    public function patient_table()

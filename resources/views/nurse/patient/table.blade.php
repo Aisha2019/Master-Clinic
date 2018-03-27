@@ -39,7 +39,6 @@
 								@foreach ($patients as $patient)
 			                <?php $patient = (object)$patient; ?>
 			                  <tr>
-			                  	<td>{{ $patient->id }}</td>
 			                  	<td>{{ $patient->name }}</td>
 			                  	<td>{{ $patient->email }}</td>
 			                  	<td>{{ $patient->mobile }}</td>
@@ -47,7 +46,7 @@
 			                  	<td>{{ $patient->date_of_birth }}</td>
 			                  	<td>{{ $patient->status }}</td>
 								<td>
-								<a href="{{ route('nurse.patient.update', $patient->id ) }}"  class="btn btn-block btn-warning btn-xs">Update</a>
+								<a href="{{ route('nurse.patient.updatepatient',$patient->id ) }}"  class="btn btn-block btn-warning btn-xs">Update</a>
 
 								<a href="{{ route('nurse.patient.table.delete',$patient->id) }}" class="btn btn-block btn-danger btn-xs">Delete</a> 
 							   </td>

@@ -13,17 +13,22 @@ class PatientController extends Controller
         $this->middleware('auth:admin');
     }
 
-
-        public function change_status($id)
+    public function getpatient($patientid)
     {
-        $patient=Patient::find($id);
+        $patient=Patient::find($patientid);
+        return view('/admin/patient/update')->with('patient',(object)$patient);
+    }
+
+  public function change_status($pid)
+    {
+        $patient=Patient::find($pid);
         if($patient->status==0)
         $patient->status=1;
         else {
         $patient->status=0;
         }
         $patient->save();
-          return redirect('/admin/patient/update')->with('status' ,'patient status has been updated Successfully!!')->with('patient',$patient);
+          return back()->with('patient',$patient)->with('status' ,'patient status has been updated Successfully!!');
     }
 
       public function delete($id)
@@ -31,32 +36,17 @@ class PatientController extends Controller
    $patient=Patient::find($id);
    $patient->delete();        
    $patients = DB::table('patients')->get(); 
-            return redirect('/admin/patient/table')->with('patients',$patients)->with('status' ,'patient  has been deleted Successfully!!');  
+            return back()->with('patients',$patients)->with('status' ,'patient has been deleted Successfully!!');  
 
    }
 
-
-   public function patient_table()
-    {   
-
-            $patients = DB::table('patients')->get(); 
-            return view('/admin/patient/patient_table')->with('patients',$patients); 
-
+ public function get()
+    {
+      return view('/admin/patient/update');
     }
-
 
     public function add() {
         return view('admin.patient.addpatient');
-    }
-
-    public function get()
-
-
-    public function update()
-
-    {
-        $patient=Patient::find(3);
-        return view('/admin/patient/update', compact('patient'));
     }
 
 
@@ -83,19 +73,19 @@ class PatientController extends Controller
          
          $patient->save();
 
-        return redirect('/admin/patient/update')->with('status' ,'patient Info has been updated Successfully!!');
+        return back()->with('patient',$patient)->with('status' ,'patient Info has been updated Successfully!!');
 
     }
     // view a table of patients
 
-   public function patient_table()
+ public function patient_table()
     {   
             $patients = DB::table('patients')->get(); 
             return view('/admin/patient/table')->with('patients',$patients); 
 
-  
+    }
 
-    public function store(Request $request) {
+        public function store(Request $request) {
         // Validate the request...
         $this->validate($request,[
             'fullName'=>'required|string|min:3',

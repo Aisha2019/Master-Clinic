@@ -47,7 +47,7 @@
 			                  	<td>{{ $patient->date_of_birth }}</td>
 			                  	<td>{{ $patient->status }}</td>
 								<td>
-								<a href="{{ route('admin.patient.update', ['patientid', $patient->id] ) }}"  class="btn btn-block btn-warning btn-xs">Update</a>
+								<a href="{{ route('admin.patient.updatepatient',  $patient->id ) }}"  class="btn btn-block btn-warning btn-xs">Update</a>
 
 								<a href="{{ route('admin.patient.table.delete',$patient->id) }}" class="btn btn-block btn-danger btn-xs">Delete</a> 
 							   </td>

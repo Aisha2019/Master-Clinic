@@ -25,7 +25,7 @@
 $img=$patient->image;
 if($img==NULL)
 $img='/user_styles/images/usericon.png';
-$image=asset($img);
+$patiet_image=asset($img);
 $patient_status="Deactivate Account";
 if($patient->status==0)
 $patient_status="Reactivate Account";
@@ -34,7 +34,7 @@ $patient_status="Reactivate Account";
   <div class="register-box-body">
     <h1 class="login-box-msg">User Information</h1>
 
-               <img src="{{ $image }}" name="userimg" class="img-circle" />
+               <img src="{{ $patiet_image }}" name="userimg" class="img-circle" />
                 <br/>
                 <br/>
               <div class="box-body">
@@ -87,13 +87,9 @@ $patient_status="Reactivate Account";
                 <br/>
                       <div class="box-footer">
                        <button type="submit" class="btn btn-default btn-md" style="margin-left: 180px">Save</button>
-
-                      <a href="{{  route('nurse.patient.update.status', [ 'id' => $patient->id ] ) }}"  class="btn btn-primary btn-md" style="margin-left: 400px"  >{{ $patient_status }}<a/>
-
+                      <a href="{{  route('nurse.patient.update.status',  $patient->id ) }}"  class="btn btn-primary btn-md" style="margin-left: 400px"  >{{ $patient_status }}<a/>
                       </div>
-
                   </form>
-
                 </div>
               </div>
             
