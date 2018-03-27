@@ -6,14 +6,9 @@ Route::get('/', function () {
 });
 
 
-// Patient routes
-
-
-// Admin routes
-
-
 // patient routes
 include 'patientRoutes.php';
+
 
 // admin routes
 include 'adminRoutes.php';

@@ -40,7 +40,7 @@ class PatientController extends Controller
     			'email',
     			Rule::unique('patients', 'email')->ignore(Auth::id()),
     			],
-    		'mobile' => 'required|string|min:8',
+    		'mobile' => 'required|numeric|min:8',
     		'date' => 'required|date_format:Y-m-d|before:now',
     		'gender' => [
     			'required',

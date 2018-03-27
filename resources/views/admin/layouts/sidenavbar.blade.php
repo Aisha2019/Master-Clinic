@@ -43,7 +43,7 @@
 
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-user-plus"></i>
+            <i class="fa fa-stethoscope"></i>
             <span>Admins</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>

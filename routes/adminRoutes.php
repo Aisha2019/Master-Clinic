@@ -60,13 +60,22 @@ Route::group(['namespace' => 'Admin'],function(){
 	// View Nurses
 		Route::get('/admin/nurse/view', 'NurseController@view')->name('admin.nurse.view');
 	// update nurse's info
-		Route::get('/admin/nurse/update', 'NurseController@updatepage')->name('admin.nurse.update');
-		Route::post('/admin/nurse/update', 'NurseController@update');
+		Route::get('/admin/nurse/update/{nurseid}', 'NurseController@updatepage')->name('admin.nurse.update');
+		Route::post('/admin/nurse/update/{nurseid}', 'NurseController@update');
+		Route::get('/admin/admin/status/{nurseid}', 'NurseController@status')->name('admin.nurse.status');
+	// Delete nurse
+	
+		Route::get('/admin/nurse/delete/{nurseid}','NurseController@delete')->name('admin.nurse.delete');	
 
 	// View Admins
 		Route::get('/admin/admin/view', 'AdminController@view')->name('admin.admin.view');
 
 	// update another admin's info
-		Route::get('/admin/admin/update/{id}', 'AdminController@edit')->name('admin.admin.update');
-		Route::post('/admin/admin/update', 'AdminController@update');	
+		Route::get('/admin/admin/update/{adminid}', 'AdminController@updatepage')->name('admin.admin.update');
+		Route::post('/admin/admin/update/{adminid}', 'AdminController@update');	
+		Route::get('/admin/admin/status/{adminid}', 'AdminController@status')->name('admin.admin.status');
+	// Delete Another admin
+	
+		Route::get('/admin/admin/delete/{id}','AdminController@delete')->name('admin.admin.delete');
+
 });

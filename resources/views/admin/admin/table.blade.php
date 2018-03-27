@@ -36,15 +36,14 @@
 	        <!-- /.box-header -->
 	        <div class="box-body">
 
-	    			<table id="example1" class="table table-bordered table-striped">
-	            		<thead>
+        			<table id="example1" class="table table-bordered table-striped">
+                		<thead>
 		                <tr>
-		                  <th>ID</th>
+		                  <th>ID </th>
 		                  <th>Name</th>
 		                  <th>Email</th>
 		                  <th>Mobile</th>
-		                  <th>Gender</th>
-		                  <th>Birthday</th>
+		                  
 		                  <th>Role</th>
 		                  <th>Created At</th>
 		                  <th>Updated At</th>
@@ -60,22 +59,21 @@
 		                  	<td>{{ $admin->name }}</td>
 		                  	<td>{{ $admin->email }}</td>
 		                  	<td>{{ $admin->mobile }}</td>
-		                  	<td>{{ $admin->gender }}</td>
-		                  	<td>{{ $admin->date_of_birth }}</td>
+		                  	
 		                  	<td>{{ ($admin->role == 'super' ? 'Owner' : 'Doctor') }}</td>
-		                  	<td>{{ $admin->created_at->diffForHumans() }}</td>
-		                  	<td>{{ $admin->updated_at->diffForHumans() }}</td>
+	                  	<td>{{ $admin->created_at->diffForHumans() }}</td>
+	                  	<td>{{ $admin->updated_at->diffForHumans() }}</td>
 		                  	<td>
-		                  		@if ($admin->status)
-		                  			<button class="btn btn-success btn-xs">Active</button>
-		                  		@else
-		                  			<button class="btn btn-danger btn-xs">Inactive</button>
-		                  		@endif
-		                  	</td>
+	                  		@if ($admin->status)
+	                  			<a href="{{ route('admin.admin.status',$admin->id) }}"><button class="btn btn-success btn-xs " >Active</button></a>
+	                  		@else
+	                  			<a href="{{ route('admin.admin.status',$admin->id) }}"><button class="btn btn-danger btn-xs" >Inactive</button></a>
+	                  		@endif
+	                  	</td>
 							<td>
-								<a href="{{ route('admin.admin.update', $admin->id) }}"><button type="button" class="btn btn-warning btn-xs">Update</button></a>
+								<a href="{{ route('admin.admin.update',$admin->id) }}"><button type="button" class="btn btn-warning btn-xs">Update</button> </a>
 
-								<button type="button" class="btn btn-danger btn-xs">Delete</button> 
+								<a href="{{ route('admin.admin.delete',$admin->id) }}"><button type="button" class="btn btn-danger btn-xs">Delete</button> </a>
 							</td>
 		                  </tr>
 		              @endforeach
@@ -86,21 +84,21 @@
 		                  <th>Name</th>
 		                  <th>Email</th>
 		                  <th>Mobile</th>
-		                  <th>Gender</th>
-		                  <th>Birthday</th>
+		                  
 		                  <th>Role</th>
 		                  <th>Created At</th>
 		                  <th>Updated At</th>
 		                  <th>Status</th>
-		                  <th>Controlls</th>
+		                  <th>Controls</th>
 		                </tr>
 		                </tfoot>
-	        		</table>
-        		</div>
-        	</div>
-        </div>
-    </div>
-</section>
+            		</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>	            		
+
 
 
 @endsection
