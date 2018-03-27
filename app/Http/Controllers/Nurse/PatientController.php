@@ -82,7 +82,7 @@ class PatientController extends Controller
    public function patient_table()
     {   
             $patients = DB::table('patients')->get(); 
-            return view('/nurse/patient/table')->with('patients',$patients); 
+            return view('/nurse/patient/view')->with('patients',$patients); 
 
     }
 

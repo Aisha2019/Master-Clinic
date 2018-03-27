@@ -2,7 +2,7 @@
 // Nurse routes
 Route::group(['namespace' => 'Nurse'],function(){
 	// Get Nurse Home page
-	Route::get('/nurse/home', 'HomeController@index');
+	Route::get('/nurse/home', 'HomeController@index')->name('nurse.home');
 
 	// Get Admin Home page
 	Route::get('/nurse/profile', 'ProfileController@index')->name('nurse.profile');
@@ -24,7 +24,7 @@ Route::group(['namespace' => 'Nurse'],function(){
 	Route::get('/nurse/patient/update','PatientController@get')->name('nurse.patient.update');
 
 
-	Route::get('/nurse/patient/table', 'PatientController@patient_table')->name('nurse.patient.table');
+	Route::get('/nurse/patient/view', 'PatientController@patient_table')->name('nurse.patient.view');
 
 
     Route::get('/nurse/patient/update/patientid/{pid}','PatientController@change_status')->name('nurse.patient.update.status');

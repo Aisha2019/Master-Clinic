@@ -13,6 +13,8 @@
         </div>
       </div>
       <ul class="sidebar-menu">
+       <li><a href="{{ route('admin.home') }}"><i class="fa fa-circle text-green"></i> <span>Home</span></a></li>
+       <li><a href="{{ route('admin.profile') }}"><i class="fa fa-circle text-red"></i> <span>Profile</span></a></li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-users"></i>

@@ -81,7 +81,7 @@ class PatientController extends Controller
  public function patient_table()
     {   
             $patients = DB::table('patients')->get(); 
-            return view('/admin/patient/table')->with('patients',$patients); 
+            return view('/admin/patient/view')->with('patients',$patients); 
 
     }
 

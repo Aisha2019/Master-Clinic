@@ -12,11 +12,28 @@
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-      <ul class="sidebar-menu">
+      <ul class="sidebar-menu">       
+       <li><a href="{{ route('nurse.home') }}"><i class="fa fa-circle text-green"></i> <span>Home</span></a></li>
+
         <li><a href="{{ route('nurse.profile') }}"><i class="fa fa-circle text-red"></i> <span>Profile</span></a></li>
-        <li><a href="#"><i class="fa fa-circle text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle text-aqua"></i> <span>Information</span></a></li>
+         <li class="treeview">
+          <a href="#">
+            <i class="fa fa-users"></i>
+            <span>Patients</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('nurse.patient.view') }}"><i class="fa fa-circle text-red"></i> View</a></li>
+            <li><a href="{{ route('nurse.patient.add') }}"><i class="fa fa-circle text-aqua"></i> Add</a></li>
+          </ul>
+        </li>
+
+
       </ul>
+
+
     </section>
     <!-- /.sidebar -->
   </aside>
