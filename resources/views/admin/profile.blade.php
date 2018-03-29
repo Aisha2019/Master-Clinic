@@ -44,6 +44,7 @@
                     
                     <form action="{{ route('admin.update.photo') }}" class="update-profile-picture" method="POST" enctype="multipart/form-data">
                         @csrf
+                        {{ method_field('PATCH') }}
                         <input type="file" id="file" style="display: none" onchange="$('.update-profile-picture').submit();" name="picture" />
                         <label for="file" class="btn btn-primary btn-block">Change Profile Picture</label>
                     </form>
