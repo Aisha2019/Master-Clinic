@@ -48,7 +48,7 @@ Route::group(['namespace' => 'Admin'],function(){
 	// update nurse's info
 		Route::get('/admin/nurse/update/{nurseid}', 'NurseController@updatepage')->name('admin.nurse.update');
 		Route::post('/admin/nurse/update/{nurseid}', 'NurseController@update');
-		Route::get('/admin/admin/status/{nurseid}', 'NurseController@status')->name('admin.nurse.status');
+		Route::get('/admin/nurse/status/{nurseid}', 'NurseController@status')->name('admin.nurse.status');
 	// Delete nurse
 	
 		Route::get('/admin/nurse/delete/{nurseid}','NurseController@delete')->name('admin.nurse.delete');	
