@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PatientRequest;
 use App\Models\Patient;
-use DB;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 class PatientController extends Controller
@@ -25,13 +24,13 @@ class PatientController extends Controller
     {
         $patient->status = !$patient->status;
         $patient->save();
-        return back()->with('status' ,'Updated Successfully!!');
+        $msg = ($patient->status) ? 'Patient has been activated Successfully!!' : 'Patient has been deactivated Successfully!!';
+        return back()->with('status', $msg);
     }
 
     public function destroy(Patient $patient)
     {
         $patient->delete();
-        $patients = DB::table('patients')->get(); 
         return back()->with('status' ,'patient has been deleted Successfully!!');  
 
    }
@@ -65,8 +64,8 @@ class PatientController extends Controller
 
         return back()->with('status' ,'Patient Info has been updated Successfully!!');
     }
-    // view a table of patients
 
+    // view a table of patients
     public function index()
     {   
         $patients = Patient::all(); 

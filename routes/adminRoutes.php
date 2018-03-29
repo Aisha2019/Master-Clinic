@@ -27,49 +27,50 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::POST('admin-password/reset','Auth\ResetPasswordController@reset');
 	// get page where admin reset password
 	Route::GET('admin-password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
-
-	// add new nurse 
-	Route::get('/admin/nurse/add', 'NurseController@add')->name('admin.nurse.add');
-	Route::post('/admin/nurse/add', 'NurseController@store');
 	
 	//add a new patient
 	Route::get('/admin/patient/add', 'PatientController@add')->name('admin.patient.add');
 	Route::post('/admin/patient/add', 'PatientController@store');
+	
+	// update patient's info
+	Route::get('/admin/patient/update/{patient}','PatientController@edit')->name('admin.patient.updatepatient');
+	Route::PATCH('/admin/patient/update/{patient}', 'PatientController@update');
+
+	// view all patients
+	Route::get('/admin/patient/view', 'PatientController@index')->name('admin.patient.view');
+
+	// activate or deactivate patient account
+    Route::PATCH('/admin/patient/update/status/{patient}','PatientController@change_status')->name('admin.patient.update.status');
+
+    // delete patient account
+    Route::DELETE('/admin/patient/delete/{patient}','PatientController@destroy')->name('admin.patient.delete');
+ 
+    // add new nurse 
+	Route::get('/admin/nurse/add', 'NurseController@add')->name('admin.nurse.add');
+	Route::post('/admin/nurse/add', 'NurseController@store');
+
+	// View Nurses
+	Route::get('/admin/nurse/view', 'NurseController@view')->name('admin.nurse.view');
+	// update nurse's info
+	Route::get('/admin/nurse/update/{nurse}', 'NurseController@edit')->name('admin.nurse.update');
+	Route::PATCH('/admin/nurse/update/{nurse}', 'NurseController@update');
+	Route::PATCH('/admin/nurse/status/{nurse}', 'NurseController@status')->name('admin.nurse.status');
+	// Delete nurse
+	Route::DELETE('/admin/nurse/delete/{nurse}','NurseController@destroy')->name('admin.nurse.delete');	
+
 
 	//add a new admin
 	Route::get('/admin/admin/add', 'AdminController@add')->name('admin.admin.add');
 	Route::post('/admin/admin/add', 'AdminController@store');
-	// update patient's info
-
-	Route::get('/admin/patient/update/{patient}','PatientController@edit')->name('admin.patient.updatepatient');
-	Route::PATCH('/admin/patient/update/{patient}', 'PatientController@update');
-
-
-
-	Route::get('/admin/patient/view', 'PatientController@index')->name('admin.patient.view');
-    Route::PATCH('/admin/patient/update/status/{patient}','PatientController@change_status')->name('admin.patient.update.status');
-
-    Route::DELETE('/admin/patient/delete/{patient}','PatientController@destroy')->name('admin.patient.delete');
- 
-	// View Nurses
-		Route::get('/admin/nurse/view', 'NurseController@view')->name('admin.nurse.view');
-	// update nurse's info
-		Route::get('/admin/nurse/update/{nurseid}', 'NurseController@updatepage')->name('admin.nurse.update');
-		Route::post('/admin/nurse/update/{nurseid}', 'NurseController@update');
-		Route::get('/admin/nurse/status/{nurseid}', 'NurseController@status')->name('admin.nurse.status');
-	// Delete nurse
-	
-		Route::get('/admin/nurse/delete/{nurseid}','NurseController@delete')->name('admin.nurse.delete');	
 
 	// View Admins
-		Route::get('/admin/admin/view', 'AdminController@view')->name('admin.admin.view');
+	Route::get('/admin/admin/view', 'AdminController@view')->name('admin.admin.view');
 
 	// update another admin's info
-		Route::get('/admin/admin/update/{adminid}', 'AdminController@updatepage')->name('admin.admin.update');
-		Route::post('/admin/admin/update/{adminid}', 'AdminController@update');	
-		Route::get('/admin/admin/status/{adminid}', 'AdminController@status')->name('admin.admin.status');
+	Route::get('/admin/admin/update/{admin}', 'AdminController@edit')->name('admin.admin.update');
+	Route::PATCH('/admin/admin/update/{admin}', 'AdminController@update');	
+	Route::PATCH('/admin/admin/status/{admin}', 'AdminController@status')->name('admin.admin.status');
 	// Delete Another admin
-	
-		Route::get('/admin/admin/delete/{id}','AdminController@delete')->name('admin.admin.delete');
+	Route::DELETE('/admin/admin/delete/{admin}','AdminController@destroy')->name('admin.admin.delete');
 
 });

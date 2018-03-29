@@ -64,9 +64,19 @@
         <br>
         <button class="btn btn-primary">Update</button>
         @if ($patient->status)
-          <a href="#" id="updateStatusBtn" class="btn btn-danger btn-md">Deactivate Account</a>
+          <a href="#" id="updateStatusBtn" class="btn btn-danger btn-md" onclick="
+            event.preventDefault();
+            if (confirm('Are you sure you want to deactivate this account?')) {
+              $('form#updateStatus').submit();
+            }
+          ">Deactivate Account</a>
         @else
-          <a href="#" id="updateStatusBtn" class="btn btn-success btn-md">Activate Account</a>
+          <a href="#" id="updateStatusBtn" class="btn btn-success btn-md" onclick="
+            event.preventDefault();
+            if (confirm('Are you sure you want to activate this account?')) {
+              $('form#updateStatus').submit();
+            }
+          ">Activate Account</a>
         @endif
       </form>
 
@@ -88,13 +98,6 @@
       $('#datepicker').datepicker({
         autoclose: true,
         format: 'yyyy-mm-dd'
-      });
-
-      $("#updateStatusBtn").on('click', function(event) {
-        event.preventDefault();
-        if (confirm("Are you sure?")) {
-          $('form#updateStatus').submit();
-        }
       });
     });
   </script>
