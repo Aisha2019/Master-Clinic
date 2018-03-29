@@ -2,133 +2,117 @@
 
 @section('title')
   {{-- here goes the title of page --}}
-      Update
+  Edit nurse
 @endsection
 
 @section('css')
   {{-- here goes the css of page --}}
-  <style >
-      <link rel="stylesheet" href="{{ asset('/user_styles/css/datepicker3.css') }}">
-
-  </style>
+  <link rel="stylesheet" href="{{ asset('/admin_styles/css/datepicker3.css') }}">
 @endsection
 
 @section('body')
   {{-- here goes content of pages --}}
-      @foreach ($errors->all() as $error)
-          <div class="alert alert-danger">{{ $error }}</div>
-        @endforeach
-  @if (session('status'))
-    <div class="alert alert-success">{{ session('status') }}</div>
-  @endif
-<?php
-$nurse = (object)$nurse;
-$img=$nurse->image;;
-if($img==NULL)
-$img='/user_styles/images/usericon.png';
-$image=asset($img);
-$nurse_status="Deactivate Account";
-if($nurse->status==0)
-$nurse_status="Reactivate Account";
+@foreach ($errors->all() as $error)
+  <div class="alert alert-danger">{{ $error }}</div>
+@endforeach
 
-?>
-  <div class="register-box-body">
-    <h1 class="login-box-msg">Nurse Information</h1>
+@if (session('status'))
+  <div class="alert alert-success">{{ session('status') }}</div>
+@endif
+<section class="content">
+  <div class="box box-primary">
+    <div class="box-header">
+      <h3 class="box-title">
+        <img src="{{ ($nurse->image) ? $nurse->image : asset(config('app.profile_image')) }}" style="max-width: 50px;" name="userimg" class="img-circle" /> 
+        Update nurse data
+      </h3>
+    </div>
+    <div class="box-body">
+      <form method="post" action="{{ route('admin.nurse.update', $nurse->id) }}">
+        @csrf
+        {{ method_field('PATCH') }}
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" value="{{ $nurse->name }}" placeholder="Full name" name="fullName" required>
+          <span class="form-control-feedback"><i class="fa fa-user"></i></span>
+        </div>
 
+        <div class="form-group has-feedback">
+          <input type="email" class="form-control" placeholder="Email" value="{{ $nurse->email }}" name="email" required>
+          <span class="form-control-feedback"><i class="fas fa-envelope"></i></span>
+        </div>
 
-               <img src="{{ $image }}" name="userimg" class="img-circle" />
-                <br/>
-                <br/>
-              <div class="box-body">
-                <div class="form-group" >
-                  <form method="post" action="{{ route('admin.nurse.update',$nurse->id) }}">
-                    @csrf
-                    
-                  <input type="name" name="id" value="{{ $nurse->id }}" style="display: none;">
-                  <label for="inputEmail3" class="col-sm-2 control-label">Full Name</label>
-                  <div class="col-sm-5">
-                    <input class="form-control"  name="fullName" placeholder="" type="FullName" value="{{ $nurse->name }}">
-                  </div>
-                </div>
-                <br/>
-                <br/>
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Email</label>
+         <div class="form-group has-feedback">
+          <input type="text" class="form-control" value="{{ $nurse->mobile }}" placeholder="Mobile" name="mobile">
+          <span class="form-control-feedback"><i class="fas fa-mobile-alt"></i></span>
+        </div>
 
-                  <div class="col-sm-5">
-                    <input class="form-control" placeholder="" name="email" type="email" value="{{ $nurse->email }}">
-                  </div>
-                </div>
-                <br/>
-                <br/>
-               <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Mobile</label>
+        <div class="form-group has-feedback">
+          <input type="text" id="datepicker" class="form-control" placeholder=" Birthday" value="{{ $nurse->date_of_birth }}" name="birthday">
+          <span class="form-control-feedback"><i class="fas fa-calendar-alt"></i></span>
+        </div>
 
-               <div class="col-sm-5">
-                    <input class="form-control"  placeholder="" name="mobile" type="mobile" value="{{ $nurse->mobile }}">
-                  </div>
-                </div>
-                <br/>
-                <br/>
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" placeholder="Salary" value="{{ $nurse->salary }}" name="salary" required>
+          <span class="form-control-feedback"><i class="fas fa-dollar-sign"></i></span>
+        </div>
 
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Salary</label>
-
-                  <div class="col-sm-5">
-                    <input class="form-control"  placeholder="" name="salary"  value="{{ $nurse->salary }}">
-                  </div>
-                </div>
-                <br/>
-                <br/>
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Gender</label>
-
-                  <div class="col-sm-5">
-                    <input class="form-control"  placeholder="" name="gender"  value="{{ $nurse->gender }}">
-                  </div>
-                </div>
-                <br/>
-                <br/>
-                <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2 control-label">Birthday</label>
-
-                  <div class="col-sm-5">
-                    <input class="form-control"  placeholder="" name="birthday"  value="{{ $nurse->date_of_birth }}">
-                  </div>
-                </div>
-                <br/>
-                <br/>
-                <div class="form-group">
-      
+        <div class="form-group">
           <select class="form-control" name="clinic" required>
-            <option value="@foreach ($clinics as $clinic)
-                            <?php $clinic = (object)$clinic; if($clinic->id==$nurse->clinic_id) {break;}?>
-                          @endforeach
-                          {{ $clinic->name }}">Choose Clinic</option>
+            <option value="">Choose Clinic</option>
               @foreach ($clinics as $clinic)
-                <?php $clinic = (object)$clinic; ?>
-                  <option value="{{ $clinic->id }}">{{ $clinic->name }}</option>
+                  <option value="{{ $clinic->id }}" {{ ($nurse->clinic_id == $clinic->id ) ? 'selected="selected"' : ''}}>{{ $clinic->name }}</option>
               @endforeach
           </select>
-      
+        </div>
+
+        <div class="custom-control custom-radio">
+          <input type="radio" value="female" id="customRadio1" name="gender" {{ ($nurse->gender == 'female') ? 'checked' : '' }} class="custom-control-input">
+          <label class="custom-control-label" for="customRadio1">Female</label>
+        </div>
+
+        <div class="custom-control custom-radio">
+          <input type="radio" value="male" name="gender" id="customRadio2" {{ ($nurse->gender == 'male') ? 'checked' : '' }} class="custom-control-input">
+          <label class="custom-control-label" for="customRadio2">Male</label>
+        </div>
+        
+        <br>
+        <button class="btn btn-primary">Update</button>
+        @if ($nurse->status)
+          <a href="#" id="updateStatusBtn" class="btn btn-danger btn-md" onclick="
+            event.preventDefault();
+            if (confirm('Are you sure you want to deactivate this account?')) {
+              $('form#updateStatus').submit();
+            }
+          ">Deactivate Account</a>
+        @else
+          <a href="#" id="updateStatusBtn" class="btn btn-success btn-md" onclick="
+            event.preventDefault();
+            if (confirm('Are you sure you want to activate this account?')) {
+              $('form#updateStatus').submit();
+            }
+          ">Activate Account</a>
+        @endif
+      </form>
+
+      <form action="{{ route('admin.nurse.status', $nurse->id)}}" method="POST" id="updateStatus">
+        @csrf
+        {{ method_field('PATCH') }}
+      </form>
+    </div>
   </div>
-                
-                      <div class="box-footer">
-                       <button type="submit" class="btn btn-default btn-md" style="margin-left: 180px">Save</button>
-                                             <a href="{{  route('admin.nurse.status', $nurse->id ) }}"  class="btn btn-primary btn-md" style="margin-left: 50px"  >{{ $nurse_status }}<a/>
-
-
-                      </div>
-
-                  </form>
-
-                </div>
-              </div>
-            
-  </div>
-
+</section>
 @endsection
 
 @section('js')
   {{-- here goes js files --}}
+    <script src="{{ asset('/admin_styles/js/bootstrap-datepicker.js') }}"></script>
+<script>
+  $(function() {
+    //Date picker
+      $('#datepicker').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd'
+      });
+    });
+  </script>
 @endsection

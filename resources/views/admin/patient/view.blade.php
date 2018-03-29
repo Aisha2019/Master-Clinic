@@ -62,7 +62,7 @@
 			                  				class="btn btn-success btn-xs" 
 			                  				onclick="
 			                  					event.preventDefault();
-			                  					if(confirm('Are you sure?')) {
+			                  					if(confirm('Are you sure you want to deactivate this account?')) {
 			                  						$(this).siblings('form').submit();
 			                  					}"
 			                  			>Active</a>
@@ -72,7 +72,7 @@
 			                  				class="btn btn-danger btn-xs" 
 			                  				onclick="
 			                  					event.preventDefault();
-			                  					if(confirm('Are you sure?')) {
+			                  					if(confirm('Are you sure you want to activate this account?')) {
 			                  						$(this).siblings('form').submit();
 			                  					}"
 			                  			>Inactive</a>
@@ -90,7 +90,7 @@
 										class="btn btn-danger btn-xs"
 										onclick="
 			                  					event.preventDefault();
-			                  					if(confirm('Are you sure?')) {
+			                  					if(confirm('Are you sure you want to delete this account?')) {
 			                  						$(this).siblings('form').submit();
 			                  					}"
 									><i class="fa fa-times"></i></a>

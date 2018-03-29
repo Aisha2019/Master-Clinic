@@ -67,15 +67,47 @@
 		                  	<td>{{ $nurse->updated_at->diffForHumans() }}</td>
 			                  	<td>
 		                  		@if ($nurse->status)
-		                  			<a href="{{ route('admin.nurse.status',$nurse->id) }}"><button class="btn btn-success btn-xs " >Active</button></a>
-		                  		@else
-		                  			<a href="{{ route('admin.nurse.status',$nurse->id) }}"><button class="btn btn-danger btn-xs" >Inactive</button></a>
-		                  		@endif
+			                  			<a 
+			                  				href="#" 
+			                  				class="btn btn-success btn-xs" 
+			                  				onclick="
+			                  					event.preventDefault();
+			                  					if(confirm('Are you sure you want to deactivate this account?')) {
+			                  						$(this).siblings('form').submit();
+			                  					}"
+			                  			>Active</a>
+			                  		@else
+			                  			<a 
+			                  				href="#" 
+			                  				class="btn btn-danger btn-xs" 
+			                  				onclick="
+			                  					event.preventDefault();
+			                  					if(confirm('Are you sure you want to activate this account?')) {
+			                  						$(this).siblings('form').submit();
+			                  					}"
+			                  			>Inactive</a>
+			                  		@endif
+			                  		<form action="{{ route('admin.nurse.status', $nurse->id)}}" method="POST">
+								        @csrf
+								        {{ method_field('PATCH') }}
+								    </form>
 		                  	</td>
 								<td>
-									<a href="{{ route('admin.nurse.update',$nurse->id) }}"><button type="button" class="btn btn-warning btn-xs">Update</button> </a>
+									<a href="{{ route('admin.nurse.update',$nurse->id) }}"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button> </a>
 									
-									<a href="{{ route('admin.nurse.delete',$nurse->id) }}"><button type="button" class="btn btn-danger btn-xs">Delete</button> </a>
+									<a 
+										href="#" 
+										class="btn btn-danger btn-xs"
+										onclick="
+			                  					event.preventDefault();
+			                  					if(confirm('Are you sure you want to delete this account?')) {
+			                  						$(this).siblings('form').submit();
+			                  					}"
+									><i class="fa fa-times"></i></a>
+									<form action="{{ route('admin.nurse.delete',$nurse->id) }}" method="POST">
+								        @csrf
+								        {{ method_field('DELETE') }}
+								    </form>
 								</td>
 			                  </tr>
 			              @endforeach

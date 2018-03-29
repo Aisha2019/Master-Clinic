@@ -12,6 +12,8 @@ $factory->define(nurse::class, function (Faker $faker) {
         'remember_token' => str_random(10),
         'status' => $faker->numberBetween(0, 1),
         'mobile' => $faker->phoneNumber,
+        'date_of_birth' => $faker->date('Y-m-d', 'now'),
+        'gender' => $faker->randomElement(['male', 'female']),
         'salary' => $faker->numberBetween(1000, 5000),
         'clinic_id' => function() {
         	return clinic::all()->random();
