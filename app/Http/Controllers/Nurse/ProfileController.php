@@ -76,7 +76,7 @@ class ProfileController extends Controller
         $nurse = nurse::find(Auth::id());
 
         if (Hash::check($request->oldPassword, $nurse->password)) {
-            $nurse->password = $request->newPassword;
+            $nurse->password = bcrypt($request->newPassword);
             $nurse->save();
             return back()->with('status', 'updated Successfully!!');
         } else {

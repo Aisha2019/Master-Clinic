@@ -67,7 +67,7 @@ class PatientController extends Controller
     	$patient = Patient::find(Auth::id());
     	// return Hash::check($request->newPassword, $patient->password);
     	if (Hash::check($request->oldPassword, $patient->password)) {
-	    	$patient->password = $request->newPassword;
+	    	$patient->password = bcrypt($request->newPassword);
 	    	$patient->save();
 	    	return back()->with('status', 'updated Successfully!!');
     	} else {

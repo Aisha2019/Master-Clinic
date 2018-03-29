@@ -75,7 +75,7 @@ class ProfileController extends Controller
         $admin = Admin::find(Auth::id());
 
         if (Hash::check($request->oldPassword, $admin->password)) {
-            $admin->password = $request->newPassword;
+            $admin->password = bcrypt($request->newPassword);
             $admin->save();
             return back()->with('status', 'updated Successfully!!');
         } else {
