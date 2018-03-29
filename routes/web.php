@@ -6,7 +6,6 @@ Route::get('/', function () {
 });
 
 
-
 // patient routes
 include 'patientRoutes.php';
 

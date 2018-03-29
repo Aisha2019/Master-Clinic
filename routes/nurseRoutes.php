@@ -2,7 +2,7 @@
 // Nurse routes
 Route::group(['namespace' => 'Nurse'],function(){
 	// Get Nurse Home page
-	Route::get('/nurse/home', 'HomeController@index');
+	Route::get('/nurse/home', 'HomeController@index')->name('nurse.home');
 
 	// Get Admin Home page
 	Route::get('/nurse/profile', 'ProfileController@index')->name('nurse.profile');
@@ -17,9 +17,17 @@ Route::group(['namespace' => 'Nurse'],function(){
 	Route::get('/nurse/patient/add', 'PatientController@add')->name('nurse.patient.add');
 	Route::post('/nurse/patient/add', 'PatientController@store');
 
-	Route::get('/nurse/patient/update', 'PatientController@update')->name('nurse.patient.update');
+	Route::get('/nurse/patient/update/{patientid}','PatientController@getpatient')->name('nurse.patient.updatepatient');
+	
+	Route::post('/nurse/patient/update', 'PatientController@update')->name('nurse.patient.update');
+	
+	Route::get('/nurse/patient/update','PatientController@get')->name('nurse.patient.update');
 
-		Route::get('/nurse/patient/table', 'PatientController@table')->name('nurse.patient.table');
+	Route::get('/nurse/patient/view', 'PatientController@patient_table')->name('nurse.patient.view');
+
+    Route::get('/nurse/patient/update/patientid/{pid}','PatientController@change_status')->name('nurse.patient.update.status');
+
+    Route::get('/nurse/patient/table/{id}',[  "uses" => 'PatientController@delete'])->name('nurse.patient.table.delete');
 
 	// get nurse login page
 	Route::GET('nurse/login','Auth\LoginController@showLoginForm')->name('nurse.login');

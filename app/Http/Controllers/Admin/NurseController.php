@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\clinic;
 use App\Models\nurse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 class NurseController extends Controller
 {
@@ -59,8 +60,10 @@ class NurseController extends Controller
     public function view(Request $request)
         {
             $nurses = nurse::all();
-            $clinics = clinic::all();
-            return view('admin.nurse.table',compact('nurses'),compact('clinics'));
+            foreach ($nurses as $nurse) {
+                $nurse->clinic_name = DB::table('clinics')->where('id', $nurse->clinic_id)->value('name');
+            }
+            return view('admin.nurse.table',compact('nurses'));
         }
     public function updatepage(Request $request,$nurseid)
         {
@@ -106,9 +109,9 @@ class NurseController extends Controller
             return back()->with('nurses',$nurses)->with('status' ,'nurse  has been deleted Successfully!!');  
     }
 
-    public function status(Request $request,$id)
+    public function status(Request $request,$nurseid)
     {
-            $nurse=nurse::find($id);
+            $nurse=nurse::find($nurseid);
             if($nurse->status)
             {
                $nurse->status=0;

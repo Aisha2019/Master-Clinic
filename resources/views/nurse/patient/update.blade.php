@@ -8,9 +8,7 @@
 @section('css')
 	{{-- here goes the css of page --}}
 	<style >
-		
-	
-
+		  <link rel="stylesheet" href="{{ asset('/user_styles/css/datepicker3.css') }}">
 
 	</style>
 @endsection
@@ -20,19 +18,34 @@
       @foreach ($errors->all() as $error)
           <div class="alert alert-danger">{{ $error }}</div>
         @endforeach
-  <div class="register-box-body">
+  @if (session('status'))
+    <div class="alert alert-success">{{ session('status') }}</div>
+  @endif
+<?php
+$img=$patient->image;
+if($img==NULL)
+$img='/user_styles/images/usericon.png';
+$patiet_image=asset($img);
+$patient_status="Deactivate Account";
+if($patient->status==0)
+$patient_status="Reactivate Account";
 
+?>
+  <div class="register-box-body">
     <h1 class="login-box-msg">User Information</h1>
 
-               <img src="{{ asset('/user_styles/images/usericon.png') }} " name="userimg" class="img-circle" />
+               <img src="{{ $patiet_image }}" name="userimg" class="img-circle" />
                 <br/>
                 <br/>
-
               <div class="box-body">
                 <div class="form-group" >
+                  <form method="post" action="{{ route('nurse.patient.update') }}">
+                    @csrf
+                    
+                  <input type="name" name="id" value="{{ $patient->id }}" style="display: none;">
                   <label for="inputEmail3" class="col-sm-2 control-label">Full Name</label>
                   <div class="col-sm-5">
-                    <input class="form-control"  placeholder="" type="email">
+                    <input class="form-control"  name="fullName" placeholder="" type="FullName" value="{{ $patient->name }}">
                   </div>
                 </div>
                 <br/>
@@ -41,7 +54,7 @@
                   <label for="inputPassword3" class="col-sm-2 control-label">Email</label>
 
                   <div class="col-sm-5">
-                    <input class="form-control" placeholder="" type="password">
+                    <input class="form-control" placeholder="" name="email" type="email" value="{{ $patient->email }}">
                   </div>
                 </div>
                 <br/>
@@ -50,7 +63,7 @@
                   <label for="inputPassword3" class="col-sm-2 control-label">Mobile</label>
 
                <div class="col-sm-5">
-                    <input class="form-control"  placeholder="" type="password">
+                    <input class="form-control"  placeholder="" name="mobile" type="mobile" value="{{ $patient->mobile }}">
                   </div>
                 </div>
                 <br/>
@@ -60,26 +73,25 @@
                   <label for="inputPassword3" class="col-sm-2 control-label">Gender</label>
 
                   <div class="col-sm-5">
-                    <input class="form-control"  placeholder="" type="password">
+                    <input class="form-control"  placeholder="" name="gender" type="gender" value="{{ $patient->gender }}">
                   </div>
                 </div>
                 <br/>
                 <br/>
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2 control-label">Date of birth</label>
-
                   <div class="col-sm-5">
-                    <input class="form-control"  placeholder="" type="password">
+                    <input class="form-control"  placeholder="" name="birthday" type="date" value="{{ $patient->date_of_birth }}">
                   </div>
+                  <br/>
+                <br/>
+                      <div class="box-footer">
+                       <button type="submit" class="btn btn-default btn-md" style="margin-left: 180px">Save</button>
+                      <a href="{{  route('nurse.patient.update.status',  $patient->id ) }}"  class="btn btn-primary btn-md" style="margin-left: 400px"  >{{ $patient_status }}<a/>
+                      </div>
+                  </form>
                 </div>
-
               </div>
-              <!-- /.box-body -->
-              <div class="box-footer">
-                <button type="submit" class="btn btn-default btn-md" style="margin-left: 190px">Save</button>
-                <button type="submit" class="btn btn-info pull-right " style="align-self: center;">Deactivate Account</button>
-              </div>
-              <!-- /.box-footer -->
             
   </div>
 

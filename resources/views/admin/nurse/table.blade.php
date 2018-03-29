@@ -18,6 +18,23 @@
 		<div class="alert alert-success">{{ session('status') }}</div>
 	@endif
 
+		<section class="content-header">
+      <h1>
+        Nurses data
+      </h1>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Nurse Data Table</h3>
+              <a href="{{ route('admin.nurse.add') }}"> <button type="button" class="btn btn-success btn-flat pull-right"> ADD </button> </a>
+            </div>
+	        <!-- /.box-header -->
+	        <div class="box-body">
 
 	        			<table id="example1" class="table table-bordered table-striped">
 	                		<thead>
@@ -30,10 +47,9 @@
 			                  <th >Gender</th>
 			                  <th>Birthday</th>
 			                  <th>Clinic</th>
-			                  <th>Created At</th>
 			                  <th>Updated At</th>
 			                  <th>Status</th>
-			                  <th> <a href="{{ route('admin.nurse.add') }}"> <button type="button" class="btn btn-block btn-success btn-xs"> ADD </button> </a></th>
+			                  <th>Controls</th>
 			                </tr>
 			                </thead>
 			                <tbody>
@@ -47,12 +63,7 @@
 			                  	<td>{{ $nurse->salary }}</td>
 			                  	<td>{{ $nurse->gender }}</td>
 			                  	<td>{{ $nurse->date_of_birth }}</td>
-			                  	<td>@foreach ($clinics as $clinic)
-			                			<?php $clinic = (object)$clinic; if($clinic->id==$nurse->clinic_id) {break;}?>
-			                		@endforeach
-			                		{{ $clinic->name }}
-			                	</td>
-		                  	<td>{{ $nurse->created_at->diffForHumans() }}</td>
+			                  	<td>{{ $nurse->clinic_name }}</td>
 		                  	<td>{{ $nurse->updated_at->diffForHumans() }}</td>
 			                  	<td>
 		                  		@if ($nurse->status)
@@ -61,7 +72,11 @@
 		                  			<a href="{{ route('admin.nurse.status',$nurse->id) }}"><button class="btn btn-danger btn-xs" >Inactive</button></a>
 		                  		@endif
 		                  	</td>
-								<td><a href="{{ route('admin.nurse.update',$nurse->id) }}"><button type="button" class="btn btn-block btn-warning btn-xs">Update</button> </a><a href="{{ route('admin.nurse.delete',$nurse->id) }}"><button type="button" class="btn btn-block btn-danger btn-xs">Delete</button> </a></td>
+								<td>
+									<a href="{{ route('admin.nurse.update',$nurse->id) }}"><button type="button" class="btn btn-warning btn-xs">Update</button> </a>
+									
+									<a href="{{ route('admin.nurse.delete',$nurse->id) }}"><button type="button" class="btn btn-danger btn-xs">Delete</button> </a>
+								</td>
 			                  </tr>
 			              @endforeach
 			                </tbody>
@@ -75,13 +90,17 @@
 			                  <th>Gender</th>
 			                  <th>Birthday</th>
 			                  <th>Clinic</th>
-			                  <th>Created At</th>
 			                  <th>Updated At</th>
 			                  <th>Status</th>
+			                  <th>Controls</th>
 			                </tr>
 			                </tfoot>
 	            		</table>
-	            		
+            		</div>
+            	</div>
+            </div>
+        </div>
+    </section>
 
 
 
