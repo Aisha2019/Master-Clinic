@@ -23,9 +23,7 @@ Route::group(['namespace' => 'Nurse'],function(){
 	
 	Route::get('/nurse/patient/update','PatientController@get')->name('nurse.patient.update');
 
-
 	Route::get('/nurse/patient/view', 'PatientController@patient_table')->name('nurse.patient.view');
-
 
     Route::get('/nurse/patient/update/patientid/{pid}','PatientController@change_status')->name('nurse.patient.update.status');
 

@@ -109,9 +109,9 @@ class NurseController extends Controller
             return back()->with('nurses',$nurses)->with('status' ,'nurse  has been deleted Successfully!!');  
     }
 
-    public function status(Request $request,$id)
+    public function status(Request $request,$nurseid)
     {
-            $nurse=nurse::find($id);
+            $nurse=nurse::find($nurseid);
             if($nurse->status)
             {
                $nurse->status=0;

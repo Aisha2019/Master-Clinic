@@ -97,9 +97,9 @@ class AdminController extends Controller
             return back()->with('admins',$admins)->with('status' ,'admin  has been deleted Successfully!!');  
     }
 
-    public function status(Request $request,$id)
+    public function status(Request $request,$adminid)
     {
-            $admin=admin::find($id);
+            $admin=admin::find($adminid);
             if($admin->status)
             {
                $admin->status=0;

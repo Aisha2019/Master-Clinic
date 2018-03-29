@@ -58,9 +58,9 @@
 		                  	<td>{{ $patient->date_of_birth }}</td>
 		                  	<td>
 								@if ($patient->status)
-		                  			<a href="#"><button class="btn btn-success btn-xs " >Active</button></a>
+		                  			<a href="{{ route('nurse.patient.update.status',$patient->id) }}"><button class="btn btn-success btn-xs " >Active</button></a>
 		                  		@else
-		                  			<a href="#"><button class="btn btn-danger btn-xs" >Inactive</button></a>
+		                  			<a href="{{ route('nurse.patient.update.status',$patient->id) }}"><button class="btn btn-danger btn-xs" >Inactive</button></a>
 		                  		@endif
 		                  	</td>
 							<td>

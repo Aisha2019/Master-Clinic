@@ -16,16 +16,21 @@ class PatientController extends Controller
     }
 
    
-        public function change_status($pid)
+  public function change_status($pid)
     {
         $patient=Patient::find($pid);
+        $msg;
         if($patient->status==0)
+        {
         $patient->status=1;
+        $msg='patient Account has been activated Successfully!!';
+        }
         else {
         $patient->status=0;
+        $msg='patient Account has been deactivated Successfully!!';
         }
         $patient->save();
-          return back()->with('patient',$patient)->with('status' ,'patient status has been updated Successfully!!');
+          return back()->with('patient',$patient)->with('status' ,$msg);
     }
 
       public function delete($id)
