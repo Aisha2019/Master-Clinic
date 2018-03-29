@@ -26,4 +26,8 @@ class HomeController extends Controller
     {
         return view('user.home');
     }
+    public function home()
+    {
+        return view('user.index');
+    }
 }
