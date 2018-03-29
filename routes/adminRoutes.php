@@ -5,10 +5,10 @@ Route::group(['namespace' => 'Admin'],function(){
 	// Get Admin Home page
 	Route::get('/admin/home', 'HomeController@index')->name('admin.home');
 
-	// Get Admin Home page
+	// Get Admin Profile page
 	Route::get('/admin/profile', 'ProfileController@index')->name('admin.profile');
 	// Update Admin Profile Picture
-	Route::post('/admin/profile/update', 'ProfileController@updatePicture')->name('admin.update.photo');
+	Route::PATCH('/admin/profile/update', 'ProfileController@updatePicture')->name('admin.update.photo');
 	// Change admin data from profile
 	Route::PATCH('/admin/update', 'ProfileController@update')->name('admin.profile.update');
 	// Change admin password
@@ -31,8 +31,8 @@ Route::group(['namespace' => 'Admin'],function(){
 	// add new nurse 
 	Route::get('/admin/nurse/add', 'NurseController@add')->name('admin.nurse.add');
 	Route::post('/admin/nurse/add', 'NurseController@store');
+	
 	//add a new patient
-
 	Route::get('/admin/patient/add', 'PatientController@add')->name('admin.patient.add');
 	Route::post('/admin/patient/add', 'PatientController@store');
 
@@ -41,19 +41,15 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::post('/admin/admin/add', 'AdminController@store');
 	// update patient's info
 
-	Route::get('/admin/patient/update/{patientid}','PatientController@getpatient')->name('admin.patient.updatepatient');
-
-    Route::get('/admin/patient/update','PatientController@get')->name('admin.patient.update');
-
-	Route::post('/admin/patient/update', 'PatientController@update');
+	Route::get('/admin/patient/update/{patient}','PatientController@edit')->name('admin.patient.updatepatient');
+	Route::PATCH('/admin/patient/update/{patient}', 'PatientController@update');
 
 
-	Route::get('/admin/patient/view', 'PatientController@patient_table')->name('admin.patient.view');
 
+	Route::get('/admin/patient/view', 'PatientController@index')->name('admin.patient.view');
+    Route::PATCH('/admin/patient/update/status/{patient}','PatientController@change_status')->name('admin.patient.update.status');
 
-    Route::get('/admin/patient/update/patientid/{pid}','PatientController@change_status')->name('admin.patient.update.status');
-
-    Route::get('/admin/patient/table/{id}',[  "uses" => 'PatientController@delete'])->name('admin.patient.table.delete');
+    Route::DELETE('/admin/patient/delete/{patient}','PatientController@destroy')->name('admin.patient.delete');
  
 	// View Nurses
 		Route::get('/admin/nurse/view', 'NurseController@view')->name('admin.nurse.view');

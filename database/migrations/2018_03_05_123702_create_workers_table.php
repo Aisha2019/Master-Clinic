@@ -20,7 +20,7 @@ class CreateWorkersTable extends Migration
             $table->date('date_of_birth');
             $table->date('date_of_start');
             $table->integer('clinic_id')->unsigned();
-            $table->foreign('clinic_id')->references('id')->on('clinics');
+            $table->foreign('clinic_id')->references('id')->on('clinics')->onDelete('CASCADE');
             $table->string('position');
             $table->timestamps();
         });

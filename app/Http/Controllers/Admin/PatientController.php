@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use App\Http\Requests\PatientRequest;
 use App\Models\Patient;
 use DB;
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 class PatientController extends Controller
 {
 
@@ -13,53 +14,39 @@ class PatientController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function getpatient($patientid)
+    // get edit patient page
+    public function edit(Patient $patient)
     {
-        $patient=Patient::find($patientid);
-        return view('/admin/patient/update')->with('patient',(object)$patient);
+        return view('/admin/patient/update', compact('patient'));
     }
 
-  public function change_status($pid)
+    // update patient status
+    public function change_status(Patient $patient)
     {
-        $patient=Patient::find($pid);
-        $msg;
-        if($patient->status==0)
-        {
-        $patient->status=1;
-        $msg='patient Account has been activated Successfully!!';
-        }
-        else {
-        $patient->status=0;
-        $msg='patient Account has been deactivated Successfully!!';
-        }
+        $patient->status = !$patient->status;
         $patient->save();
-          return back()->with('patient',$patient)->with('status' ,$msg);
+        return back()->with('status' ,'Updated Successfully!!');
     }
 
-      public function delete($id)
+    public function destroy(Patient $patient)
     {
-   $patient=Patient::find($id);
-   $patient->delete();        
-   $patients = DB::table('patients')->get(); 
-            return back()->with('patients',$patients)->with('status' ,'patient has been deleted Successfully!!');  
+        $patient->delete();
+        $patients = DB::table('patients')->get(); 
+        return back()->with('status' ,'patient has been deleted Successfully!!');  
 
    }
 
- public function get()
-    {
-      return view('/admin/patient/update');
-    }
-
+    // get add patient page
     public function add() {
-        return view('admin.patient.addpatient');
+        return view('admin.patient.add');
     }
 
-
-    public function update(Request $request)
+    // update patient info
+    public function update(Request $request, Patient $patient)
     {
          $this->validate($request,[
             'fullName'=>'required|string|min:3',
-            'email' => ['required','email', Rule::unique('patients')->ignore($request->id)],
+            'email' => ['required','email', Rule::unique('patients')->ignore($patient->id)],
             'mobile'=>'nullable|numeric|min:11',
             'birthday'=>'nullable|date|before:today',
             'gender' => [
@@ -68,55 +55,39 @@ class PatientController extends Controller
                 ],
         ]);
 
+        $patient->name = $request->fullName;
+        $patient->email = $request->email;
+        $patient->mobile = $request->mobile;
+        $patient->date_of_birth = $request->birthday;
+        $patient->gender = $request->gender;
          
-         $patient =Patient::find($request->id);
-         $patient->name=$request->fullName;
-         $patient->email=$request->email;
-         $patient->mobile=$request->mobile;
-         $patient->date_of_birth=$request->birthday;
-         $patient->gender=$request->gender;
-         
-         $patient->save();
+        $patient->save();
 
-        return back()->with('patient',$patient)->with('status' ,'patient Info has been updated Successfully!!');
-
+        return back()->with('status' ,'Patient Info has been updated Successfully!!');
     }
     // view a table of patients
 
- public function patient_table()
+    public function index()
     {   
-            $patients = DB::table('patients')->get(); 
-            return view('/admin/patient/view')->with('patients',$patients); 
-
+        $patients = Patient::all(); 
+        return view('/admin/patient/view')->with('patients',$patients); 
     }
 
-        public function store(Request $request) {
-        // Validate the request...
-        $this->validate($request,[
-            'fullName'=>'required|string|min:3',
-            'email'=>'required|unique:patients|email',
-            'password'=>'required|string|confirmed',
-            'mobile'=>'nullable|numeric|min:11',
-            'birthday'=>'nullable|date|before:today',
-            'gender' => [
-                    'nullable',
-                    Rule::in(['male', 'female']),
-                ],
-        ]);
+    public function store(PatientRequest $request) {
 
         $patient = new Patient ;
-        $patient->name=$request->fullName;
-        $patient->email=$request->email;
-        $patient->mobile=$request->mobile;
+
+        $patient->name = $request->fullName;
+        $patient->email = $request->email;
+        $patient->mobile = $request->mobile;
         $patient->password = bcrypt($request->password);
         $patient->status = 1;
-        $patient->date_of_birth=$request->date;
-        $patient->gender =$request->gender;  
+        $patient->date_of_birth = $request->date;
+        $patient->gender = $request->gender;
+
         $patient->save();
-        return redirect('/admin/home')->with('status' ,'patient Added Successfully!!');
+
+        return redirect('/admin/patient/view')->with('status' ,'patient Added Successfully!!');
 
     }
-
-
-
 }

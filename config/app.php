@@ -2,6 +2,8 @@
 
 return [
 
+    'profile_image' => '/user_styles/images/usericon.png',
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
