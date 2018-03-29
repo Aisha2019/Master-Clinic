@@ -27,6 +27,7 @@ class NurseController extends Controller
     // store the nurse data
     public function store(NurseRequest $request)
     {
+
         $nurse = new nurse;
 
         $nurse->name = $request->fullName;
@@ -64,7 +65,7 @@ class NurseController extends Controller
         $this->validate($request,[
             'fullName' => 'required|string',
             'email' => ['required','email', Rule::unique('nurses')->ignore($nurse->id)],
-            'mobile' => 'nullable|string|min:11',
+            'mobile' => 'nullable|numeric|min:8',
             'birthday' => 'nullable|date|before:today',
             'gender' => [
                     'nullable',

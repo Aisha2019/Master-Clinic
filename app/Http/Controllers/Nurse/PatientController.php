@@ -49,8 +49,10 @@ class PatientController extends Controller
     {
          $this->validate($request,[
             'fullName'=>'required|string|min:3',
-            'email' => ['required','email', Rule::unique('patients')->ignore($patient->id)],
-            'mobile'=>'nullable|string|min:11',
+
+            'email' => ['required','email', Rule::unique('patients')->ignore($request->id)],
+            'mobile'=>'nullable|numeric|min:8',
+
             'birthday'=>'nullable|date|before:today',
             'gender' => [
                     'nullable',
@@ -76,10 +78,11 @@ class PatientController extends Controller
         return view('/nurse/patient/view')->with('patients',$patients); 
     }
 
+
+
     public function store(PatientRequest $request) {
 
         $patient = new Patient ;
-
         $patient->name = $request->fullName;
         $patient->email = $request->email;
         $patient->mobile = $request->mobile;

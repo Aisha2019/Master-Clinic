@@ -24,11 +24,12 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         // Validate the request...
-        $this->validate($request,[
-            'fullName' => 'required|string|min:3',
-            'email' => ['required','email', Rule::unique('admins')],
-            'password' => 'required|string|confirmed',
-            'mobile' => 'nullable|string|min:11',
+            $this->validate($request,[
+            'fullName'=>'required|string|min:3',
+            'email'=>'required|unique:admins|email',
+            'password'=>'required|string|confirmed',
+            'mobile'=>'nullable|numeric|min:8',
+
             'role' => [
                     'nullable',
                     Rule::in(['doctor', 'super']),

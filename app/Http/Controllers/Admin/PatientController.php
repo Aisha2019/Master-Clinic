@@ -45,7 +45,7 @@ class PatientController extends Controller
          $this->validate($request,[
             'fullName'=>'required|string|min:3',
             'email' => ['required','email', Rule::unique('patients')->ignore($patient->id)],
-            'mobile'=>'nullable|numeric|min:11',
+            'mobile'=>'nullable|numeric|min:8',
             'birthday'=>'nullable|date|before:today',
             'gender' => [
                     'nullable',
@@ -72,6 +72,7 @@ class PatientController extends Controller
     }
 
     public function store(PatientRequest $request) {
+        
 
         $patient = new Patient ;
 
