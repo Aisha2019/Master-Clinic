@@ -29,7 +29,7 @@ class NurseController extends Controller
         	'fullName'=>'required|string',
         	'email'=>'required|unique:patients|email',
         	'password'=>'required|string|confirmed',
-        	'mobile'=>'nullable|numeric',
+        	'mobile'=>'nullable|numeric|min:8',
         	'birthday'=>'nullable|date|before:today',
         	'gender'=>'nullable',
         	'salary'=>'required|numeric',

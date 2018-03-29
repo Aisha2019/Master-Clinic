@@ -57,7 +57,7 @@ class ProfileController extends Controller
                 'email',
                 Rule::unique('nurses', 'email')->ignore(Auth::id()),
                 ],
-            'mobile' => 'required|string|min:8',
+            'mobile' => 'nullable|numeric|min:8',
         ]);
         $nurse = nurse::find(Auth::id());
         $nurse->name = $request->name;

@@ -27,7 +27,7 @@ class AdminController extends Controller
             'fullName'=>'required|string|min:3',
             'email'=>'required|unique:admins|email',
             'password'=>'required|string|confirmed',
-            'mobile'=>'nullable|numeric|min:11',
+            'mobile'=>'nullable|numeric|min:8',
             'role' => [
                     'nullable',
                     Rule::in(['Admin', 'Super Admin']),

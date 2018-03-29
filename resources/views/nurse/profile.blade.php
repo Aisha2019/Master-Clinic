@@ -151,7 +151,7 @@
                                     <label for="inputOldPassword" class="col-sm-2 control-label">Old Password</label>
 
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="inputOldPassword" name="oldPassword" placeholder="Old Name" required>
+                                        <input type="password" class="form-control" id="inputOldPassword" name="oldPassword" placeholder="Old Password" required>
                                     </div>
                                 </div>
 
