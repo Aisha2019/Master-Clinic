@@ -32,8 +32,7 @@ class PatientController extends Controller
     {
         $patient->delete();
         return back()->with('status' ,'patient has been deleted Successfully!!');  
-
-   }
+    }
 
     // get add patient page
     public function add() {

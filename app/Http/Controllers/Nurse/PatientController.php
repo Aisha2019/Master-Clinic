@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Nurse;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PatientRequest;
 use App\Models\Patient;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use DB;
 class PatientController extends Controller
 {
     
@@ -16,55 +17,40 @@ class PatientController extends Controller
     }
 
    
-  public function change_status($pid)
+    // update patient status
+    public function change_status(Patient $patient)
     {
-        $patient=Patient::find($pid);
-        $msg;
-        if($patient->status==0)
-        {
-        $patient->status=1;
-        $msg='patient Account has been activated Successfully!!';
-        }
-        else {
-        $patient->status=0;
-        $msg='patient Account has been deactivated Successfully!!';
-        }
+        $patient->status = !$patient->status;
         $patient->save();
-          return back()->with('patient',$patient)->with('status' ,$msg);
+        $msg = ($patient->status) ? 'Patient has been activated Successfully!!' : 'Patient has been deactivated Successfully!!';
+        return back()->with('status', $msg);
     }
 
-      public function delete($id)
+    public function destroy(Patient $patient)
     {
-   $patient=Patient::find($id);
-   $patient->delete();        
-   $patients = DB::table('patients')->get(); 
-            return back()->with('patients',$patients)->with('status' ,'patient has been deleted Successfully!!');  
-
-   }
+        $patient->delete();
+        return back()->with('status' ,'patient has been deleted Successfully!!');  
+    }
 
     //Add New Patient
-
     public function add()
     {
         return view('nurse.patient.add');
     }
-    public function getpatient($patientid)
-    {
-        $patient=Patient::find($patientid);
-        return view('/nurse/patient/update')->with('patient',$patient);
 
-    } 
-
-    public function get()
+    // get edit patient page
+    public function edit(Patient $patient)
     {
-      return view('/nurse/patient/update');
+        return view('/nurse/patient/update', compact('patient'));
     }
-    public function update(Request $request)
+
+    // update patient info
+    public function update(Request $request, Patient $patient)
     {
          $this->validate($request,[
             'fullName'=>'required|string|min:3',
-            'email' => ['required','email', Rule::unique('patients')->ignore($request->id)],
-            'mobile'=>'nullable|numeric|min:11',
+            'email' => ['required','email', Rule::unique('patients')->ignore($patient->id)],
+            'mobile'=>'nullable|string|min:11',
             'birthday'=>'nullable|date|before:today',
             'gender' => [
                     'nullable',
@@ -72,51 +58,39 @@ class PatientController extends Controller
                 ],
         ]);
 
-         
-         $patient =Patient::find($request->id);
-         $patient->name=$request->fullName;
-         $patient->email=$request->email;
-         $patient->mobile=$request->mobile;
-         $patient->date_of_birth=$request->birthday;
-         $patient->gender=$request->gender;
-         $patient->save();
-
-        return back()->with('patient',$patient)->with('status' ,'patient Info has been updated Successfully!!');
-
-    }
-   public function patient_table()
-    {   
-            $patients = DB::table('patients')->get(); 
-            return view('/nurse/patient/view')->with('patients',$patients); 
-
-    }
-
-    public function store(Request $request)
-    {
-        
-        // Validate the request...
-        $this->validate($request,[
-        	'fullName'=>'required|string|min:3',
-        	'email'=>'required|unique:patients|email',
-        	'password'=>'required|string|confirmed',
-        	'mobile'=>'nullable|numeric|min:11',
-        	'birthday'=>'nullable|date|before:today',
-        	'gender' => [
-                    'nullable',
-                    Rule::in(['male', 'female']),
-                ],
-        ]);
-        $connection='MasterClinic';
-        $patient = new Patient;
         $patient->name = $request->fullName;
         $patient->email = $request->email;
-        $patient->password = bcrypt($request->password);
         $patient->mobile = $request->mobile;
-        $patient->gender = $request->gender;
         $patient->date_of_birth = $request->birthday;
-        $patient->status = 1;
+        $patient->gender = $request->gender;
+         
         $patient->save();
 
-        return redirect('/nurse/home')->with('status' ,'Added Successfully!!');
+        return back()->with('status' ,'Patient Info has been updated Successfully!!');
+    }
+
+    // view a table of patients
+    public function index()
+    {   
+        $patients = Patient::all(); 
+        return view('/nurse/patient/view')->with('patients',$patients); 
+    }
+
+    public function store(PatientRequest $request) {
+
+        $patient = new Patient ;
+
+        $patient->name = $request->fullName;
+        $patient->email = $request->email;
+        $patient->mobile = $request->mobile;
+        $patient->password = bcrypt($request->password);
+        $patient->status = 1;
+        $patient->date_of_birth = $request->date;
+        $patient->gender = $request->gender;
+
+        $patient->save();
+
+        return redirect('/nurse/patient/view')->with('status' ,'patient Added Successfully!!');
+
     }
 }

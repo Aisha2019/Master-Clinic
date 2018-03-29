@@ -17,17 +17,15 @@ Route::group(['namespace' => 'Nurse'],function(){
 	Route::get('/nurse/patient/add', 'PatientController@add')->name('nurse.patient.add');
 	Route::post('/nurse/patient/add', 'PatientController@store');
 
-	Route::get('/nurse/patient/update/{patientid}','PatientController@getpatient')->name('nurse.patient.updatepatient');
+	Route::get('/nurse/patient/update/{patient}','PatientController@edit')->name('nurse.patient.update');
 	
-	Route::post('/nurse/patient/update', 'PatientController@update')->name('nurse.patient.update');
-	
-	Route::get('/nurse/patient/update','PatientController@get')->name('nurse.patient.update');
+	Route::PATCH('/nurse/patient/update/{patient}', 'PatientController@update');
+	// get all patients table
+	Route::get('/nurse/patient/view', 'PatientController@index')->name('nurse.patient.view');
 
-	Route::get('/nurse/patient/view', 'PatientController@patient_table')->name('nurse.patient.view');
+    Route::PATCH('/nurse/patient/status/{patient}','PatientController@change_status')->name('nurse.patient.update.status');
 
-    Route::get('/nurse/patient/update/patientid/{pid}','PatientController@change_status')->name('nurse.patient.update.status');
-
-    Route::get('/nurse/patient/table/{id}',[  "uses" => 'PatientController@delete'])->name('nurse.patient.table.delete');
+    Route::DELETE('/nurse/patient/table/{patient}','PatientController@destroy')->name('nurse.patient.delete');
 
 	// get nurse login page
 	Route::GET('nurse/login','Auth\LoginController@showLoginForm')->name('nurse.login');
