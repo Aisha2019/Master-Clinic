@@ -17,11 +17,11 @@ class CreateMaterialsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('clinic_id')->unsigned();
-            $table->foreign('clinic_id')->references('id')->on('clinics')->onDelete('CASCADE');
+            $table->foreign('clinic_id')->references('id')->on('clinics')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('num');
             $table->float('cost');
             $table->integer('category_id')->unsigned();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('CASCADE');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

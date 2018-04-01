@@ -45,7 +45,7 @@ class PatientController extends Controller
          $this->validate($request,[
             'fullName'=>'required|string|min:3',
             'email' => ['required','email', Rule::unique('patients')->ignore($patient->id)],
-            'mobile'=>'nullable|numeric|min:8',
+            'mobile'=>'nullable|numeric|digits_between:8,20',
             'birthday'=>'nullable|date|before:today',
             'gender' => [
                     'nullable',

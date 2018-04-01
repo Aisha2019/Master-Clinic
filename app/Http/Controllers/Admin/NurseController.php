@@ -65,7 +65,7 @@ class NurseController extends Controller
         $this->validate($request,[
             'fullName' => 'required|string',
             'email' => ['required','email', Rule::unique('nurses')->ignore($nurse->id)],
-            'mobile' => 'nullable|numeric|min:8',
+            'mobile' => 'nullable|numeric|digits_between:8,20',
             'birthday' => 'nullable|date|before:today',
             'gender' => [
                     'nullable',

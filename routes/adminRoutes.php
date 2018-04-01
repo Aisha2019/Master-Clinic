@@ -73,4 +73,15 @@ Route::group(['namespace' => 'Admin'],function(){
 	// Delete Another admin
 	Route::DELETE('/admin/admin/delete/{admin}','AdminController@destroy')->name('admin.admin.delete');
 
+	//add a new clinic
+	Route::get('/admin/clinic/add', 'ClinicController@add')->name('admin.clinic.add');
+	Route::post('/admin/clinic/add', 'ClinicController@store');
+
+	// View Clinics
+	Route::get('/admin/clinic/view', 'ClinicController@view')->name('admin.clinic.view');
+	// Delete clinic
+	Route::DELETE('/admin/clinic/delete/{clinic}','ClinicController@destroy')->name('admin.clinic.delete');
+	// update clinics's info
+	Route::get('/admin/clinic/update/{clinic}', 'ClinicController@edit')->name('admin.clinic.update');
+	Route::PATCH('/admin/clinic/update/{clinic}', 'ClinicController@update');
 });

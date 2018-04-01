@@ -55,7 +55,7 @@ class ProfileController extends Controller
                 'email',
                 Rule::unique('admins', 'email')->ignore(Auth::id()),
                 ],
-            'mobile' => 'nullable|numeric|min:8',
+            'mobile' => 'nullable|numeric|digits_between:8,20',
         ]);
         $admin = Admin::find(Auth::id());
         $admin->name = $request->name;

@@ -25,7 +25,7 @@ class CreateNursesTable extends Migration
             $table->boolean('status')->default(0);
             $table->integer('salary');
             $table->integer('clinic_id')->unsigned();
-            $table->foreign('clinic_id')->references('id')->on('clinics')->onDelete('CASCADE');
+            $table->foreign('clinic_id')->references('id')->on('clinics')->onDelete('cascade')->onUpdate('cascade');
             $table->rememberToken();
             $table->timestamps();
         });

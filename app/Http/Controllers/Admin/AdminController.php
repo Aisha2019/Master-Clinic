@@ -28,7 +28,7 @@ class AdminController extends Controller
             'fullName'=>'required|string|min:3',
             'email'=>'required|unique:admins|email',
             'password'=>'required|string|confirmed',
-            'mobile'=>'nullable|numeric|min:8',
+            'mobile'=>'nullable|numeric|digits_between:8,20',
 
             'role' => [
                     'nullable',
@@ -66,7 +66,7 @@ class AdminController extends Controller
         $this->validate($request,[
             'fullName'=>'required|string|min:3',
             'email' => ['required','email', Rule::unique('admins')->ignore($admin->id)],
-            'mobile'=>'nullable|string|min:11',        
+            'mobile'=>'nullable|numeric|digits_between:8,20',        
             'role' => [
                     'nullable',
                     Rule::in(['super', 'doctor']),

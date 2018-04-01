@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class PatientRequest extends FormRequest
+class ClinicRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -16,6 +16,7 @@ class PatientRequest extends FormRequest
     {
         return true;
     }
+    
 
     /**
      * Get the validation rules that apply to the request.
@@ -25,15 +26,9 @@ class PatientRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullName'=>'required|string|min:3',
-            'email'=>'required|unique:patients|email',
-            'password'=>'required|string|confirmed',
-            'mobile'=>'nullable|numeric|digits_between:8,20',
-            'birthday'=>'nullable|date|before:today',
-            'gender' => [
-                    'nullable',
-                    Rule::in(['male', 'female']),
-                ],
+            'name' => 'required|string|min:3',
+            'email' => 'required|unique:clinics|email',
+            'phone' => 'nullable|numeric|digits_between:8,20',
         ];
     }
 }

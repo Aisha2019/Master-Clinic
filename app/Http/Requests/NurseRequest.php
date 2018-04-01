@@ -28,7 +28,7 @@ class NurseRequest extends FormRequest
             'fullName' => 'required|string',
             'email' => 'required|unique:nurses|email',
             'password' => 'required|string|confirmed',
-            'mobile' => 'nullable|string',
+            'mobile' => 'nullable|numeric|digits_between:8,20',
             'birthday' => 'nullable|date|before:today',
             'gender' => [
                     'nullable',
