@@ -6,7 +6,7 @@ use App\Http\Requests\PatientRequest;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-class PatientController extends Controller
+class PatientsController extends Controller
 {
 
     public function __construct() {

@@ -7,7 +7,7 @@ use App\Models\admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
-class AdminController extends Controller
+class AdminsController extends Controller
 {
     //
 

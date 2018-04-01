@@ -8,7 +8,7 @@ use App\Models\Patient;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-class PatientController extends Controller
+class PatientsController extends Controller
 {
     
     public function __construct()

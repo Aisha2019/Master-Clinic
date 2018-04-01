@@ -14,18 +14,18 @@ Route::group(['namespace' => 'Nurse'],function(){
 	Route::PATCH('/nurse/password/update', 'ProfileController@password')->name('nurse.password.update');
 
 	// add new patient routes
-	Route::get('/nurse/patient/add', 'PatientController@add')->name('nurse.patient.add');
-	Route::post('/nurse/patient/add', 'PatientController@store');
+	Route::get('/nurse/patient/add', 'PatientsController@add')->name('nurse.patient.add');
+	Route::post('/nurse/patient/add', 'PatientsController@store');
 
-	Route::get('/nurse/patient/update/{patient}','PatientController@edit')->name('nurse.patient.update');
+	Route::get('/nurse/patient/update/{patient}','PatientsController@edit')->name('nurse.patient.update');
 	
-	Route::PATCH('/nurse/patient/update/{patient}', 'PatientController@update');
+	Route::PATCH('/nurse/patient/update/{patient}', 'PatientsController@update');
 	// get all patients table
-	Route::get('/nurse/patient/view', 'PatientController@index')->name('nurse.patient.view');
+	Route::get('/nurse/patient/view', 'PatientsController@index')->name('nurse.patient.view');
 
-    Route::PATCH('/nurse/patient/status/{patient}','PatientController@change_status')->name('nurse.patient.update.status');
+    Route::PATCH('/nurse/patient/status/{patient}','PatientsController@change_status')->name('nurse.patient.update.status');
 
-    Route::DELETE('/nurse/patient/table/{patient}','PatientController@destroy')->name('nurse.patient.delete');
+    Route::DELETE('/nurse/patient/table/{patient}','PatientsController@destroy')->name('nurse.patient.delete');
 
 	// get nurse login page
 	Route::GET('nurse/login','Auth\LoginController@showLoginForm')->name('nurse.login');

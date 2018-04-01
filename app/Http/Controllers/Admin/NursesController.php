@@ -9,7 +9,7 @@ use App\Models\nurse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
-class NurseController extends Controller
+class NursesController extends Controller
 {
     //
     public function __construct()
