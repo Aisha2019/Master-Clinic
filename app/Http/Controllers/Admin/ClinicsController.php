@@ -52,6 +52,9 @@ class ClinicsController extends Controller
     // get edit clinic page
     public function edit(clinic $clinic)
     {
+        $clinic->start_time = Carbon::parse($clinic->start_time)->format('h:i:s A');
+
+        $clinic->end_time = Carbon::parse($clinic->end_time)->format('h:i:s A');
         return view('/admin/clinic/update', compact('clinic'));
     }
 
@@ -66,8 +69,8 @@ class ClinicsController extends Controller
         $clinic->email = $request->email;
         $clinic->telephone = $request->phone;
         $clinic->address = $request->address;
-        $clinic->start_time = $request->start_time;
-        $clinic->end_time = $request->end_time;
+        $clinic->start_time = Carbon::parse($request->start_time)->format('H:i:s');
+        $clinic->end_time = Carbon::parse($request->end_time)->format('H:i:s');
 
         $clinic->save();
 

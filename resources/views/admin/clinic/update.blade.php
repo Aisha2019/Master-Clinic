@@ -56,7 +56,7 @@
                   <label>Start Time:</label>
 
                   <div class="input-group">
-                    <input type="timepicker" class="form-control timepicker" name="start_time" value="{{ $clinic->start_time }}">
+                    <input type="text" class="form-control timepicker" name="start_time" value="{{ $clinic->start_time }}">
 
                     <div class="input-group-addon">
                       <i class="fas fa-clock"></i>
@@ -70,7 +70,7 @@
                   <label>End Time:</label>
 
                   <div class="input-group">
-                    <input type="timepicker" class="form-control timepicker" name="end_time" value="{{ $clinic->end_time }}">
+                    <input type="text" class="form-control timepicker" name="end_time" value="{{ $clinic->end_time }}">
 
                     <div class="input-group-addon">
                       <i class="fas fa-clock"></i>
