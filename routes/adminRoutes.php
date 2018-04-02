@@ -84,4 +84,17 @@ Route::group(['namespace' => 'Admin'],function(){
 	// update clinics's info
 	Route::get('/admin/clinic/update/{clinic}', 'ClinicsController@edit')->name('admin.clinic.update');
 	Route::PATCH('/admin/clinic/update/{clinic}', 'ClinicsController@update');
+
+
+	// add new worker 
+	Route::get('/admin/worker/add', 'WorkersController@add')->name('admin.worker.add');
+	Route::post('/admin/worker/add', 'WorkersController@store');
+
+	// View workers
+	Route::get('/admin/worker/view', 'WorkersController@view')->name('admin.worker.view');
+	// update worker's info
+	Route::get('/admin/worker/update/{worker}', 'WorkersController@edit')->name('admin.worker.update');
+	Route::PATCH('/admin/worker/update/{worker}', 'WorkersController@update');
+	// Delete worker
+	Route::DELETE('/admin/worker/delete/{worker}','WorkersController@destroy')->name('admin.worker.delete');
 });
