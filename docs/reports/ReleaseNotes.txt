@@ -1,0 +1,29 @@
+Master Clinic
+Master Clinic
+Version 1.0 alpha
+
+New Features
+1. There is 3 types of users (Admin, nurse and patient) can login to the system in the same time.
+2. Every user can reset his password by an email verification if he forget his password.
+3. Admin can create, update and delete the 3 types of users from his panel.
+4. Admin can view all users in the system and search with powerfull search system.
+5. Nurse can create, update and delete patients from her panel.
+6. Nurse can view all patients in the system and search with powerfull search system.
+7. Every user has his own profile where he can update his profile photo, his personal info and his password.
+8. Simple and clean UI with considering UX rules.
+ 
+Removed Features
+There is no removed features in this release.
+
+Enhanced Performance
+There is no enhanced performance of features in this release.
+
+Enhanced Look-and-Feel
+There is no enhanced look in this release.
+
+Unsupported Functionality
+Every feature above is supported in this release.
+
+Fixed Bugs
+This is the first release so we didn't discover any bugs yet.
+
