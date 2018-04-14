@@ -22,7 +22,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 
-
+  <link rel="shortcut icon" href="{{ asset('/user_styles/images/testlogo.png') }}" />
   @yield('css')
 
 </head>

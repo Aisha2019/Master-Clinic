@@ -88,7 +88,7 @@ class PatientsController extends Controller
 
         $patient->save();
 
-        return redirect('/admin/patient/view')->with('status' ,'patient Added Successfully!!');
+        return redirect('/admin/patient/view')->with('status' ,'Patient Added Successfully!!');
 
     }
 

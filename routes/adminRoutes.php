@@ -101,4 +101,30 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::PATCH('/admin/worker/update/{worker}', 'WorkersController@update');
 	// Delete worker
 	Route::DELETE('/admin/worker/delete/{worker}','WorkersController@destroy')->name('admin.worker.delete');
+
+
+	// add new category 
+	Route::get('/admin/category/add', 'CategoriesController@add')->name('admin.category.add');
+	Route::post('/admin/category/add', 'CategoriesController@store');
+
+	// View Categories
+	Route::get('/admin/category/view', 'CategoriesController@view')->name('admin.category.view');
+	// update category's info
+	Route::get('/admin/category/update/{category}', 'CategoriesController@edit')->name('admin.category.update');
+	Route::PATCH('/admin/category/update/{category}', 'CategoriesController@update');
+	// Delete category
+	Route::DELETE('/admin/category/delete/{category}','CategoriesController@destroy')->name('admin.category.delete');
+
+
+	// add new material 
+	Route::get('/admin/material/add', 'MaterialsController@add')->name('admin.material.add');
+	Route::post('/admin/material/add', 'MaterialsController@store');
+
+	// View Materials
+	Route::get('/admin/material/view', 'MaterialsController@view')->name('admin.material.view');
+	// update material's info
+	Route::get('/admin/material/update/{material}', 'MaterialsController@edit')->name('admin.material.update');
+	Route::PATCH('/admin/material/update/{material}', 'MaterialsController@update');
+	// Delete material
+	Route::DELETE('/admin/material/delete/{material}','MaterialsController@destroy')->name('admin.material.delete');
 });

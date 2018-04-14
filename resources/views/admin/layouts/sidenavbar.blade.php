@@ -108,6 +108,35 @@
           </ul>
         </li>
 
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-cubes"></i>
+            <span>Categories</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('admin.category.view') }}"><i class="fa fa-circle text-red"></i> View</a></li>
+            <li><a href="{{ route('admin.category.add') }}"><i class="fa fa-circle text-aqua"></i> Add</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-medkit"></i>
+            <span>Materials</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('admin.material.view') }}"><i class="fa fa-circle text-red"></i> View</a></li>
+            <li><a href="{{ route('admin.material.add') }}"><i class="fa fa-circle text-aqua"></i> Add</a></li>
+          </ul>
+        </li>
+
       </ul>
     </section>
     <!-- /.sidebar -->
