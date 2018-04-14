@@ -98,6 +98,8 @@
 								        @csrf
 								        {{ method_field('DELETE') }}
 								    </form>
+								    <a href="" class="btn btn-primary btn-xs"><i class="fas fa-file-alt"></i></a>
+								    <a href="{{ route('admin.patient.email', $patient->id) }}" class="btn btn-success btn-xs"><i class="fas fa-envelope"></i></a>
 								</td>
 			                  </tr>
 		              		@endforeach
