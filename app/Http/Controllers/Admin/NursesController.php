@@ -41,7 +41,7 @@ class NursesController extends Controller
         $nurse->status = 1;
 
         $nurse->save();
-        return redirect('/admin/home')->with('status' ,'Added Successfully!!');
+        return redirect('/admin/nurse/view')->with('status' ,'Nurse Added Successfully!!');
     }
 
     // view nurses table
