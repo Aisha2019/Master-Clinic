@@ -12,6 +12,9 @@
 		.img-circle {
 			border-radius: 100%;
 		}
+		.img-responsive {
+			max-width: 100%;
+		}
 	</style>
 @endsection
 

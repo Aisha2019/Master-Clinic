@@ -44,6 +44,10 @@ Route::group(['namespace' => 'Admin'],function(){
 
     // delete patient account
     Route::DELETE('/admin/patient/delete/{patient}','PatientsController@destroy')->name('admin.patient.delete');
+
+    // Admin emails patients view
+	Route::get('/admin/patient/email/{patient}', 'PatientsController@viewemail')->name('admin.patient.email');
+	Route::POST('/admin/patient/email/{patient}', 'PatientsController@email');
  
     // add new nurse 
 	Route::get('/admin/nurse/add', 'NursesController@add')->name('admin.nurse.add');

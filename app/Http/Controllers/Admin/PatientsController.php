@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PatientRequest;
 use App\Models\Patient;
+use File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 class PatientsController extends Controller
 {
@@ -88,5 +90,20 @@ class PatientsController extends Controller
 
         return redirect('/admin/patient/view')->with('status' ,'patient Added Successfully!!');
 
+    }
+
+    public function viewemail(Patient $patient)
+    {
+        return view('admin.patient.email', compact('patient'));
+    }
+
+    public function email(Request $request, Patient $patient)
+    {
+        $this->validate($request, [
+            'email' => 'required|string|min:15',
+            'subject' => 'required|string|min:5',
+        ]);
+        $patient->sendAdminEmailNotification($request->email, $request->subject);
+        return redirect('/admin/patient/view')->with('status', 'Email is sent to ' . $patient->name);
     }
 }
