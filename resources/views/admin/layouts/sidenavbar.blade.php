@@ -109,7 +109,7 @@
         </li>
 
 
-        <li class="treeview">
+        <li class="treeview {{ App\Navigation::setActive('admin.category.view') }} {{ App\Navigation::setActive('admin.category.add') }}">
           <a href="#">
             <i class="fa fa-cubes"></i>
             <span>Categories</span>
@@ -118,12 +118,14 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('admin.category.view') }}"><i class="fa fa-circle text-red"></i> View</a></li>
-            <li><a href="{{ route('admin.category.add') }}"><i class="fa fa-circle text-aqua"></i> Add</a></li>
+            <li class="{{ App\Navigation::setActive('admin.category.view') }}">
+            <a href="{{ route('admin.category.view') }}"><i class="fa fa-circle text-red"></i> View</a></li>
+            <li class="{{ App\Navigation::setActive('admin.category.add') }}">
+            <a href="{{ route('admin.category.add') }}"><i class="fa fa-circle text-aqua"></i> Add</a></li>
           </ul>
         </li>
 
-        <li class="treeview">
+        <li class="treeview {{ App\Navigation::setActive('admin.material.view') }} {{ App\Navigation::setActive('admin.material.add') }}">
           <a href="#">
             <i class="fa fa-medkit"></i>
             <span>Materials</span>
@@ -132,8 +134,27 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="{{ route('admin.material.view') }}"><i class="fa fa-circle text-red"></i> View</a></li>
-            <li><a href="{{ route('admin.material.add') }}"><i class="fa fa-circle text-aqua"></i> Add</a></li>
+            <li class="{{ App\Navigation::setActive('admin.material.view') }}">
+            <a href="{{ route('admin.material.view') }}"><i class="fa fa-circle text-red"></i> View</a></li>
+            <li class="{{ App\Navigation::setActive('admin.material.add') }}">
+            <a href="{{ route('admin.material.add') }}"><i class="fa fa-circle text-aqua"></i> Add</a></li>
+          </ul>
+        </li>
+
+
+        <li class="treeview {{ App\Navigation::setActive('admin.invoice.view') }} {{ App\Navigation::setActive('admin.invoice.add') }}">
+          <a href="#">
+            <i class="fa fa-file-alt"></i>
+            <span>Invoices</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ App\Navigation::setActive('admin.invoice.view') }}">
+            <a href="{{ route('admin.invoice.view') }}"><i class="fa fa-circle text-red"></i> View</a></li>
+            <li class="{{ App\Navigation::setActive('admin.invoice.add') }}">
+            <a href="{{ route('admin.invoice.add') }}"><i class="fa fa-circle text-aqua"></i> Add</a></li>
           </ul>
         </li>
 
