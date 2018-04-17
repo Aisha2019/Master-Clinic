@@ -44,7 +44,9 @@
 			                  <th>Doctor</th>
 			                  <th>Nurse</th>
 			                  <th>Clinic</th>
-			                  <th>Total Cost</th>
+			                  <th>Price</th>
+			                  <th>Tax</th>
+			                  <th>Discount</th>
 			                  <th>Date</th>
 			                  <th>Created At</th>
 			                  <th>Updated At</th>
@@ -61,6 +63,8 @@
 			                  	<td>{{ $invoice->nurse_name }}</td>
 			                  	<td>{{ $invoice->clinic_name }}</td>
 			                  	<td>{{ $invoice->total_price }}</td>
+			                  	<td>{{ $invoice->tax }}</td>
+			                  	<td>{{ $invoice->discount }}</td>
 			                  	<td>{{ $invoice->day }}</td>
 		                  	<td>{{ $invoice->created_at->diffForHumans() }}</td>
 		                  	<td>{{ $invoice->updated_at->diffForHumans() }}</td>
@@ -94,7 +98,9 @@
 			                  <th>Doctor</th>
 			                  <th>Nurse</th>
 			                  <th>Clinic</th>
-			                  <th>Total Cost</th>
+			                  <th>Price</th>
+			                  <th>Tax</th>
+			                  <th>Discount</th>
 			                  <th>Date</th>
 			                  <th>Created At</th>
 			                  <th>Updated At</th>

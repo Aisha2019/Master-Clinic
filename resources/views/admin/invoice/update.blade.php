@@ -75,6 +75,16 @@
           <span class="form-control-feedback"><i class="fas fa-dollar-sign"></i></span>
         </div>
 
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" placeholder="Tax" value="{{ $invoice->tax }}" name="tax" required>
+          <span class="form-control-feedback"><i class="fas fa-dollar-sign"></i></span>
+        </div>
+
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" placeholder="Discount" value="{{ $invoice->discount }}" name="discount" required>
+          <span class="form-control-feedback"><i class="fas fa-dollar-sign"></i></span>
+        </div>
+
 
         <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder=" Date" value="{{ $invoice->date }}" name="day" id="datepicker">

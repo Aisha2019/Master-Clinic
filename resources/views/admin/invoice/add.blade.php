@@ -68,6 +68,17 @@
         </div>
 
         <div class="form-group has-feedback">
+          <input type="text" class="form-control" placeholder="Tax" value="{{ old('tax') }}" name="tax" required>
+          <span class="form-control-feedback"><i class="fas fa-dollar-sign"></i></span>
+        </div>
+
+
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" placeholder="Discount" value="{{ old('discount') }}" name="discount" required>
+          <span class="form-control-feedback"><i class="fas fa-dollar-sign"></i></span>
+        </div>
+
+        <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder=" Date" value="{{ old('day') }}" name="day" id="datepicker">
           <span class="form-control-feedback"><i class="fas fa-calendar-alt"></i></span>
         </div>

@@ -36,6 +36,8 @@ class InvoicesController extends Controller
     	$this->validate($request,[
             'day' => 'date|before:today',
             'price' => 'required|numeric',
+            'tax' => 'nullable|numeric|max:1|min:0',
+            'discount' => 'nullable|numeric|max:1|min:0',
             'clinic' => 'required|exists:clinics,id',
             'nurse' => 'required|exists:nurses,id',
             'patient' => 'required|exists:patients,id',
@@ -45,6 +47,8 @@ class InvoicesController extends Controller
         $invoice = new receipt;
 
         $invoice->total_price = $request->price;
+        $invoice->tax = $request->tax;
+        $invoice->discount = $request->discount;
         $invoice->clinic_id = $request->clinic;
         $invoice->nurse_id = $request->nurse;
         $invoice->patient_id= $request->patient;
@@ -90,6 +94,8 @@ class InvoicesController extends Controller
         $this->validate($request,[
             'day' => 'date|before:today',
             'price' => 'required|numeric',
+            'tax' => 'nullable|numeric|max:1|min:0',
+            'discount' => 'nullable|numeric|max:1|min:0',
             'clinic' => 'required|exists:clinics,id',
             'nurse' => 'required|exists:nurses,id',
             'patient' => 'required|exists:patients,id',
@@ -97,6 +103,8 @@ class InvoicesController extends Controller
         ]);
          
         $invoice->total_price = $request->price;
+        $invoice->tax = $request->tax;
+        $invoice->discount = $request->discount;
         $invoice->clinic_id = $request->clinic;
         $invoice->nurse_id = $request->nurse;
         $invoice->patient_id= $request->patient;

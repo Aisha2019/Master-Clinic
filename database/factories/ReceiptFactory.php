@@ -23,5 +23,7 @@ $factory->define(receipt::class, function (Faker $faker) {
         },
         'day' => $faker->dateTime('now'),
         'total_price' => $faker->numberBetween(100, 1000),
+        'discount' => $faker->numberBetween(.01, .90),
+        'tax' => $faker->numberBetween(.01, .90),
     ];
 });
