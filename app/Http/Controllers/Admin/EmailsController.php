@@ -124,6 +124,9 @@ class EmailsController extends Controller
      */
     public function destroy(Request $request)
     {
+        if (!$request->emails) {
+            return back();
+        }
         $this->validate($request, [
             'emails.*' => 'required|exists:notifications,id',
         ]);

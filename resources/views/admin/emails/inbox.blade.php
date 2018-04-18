@@ -42,8 +42,8 @@
                 @csrf
                 {{ method_field('DELETE') }}
                 <button type="submit" class="btn btn-default btn-sm" title="Delete selected"><i class="far fa-trash-alt"></i></button>
-              </div>
-            </form>
+              </form>
+            </div>
             <form class="inline" method="post" action="{{ route('admin.emails.mark') }}">
               @csrf
               <button type="submit" class="btn btn-default btn-sm" title="Mark all as read"><i class="fa fa-check"></i></button>
@@ -96,7 +96,6 @@
       </div>
     </div>
     <!-- /.col -->
-  </div>
 </div>
   <!-- /.row -->
 </section>
