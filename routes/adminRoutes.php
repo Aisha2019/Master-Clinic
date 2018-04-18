@@ -127,7 +127,7 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::PATCH('/admin/material/update/{material}', 'MaterialsController@update');
 	// Delete material
 	Route::DELETE('/admin/material/delete/{material}','MaterialsController@destroy')->name('admin.material.delete');
-    
+
     // Admin emails patients view
 	Route::get('/admin/patient/email/{patient?}', 'EmailsController@create')->name('admin.patient.email');
 	Route::POST('/admin/patient/email', 'EmailsController@store');
@@ -135,4 +135,19 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::get('/admin/inbox/', 'EmailsController@index')->name('admin.inbox');
 	Route::get('/admin/emails/{email}', 'EmailsController@show')->name('admin.email.show');
 	Route::DELETE('/admin/emails/delete', 'EmailsController@destroy')->name('admin.email.delete');
+
+	// add new invoice 
+	Route::get('/admin/invoice/add', 'InvoicesController@add')->name('admin.invoice.add');
+	Route::post('/admin/invoice/add', 'InvoicesController@store');
+
+	// View Invoices
+	Route::get('/admin/invoice/view', 'InvoicesController@view')->name('admin.invoice.view');
+	// update invoice's info
+	Route::get('/admin/invoice/update/{invoice}', 'InvoicesController@edit')->name('admin.invoice.update');
+	Route::PATCH('/admin/invoice/update/{invoice}', 'InvoicesController@update');
+	// Delete invoice
+	Route::DELETE('/admin/invoice/delete/{invoice}','InvoicesController@destroy')->name('admin.invoice.delete');
+	// View details of an invoice
+	Route::get('/admin/invoice/view/{invoice}', 'InvoicesController@show')->name('admin.invoice.show');
+	
 });
