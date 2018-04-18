@@ -2,35 +2,28 @@
 
 namespace App\Notifications;
 
-use App\Notifications\MailExtended;
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
-class AdminEmailNotification extends Notification implements ShouldQueue
+class PatientEmailNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    protected $email;
+    protected $message;
     protected $subject;
-    protected $patient_name;
-    protected $admin_email;
+    protected $patient_id;
     /**
      * Create a new notification instance.
      *
-     * @param $email => email content
-     * @param $subject => email subject
-     * @param $patient_name => patient name
-     * @param $admin_email => admin email
      * @return void
      */
-    public function __construct($email, $subject, $patient_name, $admin_email)
+    public function __construct($message, $subject, $patient_id)
     {
-        $this->email = $email;
+        $this->message = $message;
         $this->subject = $subject;
-        $this->patient_name = $patient_name;
-        $this->admin_email = $admin_email;
+        $this->patient_id = $patient_id;
     }
 
     /**
@@ -41,7 +34,7 @@ class AdminEmailNotification extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
+        return ['database'];
     }
 
     /**
@@ -53,8 +46,9 @@ class AdminEmailNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject($this->subject)
-                    ->markdown('mail.admin', ['content' => $this->email, 'patient_name' => $this->patient_name]);
+                    ->line('The introduction to the notification.')
+                    ->action('Notification Action', url('/'))
+                    ->line('Thank you for using our application!');
     }
 
     /**
@@ -66,9 +60,9 @@ class AdminEmailNotification extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            'from' => $this->admin_email,
-            'message' => $this->email,
+            'message' => $this->message,
             'subject' => $this->subject,
+            'patient_id' => $this->patient_id,
         ];
     }
 }

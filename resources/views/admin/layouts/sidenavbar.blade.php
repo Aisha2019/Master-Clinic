@@ -137,6 +137,23 @@
           </ul>
         </li>
 
+        <li class="treeview {{ App\Navigation::setActive('admin.inbox') }} {{ App\Navigation::setActive('admin.patient.email') }} {{ App\Navigation::setActive('admin.email.show') }}">
+          <a href="#">
+            <i class="fa fa-envelope"></i>
+            <span>Emails</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ App\Navigation::setActive('admin.inbox') }}">
+              <a href="{{ route('admin.inbox') }}"><i class="fa fa-circle text-red"></i> Inbox</a>
+            </li>
+            <li class="{{ App\Navigation::setActive('admin.patient.email') }}">
+              <a href="{{ route('admin.patient.email') }}"><i class="fa fa-circle text-aqua"></i> Send</a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </section>
     <!-- /.sidebar -->

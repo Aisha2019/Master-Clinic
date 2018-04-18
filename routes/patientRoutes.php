@@ -24,4 +24,9 @@ Route::group(['namespace' => 'Patient'],function(){
 	Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 	Route::get('/profile', 'HomeController@index')->name('profile');
 	Route::get('/home', 'HomeController@home')->name('home');
+
+
+	Route::get('/compose', 'EmailsController@view')->name('send.email');
+	Route::POST('/compose', 'EmailsController@send');
+
 });

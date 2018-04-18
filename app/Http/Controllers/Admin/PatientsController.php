@@ -92,18 +92,18 @@ class PatientsController extends Controller
 
     }
 
-    public function viewemail(Patient $patient)
+    // search on patient emails in database
+    public function search(Request $request)
     {
-        return view('admin.patient.email', compact('patient'));
+        foreach ($this->get_patients($request->term) as $patient) {
+            $emails[] = $patient->email;
+        }
+        return isset($emails) ? $emails : ['Not found'];
     }
 
-    public function email(Request $request, Patient $patient)
+    protected function get_patients($term)
     {
-        $this->validate($request, [
-            'email' => 'required|string|min:15',
-            'subject' => 'required|string|min:5',
-        ]);
-        $patient->sendAdminEmailNotification($request->email, $request->subject);
-        return redirect('/admin/patient/view')->with('status', 'Email is sent to ' . $patient->name);
+        // get emails like the search word with looping into database
+        return Patient::where('email', 'LIKE', '%' . $term . '%')->cursor();
     }
 }
