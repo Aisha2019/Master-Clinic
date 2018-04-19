@@ -45,9 +45,9 @@ Route::group(['namespace' => 'Admin'],function(){
     // delete patient account
     Route::DELETE('/admin/patient/delete/{patient}','PatientsController@destroy')->name('admin.patient.delete');
 
-    // Admin emails patients view
-	Route::get('/admin/patient/email/{patient}', 'PatientsController@viewemail')->name('admin.patient.email');
-	Route::POST('/admin/patient/email/{patient}', 'PatientsController@email');
+
+	// search on patients in database by mail
+	Route::GET('/admin/patient/search', 'PatientsController@search');
  
     // add new nurse 
 	Route::get('/admin/nurse/add', 'NursesController@add')->name('admin.nurse.add');
@@ -127,6 +127,14 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::PATCH('/admin/material/update/{material}', 'MaterialsController@update');
 	// Delete material
 	Route::DELETE('/admin/material/delete/{material}','MaterialsController@destroy')->name('admin.material.delete');
+
+    // Admin emails patients view
+	Route::get('/admin/patient/email/{patient?}', 'EmailsController@create')->name('admin.patient.email');
+	Route::POST('/admin/patient/email', 'EmailsController@store');
+	Route::POST('/admin/emails/mark', 'EmailsController@mark')->name('admin.emails.mark');
+	Route::get('/admin/inbox/', 'EmailsController@index')->name('admin.inbox');
+	Route::get('/admin/emails/{email}', 'EmailsController@show')->name('admin.email.show');
+	Route::DELETE('/admin/emails/delete', 'EmailsController@destroy')->name('admin.email.delete');
 
 	// add new invoice 
 	Route::get('/admin/invoice/add', 'InvoicesController@add')->name('admin.invoice.add');

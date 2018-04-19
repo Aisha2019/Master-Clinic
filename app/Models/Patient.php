@@ -26,8 +26,13 @@ class Patient extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'verify_token',
     ];
+
+    public static function byEmail($email)
+    {
+        return static::where('email', $email)->first();
+    }
 
     //Send password reset notification
     public function sendPasswordResetNotification($token)
@@ -35,9 +40,9 @@ class Patient extends Authenticatable
         $this->notify(new PatientResetPasswordNotification($token));
     }
 
-    //Send password reset notification
-    public function sendAdminEmailNotification($email, $subject)
+    //Send email from admin to patient notification
+    public function sendAdminEmailNotification($email, $subject, $admin_email)
     {
-        $this->notify(new AdminEmailNotification($email, $subject, $this->name));
+        $this->notify(new AdminEmailNotification($email, $subject, $this->name, $admin_email));
     }
 }

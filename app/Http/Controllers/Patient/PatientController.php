@@ -17,8 +17,6 @@ class PatientController extends Controller
     	$this->middleware('auth');
     }
 
-     
-
     public function photo(Request $request)
     {
     	$this->validate($request, [
