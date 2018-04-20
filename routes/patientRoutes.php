@@ -25,11 +25,17 @@ Route::group(['namespace' => 'Patient'],function(){
 	Route::get('/profile', 'HomeController@index')->name('profile');
 	Route::get('/home', 'HomeController@home')->name('home');
 
+<<<<<<< HEAD
     Route::get('/reservations/create', 'ReservationController@get')->name('reservations.create');
     Route::post('/reservations/create', 'ReservationController@store');
 
     Route::get('/reservations/history', 'ReservationController@history')->name('Reservations.history');
 
     Route::get('/reservations/update/{reservation}', 'ReservationController@edit')->name('reservations.update');
+=======
+
+	Route::get('/compose', 'EmailsController@view')->name('send.email');
+	Route::POST('/compose', 'EmailsController@send');
+>>>>>>> eed640b0e1963465abb6bc6decabe8ba4b054804
 
 });

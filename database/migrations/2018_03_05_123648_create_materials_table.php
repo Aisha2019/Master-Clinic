@@ -19,6 +19,7 @@ class CreateMaterialsTable extends Migration
             $table->integer('clinic_id')->unsigned();
             $table->foreign('clinic_id')->references('id')->on('clinics')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('num');
+            $table->integer('min_num')->default(10);
             $table->float('cost');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');

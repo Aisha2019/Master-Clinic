@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PatientRequest;
 use App\Models\Patient;
+use File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 class PatientsController extends Controller
 {
@@ -86,7 +88,22 @@ class PatientsController extends Controller
 
         $patient->save();
 
-        return redirect('/admin/patient/view')->with('status' ,'patient Added Successfully!!');
+        return redirect('/admin/patient/view')->with('status' ,'Patient Added Successfully!!');
 
+    }
+
+    // search on patient emails in database
+    public function search(Request $request)
+    {
+        foreach ($this->get_patients($request->term) as $patient) {
+            $emails[] = $patient->email;
+        }
+        return isset($emails) ? $emails : ['Not found'];
+    }
+
+    protected function get_patients($term)
+    {
+        // get emails like the search word with looping into database
+        return Patient::where('email', 'LIKE', '%' . $term . '%')->cursor();
     }
 }

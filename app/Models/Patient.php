@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
-//Notification for patient
+use App\Notifications\AdminEmailNotification;
 use App\Notifications\PatientResetPasswordNotification;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Patient extends Authenticatable
 {
@@ -27,12 +26,23 @@ class Patient extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'verify_token',
     ];
+
+    public static function byEmail($email)
+    {
+        return static::where('email', $email)->first();
+    }
 
     //Send password reset notification
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new PatientResetPasswordNotification($token));
+    }
+
+    //Send email from admin to patient notification
+    public function sendAdminEmailNotification($email, $subject, $admin_email)
+    {
+        $this->notify(new AdminEmailNotification($email, $subject, $this->name, $admin_email));
     }
 }

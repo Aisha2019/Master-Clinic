@@ -45,8 +45,7 @@ class AdminsController extends Controller
         $admin->status = 1;
 
         $admin->save();
-
-        return redirect('/admin/home')->with('status' ,'Admin Added Successfully!!');
+        return redirect('/admin/admin/view')->with('status' ,'Admin Added Successfully!!');
     }
 
     public function view(Request $request)

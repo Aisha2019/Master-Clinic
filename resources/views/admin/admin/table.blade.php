@@ -140,7 +140,8 @@
       	"searching": true,
       	"ordering": true,
       	"info": false,
-      	"autoWidth": false
+      	"autoWidth": false,
+      	"order": [[ 0, "desc" ]]
     });
   });
 </script>

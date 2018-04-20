@@ -24,7 +24,9 @@ class CreateReceiptsTable extends Migration
             $table->integer('admin_id')->unsigned();
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('day');
-            $table->string('total_price');
+            $table->float('tax')->default(0);
+            $table->float('discount')->default(0);
+            $table->float('total_price');
             $table->timestamps();
         });
     }
