@@ -24,4 +24,12 @@ Route::group(['namespace' => 'Patient'],function(){
 	Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 	Route::get('/profile', 'HomeController@index')->name('profile');
 	Route::get('/home', 'HomeController@home')->name('home');
+
+    Route::get('/reservations/create', 'ReservationController@get')->name('reservations.create');
+    Route::post('/reservations/create', 'ReservationController@store');
+
+    Route::get('/reservations/history', 'ReservationController@history')->name('Reservations.history');
+
+    Route::get('/reservations/update/{reservation}', 'ReservationController@edit')->name('reservations.update');
+
 });

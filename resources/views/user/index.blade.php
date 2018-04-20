@@ -25,6 +25,10 @@
 			@guest
 				<a class="btn btn-lg btn-info" href="{{ route('login') }}" >Log in</a>
 			@endguest
+			<br/>
+			@auth
+			<a class="btn btn-lg btn-info" href="{{ route('reservations.create') }}" style="margin-top: 20px" > Make an appointment</a>
+            @endauth
 		</div>
 		</div>
 	</div>

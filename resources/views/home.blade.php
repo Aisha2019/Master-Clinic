@@ -13,6 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                <a class="btn btn-lg btn-info"  >Make an appointment</a>
 
                     You are logged in!
                 </div>
