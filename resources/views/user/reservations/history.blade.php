@@ -44,6 +44,7 @@ Reservations
       <th scope="col">date</th>
       <th scope="col">Time</th>
       <th scope="col">Status</th>
+      <th scope="col">Attendance</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -55,12 +56,34 @@ Reservations
       <td>{{ $reservation['clinic'] }}</td>
       <td>{{ $reservation['date'] }}</td>
       <td>{{ $reservation['time'] }}</td>
-      @if(!$reservation['nurse'])
+
+
+      
+      @if($reservation['nurse']==null)
       <td> Waiting Confirmation ...  </td>
+      @elseif($reservation['response']==1) 
+      <td>Reservation rejected by {{ $reservation['nurse'] }}</td>
       @else
       <td>Reservation Confirmed by {{ $reservation['nurse'] }}</td>      
       @endif
-      <td> <a class="btn btn-warning btn-xs" href="{{ route('reservations.update',  $reservation['id'] ) }}"><i class="fa fa-edit"></i></a></td>
+       <td>
+     @if($reservation['date']>date('d-m-Y'))
+          @if($reservation['attend']==1)
+           Attended
+           @else
+           Didn't attend
+           @endif
+      @else
+       ...
+      @endif
+       </td>
+      <td>
+      @if($reservation['response']!=1 && $reservation['date']<=date('d-m-Y'))
+
+       <a class="btn btn-warning btn-xs" href="{{ route('reservations.update',  $reservation['id'] ) }}"><i class="fa fa-edit"></i></a>
+      @endif
+     </td>
+     
     </tr>
     @endforeach
   </tbody>

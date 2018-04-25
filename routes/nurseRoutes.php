@@ -35,6 +35,9 @@ Route::group(['namespace' => 'Nurse'],function(){
 
     Route::PATCH('/nurse/patient/status/{patient}','PatientsController@change_status')->name('nurse.patient.update.status');
 
+   Route::PATCH('/nurse/reservations/{reservation}','ReservationController@change_attendance')->name('nurse.reservations.update.attendance');
+
+
     Route::DELETE('/nurse/patient/table/{patient}','PatientsController@destroy')->name('nurse.patient.delete');
 
   
@@ -53,9 +56,6 @@ Route::group(['namespace' => 'Nurse'],function(){
 	// get page where nurse reset password
 	Route::GET('nurse-password/reset/{token}','Auth\ResetPasswordController@showResetForm')->name('nurse.password.reset');
 
-<<<<<<< HEAD
-
-=======
 	// add new invoice 
 	Route::get('/nurse/invoice/add', 'InvoicesController@add')->name('nurse.invoice.add');
 	Route::post('/nurse/invoice/add', 'InvoicesController@store');
@@ -69,5 +69,4 @@ Route::group(['namespace' => 'Nurse'],function(){
 	Route::DELETE('/nurse/invoice/delete/{invoice}','InvoicesController@destroy')->name('nurse.invoice.delete');
 	// View details of an invoice
 	Route::get('/nurse/invoice/view/{invoice}', 'InvoicesController@show')->name('nurse.invoice.show');
->>>>>>> eed640b0e1963465abb6bc6decabe8ba4b054804
 });

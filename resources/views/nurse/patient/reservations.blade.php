@@ -49,7 +49,7 @@
             <!-- timeline time label -->
             @foreach ($reservations as $reservation)
             <li class="time-label">
-                  <span class="bg-red">
+                  <span class="bg-blue">
                    {{ $reservation['date'] }}
                   </span>
             </li>
@@ -68,9 +68,57 @@
                 <div class="timeline-body">
                   Doctor : {{ $reservation['doctor'] }}
                   <br/>
+                   <br/>
                   Clinic : {{ $reservation['clinic'] }}
                   <br/>
-                  Nurse  : {{ $reservation['nurse'] }}
+                   <br/>
+                  @if($reservation['response']==1)
+                  <a  class="bg-red btn-xs">
+               Rejected by {{ $reservation['nurse'] }}
+                </a>
+                  @elseif($reservation['nurse']==null)
+                   <a href="#" class="bg-yellow btn-xs">
+                  Waiting Confirmation ...
+                  </a>
+                  @else 
+                    <a href="#" class="bg-green btn-xs">
+                  Confirmed by {{ $reservation['nurse'] }}
+                   </a>
+                  @endif
+                </div>
+                <div style="margin: 10px">
+                  @if($reservation['nurse']!=null&&$reservation['response']==0)
+                   @if($reservation['date']>date('d-M-Y'))
+                     @if($reservation['attend']==1)
+                      <a href="#" class="bg-green btn-xs">
+                     Attended
+                      </a>
+                     @else
+                     <a href="#" class="bg-red btn-xs">
+                     Didn't attend
+                     </a>
+                     @endif
+                   @elseif($reservation['date']==date('d-M-Y'))
+                     @if($reservation['attend']==1)
+                      <a href="#" class="bg-green btn-xs">
+                     Attended
+                      </a>                 
+                      @else
+                     <a href="#" class="bg-aqua btn-xs"
+                     onclick="
+                      {
+                        $(this).siblings('form').submit();
+                      }">
+                      Confirm Attendance
+                     </a>
+                     <form action="{{ route('nurse.reservations.update.attendance', $reservation['id'])}}" method="POST">
+                        @csrf
+                        {{ method_field('PATCH') }}
+                    </form> 
+                     @endif
+                  @endif
+                  @endif
+
                 </div>
                 <div class="timeline-footer">
                   @if(!$reservation['nurse'])

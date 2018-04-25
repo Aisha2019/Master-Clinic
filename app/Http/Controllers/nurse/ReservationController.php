@@ -22,7 +22,14 @@ class ReservationController extends Controller
         $this->middleware('auth:nurse');
     }
  
-
+    public function change_attendance(Reservation $reservation)
+    {
+        $reservation=Reservation::find($reservation->id);   
+        $reservation->attend=1;
+        $reservation->save();
+       
+        return self::get()->with('status','User attendance has been confirmed');
+    }
     public function get()
     {
       $today=Carbon::now();
@@ -44,12 +51,15 @@ class ReservationController extends Controller
 
     public function destroy(Reservation $reservation)
     {
-        $reservation->delete();
+        $reservation->reject=1;
+        $reservation->nurse_id=auth()->user()->id;
+        $reservation->save();
         return back()->with('status' ,'
         	Reservation rejected ');  
     }
     public function search(Request $request)
     {
+  
       $date=$request->Reservationdate;
       $reservations=Reservation::where('time','LIKE',"%{$date}%")->orderBy('time','desc')->get();
       $array=self::getdata($reservations);      
@@ -69,6 +79,8 @@ class ReservationController extends Controller
       $patient=Patient::where('id',$reservation->patient_id)->value('name');
       $clinic=clinic::where('id',$reservation->clinic_id)->value('name');
       $nurse=Nurse::where('id',$reservation->nurse_id)->value('name');
+       $response=$reservation->reject;
+       $attendance=$reservation->attend;
        array_push($array, 
         array(
         	'id'=>$reservation->id,
@@ -78,7 +90,9 @@ class ReservationController extends Controller
             'patient'=>$patient,
             'date'=>$date,
             'time'=>$time,
-             )
+            'response'=>$response,
+             'attend'=>$attendance,
+           )
         );
     }  
   return $array;

@@ -25,6 +25,7 @@ class CreateReservationsTable extends Migration
             $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('time')->onUpdate('CURRENT_TIMESTAMP');
             $table->boolean('attend')->default(0);
+            $table->boolean('reject')->default(0);
             $table->timestamps();
         });
     }

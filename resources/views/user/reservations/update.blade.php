@@ -11,8 +11,6 @@ Reservations
 
 @section('body')
   {{-- here goes content of pages --}}
-
-
 <section class="container">
  <div class="box box-primary">
   <div class="box-body">
@@ -23,26 +21,50 @@ Reservations
         <div class="alert alert-success">{{ session('status') }}</div>
       @endif
  <p class="login-box-msg h3" style="text-align:center; margin:70px; margin-top:100px ">Make a Reservation</p>
-
-  <form  method="post" action="{{ route('reservations.create') }}">
+        @foreach ($reservations as  $reservation)
+  <form  method="post" action="{{ route('reservations.update',$reservation['id']) }}">
   @csrf
+   {{ method_field('PATCH') }}
+
+
 <div class="form-row">
    <div class="input-group-prepend col-md-6">
-    <label class="input-group-text" for="inputGroupSelect01">Doctor</label>
-  <select class="custom-select" id="inputGroupSelect01" name="admin" required>
-    <option selected>{{ $reservation['doctor'] }}</option>
 
+    <label class="text" for="inputGroupSelect01">Doctor</label>
+  </div>
+   <div class="input-group-prepend col-md-6">
+    <label class="text" for="inputGroupSelect01">Clinic</label>
+
+</div>
+</div>
+
+
+<div class="form-row">
+   <div class="input-group-prepend col-md-6">
+
+    <input class="form-control" id="disabledInput" type="text" placeholder="{{ $reservation['doctor'] }}" disabled  >
+  </div>
+   <div class="input-group-prepend col-md-6">
+    <input class="form-control" id="disabledInput" type="text" placeholder="{{ $reservation['clinic'] }}" disabled>
+
+</div>
+</div>
+
+<br/>
+<br/>
+<div class="form-row">
+   <div class="input-group-prepend col-md-6">
+  <select class="custom-select" id="inputGroupSelect01" name="admin" >
+    <option selected >Change Doctor</option>
              @foreach ($admins as $admin)
                   <option value="{{ $admin->id }}" {{
                    (old('admin') == $admin->id ) ? 'selected="selected"' : ''}}>{{ $admin->name }}</option>
-              @endforeach
+             @endforeach
   </select>
 </div>
-
    <div class="input-group-prepend col-md-6">
-    <label class="input-group-text" for="inputGroupSelect01">Clinic</label>
-    <select class="custom-select" id="inputGroupSelect01" name="clinic" required>
-    <option selected>{{ $reservation['clinic'] }}</option>
+    <select class="custom-select" id="inputGroupSelect01" name="clinic" >
+    <option selected>Change Clinic</option>
 
               @foreach ($clinics as $clinic)
                   <option value="{{ $clinic->id }}" {{ (old('clinic') == $clinic->id ) ? 'selected="selected"' : ''}}>{{ $clinic->name }}</option>
@@ -52,15 +74,19 @@ Reservations
 </div>
   <br/>  
   <br/>
-        <div class="form-group has-feedback">
-          <input type="text" id="datepicker" class="form-control " placeholder=" Reservation Date" value="{{ old('Reservationdate') }}" name="Reservationdate">
-        </div>
+
+    <div class="input-group date datepicker" data-date-format="dd-mm-yyyy" data-provide="datepicker" id="datepicker"  >
+    <input type="text" class="form-control" value="{{ $reservation['date'] }}" name="date">
+     <div class="input-group-addon">
+        <span class="glyphicon glyphicon-th"></span>
+      </div>
+</div>
 
        <br/>
               <div class="bootstrap-timepicker">
                 <div class="form-group">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="timepicker" name="Reservationtime" placeholder="" value="">
+                    <input type="text" class="form-control timepicker" id="timepicker" name="time" placeholder="" value="{{ $reservation['time'] }}">
                     <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
                     </div>
@@ -71,8 +97,18 @@ Reservations
               </div>
        <br/>
       <button type="submit" class="btn btn-info  btn-flat" style="margin-bottom: 20px">Update</button>
-
- </form>
+       </form>
+        <button type="submit" class="btn btn-info  btn-flat" style="margin-bottom: 20px" onclick="
+        event.preventDefault();
+        if(confirm('Are you sure you want to delete this reservation?')) {
+          $(this).siblings('form').submit();
+        }">Delete</button>
+      <form action="{{ route('user.reservation.delete',$reservation['id']) }}" method="POST">
+            @csrf
+            {{ method_field('DELETE') }}
+        </form>
+@endforeach
+ 
 </div>
 </div>
 </section>
@@ -83,22 +119,19 @@ Reservations
   {{-- here goes js files --}}
   <script src="{{ asset('/nurse_styles/js/bootstrap-datepicker.js') }}"></script>
   <script src="{{ asset('/user_styles/js/bootstrap-timepicker.min.js') }}"></script>
+    <script >
+      $('.datepicker').datepicker({
+    format: 'dd-mm-yyyy',
+    startDate: '1d',
+     autoclose: true,
+     });
 
-<script>
-   $(function() {
-    //Date picker
-      $('#datepicker').datepicker({
-        autoclose: true,
-        format: 'yyyy-mm-dd'
-      });
-    });
-    //Timepicker
     </script>
     <script>
     $(function(){
     $("#timepicker").timepicker({
       autoclose: true,
-      format: 'h:i A',
+      format: 'H:i A',
     });
   });
 
