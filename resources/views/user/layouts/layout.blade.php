@@ -11,6 +11,5 @@
 		
 	@include('user.layouts.footer')
 	@include('user.layouts.scrollTop')
-@include('nurse.layouts.js')
 </body>
 </html>
