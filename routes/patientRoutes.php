@@ -26,7 +26,25 @@ Route::group(['namespace' => 'Patient'],function(){
 	Route::get('/home', 'HomeController@home')->name('home');
 
 
+    Route::get('/reservations/create', 'ReservationController@get')->name('reservations.create');
+    Route::post('/reservations/create', 'ReservationController@store');
+
+    Route::get('/reservations/history', 'ReservationController@history')->name('Reservations.history');
+
+    Route::get('/reservations/update/{reservation}', 'ReservationController@edit')->name('reservations.update');
+
+	Route::PATCH('/reservations/update/{reservation}', 'ReservationController@update');
+
 	Route::get('/compose', 'EmailsController@view')->name('send.email');
 	Route::POST('/compose', 'EmailsController@send');
+
+
+	Route::DELETE('/reservations/history/{reservation}', 'ReservationController@destroy')->name('user.reservation.delete');
+
+	// View Invoices
+	Route::get('/invoice/view', 'InvoicesController@view')->name('patient.invoice.view');
+
+	// View details of an invoice
+	Route::get('/invoice/view/{invoice}', 'InvoicesController@show')->name('patient.invoice.show');
 
 });
