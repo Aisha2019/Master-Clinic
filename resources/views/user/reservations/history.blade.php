@@ -67,7 +67,7 @@ Reservations
       <td>Reservation Confirmed by {{ $reservation['nurse'] }}</td>      
       @endif
        <td>
-     @if($reservation['date']>date('d-m-Y'))
+     @if($reservation['date']<date('d-m-Y'))
           @if($reservation['attend']==1)
            Attended
            @else
