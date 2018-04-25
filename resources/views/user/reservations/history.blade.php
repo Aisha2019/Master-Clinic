@@ -1,6 +1,7 @@
 @extends('user.layouts.layout')
+
 @section('title')
-Reservations
+ Reservations
 @endsection
 
 @section('css')

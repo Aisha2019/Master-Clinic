@@ -1,4 +1,4 @@
-@extends('admin.layouts.layout')
+@extends('user.layouts.layout')
 
 @section('title')
   {{-- here goes the title of page --}}
@@ -18,14 +18,13 @@
 @endif
 <div >
   <!-- Main content -->
-    <section class="invoice" >
+    <section class="invoice" style="margin: 25px 25px 25px 50px; ">
       <!-- title row -->
       <div class="row">
         <div class="col-xs-12">
-          <h2 class="page-header">
+          <h2 class="page-header" style="margin-top: 25px">
             
   <img src="{{ asset('/user_styles/images/testlogo.png') }}" /> Master Clinic
-            <small class="pull-right">Date: {{ $invoice->date}}  {{ $invoice->time}} </small>
              
           </h2>
         </div>
@@ -90,7 +89,7 @@
           
 
           <div class="table-responsive">
-            <table class="table">
+            <table class="table table-bordered">
               <tr>
                 <th style="width:50%">Subtotal:</th>
                 <td>{{$invoice->total_price}}</td>
@@ -117,7 +116,7 @@
       <!-- this row will not appear when printing -->
       <div class="row no-print">
         <div class="col-xs-12">
-          <a onclick="window.print();" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
+          <a onclick="window.print();" target="_blank" class="btn btn-secondary"><i class="fa fa-print"></i> Print</a>
           
         </div>
       </div>

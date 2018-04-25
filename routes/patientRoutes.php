@@ -41,4 +41,10 @@ Route::group(['namespace' => 'Patient'],function(){
 
 	Route::DELETE('/reservations/history/{reservation}', 'ReservationController@destroy')->name('user.reservation.delete');
 
+	// View Invoices
+	Route::get('/invoice/view', 'InvoicesController@view')->name('patient.invoice.view');
+
+	// View details of an invoice
+	Route::get('/invoice/view/{invoice}', 'InvoicesController@show')->name('patient.invoice.show');
+
 });
