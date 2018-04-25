@@ -4,6 +4,15 @@ Route::group(['namespace' => 'Nurse'],function(){
 	// Get Nurse Home page
 	Route::get('/nurse/home', 'HomeController@index')->name('nurse.home');
 
+	Route::get('/nurse/patient/reservations', 'ReservationController@get')->name('nurse.reservations');
+
+	Route::post('/nurse/patient/reservations', 'ReservationController@search');
+
+	Route::get('/nurse/patient/reservations/{reservation_id}', 'ReservationController@confirm')->name('reservations.confirm');
+
+   Route::DELETE('/nurse/patient/reservations/{reservation}', 'ReservationController@destroy')->name('reservation.delete');
+
+
 	// Get Admin Home page
 	Route::get('/nurse/profile', 'ProfileController@index')->name('nurse.profile');
 	// Update Admin Profile Picture
@@ -12,6 +21,7 @@ Route::group(['namespace' => 'Nurse'],function(){
 	Route::PATCH('/nurse/update', 'ProfileController@update')->name('nurse.profile.update');
 	// Change nurse password
 	Route::PATCH('/nurse/password/update', 'ProfileController@password')->name('nurse.password.update');
+
 
 	// add new patient routes
 	Route::get('/nurse/patient/add', 'PatientsController@add')->name('nurse.patient.add');
@@ -25,7 +35,12 @@ Route::group(['namespace' => 'Nurse'],function(){
 
     Route::PATCH('/nurse/patient/status/{patient}','PatientsController@change_status')->name('nurse.patient.update.status');
 
+   Route::PATCH('/nurse/reservations/{reservation}','ReservationController@change_attendance')->name('nurse.reservations.update.attendance');
+
+
     Route::DELETE('/nurse/patient/table/{patient}','PatientsController@destroy')->name('nurse.patient.delete');
+
+  
 
 	// get nurse login page
 	Route::GET('nurse/login','Auth\LoginController@showLoginForm')->name('nurse.login');

@@ -1,3 +1,4 @@
+
 @extends('nurse.layouts.layout')
 
 @section('title')

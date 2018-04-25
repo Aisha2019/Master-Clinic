@@ -14,6 +14,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('profile') }}">Profile</a>
                     </li>
+
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('Reservations.history') }}">History</a>
+                    </li>
                 @endauth
             </ul>
             <ul class="navbar-nav ml-auto">

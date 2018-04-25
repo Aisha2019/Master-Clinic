@@ -2,11 +2,15 @@
 <html lang="{{ app()->getLocale() }}">
 	@include('user.layouts.head')
 <body style="margin-top: 55px;">
+
 	@include('user.layouts.navbar')
 	
-	@section('body')
-		@show
+       
+			@section('body')
+				@show
+		
 	@include('user.layouts.footer')
 	@include('user.layouts.scrollTop')
+@include('nurse.layouts.js')
 </body>
 </html>

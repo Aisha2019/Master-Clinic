@@ -13,12 +13,20 @@
         </div>
       </div>
       <ul class="sidebar-menu">       
+
+
+
+         <li class="treeview">
+
        <li class="{{ App\Navigation::setActive('nurse.home') }}">
           <a href="{{ route('nurse.home') }}"><i class="fa fa-circle text-green"></i> <span>Home</span></a>
         </li>
         <li class="{{ App\Navigation::setActive('nurse.profile') }}">
           <a href="{{ route('nurse.profile') }}"><i class="fa fa-circle text-red"></i> <span>Profile</span></a>
         </li>
+
+         <li><a href="{{ route('nurse.reservations') }}"><i class="fa fa-circle text-blue"></i> <span>Reservations</span></a></li>
+
         <li class="treeview {{ App\Navigation::setActive('nurse.patient.view') }} {{ App\Navigation::setActive('nurse.patient.add') }}">
           <a href="#">
             <i class="fa fa-users"></i>
@@ -27,6 +35,7 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
+
           <ul class="treeview-menu">
             <li class="{{ App\Navigation::setActive('nurse.patient.view') }}">
               <a href="{{ route('nurse.patient.view') }}"><i class="fa fa-circle text-red"></i> View</a>
