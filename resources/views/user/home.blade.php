@@ -197,8 +197,6 @@
 <script src="{{ asset('/user_styles/js/bootstrap-datepicker.js') }}"></script>
 <script>
 	$(function() {
-		
-
 	    var wrapper = $('<div/>').css({height:0,width:0,'overflow':'hidden'});
 		var fileInput = $('input:file').wrap(wrapper);
 
@@ -215,6 +213,7 @@
 	      autoclose: true,
 	      format: 'yyyy-mm-dd'
 	    });
+
 	});
 </script>
 @endsection
