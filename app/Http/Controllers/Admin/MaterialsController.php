@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\admin;
 use App\Models\category;
 use App\Models\clinic;
 use App\Models\material;
+use App\Notifications\MaterialsNotifications;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Validation\Rule;
 class MaterialsController extends Controller
 {
@@ -96,6 +99,26 @@ class MaterialsController extends Controller
     {
         $material->delete();
         return back()->with('status' ,'Material  has been deleted Successfully!!');  
+    }
+
+    public function decrease(Request $request,material $material)
+    {
+
+        if($material->num == 0)
+        {
+           return back()->with('status' ,'There is not enough amount of '.$material->name); 
+        }
+        else
+        {
+            $material->num = $material->num-1 ;
+            $admins = admin::all();
+            if($material->num <= $material->min_num)
+            {
+                Notification::send($admins, new MaterialsNotifications($material->name ." is less than ".$material->min_num));
+            }
+            $material->save();
+            return back()->with('status' ,'You used '.$material->name);
+        }
     }
 
 }

@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="{{ asset('/admin_styles/css/datepicker3.css') }}">
   <!-- Bootstrap time Picker -->
   <link rel="stylesheet" href="{{ asset('/admin_styles/css/bootstrap-timepicker.min.css') }}">
+
+  <link rel="stylesheet" href="{{ asset('/admin_styles/css/dataTables.bootstrap.css') }}">
 @endsection
 
 @section('body')
@@ -97,9 +99,8 @@
                 </div>
         </div>
 
-      
-        
-              
+
+       
         <button type="submit" class="btn btn-primary  btn-flat" style="">ADD</button>
       </form>
 
@@ -129,6 +130,24 @@
     //Timepicker
     $(".timepicker").timepicker({
       showInputs: false
+    });
+  });
+</script>
+
+<!-- DataTables -->
+<script src="{{ asset('/admin_styles/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/admin_styles/js/dataTables.bootstrap.min.js') }}"></script>
+<!-- page script -->
+<script>
+  $(function () {
+    
+    $('#example1').DataTable({
+        "paging": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": false,
+        "autoWidth": false,
     });
   });
 </script>

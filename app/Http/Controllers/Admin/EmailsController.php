@@ -23,9 +23,10 @@ class EmailsController extends Controller
      */
     public function index()
     {
-        $notifications = Auth::user()->notifications()->paginate(15);
+        $notifications = Auth::user()->notifications()->where('type','App\Notifications\PatientEmailNotification')->paginate(15);
         foreach ($notifications as $notification) {
             $notification['sender'] = Patient::find($notification->data['patient_id']);
+        
         }
         return view('admin.emails.inbox', compact('notifications'));
     }

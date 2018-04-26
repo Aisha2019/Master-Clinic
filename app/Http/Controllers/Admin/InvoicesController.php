@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Patient;
 use App\Models\admin;
 use App\Models\clinic;
+use App\Models\material;
 use App\Models\nurse;
 use App\Models\receipt;
 use Carbon\Carbon;
@@ -27,7 +28,12 @@ class InvoicesController extends Controller
     	$nurses = nurse::all();
     	$patients = Patient::all();
     	$admins = admin::all();
-        return view('admin.invoice.add', compact('clinics','nurses','patients','admins'));
+        $materials = material::all();
+        foreach ($materials as $material) {
+            $material->clinic_name = DB::table('clinics')->where('id', $material->clinic_id)->value('name');
+            $material->category_name = DB::table('categories')->where('id', $material->category_id)->value('name');
+        }
+        return view('admin.invoice.add', compact('clinics','nurses','patients','admins','materials'));
     }
 
     // store the invoice data

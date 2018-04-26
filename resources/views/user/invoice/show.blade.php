@@ -89,7 +89,7 @@
           
 
           <div class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-bordered table-striped">
               <tr>
                 <th style="width:50%">Subtotal:</th>
                 <td>{{$invoice->total_price}}</td>

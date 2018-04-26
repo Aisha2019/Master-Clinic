@@ -127,6 +127,9 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::PATCH('/admin/material/update/{material}', 'MaterialsController@update');
 	// Delete material
 	Route::DELETE('/admin/material/delete/{material}','MaterialsController@destroy')->name('admin.material.delete');
+	// Use material
+	Route::get('/admin/material/decrease/{material}','MaterialsController@decrease');
+	Route::PATCH('/admin/material/decrease/{material}', 'MaterialsController@decrease')->name('admin.material.use');
 
     // Admin emails patients view
 	Route::get('/admin/patient/email/{patient?}', 'EmailsController@create')->name('admin.patient.email');
@@ -149,5 +152,12 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::DELETE('/admin/invoice/delete/{invoice}','InvoicesController@destroy')->name('admin.invoice.delete');
 	// View details of an invoice
 	Route::get('/admin/invoice/view/{invoice}', 'InvoicesController@show')->name('admin.invoice.show');
+
+	// mark notification as read
+	Route::get('admin/notification/mark/{notification}','NotificationsController@mark');
+	Route::PATCH('admin/notification/mark/{notification}','NotificationsController@mark')->name('admin.notification.mark');
+
+	// view notifications 
+	Route::get('admin/notification/view','NotificationsController@index')->name('admin.notification.view');
 	
 });
