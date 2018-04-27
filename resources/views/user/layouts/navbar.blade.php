@@ -22,6 +22,12 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ route('patient.invoice.view') }}">Invoices</a>
                     </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('contact_us') }}">ContactUs</a>
+                    </li>
+
+
                 @endauth
             </ul>
 

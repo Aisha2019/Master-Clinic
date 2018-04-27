@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Patient;
 
 use App\Http\Controllers\Controller;
+use App\Models\Patient;
+use App\Models\admin;
+use App\Models\clinic;
+use App\Models\prescription;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,22 +16,26 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    
 
     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('user.home');
-    }
+    
     public function home()
     {
-        return view('user.index');
+        $clinics = clinic::count();
+        $patients = Patient::count();
+        $operations = prescription::count();
+        $doctors = admin::all();
+        $doc_num = admin::count();
+        return view('user.index',compact('clinics','patients','operations','doctors','doc_num'));
+    }
+    public function contact()
+    {
+       $clinics = clinic::all();
+       return view('user.clinic.contact',compact('clinics'));
     }
 }

@@ -20,8 +20,9 @@
 		" >
 		<div class="container">
 		<div class="col-md-6 px-0">
-			<h1 class="display-4 font-italic">Title of a longer featured blog post</h1>
-			<p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.</p>
+			<h1 class="display-4 font-italic">Master Clinic</h1>
+			<p class="lead my-3">A Group of dental clinics.Here you can book an appointment with a doctor , clinic , date and time from your own choice.
+			You can also see all information about our clinics to see the nearest clinic to you.</p>
 			@guest
 				<a class="btn btn-lg btn-info" href="{{ route('login') }}" >Log in</a>
 			@endguest
@@ -40,9 +41,9 @@
 			<strong style="color: #3ea2b8">Us </strong>
 		</h1>
 		 <p>
-			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown...
-
-			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.
+			A Group of dental clinics.Here you can book an appointment with a doctor , clinic , date and time from your own choice.
+			You can also see all information about our clinics to see the nearest clinic to you.
+			We have the best doctors in Egypt,The best service ever.
 		 </p>
 	</div>
 
@@ -53,21 +54,21 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<i class="fa fa-building fa-3x pr-2"></i>
-						<strong class="timer" style="font-size: 40px"> 10 </strong>
+						<strong class="timer" style="font-size: 40px"> {{$clinics}} </strong>
 						<div>
 						 <strong style="font-size: 25px"> Clinics </strong>
 						</div>
 					</div>
 					<div class="col-sm-4">
 						<i class="fa fa-users fa-3x pr-2"></i>
-						<strong class="timer" style="font-size: 40px" > 7340 </strong>
+						<strong class="timer" style="font-size: 40px" > {{$patients}} </strong>
 						<div>
-						 <strong style="font-size: 25px"> Happy Clients </strong>
+						 <strong style="font-size: 25px"> Clients </strong>
 						</div>
 					</div>
 					<div class="col-sm-4">
 						<i class="fa fa-heartbeat fa-3x pr-2"></i>
-						<strong class="timer" style="font-size: 40px"> 4320 </strong>
+						<strong class="timer" style="font-size: 40px"> {{$operations}} </strong>
 						<div>
 						 <strong style="font-size: 25px"> Operations </strong>
 						</div>
@@ -85,7 +86,8 @@
 			<strong style="color: #3ea2b8">Services</strong>
 		</h1>
 		 <p>
-			Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.
+			We provide all dental services you may need. 
+			Here are some of our best services.
 		 </p>
 	</div>
 
@@ -152,45 +154,76 @@
 			<strong style="color: #3ea2b8">Doctors</strong>
 		</h1>
 		 <p>
-			Lorem Ipsum is simply dummy text of the printing and typesetting industry has been the industry's standard dummy text ever since the been when an unknown printer.
+			Here are contact info of our doctors.
 		 </p>
 	</div>
 
 		<!-- Doctors -->
+	@for($i=0 ; $i<$doc_num ; $i+=4 )
 	<div class="card-group mt-5 mb-5 mr-5 ml-5">
-	  <div class="card mr-3 ml-3">
-	    <img class="card-img-top" src="{{ asset('/user_styles/images/Dr1.jpg') }}" alt="Card image cap">
+
+	  <div class="card mr-3 ml-3" >
+	    <img class="card-img-top" src="{{ ($doctors[$i]->image) ? Storage::disk('local')->url($doctors[$i]->image) : asset('/admin_styles/images/defualt_male.png') }}" alt="Card image cap">
 	    <div class="card-body">
-	      <h5 class="card-title text-center">Jonathan Smith</h5>
-	      <p class="card-text">Lorem ipsum dolor Fusce varius euismod lacus eget feugiat rorem ipsum dolor consectetur Fusce varius [...] </p>
+	      <h5 class="card-title text-center">{{$doctors[$i]->name}}</h5>
+	      <b> Email : </b>{{$doctors[$i]->email}}<br>
+	      <b> Mobile : </b>{{$doctors[$i]->mobile}}<br>
+	      <b> Working Hours : </b><br>
+	      <b> From : </b><br>
+	      <b> To : </b><br>
 	      
 	    </div>
 	  </div>
-	  <div class="card mr-3 ml-3">
-	    <img class="card-img-top" src="{{ asset('/user_styles/images/Dr2.jpg') }}" alt="Card image cap">
+	  
+	  <div class="card mr-3 ml-3" >
+	  	@if($i != $doc_num-1)
+	    <img class="card-img-top" src="{{ ($doctors[$i+1]->image) ? Storage::disk('local')->url($doctors[$i+1]->image) : asset('/admin_styles/images/defualt_male.png') }}" alt="Card image cap" style="width:270px; height:270px;">
 	    <div class="card-body">
-	      <h5 class="card-title text-center">Fahima Zerin</h5>
-	      <p class="card-text">Lorem ipsum dolor Fusce varius euismod lacus eget feugiat rorem ipsum dolor consectetur Fusce varius [...] </p>
+	      <h5 class="card-title text-center">{{$doctors[$i+1]->name}}</h5>
+	      <b> Email : </b>{{$doctors[$i+1]->email}}<br>
+	      <b> Mobile : </b>{{$doctors[$i+1]->mobile}}<br>
+	      <b> Working Hours : </b><br>
+	      <b> From : </b><br>
+	      <b> To : </b><br>
 	      
 	    </div>
+	    @endif
 	  </div>
-	  <div class="card mr-3 ml-3">
-	    <img class="card-img-top" src="{{ asset('/user_styles/images/Dr3.jpg') }}" alt="Card image cap">
+	  
+	  
+	  <div class="card mr-3 ml-3" >
+	  	@if($i < $doc_num-2)
+	    <img class="card-img-top" src="{{ ($doctors[$i+2]->image) ? Storage::disk('local')->url($doctors[$i+2]->image) : asset('/admin_styles/images/defualt_male.png') }}" alt="Card image cap" style="width:270px; height:270px;">
 	    <div class="card-body">
-	      <h5 class="card-title text-center">Alex Morfiee</h5>
-	      <p class="card-text">Lorem ipsum dolor Fusce varius euismod lacus eget feugiat rorem ipsum dolor consectetur Fusce varius [...] </p>
+	      <h5 class="card-title text-center">{{$doctors[$i+2]->name}}</h5>
+	      <b> Email : </b>{{$doctors[$i+2]->email}}<br>
+	      <b> Mobile : </b>{{$doctors[$i+2]->mobile}}<br>
+	      <b> Working Hours : </b><br>
+	      <b> From : </b><br>
+	      <b> To : </b><br>
 	      
 	    </div>
+	    @endif
 	  </div>
-	  <div class="card mr-3 ml-3">
-	    <img class="card-img-top" src="{{ asset('/user_styles/images/Dr4.jpg') }}" alt="Card image cap">
+	  
+	  
+	  <div class="card mr-3 ml-3" >
+	  	@if($i < $doc_num-3)
+	    <img class="card-img-top" src="{{ ($doctors[$i+3]->image) ? Storage::disk('local')->url($doctors[$i+3]->image) : asset('/admin_styles/images/defualt_male.png') }}" alt="Card image cap" style="width:270px; height:270px;">
 	    <div class="card-body">
-	      <h5 class="card-title text-center">Rebecca Martin</h5>
-	      <p class="card-text">Lorem ipsum dolor Fusce varius euismod lacus eget feugiat rorem ipsum dolor consectetur Fusce varius [...] </p>
+	      <h5 class="card-title text-center">{{$doctors[$i+3]->name}}</h5>
+	      <b> Email : </b>{{$doctors[$i+3]->email}}<br>
+	      <b> Mobile : </b>{{$doctors[$i+3]->mobile}}<br>
+	      <b> Working Hours : </b><br>
+	      <b> From : </b><br>
+	      <b> To : </b><br>
 	      
 	    </div>
+	    @endif
 	  </div>
+	  
 	</div>
+	@endfor
 @endsection
 
 
