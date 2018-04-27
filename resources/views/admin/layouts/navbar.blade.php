@@ -27,10 +27,12 @@
               <!-- Menu toggle button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="far fa-bell"></i>
+                @if ( count(Auth::user()->unreadNotifications) )
                 <span class="label label-warning">{{ count(Auth::user()->unreadNotifications) }}</span>
+                @endif
               </a>
               <ul class="dropdown-menu">
-                <li class="header">You have {{ count(Auth::user()->unreadNotifications) }} notifications</li>
+                <li class="header">You have {{ count(Auth::user()->unreadNotifications) }} new notifications</li>
                 <li>
                   <!-- Inner Menu: contains the notifications -->
 

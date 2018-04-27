@@ -4,13 +4,13 @@ Route::group(['namespace' => 'Nurse'],function(){
 	// Get Nurse Home page
 	Route::get('/nurse/home', 'HomeController@index')->name('nurse.home');
 
-	Route::get('/nurse/patient/reservations', 'ReservationController@get')->name('nurse.reservations');
+	Route::get('/nurse/patient/reservations', 'ReservationsController@get')->name('nurse.reservations');
 
-	Route::post('/nurse/patient/reservations', 'ReservationController@search');
+	Route::post('/nurse/patient/reservations', 'ReservationsController@search');
 
-	Route::get('/nurse/patient/reservations/{reservation_id}', 'ReservationController@confirm')->name('reservations.confirm');
+	Route::get('/nurse/patient/reservations/{reservation_id}', 'ReservationsController@confirm')->name('reservations.confirm');
 
-   Route::DELETE('/nurse/patient/reservations/{reservation}', 'ReservationController@destroy')->name('reservation.delete');
+   Route::DELETE('/nurse/patient/reservations/{reservation}', 'ReservationsController@destroy')->name('reservation.delete');
 
 
 	// Get Admin Home page

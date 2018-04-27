@@ -47,6 +47,12 @@ class MaterialsController extends Controller
         $material->cost= $request->cost;
         $material->num= $request->num;
         $material->min_num= $request->min_num;
+        $admins = admin::all();
+
+        if($material->num < $material->min_num)
+            {
+                Notification::send($admins, new MaterialsNotifications($material->name ." is less than ".$material->min_num));
+            }
         
         $material->save();
         return redirect('/admin/material/view')->with('status' ,'Material Added Successfully!!');
@@ -87,6 +93,11 @@ class MaterialsController extends Controller
         $material->cost= $request->cost;
         $material->num= $request->num;
         $material->min_num= $request->min_num;
+        $admins = admin::all();
+        if($material->num < $material->min_num)
+            {
+                Notification::send($admins, new MaterialsNotifications($material->name ." is less than ".$material->min_num));
+            }
         
 
         $material->save();
@@ -112,9 +123,10 @@ class MaterialsController extends Controller
         {
             $material->num = $material->num-1 ;
             $admins = admin::all();
-            if($material->num <= $material->min_num)
+            if($material->num < $material->min_num)
             {
-                Notification::send($admins, new MaterialsNotifications($material->name ." is less than ".$material->min_num));
+               $notification = new MaterialsNotifications($material->name ." is less than ".$material->min_num);
+                Notification::send($admins, $notification);
             }
             $material->save();
             return back()->with('status' ,'You used '.$material->name);

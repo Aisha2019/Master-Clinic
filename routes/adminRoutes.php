@@ -159,5 +159,8 @@ Route::group(['namespace' => 'Admin'],function(){
 
 	// view notifications 
 	Route::get('admin/notification/view','NotificationsController@index')->name('admin.notification.view');
+
+	// Delete notification
+	Route::DELETE('/admin/notification/delete/{notification}','NotificationsController@destroy')->name('admin.notification.delete');
 	
 });
