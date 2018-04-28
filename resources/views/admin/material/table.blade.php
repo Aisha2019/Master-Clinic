@@ -81,6 +81,7 @@
 								        @csrf
 								        {{ method_field('DELETE') }}
 								    </form>
+								    <a href="{{ route('admin.material.use',$material->id) }}"><button type="button" class="btn btn-warning btn-xs" ><i class="fa fa-minus-square"></i></button> </a>
 								</td>
 			                  </tr>
 			              @endforeach

@@ -16,7 +16,7 @@
 <section class="content-header">
   <h1>
     Mailbox
-    <small>13 new messages</small>
+    <small>{{ count(Auth::user()->unreadNotifications) }} new messages</small>
   </h1>
 </section>
 

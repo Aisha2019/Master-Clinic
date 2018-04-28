@@ -3,9 +3,9 @@
 Reservations
 @endsection
 
-@section('css')
+@section('head')
   {{-- here goes the css of page --}}
-  <link rel="stylesheet" href="{{ asset('/nurse_styles/css/datepicker3.css') }}">
+  <link rel="stylesheet" href="{{ asset('/user_styles/css/datepicker3.css') }}">
   <link rel="stylesheet" href="{{ asset('/user_styles/css/bootstrap-timepicker.min.css') }}">
 @endsection
 
@@ -82,9 +82,9 @@ Reservations
 
 @endsection
 
-@section('js')
+@section('footer')
   {{-- here goes js files --}}
-  <script src="{{ asset('/nurse_styles/js/bootstrap-datepicker.js') }}"></script>
+  <script src="{{ asset('/user_styles/js/bootstrap-datepicker.js') }}"></script>
   <script src="{{ asset('/user_styles/js/bootstrap-timepicker.min.js') }}"></script>
 
 <script>
@@ -94,17 +94,11 @@ Reservations
         autoclose: true,
         format: 'yyyy-mm-dd'
       });
+      $("#timepicker").timepicker({
+        autoclose: true,
+        format: 'h:i A',
+      });
     });
     //Timepicker
     </script>
-    <script>
-    $(function(){
-    $("#timepicker").timepicker({
-      autoclose: true,
-      format: 'h:i A',
-    });
-  });
-
-  </script>
-
 @endsection

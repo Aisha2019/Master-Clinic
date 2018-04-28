@@ -22,8 +22,10 @@ Route::group(['namespace' => 'Patient'],function(){
 	Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 	Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 	Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
-	Route::get('/profile', 'HomeController@index')->name('profile');
+	Route::get('/profile', 'PatientController@index')->name('profile');
 	Route::get('/home', 'HomeController@home')->name('home');
+	Route::get('/contact_us', 'HomeController@contact')->name('contact_us');
+
 
 
     Route::get('/reservations/create', 'ReservationController@get')->name('reservations.create');
@@ -40,5 +42,11 @@ Route::group(['namespace' => 'Patient'],function(){
 
 
 	Route::DELETE('/reservations/history/{reservation}', 'ReservationController@destroy')->name('user.reservation.delete');
+
+	// View Invoices
+	Route::get('/invoice/view', 'InvoicesController@view')->name('patient.invoice.view');
+
+	// View details of an invoice
+	Route::get('/invoice/view/{invoice}', 'InvoicesController@show')->name('patient.invoice.show');
 
 });

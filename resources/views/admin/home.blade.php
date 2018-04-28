@@ -11,7 +11,6 @@
 
 @section('body')
 	{{-- here goes content of pages --}}
-	Hi!! this is admin home page
 	@if (session('status'))
 		<div class="alert alert-success">{{ session('status') }}</div>
 	@endif

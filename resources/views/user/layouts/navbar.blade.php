@@ -11,39 +11,64 @@
                   <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 @auth
-                    <li class="nav-item">
+                    <li class="nav-item active">
                         <a class="nav-link" href="{{ route('profile') }}">Profile</a>
                     </li>
 
-                     <li class="nav-item">
+                     <li class="nav-item active">
                         <a class="nav-link" href="{{ route('Reservations.history') }}">History</a>
                     </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('patient.invoice.view') }}">Invoices</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('contact_us') }}">ContactUs</a>
+                    </li>
+
+
                 @endauth
             </ul>
+
+
             <ul class="navbar-nav ml-auto">
                               <!-- Authentication Links -->
                 @guest
                     <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                 @else
                     <li class="nav-item dropdown active">
+
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                            
+                            <img src="{{ (Auth::user()->image) ? Storage::disk('local')->url(Auth::user()->image) : asset('/admin_styles/images/user4-128x128.jpg') }}"  alt="User Image" style="border-radius:50% 50% 50% 50%; width:30px; height:30px; "> {{ Auth::user()->name }} 
                         </a>
+                        
 
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="logout"
+                            <div class="card" style="width: 11rem;">
+                                <img class="card-img-top" src="{{ (Auth::user()->image) ? Storage::disk('local')->url(Auth::user()->image) : asset('/admin_styles/images/user4-128x128.jpg') }}"  alt="User Image" style="border-radius:50% 50% 50% 50%; width:150px; height:150px; margin-left: 10px">
+                                 <div class="card-body">
+                                     <a href="{{ route('profile') }}" class="btn btn-outline-primary btn-sm" style="margin-right: 10px">Profile</a><a  href="{{ route('logout') }}" class="btn btn-outline-primary btn-sm"
                                 onclick="event.preventDefault();
                                               document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 
-                            <form id="logout-form" action="logout" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
+                                </div>
+                            
+                            
                         </div>
+                    </div>
                     </li>
                 @endguest
             </ul>
         </div>
     </div>
 </nav>
+
+
+

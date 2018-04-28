@@ -1,4 +1,4 @@
-@extends('nurse.layouts.layout')
+@extends('user.layouts.layout')
 
 @section('title')
 	{{-- here goes the title of page --}}
@@ -12,35 +12,32 @@
 @endsection
 
 
-@section('body' )
-	{{-- here goes content of pages --}}
-	@if (session('status'))
-		<div class="alert alert-success">{{ session('status') }}</div>
-	@endif
+@section('body' )  {{-- here goes content of pages --}}
 
-		<section class="content-header">
-      <h1>
-        Invoices data
-      </h1>
+<section class="container">
+ <div class="box box-primary">
+  <div class="box-body">
+      @foreach ($errors->all() as $error)
+        <div class="alert alert-danger">{{ $error }}</div>
+      @endforeach
+      @if (session('status'))
+        <div class="alert alert-success">{{ session('status') }}</div>
+      @endif
+
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
     </section>
-
     <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="box">
-            <div class="box-header">
-              <h3 class="box-title">Invoice Data Table</h3>
-              <a href="{{ route('nurse.invoice.add') }}"> <button type="button" class="btn btn-success btn-flat pull-right"> ADD </button> </a>
-            </div>
-	        <!-- /.box-header -->
-	        <div class="box-body">
+    <section class="content" style="margin-top: 100px; margin-bottom: 500px;">
+      <h1 style="margin:20px;">
+        Invoices
+      </h1>
 
-	        			<table id="example1" class="table table-bordered table-striped">
+	        			<table id="example1" class="table table-bordered table-striped" style="margin-top:20px;">
 	                		<thead>
 			                <tr>
 			                  <th>ID </th>
-			                  <th>Patient</th>
 			                  <th>Doctor</th>
 			                  <th>Nurse</th>
 			                  <th>Clinic</th>
@@ -48,9 +45,7 @@
 			                  <th>Tax</th>
 			                  <th>Discount</th>
 			                  <th>Date</th>
-			                  <th>Created At</th>
-			                  <th>Updated At</th>
-			                  <th>Controls</th>
+			                  <th>Print</th>
 			                </tr>
 			                </thead>
 			                <tbody>
@@ -58,7 +53,6 @@
 			                <?php $invoice = (object)$invoice; ?>
 			                  <tr>
 			                  	<td>{{ $invoice->id }}</td>
-			                  	<td>{{ $invoice->patient_name }}</td>
 			                  	<td>{{ $invoice->admin_name }}</td>
 			                  	<td>{{ $invoice->nurse_name }}</td>
 			                  	<td>{{ $invoice->clinic_name }}</td>
@@ -66,27 +60,10 @@
 			                  	<td>{{ $invoice->tax }}</td>
 			                  	<td>{{ $invoice->discount }}</td>
 			                  	<td>{{ $invoice->day }}</td>
-		                  	<td>{{ $invoice->created_at->diffForHumans() }}</td>
-		                  	<td>{{ $invoice->updated_at->diffForHumans() }}</td>
 			                  	
 								<td>
-									<a href="{{ route('nurse.invoice.update',$invoice->id) }}"><button type="button" class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></button> </a>
-									
-									<a 
-										href="#" 
-										class="btn btn-danger btn-xs"
-										onclick="
-			                  					event.preventDefault();
-			                  					if(confirm('Are you sure you want to delete this invoice?')) {
-			                  						$(this).siblings('form').submit();
-			                  					}"
-									><i class="fa fa-times"></i></a>
-									<form action="{{ route('nurse.invoice.delete',$invoice->id) }}" method="POST">
-								        @csrf
-								        {{ method_field('DELETE') }}
-								    </form>
 
-								    <a href="{{ route('nurse.invoice.show',$invoice->id) }}"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-print"></i></button> </a>
+								    <a href="{{ route('patient.invoice.show',$invoice->id) }}"><button type="button" class="btn btn-success btn-xs"><i class="fa fa-print"></i></button> </a>
 								</td>
 			                  </tr>
 			              @endforeach
@@ -94,7 +71,6 @@
 			                <tfoot>
 			                <tr>
 			                  <th>ID </th>
-			                  <th>Patient</th>
 			                  <th>Doctor</th>
 			                  <th>Nurse</th>
 			                  <th>Clinic</th>
@@ -102,17 +78,16 @@
 			                  <th>Tax</th>
 			                  <th>Discount</th>
 			                  <th>Date</th>
-			                  <th>Created At</th>
-			                  <th>Updated At</th>
-			                  <th>Controls</th>
+			                  <th>Print</th>
 			                </tr>
 			                </tfoot>
 	            		</table>
-            		</div>
-            	</div>
-            </div>
-        </div>
-    </section>
+            		 </section>
+    <!-- /.content -->
+  </div>
+</div>
+</div>
+</section>
 
 
 

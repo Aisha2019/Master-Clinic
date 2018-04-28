@@ -9,6 +9,7 @@
     <link rel="shortcut icon" href="{{ asset('/user_styles/images/testlogo.png') }}" />
     <link rel="stylesheet" href="{{ asset('/user_styles/css/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/user_styles/css/bootstrap.min.css') }}">
+    
 
 	@yield('head')
 

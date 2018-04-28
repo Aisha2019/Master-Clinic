@@ -33,6 +33,6 @@ class EmailsController extends Controller
     	$admins = admin::find($request->emails);
     	Notification::send($admins, new PatientEmailNotification($request->message, $request->subject, Auth::id()));
 
-    	return back()->with('status', 'Send Successfully!!');
+    	return back()->with('status', 'Sent Successfully!!');
     }
 }

@@ -27,22 +27,34 @@
               <!-- Menu toggle button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="far fa-bell"></i>
-                <span class="label label-warning">10</span>
+                @if ( count(Auth::user()->unreadNotifications) )
+                <span class="label label-warning">{{ count(Auth::user()->unreadNotifications) }}</span>
+                @endif
               </a>
               <ul class="dropdown-menu">
-                <li class="header">You have 10 notifications</li>
+                <li class="header">You have {{ count(Auth::user()->unreadNotifications) }} new notifications</li>
                 <li>
                   <!-- Inner Menu: contains the notifications -->
+
                   <ul class="menu">
-                    <li><!-- start notification -->
-                      <a href="#">
-                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                    <?php $notifications = Auth::user()->notifications ?>
+                    <?php ?>
+                    @foreach ($notifications as $notification)
+                    <li ><!-- start notification -->
+                      <a href="{{route('admin.notification.mark',$notification->id)}}">
+                        @if ($notification->read_at)
+                          <i class="fa fa-medkit"></i> {{$notification->data['content']}}
+                        @else
+                          <b><i class="fa fa-medkit"></i> {{$notification->data['content']}}</b>
+                        @endif
+                        
                       </a>
                     </li>
+                    @endforeach
                     <!-- end notification -->
                   </ul>
                 </li>
-                <li class="footer"><a href="#">View all</a></li>
+                <li class="footer"><a href="{{route('admin.notification.view')}}">View all</a></li>
               </ul>
             </li>
 
