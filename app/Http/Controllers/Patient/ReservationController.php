@@ -33,7 +33,7 @@ public function __construct()
         $reservations= Reservation::where('patient_id',$user->id)
                ->orderBy('time', 'desc')
                ->get();
-       $array=self::getdata($reservations);            
+       $array=self::getdata($reservations);  
         return view('user.reservations.history')->with('reservations',$array);
     }
   
@@ -49,6 +49,7 @@ public function __construct()
     
    public function destroy(Reservation $reservation)
    {
+         $reservation=Reservation::find($reservation->id); 
        $reservation->delete();
         return self::history()->with('status' ,'
           Reservation deleted'); 
@@ -61,7 +62,7 @@ public function update(Request $request, Reservation $reservation)
 
 $this->validate($request,[
            
-            'date'=>'required|after:today',
+            'date'=>'required|after:now',
             'time'=>'required|min:"8:00 AM"|max:"10:00 PM"',
         ]);
          $reservation=Reservation::find($reservation->id);
@@ -85,8 +86,10 @@ $this->validate($request,[
 
 $this->validate($request,[
            
-            'Reservationdate'=>'required|after:yesterday',
-            'Reservationtime'=>'required',
+            'date'=>'required|after:now',
+            'time'=>'required|min:"8:00 AM"|max:"10:00 PM"',
+            'clinic'=>'required',
+            'doctor'=>'required',
         ]);
 
          $now=Carbon::now()->toDateTimeString();

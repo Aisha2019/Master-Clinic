@@ -51,6 +51,7 @@ class ReservationController extends Controller
 
     public function destroy(Reservation $reservation)
     {
+        $reservation=Reservation::find($reservation_id); 
         $reservation->reject=1;
         $reservation->nurse_id=auth()->user()->id;
         $reservation->save();

@@ -56,14 +56,14 @@ Reservations
   <br/>  
   <br/>
         <div class="form-group has-feedback">
-          <input type="text" id="datepicker" class="form-control " placeholder=" Reservation Date" value="{{ old('Reservationdate') }}" name="Reservationdate">
+          <input type="text" id="datepicker" class="form-control " placeholder=" Reservation Date" value="{{ old('Reservationdate') }}" name="date">
         </div>
 
        <br/>
               <div class="bootstrap-timepicker">
                 <div class="form-group">
                   <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="timepicker" name="Reservationtime" placeholder="" value="">
+                    <input type="text" class="form-control timepicker" id="timepicker" name="time" placeholder="" value="">
                     <div class="input-group-addon">
                       <i class="fa fa-clock-o"></i>
                     </div>

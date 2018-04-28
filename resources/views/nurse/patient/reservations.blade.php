@@ -88,7 +88,7 @@
                 </div>
                 <div style="margin: 10px">
                   @if($reservation['nurse']!=null&&$reservation['response']==0)
-                   @if($reservation['date']>date('d-M-Y'))
+                   @if(strtotime($reservation['date'])<strtotime(date('d-M-Y')))
                      @if($reservation['attend']==1)
                       <a href="#" class="bg-green btn-xs">
                      Attended
@@ -98,7 +98,7 @@
                      Didn't attend
                      </a>
                      @endif
-                   @elseif($reservation['date']==date('d-M-Y'))
+                   @elseif(strtotime($reservation['date'])==strtotime(date('d-M-Y')))
                      @if($reservation['attend']==1)
                       <a href="#" class="bg-green btn-xs">
                      Attended
@@ -122,6 +122,7 @@
                 </div>
                 <div class="timeline-footer">
                   @if(!$reservation['nurse'])
+                  @if(strtotime($reservation['date'])>=strtotime(date('d-M-Y')))
                   <a class="btn btn-info btn-xs" href="{{ route('reservations.confirm',$reservation['id']) }}">Confirm</a>
 
                   <a class="btn btn-info btn-xs" onclick="
@@ -131,8 +132,11 @@
                                   }">Reject</a>
                   <form action="{{ route('reservation.delete',$reservation['id']) }}" method="POST">
                         @csrf
-                        {{ method_field('DELETE') }}
+                        {{ method_field('PATCH') }}
                     </form>
+                  @else
+                   <a class="btn btn-danger btn-xs" >Reservation date has passed</a>
+                  @endif
                   @endif
                 </div>
               </div>

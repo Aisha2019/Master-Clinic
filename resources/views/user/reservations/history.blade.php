@@ -67,33 +67,34 @@ Reservations
       <td>Reservation Confirmed by {{ $reservation['nurse'] }}</td>      
       @endif
        <td>
-     @if($reservation['date']<date('d-m-Y'))
-          @if($reservation['attend']==1)
+      @if($reservation['response']==0)
+       @if(strtotime($reservation['date'])<strtotime(date('d-m-Y')))
+           @if($reservation['attend']==1)
            Attended
            @else
            Didn't attend
            @endif
-      @else
-       ...
+       @elseif(strtotime($reservation['date'])==strtotime(date('d-m-Y')))
+           @if($reservation['attend']==1)
+           Attended
+           @else
+           ...
+           @endif
+       @endif
       @endif
        </td>
       <td>
-      @if($reservation['response']!=1 && $reservation['date']<=date('d-m-Y'))
+      @if($reservation['response']!=1 && strtotime($reservation['date'])>=strtotime(date('d-m-Y'))&&$reservation['attend']!=1)
 
        <a class="btn btn-warning btn-xs" href="{{ route('reservations.update',  $reservation['id'] ) }}"><i class="fa fa-edit"></i></a>
       @endif
      </td>
-     
     </tr>
     @endforeach
   </tbody>
-</table>      <!-- /.row -->
-
-      <!-- /.row -->
-
-    </section>
-    <!-- /.content -->
-  </div>
+</table>      
+</section>
+</div>
 </div>
 </div>
 </section>

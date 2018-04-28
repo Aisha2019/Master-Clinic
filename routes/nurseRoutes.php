@@ -10,7 +10,7 @@ Route::group(['namespace' => 'Nurse'],function(){
 
 	Route::get('/nurse/patient/reservations/{reservation_id}', 'ReservationController@confirm')->name('reservations.confirm');
 
-   Route::DELETE('/nurse/patient/reservations/{reservation}', 'ReservationController@destroy')->name('reservation.delete');
+   Route::PATCH('/nurse/patient/reservations/{reservation}', 'ReservationController@destroy')->name('reservation.delete');
 
 
 	// Get Admin Home page
