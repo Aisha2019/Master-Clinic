@@ -1,6 +1,6 @@
 @extends('user.layouts.layout')
 @section('title')
-Reservations
+Update Reservation
 @endsection
 
 @section('css')
@@ -20,7 +20,8 @@ Reservations
       @if (session('status'))
         <div class="alert alert-success">{{ session('status') }}</div>
       @endif
- <p class="login-box-msg h3" style="text-align:center; margin:70px; margin-top:100px ">Make a Reservation</p>
+ <p class="login-box-msg h3" style="text-align:center; margin:70px; margin-top:100px ">Update Reservation
+</p>
         @foreach ($reservations as  $reservation)
   <form  method="post" action="{{ route('reservations.update',$reservation['id']) }}">
   @csrf
@@ -75,12 +76,9 @@ Reservations
   <br/>  
   <br/>
 
-    <div class="input-group date datepicker" data-date-format="dd-mm-yyyy" data-provide="datepicker" id="datepicker"  >
-    <input type="text" class="form-control" value="{{ $reservation['date'] }}" name="date">
-     <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
-      </div>
-</div>
+   <div class="form-group has-feedback">
+          <input type="text" id="datepicker" class="form-control " placeholder=" Reservation Date" name="date" value="{{ $reservation['date'] }}">
+        </div>
 
        <br/>
               <div class="bootstrap-timepicker">
@@ -120,20 +118,17 @@ Reservations
   <script src="{{ asset('/nurse_styles/js/bootstrap-datepicker.js') }}"></script>
   <script src="{{ asset('/user_styles/js/bootstrap-timepicker.min.js') }}"></script>
     <script >
-      $('.datepicker').datepicker({
-    format: 'dd-mm-yyyy',
-    startDate: '1d',
-     autoclose: true,
-     });
-
-    </script>
-    <script>
-    $(function(){
+      $(function() {
+    //Date picker
+      $('#datepicker').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd'
+      });
     $("#timepicker").timepicker({
-      autoclose: true,
-      format: 'H:i A',
+        autoclose: true,
+        format: 'h:i A',
+      });
     });
-  });
 
   </script>
 

@@ -13,7 +13,7 @@ Route::group(['namespace' => 'Nurse'],function(){
 
 //nurse rejects areservation
 
-   Route::PATCH('/nurse/patient/reservations/{reservation}', 'ReservationController@destroy')->name('reservation.delete');
+   Route::PATCH('/nurse/patient/reservations/{reservation}', 'ReservationsController@reject')->name('reservation.delete');
 
 
 	// Get Admin Home page
@@ -45,7 +45,7 @@ Route::group(['namespace' => 'Nurse'],function(){
 
   //  nurse updates patient attendance for a reservation
 
-   Route::PATCH('/nurse/reservations/{reservation}','ReservationController@change_attendance')->name('nurse.reservations.update.attendance');
+   Route::PATCH('/nurse/reservations/{reservation}','ReservationsController@change_attendance')->name('nurse.reservations.update.attendance');
 
 //  nurse deletes patient account
     Route::DELETE('/nurse/patient/table/{patient}','PatientsController@destroy')->name('nurse.patient.delete');
