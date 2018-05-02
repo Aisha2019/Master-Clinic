@@ -26,8 +26,35 @@ class HomeController extends Controller
     {
         return view('user.home');
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function home()
     {
         return view('user.index');
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function file()
+    {
+        return view('user.file');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function print()
+    {
+        return view('user.print');
+    }
+
 }

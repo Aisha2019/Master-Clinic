@@ -30,6 +30,30 @@ class Patient extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * Get the comments of a patient file.
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Models\comment')->select('content', 'created_at', 'admin_id')->orderBy('created_at', 'Asc');
+    }
+
+    /**
+     * Get the prescriptions of a patient file.
+     */
+    public function prescriptions()
+    {
+        return $this->hasMany('App\Models\prescription')->select('name', 'created_at', 'admin_id')->orderBy('created_at', 'Asc');
+    }
+
+    /**
+     * Get the prescriptions of a patient file.
+     */
+    public function images()
+    {
+        return $this->hasMany('App\Models\image')->select('image', 'caption', 'created_at', 'admin_id')->orderBy('created_at', 'Asc');
+    }
+
     //Send password reset notification
     public function sendPasswordResetNotification($token)
     {

@@ -15,4 +15,6 @@
     });
   </script>
 
+  @yield('js')
+
 @yield('footer')

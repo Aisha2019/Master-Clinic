@@ -83,8 +83,8 @@
 								    </form>
 			                  	</td>
 								<td>
-									<a href="{{ route('admin.patient.updatepatient',  $patient->id ) }}"  class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-
+									<a href="{{ route('admin.patient.updatepatient', $patient->id) }}"  class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
+									<a href="{{ route('admin.patient.file', $patient->id) }}"  class="btn btn-warning btn-xs"><i class="fa fa-file-pdf"></i></a>
 									<a 
 										href="#" 
 										class="btn btn-danger btn-xs"

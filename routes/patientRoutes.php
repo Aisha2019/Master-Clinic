@@ -24,4 +24,8 @@ Route::group(['namespace' => 'Patient'],function(){
 	Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 	Route::get('/profile', 'HomeController@index')->name('profile');
 	Route::get('/home', 'HomeController@home')->name('home');
+
+	// patient file route
+	Route::get('/file', 'HomeController@file')->name('file');
+	Route::get('/print_file', 'HomeController@print')->name('patient.print_file');
 });

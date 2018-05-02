@@ -38,13 +38,23 @@ Route::group(['namespace' => 'Admin'],function(){
 
 	// view all patients
 	Route::get('/admin/patient/view', 'PatientsController@index')->name('admin.patient.view');
-
+	
 	// activate or deactivate patient account
     Route::PATCH('/admin/patient/update/status/{patient}','PatientsController@change_status')->name('admin.patient.update.status');
 
     // delete patient account
     Route::DELETE('/admin/patient/delete/{patient}','PatientsController@destroy')->name('admin.patient.delete');
  
+	// view pateint file
+	Route::get('/admin/patient/file/{patient}', 'PatientsController@view_file')->name('admin.patient.file');
+	
+	// print pateint file
+	Route::get('/admin/patient/printfile/{patient}', 'PatientsController@print_file')->name('admin.patient.printfile');
+
+	// update pateint file
+	Route::get('/admin/patient/updatefile/{patient}', 'PatientsController@edit_file')->name('admin.patient.updatefile');
+	Route::PATCH('/admin/patient/updatefile/{patient}', 'PatientsController@update_file');
+
     // add new nurse 
 	Route::get('/admin/nurse/add', 'NursesController@add')->name('admin.nurse.add');
 	Route::post('/admin/nurse/add', 'NursesController@store');
