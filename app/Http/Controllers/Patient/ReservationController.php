@@ -31,14 +31,19 @@ public function __construct()
     }
     public function history()
     {
+      $reservations=$this->get_history();
+       $array=self::getdata($reservations);  
+        return view('user.reservations.history')->with('reservations',$array);
+    }
+    public function get_history()
+    {
         $user = auth()->user();
         $reservations= reservation::where('patient_id',$user->id)
                ->orderBy('time', 'desc')
                ->get();
-       $array=self::getdata($reservations);  
-        return view('user.reservations.history')->with('reservations',$array);
+        return $reservations;
+
     }
-  
 
     public function edit(reservation $reservation)
     {
@@ -53,7 +58,8 @@ public function __construct()
    {
          $reservation=Reservation::find($reservation->id); 
        $reservation->delete();
-        return $this->history()->with('status' ,'
+        $reservations=$this->get_history();
+        return redirect('reservations/history')->with('reservations',$reservation)->with('status' ,'
           Reservation deleted'); 
    }
 
