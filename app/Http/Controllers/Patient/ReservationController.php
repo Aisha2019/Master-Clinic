@@ -53,7 +53,7 @@ public function __construct()
    {
          $reservation=Reservation::find($reservation->id); 
        $reservation->delete();
-        return self::history()->with('status' ,'
+        return $this->history()->with('status' ,'
           Reservation deleted'); 
    }
 
@@ -65,11 +65,11 @@ public function update(Request $request, reservation $reservation)
 $this->validate($request,[
            
             'date'=>'required|after:now',
-            'time'=>'required|min:"8:00 AM"|max:"10:00 PM"',
+            'time'=>'required|after:"8:00 AM"|before:"10:00 PM"',
         ]);
          $reservation=reservation::find($reservation->id);
          $reservationdate= $request->date.' '.$request->time;
-         $reservationdate=Carbon::createFromFormat('d-m-Y h:i A',$reservationdate)->toDateTimeString();
+         $reservationdate=Carbon::createFromFormat('d-m-Y H:i',$reservationdate)->toDateTimeString();
          if($request->admin!="Change Doctor")
          {
          $reservation->admin_id = $request->admin;
@@ -89,14 +89,14 @@ $this->validate($request,[
 $this->validate($request,[
            
             'date'=>'required|after:now',
-            'time'=>'required|min:"8:00 AM"|max:"10:00 PM"',
+            'time'=>'required|after:"8:00 AM"|before:"10:00 PM"',
             'clinic'=>'required',
             'admin'=>'required',
         ]);
 
          $now=Carbon::now()->toDateTimeString();
          $date= $request->date.' '.$request->time;
-         $date=Carbon::createFromFormat('Y-m-d h:i A',$date)->toDateTimeString();
+         $date=Carbon::createFromFormat('Y-m-d H:i',$date)->toDateTimeString();
 
          // return $request->all();
          $reservation= new reservation;

@@ -60,18 +60,12 @@ Reservations
         </div>
 
        <br/>
-              <div class="bootstrap-timepicker">
-                <div class="form-group">
-                  <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="timepicker" name="time" placeholder="" value="">
-                    <div class="input-group-addon">
-                      <i class="fa fa-clock-o"></i>
-                    </div>
-                  </div>
-                  <!-- /.input group -->
-                </div>
-                <!-- /.form group -->
-              </div>
+      <div class="form-group row">
+        <div class="col-12">
+          <input class="form-control" type="time" id="example-time-input" name="time" value="{{ old('time') }}" placeholder="Reservation time">
+        </div>
+      </div>
+
        <br/>
       <button type="submit" class="btn btn-info  btn-flat" style="margin-bottom: 20px">Confirm</button>
 

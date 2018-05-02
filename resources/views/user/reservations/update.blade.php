@@ -5,7 +5,7 @@ Update Reservation
 
 @section('css')
   {{-- here goes the css of page --}}
-  <link rel="stylesheet" href="{{ asset('/nurse_styles/css/datepicker3.css') }}">
+  <link rel="stylesheet" href="{{ asset('/user_styles/css/datepicker3.css') }}">
   <link rel="stylesheet" href="{{ asset('/user_styles/css/bootstrap-timepicker.min.css') }}">
 @endsection
 
@@ -76,23 +76,15 @@ Update Reservation
   <br/>  
   <br/>
 
-   <div class="form-group has-feedback">
-          <input type="text" id="datepicker" class="form-control " placeholder=" Reservation Date" name="date" value="{{ $reservation['date'] }}">
+ <div class="form-group has-feedback">
+          <input type="text" id="datepicker" class="form-control " placeholder=" Reservation Date" value="{{ $reservation['date']  }}" name="date">
         </div>
-
        <br/>
-              <div class="bootstrap-timepicker">
-                <div class="form-group">
-                  <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="timepicker" name="time" placeholder="" value="{{ $reservation['time'] }}">
-                    <div class="input-group-addon">
-                      <i class="fa fa-clock-o"></i>
-                    </div>
-                  </div>
-                  <!-- /.input group -->
-                </div>
-                <!-- /.form group -->
-              </div>
+      <div class="form-group row">
+        <div class="col-12">
+          <input class="form-control" type="time" id="example-time-input" name="time" value="{{ date('H:i:s', strtotime($reservation['time']))  }}">
+        </div>
+      </div>
        <br/>
       <button type="submit" class="btn btn-info  btn-flat" style="margin-bottom: 20px">Update</button>
        </form>
@@ -115,21 +107,21 @@ Update Reservation
 
 @section('js')
   {{-- here goes js files --}}
-  <script src="{{ asset('/nurse_styles/js/bootstrap-datepicker.js') }}"></script>
+  <script src="{{ asset('/user_styles/js/bootstrap-datepicker.js') }}"></script>
   <script src="{{ asset('/user_styles/js/bootstrap-timepicker.min.js') }}"></script>
-    <script >
-      $(function() {
+
+<script>
+   $(function() {
     //Date picker
       $('#datepicker').datepicker({
         autoclose: true,
         format: 'yyyy-mm-dd'
       });
-    $("#timepicker").timepicker({
+      $("#timepicker").timepicker({
         autoclose: true,
         format: 'h:i A',
       });
     });
-
-  </script>
-
+    //Timepicker
+    </script>
 @endsection
