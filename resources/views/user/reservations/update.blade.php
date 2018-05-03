@@ -1,11 +1,11 @@
 @extends('user.layouts.layout')
 @section('title')
-Reservations
+Update Reservation
 @endsection
 
 @section('css')
   {{-- here goes the css of page --}}
-  <link rel="stylesheet" href="{{ asset('/nurse_styles/css/datepicker3.css') }}">
+  <link rel="stylesheet" href="{{ asset('/user_styles/css/datepicker3.css') }}">
   <link rel="stylesheet" href="{{ asset('/user_styles/css/bootstrap-timepicker.min.css') }}">
 @endsection
 
@@ -20,7 +20,8 @@ Reservations
       @if (session('status'))
         <div class="alert alert-success">{{ session('status') }}</div>
       @endif
- <p class="login-box-msg h3" style="text-align:center; margin:70px; margin-top:100px ">Make a Reservation</p>
+ <p class="login-box-msg h3" style="text-align:center; margin:70px; margin-top:100px ">Update Reservation
+</p>
         @foreach ($reservations as  $reservation)
   <form  method="post" action="{{ route('reservations.update',$reservation['id']) }}">
   @csrf
@@ -75,26 +76,15 @@ Reservations
   <br/>  
   <br/>
 
-    <div class="input-group date datepicker" data-date-format="dd-mm-yyyy" data-provide="datepicker" id="datepicker"  >
-    <input type="text" class="form-control" value="{{ $reservation['date'] }}" name="date">
-     <div class="input-group-addon">
-        <span class="glyphicon glyphicon-th"></span>
-      </div>
-</div>
-
+ <div class="form-group has-feedback">
+          <input type="text" id="datepicker" class="form-control " placeholder=" Reservation Date" value="{{ $reservation['date']  }}" name="date">
+        </div>
        <br/>
-              <div class="bootstrap-timepicker">
-                <div class="form-group">
-                  <div class="input-group">
-                    <input type="text" class="form-control timepicker" id="timepicker" name="time" placeholder="" value="{{ $reservation['time'] }}">
-                    <div class="input-group-addon">
-                      <i class="fa fa-clock-o"></i>
-                    </div>
-                  </div>
-                  <!-- /.input group -->
-                </div>
-                <!-- /.form group -->
-              </div>
+      <div class="form-group row">
+        <div class="col-12">
+          <input class="form-control" type="time" id="example-time-input" name="time" value="{{ date('H:i:s', strtotime($reservation['time']))  }}">
+        </div>
+      </div>
        <br/>
       <button type="submit" class="btn btn-info  btn-flat" style="margin-bottom: 20px">Update</button>
        </form>
@@ -117,24 +107,21 @@ Reservations
 
 @section('js')
   {{-- here goes js files --}}
-  <script src="{{ asset('/nurse_styles/js/bootstrap-datepicker.js') }}"></script>
+  <script src="{{ asset('/user_styles/js/bootstrap-datepicker.js') }}"></script>
   <script src="{{ asset('/user_styles/js/bootstrap-timepicker.min.js') }}"></script>
-    <script >
-      $('.datepicker').datepicker({
-    format: 'dd-mm-yyyy',
-    startDate: '1d',
-     autoclose: true,
-     });
 
-    </script>
-    <script>
-    $(function(){
-    $("#timepicker").timepicker({
-      autoclose: true,
-      format: 'H:i A',
+<script>
+   $(function() {
+    //Date picker
+      $('#datepicker').datepicker({
+        autoclose: true,
+        format: 'yyyy-mm-dd'
+      });
+      $("#timepicker").timepicker({
+        autoclose: true,
+        format: 'h:i A',
+      });
     });
-  });
-
-  </script>
-
+    //Timepicker
+    </script>
 @endsection

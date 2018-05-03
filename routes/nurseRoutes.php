@@ -3,14 +3,17 @@
 Route::group(['namespace' => 'Nurse'],function(){
 	// Get Nurse Home page
 	Route::get('/nurse/home', 'HomeController@index')->name('nurse.home');
-
+//timeline for reservations
 	Route::get('/nurse/patient/reservations', 'ReservationsController@get')->name('nurse.reservations');
-
+// nurse searches for a date
 	Route::post('/nurse/patient/reservations', 'ReservationsController@search');
 
+//nurse confirms areservation
 	Route::get('/nurse/patient/reservations/{reservation_id}', 'ReservationsController@confirm')->name('reservations.confirm');
 
-   Route::DELETE('/nurse/patient/reservations/{reservation}', 'ReservationsController@destroy')->name('reservation.delete');
+//nurse rejects areservation
+
+   Route::PATCH('/nurse/patient/reservations/{reservation}', 'ReservationsController@reject')->name('reservation.delete');
 
 
 	// Get Admin Home page
@@ -27,20 +30,27 @@ Route::group(['namespace' => 'Nurse'],function(){
 	Route::get('/nurse/patient/add', 'PatientsController@add')->name('nurse.patient.add');
 	Route::post('/nurse/patient/add', 'PatientsController@store');
 
+  //  patient update page
+
 	Route::get('/nurse/patient/update/{patient}','PatientsController@edit')->name('nurse.patient.update');
 	
+	  //  nurse updates patient account info
 	Route::PATCH('/nurse/patient/update/{patient}', 'PatientsController@update');
 	// get all patients table
 	Route::get('/nurse/patient/view', 'PatientsController@index')->name('nurse.patient.view');
 
+  //  nurse updates patient status 
+
     Route::PATCH('/nurse/patient/status/{patient}','PatientsController@change_status')->name('nurse.patient.update.status');
 
-   Route::PATCH('/nurse/reservations/{reservation}','ReservationController@change_attendance')->name('nurse.reservations.update.attendance');
+  //  nurse updates patient attendance for a reservation
 
+   Route::PATCH('/nurse/reservations/{reservation}','ReservationsController@change_attendance')->name('nurse.reservations.update.attendance');
 
+//  nurse deletes patient account
     Route::DELETE('/nurse/patient/table/{patient}','PatientsController@destroy')->name('nurse.patient.delete');
 
-  
+
 
 	// get nurse login page
 	Route::GET('nurse/login','Auth\LoginController@showLoginForm')->name('nurse.login');

@@ -10,16 +10,19 @@ use App\Models\nurse;
 use App\Models\reservation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+  date_default_timezone_set('Africa/Cairo');
 
 class ReservationsController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth:nurse');
     }
 
-    public function change_attendance(reservation $reservation)
+    public function change_attendance(Reservation $reservation)
     {
+
         $reservation=reservation::find($reservation->id);   
         $reservation->attend=1;
         $reservation->save();
@@ -28,11 +31,9 @@ class ReservationsController extends Controller
     }
     public function get()
     {
-      $today=Carbon::now();
-      $today=Carbon::parse($today)->format('Y-m-d');
+      $today=Date('Y-m-d');
       $reservations=reservation::where('time','LIKE',"%{$today}%")->orderBy('time','desc')->get();
       $array=self::getdata($reservations);      
-
       return view('nurse.patient.reservations')->with('reservations',$array);
 
     }
@@ -45,8 +46,9 @@ class ReservationsController extends Controller
      return back()->with('status' ,'Reservation confirmed');
     }   
 
-    public function destroy(reservation $reservation)
+    public function reject(Reservation $reservation)
     {
+        $reservation=Reservation::find($reservation->id); 
         $reservation->reject=1;
         $reservation->nurse_id=auth()->user()->id;
         $reservation->save();
@@ -58,7 +60,7 @@ class ReservationsController extends Controller
   
       $date=$request->Reservationdate;
       $reservations=reservation::where('time','LIKE',"%{$date}%")->orderBy('time','desc')->get();
-      $array=self::getdata($reservations);      
+      $array=self::getdata($reservations);     
       return view('nurse.patient.reservations')->with('reservations',$array);
     }
 
@@ -87,7 +89,7 @@ class ReservationsController extends Controller
             'date'=>$date,
             'time'=>$time,
             'response'=>$response,
-             'attend'=>$attendance,
+            'attend'=>$attendance,
            )
         );
     }  

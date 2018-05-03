@@ -14,6 +14,8 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+  date_default_timezone_set('Africa/Cairo');
+
 class ReservationController extends Controller
 {
     //
@@ -29,14 +31,19 @@ public function __construct()
     }
     public function history()
     {
+      $reservations=$this->get_history();
+       $array=self::getdata($reservations);  
+        return view('user.reservations.history')->with('reservations',$array);
+    }
+    public function get_history()
+    {
         $user = auth()->user();
         $reservations= reservation::where('patient_id',$user->id)
                ->orderBy('time', 'desc')
                ->get();
-       $array=self::getdata($reservations);            
-        return view('user.reservations.history')->with('reservations',$array);
+        return $reservations;
+
     }
-  
 
     public function edit(reservation $reservation)
     {
@@ -49,8 +56,10 @@ public function __construct()
     
    public function destroy(reservation $reservation)
    {
+         $reservation=Reservation::find($reservation->id); 
        $reservation->delete();
-        return self::history()->with('status' ,'
+        $reservations=$this->get_history();
+        return redirect('reservations/history')->with('reservations',$reservation)->with('status' ,'
           Reservation deleted'); 
    }
 
@@ -61,37 +70,39 @@ public function update(Request $request, reservation $reservation)
 
 $this->validate($request,[
            
-            'date'=>'required|after:today',
-            'time'=>'required|min:"8:00 AM"|max:"10:00 PM"',
+            'date'=>'required|after:now',
+            'time'=>'required|after:"8:00 AM"|before:"10:00 PM"',
         ]);
          $reservation=reservation::find($reservation->id);
          $reservationdate= $request->date.' '.$request->time;
-         $reservationdate=Carbon::createFromFormat('d-m-Y H:i A',$reservationdate)->toDateTimeString();
+         $reservationdate=Carbon::createFromFormat('d-m-Y H:i',$reservationdate)->toDateTimeString();
          if($request->admin!="Change Doctor")
          {
          $reservation->admin_id = $request->admin;
          }
-         if($request->clinic!="Change clinic")
+         if($request->clinic!="Change Clinic")
          {
          $reservation->clinic_id = $request->clinic;
          }
          $reservation->nurse_id=null;
          $reservation->time=$reservationdate;
          $reservation->save();
-         return self::history()->with('status' ,'reservation Added Successfully!!');
+         return back()->with('status' ,'reservation updated Successfully!!');
 
 }
    public function store(Request $request){
 
 $this->validate($request,[
            
-            'Reservationdate'=>'required|after:yesterday',
-            'Reservationtime'=>'required',
+            'date'=>'required|after:now',
+            'time'=>'required|after:"8:00 AM"|before:"10:00 PM"',
+            'clinic'=>'required',
+            'admin'=>'required',
         ]);
 
          $now=Carbon::now()->toDateTimeString();
-         $date= $request->Reservationdate.' '.$request->Reservationtime;
-         $date=Carbon::createFromFormat('Y-m-d H:i A',$date)->toDateTimeString();
+         $date= $request->date.' '.$request->time;
+         $date=Carbon::createFromFormat('Y-m-d H:i',$date)->toDateTimeString();
 
          // return $request->all();
          $reservation= new reservation;
@@ -112,7 +123,7 @@ $this->validate($request,[
     $array= array();
       foreach ($reservations as $reservation) {
         $date=date("d-m-Y", strtotime($reservation->time));
-        $time=date("H:i A", strtotime($reservation->time));
+        $time=date("h:i A", strtotime($reservation->time));
         
       $doctor=admin::where('id',$reservation->admin_id)->value('name');
       $patient=auth()->user()->name;
