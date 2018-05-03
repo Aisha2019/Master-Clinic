@@ -61,7 +61,7 @@ class ClinicsController extends Controller
     public function update(Request $request,clinic $clinic) {
     	$this->validate($request,[
             'email' => ['required','email', Rule::unique('clinics')->ignore($clinic->id)],
-            'name' => 'required|alpha|min:3',
+            'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3',
             'phone' => 'nullable|numeric|digits_between:8,20',
                    ]);
 

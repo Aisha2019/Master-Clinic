@@ -25,7 +25,7 @@ class AdminsController extends Controller
     {
         // Validate the request...
             $this->validate($request,[
-            'fullName'=>'required|min:3|alpha|max:35',
+            'fullName'=>'required|min:3|regex:/^[\pL\s\-]+$/u|max:35',
             'email'=>'required|unique:admins|email',
             'password'=>'required|string|confirmed|min:8',
             'mobile'=>'nullable|numeric|digits_between:8,20',
@@ -65,7 +65,7 @@ class AdminsController extends Controller
     {
         // Validate the request...
             $this->validate($request,[
-            'fullName'=>'required|min:3|alpha|max:35',
+            'fullName'=>'required|min:3|regex:/^[\pL\s\-]+$/u|max:35',
             'email'=>['required','email', Rule::unique('admins')->ignore($admin->id)],
             'password'=>'required|string|confirmed|min:8',
             'mobile'=>'nullable|numeric|digits_between:8,20',

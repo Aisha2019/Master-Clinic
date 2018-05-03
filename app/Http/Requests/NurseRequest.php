@@ -25,16 +25,17 @@ class NurseRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullName' => 'required|string',
+            'fullName' => 'required|regex:/^[\pL\s\-]+$/u', 
+            // to make the name contains only letters,spaces and hyphens
             'email' => 'required|unique:nurses|email',
-            'password' => 'required|string|confirmed',
+            'password' => 'required|string|confirmed|min:8',
             'mobile' => 'nullable|numeric|digits_between:8,20',
             'birthday' => 'nullable|date|before:today',
             'gender' => [
                     'nullable',
                     Rule::in(['male', 'female']),
                 ],
-            'salary' => 'required|numeric',
+            'salary' => 'required|numeric|min:0',
             'clinic' => 'required|exists:clinics,id'
         ];
     }
