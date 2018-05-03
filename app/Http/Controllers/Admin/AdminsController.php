@@ -25,7 +25,7 @@ class AdminsController extends Controller
     {
         // Validate the request...
             $this->validate($request,[
-            'fullName'=>'required|string|min:3',
+            'fullName'=>'required|min:3|alpha|max:35',
             'email'=>'required|unique:admins|email',
             'password'=>'required|string|confirmed|min:8',
             'mobile'=>'nullable|numeric|digits_between:8,20',
@@ -63,18 +63,21 @@ class AdminsController extends Controller
 
     public function update(Request $request, admin $admin)
     {
-        $this->validate($request,[
-            'fullName'=>'required|string|min:3',
-            'email' => ['required','email', Rule::unique('admins')->ignore($admin->id)],
-            'mobile'=>'nullable|numeric|digits_between:8,20',        
+        // Validate the request...
+            $this->validate($request,[
+            'fullName'=>'required|min:3|alpha|max:35',
+            'email'=>['required','email', Rule::unique('admins')->ignore($admin->id)],
+            'password'=>'required|string|confirmed|min:8',
+            'mobile'=>'nullable|numeric|digits_between:8,20',
+
             'role' => [
                     'nullable',
-                    Rule::in(['super', 'doctor']),
+                    Rule::in(['doctor', 'super']),
                 ],
         ]);
 
          
-        $admin->name=$request->fullName;
+        $admin->name=ucwords(trans($request->fullName)); // to make the first letter of each name capital
         $admin->email=$request->email;
         $admin->mobile=$request->mobile;
         $admin->role=$request->role;

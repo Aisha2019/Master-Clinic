@@ -48,7 +48,7 @@ class MaterialsController extends Controller
         $material->num= $request->num;
         $material->min_num= $request->min_num;
         $admins = admin::all();
-        $material->clinic_name = DB::table('clinics')->where('id', $material->clinic_id)->value('name');
+        $clinic_name = DB::table('clinics')->where('id', $material->clinic_id)->value('name');
 
         if($material->num < $material->min_num)
             {

@@ -31,12 +31,10 @@ class NotificationsController extends Controller
     public function destroy($notification)
     {
         $admins = admin::all();
-         $data = Auth::user()->notifications->where('id', $notification)->first()->data;
-        foreach ($admins as $admin) {
-            $notification = $admin->notifications->where('data', $data)->first();
-            if($notification)
-            $notification->delete();
-        }
+        $notification = Auth::user()->notifications->where('id', $notification)->first();
+        
+                     if($notification)
+                    $notification->delete();
         
         return back()->with('status' ,'Notification  has been deleted Successfully!!');  
     }
