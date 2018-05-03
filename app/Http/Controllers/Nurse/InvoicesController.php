@@ -10,6 +10,7 @@ use App\Models\nurse;
 use App\Models\receipt;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 
@@ -34,12 +35,11 @@ class InvoicesController extends Controller
     public function store(Request $request)
     {
     	$this->validate($request,[
-            'day' => 'date|before:today',
-            'price' => 'required|numeric',
+            'day' => 'date|before_or_equal:today',
+            'price' => 'required|numeric|min:0',
             'tax' => 'nullable|numeric|max:1|min:0',
             'discount' => 'nullable|numeric|max:1|min:0',
             'clinic' => 'required|exists:clinics,id',
-            'nurse' => 'required|exists:nurses,id',
             'patient' => 'required|exists:patients,id',
             'admin' => 'required|exists:admins,id'
         ]);
@@ -50,7 +50,7 @@ class InvoicesController extends Controller
         $invoice->tax = $request->tax;
         $invoice->discount = $request->discount;
         $invoice->clinic_id = $request->clinic;
-        $invoice->nurse_id = $request->nurse;
+        $invoice->nurse_id = Auth::user()->id;
         $invoice->patient_id= $request->patient;
         $invoice->admin_id= $request->admin;
         $date = $request->day . " " . $request->time;
@@ -92,8 +92,8 @@ class InvoicesController extends Controller
     public function update(Request $request, receipt $invoice)
     {
         $this->validate($request,[
-            'day' => 'date|before:today',
-            'price' => 'required|numeric',
+            'day' => 'date|before_or_equal:today',
+            'price' => 'required|numeric|min:0',
             'tax' => 'nullable|numeric|max:1|min:0',
             'discount' => 'nullable|numeric|max:1|min:0',
             'clinic' => 'required|exists:clinics,id',

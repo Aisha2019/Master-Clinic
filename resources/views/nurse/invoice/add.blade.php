@@ -53,14 +53,6 @@
           </select>
         </div>
 
-        <div class="form-group">
-          <select class="form-control" name="nurse" required>
-            <option value="">Choose Nurse</option>
-              @foreach ($nurses as $nurse)
-                  <option value="{{ $nurse->id }}" {{ (old('nurse') == $nurse->id ) ? 'selected="selected"' : ''}}>{{ $nurse->name }}</option>
-              @endforeach
-          </select>
-        </div>
 
         <div class="form-group has-feedback">
           <input type="text" class="form-control" placeholder="Price" value="{{ old('price') }}" name="price" required>
