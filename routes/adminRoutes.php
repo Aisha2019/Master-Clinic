@@ -163,4 +163,10 @@ Route::group(['namespace' => 'Admin'],function(){
 	// Delete notification
 	Route::DELETE('/admin/notification/delete/{notification}','NotificationsController@destroy')->name('admin.notification.delete');
 	
+//timeline for reservations
+
+	Route::get('/admin/patient/reservations', 'ReservationsController@get')->name('admin.reservations');
+// admin searches for a date
+	Route::post('/admin/patient/reservations', 'ReservationsController@search');
+
 });

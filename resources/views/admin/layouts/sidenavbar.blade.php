@@ -19,6 +19,10 @@
         <li class="{{ App\Navigation::setActive('admin.profile') }}">
           <a href="{{ route('admin.profile') }}"><i class="fa fa-circle text-red"></i> <span>Profile</span></a>
         </li>
+        <li class="{{ App\Navigation::setActive('admin.profile') }}">
+          <a href="{{ route('admin.reservations') }}"><i class="fa fa-circle text-blue"></i> <span>Reservations</span></a>
+        </li>
+
         <li class="treeview {{ App\Navigation::setActive('admin.patient.view') }} {{ App\Navigation::setActive('admin.patient.add') }}">
           <a href="#">
             <i class="fa fa-users"></i>
