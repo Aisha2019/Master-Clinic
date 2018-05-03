@@ -45,7 +45,7 @@ class PatientsController extends Controller
     public function update(Request $request, Patient $patient)
     {
          $this->validate($request,[
-            'fullName'=>'required|string|min:3',
+            'fullName'=>'required|regex:/^[\pL\s\-]+$/u|min:3|max:35',
             'email' => ['required','email', Rule::unique('patients')->ignore($patient->id)],
             'mobile'=>'nullable|numeric|digits_between:8,20',
             'birthday'=>'nullable|date|before:today',
@@ -55,7 +55,7 @@ class PatientsController extends Controller
                 ],
         ]);
 
-        $patient->name = $request->fullName;
+        $patient->name = ucwords(trans($request->fullName)); // to make the first letter of each name capital
         $patient->email = $request->email;
         $patient->mobile = $request->mobile;
         $patient->date_of_birth = $request->birthday;
@@ -78,7 +78,7 @@ class PatientsController extends Controller
 
         $patient = new Patient ;
 
-        $patient->name = $request->fullName;
+        $patient->name = ucwords(trans($request->fullName)); // to make the first letter of each name capital
         $patient->email = $request->email;
         $patient->mobile = $request->mobile;
         $patient->password = bcrypt($request->password);

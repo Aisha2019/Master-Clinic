@@ -49,7 +49,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|string|min:3',
+            'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:35',
             'email' => [
                 'required',
                 'email',
@@ -58,7 +58,7 @@ class ProfileController extends Controller
             'mobile' => 'nullable|numeric|digits_between:8,20',
         ]);
         $admin = Admin::find(Auth::id());
-        $admin->name = $request->name;
+        $admin->name = ucwords(trans($request->name)); // to make the first letter of each name capital
         $admin->email = $request->email;
         $admin->mobile = $request->mobile;;
         $admin->save();
@@ -69,8 +69,8 @@ class ProfileController extends Controller
     {
         // return $request->all();
         $this->validate($request, [
-            'oldPassword' => 'required',
-            'newPassword' => 'required|min:6|same:passwordConfirm',
+            'oldPassword' => 'required|min:8',
+            'newPassword' => 'required|min:8|same:passwordConfirm',
         ]);
         $admin = Admin::find(Auth::id());
 

@@ -6,25 +6,28 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="{{ App\Navigation::setActive('home') }}">
                   <a class="nav-link" href="{{ route('home') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 @auth
-                    <li class="nav-item active">
+
+
+                    <li class="{{ App\Navigation::setActive('profile') }}">
                         <a class="nav-link" href="{{ route('profile') }}">Profile</a>
                     </li>
 
-                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('Reservations.history') }}">History</a>
+                     <li class="{{ App\Navigation::setActive('Reservations.history') }}">
+                        <a class="nav-link" href="{{ route('Reservations.history') }}">Reservations</a>
                     </li>
 
-                    <li class="nav-item active">
+                    <li class="{{ App\Navigation::setActive('patient.invoice.view') }}">
                         <a class="nav-link" href="{{ route('patient.invoice.view') }}">Invoices</a>
                     </li>
 
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ route('contact_us') }}">ContactUs</a>
+                    <li class="{{ App\Navigation::setActive('contact_us') }}">
+                        <a class="nav-link" href="{{ route('contact_us') }}">Contacts</a>
                     </li>
 
 

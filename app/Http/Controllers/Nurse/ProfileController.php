@@ -51,16 +51,17 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|string|min:3',
+            'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:35',
             'email' => [
                 'required',
                 'email',
                 Rule::unique('nurses', 'email')->ignore(Auth::id()),
                 ],
             'mobile' => 'nullable|numeric|digits_between:8,20',
+
         ]);
         $nurse = nurse::find(Auth::id());
-        $nurse->name = $request->name;
+        $nurse->name = ucwords(trans($request->name)); // to make the first letter of each name capital
         $nurse->email = $request->email;
         $nurse->mobile = $request->mobile;;
         $nurse->save();
@@ -70,8 +71,8 @@ class ProfileController extends Controller
     public function password(Request $request)
     {
         $this->validate($request, [
-            'oldPassword' => 'required',
-            'newPassword' => 'required|min:6|same:passwordConfirm',
+            'oldPassword' => 'required|min:8',
+            'newPassword' => 'required|min:8|same:passwordConfirm',
         ]);
         $nurse = nurse::find(Auth::id());
 

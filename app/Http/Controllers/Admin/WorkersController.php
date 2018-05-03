@@ -28,16 +28,16 @@ class WorkersController extends Controller
     public function store(Request $request)
     {
     	$this->validate($request,[
-            'fullName' => 'required|string',
+            'fullName' => 'required|min:0|max:35|regex:/^[\pL\s\-]+$/u',
             'mobile' => 'nullable|numeric|digits_between:8,20',
             'birthday' => 'nullable|date|before:today',
-            'salary' => 'required|numeric',
+            'salary' => 'required|numeric|min:0',
             'clinic' => 'required|exists:clinics,id'
         ]);
 
         $worker = new worker;
 
-        $worker->name = $request->fullName;
+        $worker->name = ucwords(trans($request->fullName)); // to make the first letter of each name capital
         $worker->mobile = $request->mobile;
         $worker->date_of_birth = $request->birthday;
         $worker->salary= $request->salary;
@@ -69,14 +69,14 @@ class WorkersController extends Controller
     public function update(Request $request, worker $worker)
     {
         $this->validate($request,[
-            'fullName' => 'required|string',
+            'fullName' => 'required|min:0|max:35|regex:/^[\pL\s\-]+$/u',
             'mobile' => 'nullable|numeric|digits_between:8,20',
             'birthday' => 'nullable|date|before:today',
-            'salary' => 'required|numeric',
+            'salary' => 'required|numeric|min:0',
             'clinic' => 'required|exists:clinics,id'
         ]);
          
-        $worker->name = $request->fullName;
+        $worker->name = ucwords(trans($request->fullName)); // to make the first letter of each name capital
         $worker->mobile = $request->mobile;
         $worker->date_of_birth = $request->birthday;
         $worker->salary= $request->salary;

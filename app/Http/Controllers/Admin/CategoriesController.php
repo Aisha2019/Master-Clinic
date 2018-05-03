@@ -26,12 +26,12 @@ class CategoriesController extends Controller
     public function store(Request $request)
     {
     	$this->validate($request,[
-            'name' => 'required|string|unique:categories'
+            'name' => 'required|regex:/^[\pL\s\-]+$/u|unique:categories|min:3|max:35'
         ]);
 
         $category = new category;
 
-        $category->name = $request->name;
+        $category->name = ucwords(trans($request->name));
         
         
 
@@ -54,10 +54,10 @@ class CategoriesController extends Controller
     public function update(Request $request, category $category)
     {
         $this->validate($request,[
-            'name' => 'required|string|unique:categories'
+            'name' => ['required','regex:/^[\pL\s\-]+$/u','min:3','max:35',Rule::unique('categories')->ignore($category->id)]
         ]);
          
-        $category->name = $request->name;
+        $category->name = ucwords(trans($request->name));
         $category->save();
 
         return back()->with('status', 'updated Successfully!!');   

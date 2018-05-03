@@ -25,9 +25,9 @@ class PatientRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullName'=>'required|string|min:3',
+            'fullName'=>'required|regex:/^[\pL\s\-]+$/u|min:3|max:35',
             'email'=>'required|unique:patients|email',
-            'password'=>'required|string|confirmed',
+            'password'=>'required|string|confirmed|min:8',
             'mobile'=>'nullable|numeric|digits_between:8,20',
             'birthday'=>'nullable|date|before:today',
             'gender' => [

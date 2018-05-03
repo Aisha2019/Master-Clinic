@@ -30,7 +30,7 @@ class NursesController extends Controller
 
         $nurse = new nurse;
 
-        $nurse->name = $request->fullName;
+        $nurse->name = ucwords(trans($request->fullName)); // to make the first letter of each name capital
         $nurse->email = $request->email;
         $nurse->password = bcrypt($request->password);
         $nurse->mobile = $request->mobile;
@@ -63,7 +63,7 @@ class NursesController extends Controller
     public function update(Request $request, nurse $nurse)
     {
         $this->validate($request,[
-            'fullName' => 'required|string',
+            'fullName' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:35',
             'email' => ['required','email', Rule::unique('nurses')->ignore($nurse->id)],
             'mobile' => 'nullable|numeric|digits_between:8,20',
             'birthday' => 'nullable|date|before:today',
@@ -71,11 +71,11 @@ class NursesController extends Controller
                     'nullable',
                     Rule::in(['male', 'female']),
                 ],
-            'salary' => 'required|numeric',
+            'salary' => 'required|numeric|min:0',
             'clinic' => 'required|exists:clinics,id'
         ]);
          
-        $nurse->name = $request->fullName;
+        $nurse->name = ucwords(trans($request->fullName)); // to make the first letter of each name capital
         $nurse->email = $request->email;
         $nurse->mobile = $request->mobile;
         $nurse->gender = $request->gender;

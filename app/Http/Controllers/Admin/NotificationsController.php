@@ -28,14 +28,16 @@ class NotificationsController extends Controller
     	$notifications = Auth::user()->notifications->where('type', 'App\Notifications\MaterialsNotifications');
     	return view('admin.notification.view', compact('notifications')); 
     }
-    public function destroy(Request $request,$notification)
+    public function destroy($notification)
     {
         $admins = admin::all();
-         $data = Auth::user()->notifications->where('id', $notification)->first()->data;
-        foreach ($admins as $admin) {
-            $admin->notifications->where('data', $data)->first()->delete();
-        }
+        $notification = Auth::user()->notifications->where('id', $notification)->first();
+        
+                     if($notification)
+                    $notification->delete();
         
         return back()->with('status' ,'Notification  has been deleted Successfully!!');  
     }
+
+    
 }

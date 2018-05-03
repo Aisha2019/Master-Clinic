@@ -1,7 +1,12 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>@yield('title')</title>
+  <title> 
+    @if ( count(Auth::user()->unreadNotifications->where('type','App\Notifications\MaterialsNotifications')) )
+    ({{ count(Auth::user()->unreadNotifications) }})
+    @endif
+  @yield('title')
+  </title>
   <link rel="shortcut icon" href="{{ asset('/favicon.png') }}" />
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
