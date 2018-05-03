@@ -40,8 +40,8 @@ class InvoicesController extends Controller
     public function store(Request $request)
     {
     	$this->validate($request,[
-            'day' => 'date|before:today',
-            'price' => 'required|numeric',
+            'day' => 'date|before_or_equal:today',
+            'price' => 'required|numeric|min:0',
             'tax' => 'nullable|numeric|max:1|min:0',
             'discount' => 'nullable|numeric|max:1|min:0',
             'clinic' => 'required|exists:clinics,id',
@@ -98,8 +98,8 @@ class InvoicesController extends Controller
     public function update(Request $request, receipt $invoice)
     {
         $this->validate($request,[
-            'day' => 'date|before:today',
-            'price' => 'required|numeric',
+            'day' => 'date|before_or_equal:today',
+            'price' => 'required|numeric|min:0',
             'tax' => 'nullable|numeric|max:1|min:0',
             'discount' => 'nullable|numeric|max:1|min:0',
             'clinic' => 'required|exists:clinics,id',
