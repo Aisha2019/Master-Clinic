@@ -27,7 +27,7 @@
                     </li>
 
                     <li class="{{ App\Navigation::setActive('contact_us') }}">
-                        <a class="nav-link" href="{{ route('contact_us') }}">ContactUs</a>
+                        <a class="nav-link" href="{{ route('contact_us') }}">Contacts</a>
                     </li>
 
 

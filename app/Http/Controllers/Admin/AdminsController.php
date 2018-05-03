@@ -27,7 +27,7 @@ class AdminsController extends Controller
             $this->validate($request,[
             'fullName'=>'required|string|min:3',
             'email'=>'required|unique:admins|email',
-            'password'=>'required|string|confirmed',
+            'password'=>'required|string|confirmed|min:8',
             'mobile'=>'nullable|numeric|digits_between:8,20',
 
             'role' => [
@@ -37,7 +37,8 @@ class AdminsController extends Controller
         ]);
         $admin = new Admin;
 
-        $admin->name=$request->fullName;
+        $admin->name=ucwords(trans($request->fullName)); // to make the first letter of each name capital
+
         $admin->email=$request->email;
         $admin->password = bcrypt($request->password);
         $admin->mobile=$request->mobile;

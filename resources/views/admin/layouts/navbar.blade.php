@@ -27,7 +27,7 @@
               <!-- Menu toggle button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <i class="far fa-bell"></i>
-                @if ( count(Auth::user()->unreadNotifications) )
+                @if ( count(Auth::user()->unreadNotifications->where('type','App\Notifications\MaterialsNotifications')) )
                 <span class="label label-warning">{{ count(Auth::user()->unreadNotifications) }}</span>
                 @endif
               </a>

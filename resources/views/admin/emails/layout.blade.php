@@ -13,7 +13,7 @@
         <div class="box-body no-padding">
           <ul class="nav nav-pills nav-stacked">
             <li class="{{ App\Navigation::setActive('admin.inbox') }}"><a href="{{ route('admin.inbox') }}"><i class="fa fa-inbox"></i> Inbox
-              @if (count(Auth::user()->unreadNotifications))
+              @if (count(Auth::user()->unreadNotifications->where('type','App\Notifications\PatientEmailNotification')))
                 <span class="label label-primary pull-right">{{ count(Auth::user()->unreadNotifications) }}</span></a></li>
               @endif
             <li><a href="#"><i class="fa fa-envelope-o"></i> Sent</a></li>

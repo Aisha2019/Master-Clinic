@@ -48,11 +48,17 @@ class MaterialsController extends Controller
         $material->num= $request->num;
         $material->min_num= $request->min_num;
         $admins = admin::all();
+        $material->clinic_name = DB::table('clinics')->where('id', $material->clinic_id)->value('name');
 
         if($material->num < $material->min_num)
             {
-                Notification::send($admins, new MaterialsNotifications($material->name ." is less than ".$material->min_num));
+                Notification::send($admins, new MaterialsNotifications($material->name ." is less than ".$material->min_num." in ".$clinic_name));
             }
+        else
+            {
+                $this::delete_material_notification($material);
+            }
+        
         
         $material->save();
         return redirect('/admin/material/view')->with('status' ,'Material Added Successfully!!');
@@ -94,12 +100,16 @@ class MaterialsController extends Controller
         $material->num= $request->num;
         $material->min_num= $request->min_num;
         $admins = admin::all();
+        $clinic_name = DB::table('clinics')->where('id', $material->clinic_id)->value('name');
+
         if($material->num < $material->min_num)
             {
-                Notification::send($admins, new MaterialsNotifications($material->name ." is less than ".$material->min_num));
+                Notification::send($admins, new MaterialsNotifications($material->name ." is less than ".$material->min_num." in ".$clinic_name));
             }
-        
-
+        else
+        {
+            $this::delete_material_notification($material);
+        }
         $material->save();
 
         return back()->with('status', 'updated Successfully!!');   
@@ -123,14 +133,34 @@ class MaterialsController extends Controller
         {
             $material->num = $material->num-1 ;
             $admins = admin::all();
-            if($material->num < $material->min_num)
+            $clinic_name = DB::table('clinics')->where('id', $material->clinic_id)->value('name');
+
+        if($material->num < $material->min_num)
             {
-               $notification = new MaterialsNotifications($material->name ." is less than ".$material->min_num);
-                Notification::send($admins, $notification);
+                Notification::send($admins, new MaterialsNotifications($material->name ." is less than ".$material->min_num." in ".$clinic_name));
             }
             $material->save();
             return back()->with('status' ,'You used '.$material->name);
         }
+    }
+
+    public function delete_material_notification(material $material)
+    {
+        $admins = admin::all();
+        $clinic_name = DB::table('clinics')->where('id', $material->clinic_id)->value('name');
+         $data['content'] = $material->name ." is less than ".$material->min_num." in ".$clinic_name;
+        foreach ($admins as $admin) {
+            
+                $notifications = $admin->notifications->where('data', $data)->all();
+            foreach ($notifications as $notification)
+                {
+                     if($notification)
+                    $notification->delete();
+                }
+            
+        }
+        
+        return back();
     }
 
 }

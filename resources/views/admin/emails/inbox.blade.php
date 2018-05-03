@@ -16,7 +16,7 @@
 <section class="content-header">
   <h1>
     Mailbox
-    <small>{{ count(Auth::user()->unreadNotifications) }} new messages</small>
+    <small>{{ count(Auth::user()->unreadNotifications->where('type','App\Notifications\PatientEmailNotification')) }} new messages</small>
   </h1>
 </section>
 
