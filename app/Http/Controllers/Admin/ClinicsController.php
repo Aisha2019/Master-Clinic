@@ -23,7 +23,7 @@ class ClinicsController extends Controller
         
         $clinic = new clinic ;
 
-        $clinic->name = $request->name;
+        $clinic->name = ucfirst(trans($request->name));
         $clinic->email = $request->email;
         $clinic->telephone = $request->phone;
         $clinic->address = $request->address;
@@ -61,11 +61,11 @@ class ClinicsController extends Controller
     public function update(Request $request,clinic $clinic) {
     	$this->validate($request,[
             'email' => ['required','email', Rule::unique('clinics')->ignore($clinic->id)],
-            'name' => 'required|string|min:3',
+            'name' => 'required|alpha|min:3',
             'phone' => 'nullable|numeric|digits_between:8,20',
                    ]);
 
-        $clinic->name = $request->name;
+        $clinic->name = ucfirst(trans($request->name));
         $clinic->email = $request->email;
         $clinic->telephone = $request->phone;
         $clinic->address = $request->address;

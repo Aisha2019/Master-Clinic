@@ -57,7 +57,7 @@
 			                  	<td>{{ $clinic->id }}</td>
 			                  	<td>{{ $clinic->name }}</td>
 			                  	<td>{{ $clinic->email }}</td>
-			                  	<td>{{ $clinic->phone }}</td>
+			                  	<td>{{ $clinic->telephone }}</td>
 			                  	<td>{{ $clinic->address }}</td>
 			                  	<td>{{ $clinic->start_time }}</td>
 			                  	<td>{{ $clinic->end_time }}</td>
