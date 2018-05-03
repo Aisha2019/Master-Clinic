@@ -46,14 +46,14 @@ Route::group(['namespace' => 'Admin'],function(){
     Route::DELETE('/admin/patient/delete/{patient}','PatientsController@destroy')->name('admin.patient.delete');
  
 	// view pateint file
-	Route::get('/admin/patient/file/{patient}', 'PatientsController@view_file')->name('admin.patient.file');
+	Route::get('/admin/patient/file/{patient}', 'FileController@index')->name('admin.patient.file');
 	
 	// print pateint file
-	Route::get('/admin/patient/printfile/{patient}', 'PatientsController@print_file')->name('admin.patient.printfile');
+	Route::get('/admin/patient/printfile/{patient}', 'FileController@print')->name('admin.patient.printfile');
 
 	// update pateint file
-	Route::get('/admin/patient/updatefile/{patient}', 'PatientsController@edit_file')->name('admin.patient.updatefile');
-	Route::PATCH('/admin/patient/updatefile/{patient}', 'PatientsController@update_file');
+	Route::get('/admin/patient/updatefile/{patient}', 'FileController@edit')->name('admin.patient.updatefile');
+	Route::PATCH('/admin/patient/updatefile/{patient}', 'FileController@update');
 
     // add new nurse 
 	Route::get('/admin/nurse/add', 'NursesController@add')->name('admin.nurse.add');
