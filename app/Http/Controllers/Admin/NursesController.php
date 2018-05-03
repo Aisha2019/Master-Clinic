@@ -63,7 +63,7 @@ class NursesController extends Controller
     public function update(Request $request, nurse $nurse)
     {
         $this->validate($request,[
-            'fullName' => 'required|regex:/^[\pL\s\-]+$/u',
+            'fullName' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:35',
             'email' => ['required','email', Rule::unique('nurses')->ignore($nurse->id)],
             'mobile' => 'nullable|numeric|digits_between:8,20',
             'birthday' => 'nullable|date|before:today',

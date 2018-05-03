@@ -26,7 +26,7 @@ class ClinicRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3',
+            'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:35',
             'email' => 'required|unique:clinics|email',
             'phone' => 'nullable|numeric|digits_between:8,20',
         ];

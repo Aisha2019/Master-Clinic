@@ -31,7 +31,7 @@ class MaterialsController extends Controller
     public function store(Request $request)
     {
     	$this->validate($request,[
-            'name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:35',
             'clinic' => 'required|exists:clinics,id',
             'category' => 'required|exists:categories,id',
             'cost' => 'required|numeric|min:0',
@@ -73,7 +73,7 @@ class MaterialsController extends Controller
     public function update(Request $request, material $material)
     {
         $this->validate($request,[
-            'name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:35',
             'clinic' => 'required|exists:clinics,id',
             'category' => 'required|exists:categories,id',
             'cost' => 'required|numeric|min:0',

@@ -25,7 +25,7 @@ class NurseRequest extends FormRequest
     public function rules()
     {
         return [
-            'fullName' => 'required|regex:/^[\pL\s\-]+$/u', 
+            'fullName' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:35', 
             // to make the name contains only letters,spaces and hyphens
             'email' => 'required|unique:nurses|email',
             'password' => 'required|string|confirmed|min:8',
