@@ -37,7 +37,7 @@ class PatientController extends Controller
     public function update(Request $request)
     {
     	$this->validate($request, [
-    		'name' => 'required|string|min:3',
+    		'name' => 'required|regex:/^[\pL\s\-]+$/u|min:3|max:35',
     		'email' => [
     			'required',
     			'email',
@@ -50,9 +50,10 @@ class PatientController extends Controller
     			'string',
     			Rule::in(['male', 'female']),
     			],
+
     	]);
     	$patient = Patient::find(Auth::id());
-    	$patient->name = $request->name;
+    	$patient->name = ucwords(trans($request->name)); // to make the first letter of each name capital
     	$patient->email = $request->email;
     	$patient->mobile = $request->mobile;
     	$patient->gender = $request->gender;
@@ -64,8 +65,8 @@ class PatientController extends Controller
     public function password(Request $request)
     {
     	$this->validate($request, [
-    		'oldPassword' => 'required',
-    		'newPassword' => 'required|min:6|same:passwordConfirm',
+    		'oldPassword' => 'required|min:8',
+    		'newPassword' => 'required|min:8|same:passwordConfirm',
     	]);
     	$patient = Patient::find(Auth::id());
     	// return Hash::check($request->newPassword, $patient->password);
