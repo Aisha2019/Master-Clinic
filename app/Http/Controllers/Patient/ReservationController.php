@@ -70,7 +70,7 @@ public function update(Request $request, reservation $reservation)
 
 $this->validate($request,[
            
-            'date'=>'required|after:now',
+            'date'=>'required|after:today',
             'time'=>'required|after:"8:00 AM"|before:"10:00 PM"',
         ]);
          $reservation=reservation::find($reservation->id);
@@ -94,7 +94,7 @@ $this->validate($request,[
 
 $this->validate($request,[
            
-            'date'=>'required|after:now',
+            'date'=>'required|after:today',
             'time'=>'required|after:"8:00 AM"|before:"10:00 PM"',
             'clinic'=>'required',
             'admin'=>'required',
