@@ -23,10 +23,10 @@ class ReservationsController extends Controller
 
         public function get()
     {
-      $today=Date('Y-m-d');
+      $today=date('Y-m-d'). ' 23:59:59';
       $id=auth()->user()->id;
-      $reservations=reservation::where('admin_id',$id)->whereNotNull('nurse_id')->where('reject',0)->where('time','LIKE',"%{$today}%")->orderBy('time','desc')->get();
-      $array=self::getdata($reservations);      
+      $reservations=reservation::where('admin_id',$id)->whereNotNull('nurse_id')->where('time','>',$today)->orderBy('time','desc')->get();
+      $array=app('App\Http\Controllers\nurse\ReservationsController')->getdata($reservations);
       return view('admin.patient.reservations')->with('reservations',$array);
 
     }
@@ -36,35 +36,11 @@ class ReservationsController extends Controller
   
       $date=$request->Reservationdate;
       $id=auth()->user()->id;
-      $reservations=reservation::where('admin_id',$id)->whereNotNull('nurse_id')->where('reject',0)->where('time','LIKE',"%{$date}%")->orderBy('time','desc')->get();
-      $array=self::getdata($reservations);     
+      $reservations=reservation::where('admin_id',$id)->whereNotNull('nurse_id')->where('time','LIKE',"%{$date}%")->orderBy('time','desc')->get();
+      $array=app('App\Http\Controllers\nurse\ReservationsController')->getdata($reservations);
       return view('admin.patient.reservations')->with('reservations',$array);
     }
 
-           public function getdata($reservations)
-   {
-   	$array= array();
-      foreach ($reservations as $reservation) {
-      	$date=date("d-M-Y", strtotime($reservation->time));
-        $time=date("h:i a", strtotime($reservation->time));
-		
-      $patient=Patient::where('id',$reservation->patient_id)->value('name');
-      $clinic=clinic::where('id',$reservation->clinic_id)->value('name');
-      $nurse=nurse::where('id',$reservation->nurse_id)->value('name');
-       $attendance=$reservation->attend;
-       array_push($array, 
-        array(
-        	'id'=>$reservation->id,
-            'clinic'=>$clinic,
-            'nurse'=>$nurse,
-            'patient'=>$patient,
-            'date'=>$date,
-            'time'=>$time,
-            'attend'=>$attendance,
-           )
-        );
-    }  
-  return $array;
-   }
+    
 
 }

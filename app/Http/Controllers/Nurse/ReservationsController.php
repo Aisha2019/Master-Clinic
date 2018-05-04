@@ -27,12 +27,12 @@ class ReservationsController extends Controller
         $reservation->attend=1;
         $reservation->save();
        
-        return self::get()->with('status','User attendance has been confirmed');
+        return back()->with('status','User attendance has been confirmed');
     }
     public function get()
     {
-      $today=Date('Y-m-d');
-      $reservations=reservation::where('time','LIKE',"%{$today}%")->orderBy('time','desc')->get();
+      $today=date('Y-m-d'). ' 23:59:59';
+      $reservations=reservation::where('time','>',$today)->orderBy('time','desc')->get();
       $array=self::getdata($reservations);   
         
       return view('nurse.patient.reservations')->with('reservations',$array);
