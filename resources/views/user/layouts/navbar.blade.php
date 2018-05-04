@@ -30,7 +30,9 @@
                         <a class="nav-link" href="{{ route('contact_us') }}">Contacts</a>
                     </li>
 
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('file') }}">File</a>
+                    </li>
                 @endauth
             </ul>
 

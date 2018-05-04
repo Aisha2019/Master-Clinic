@@ -33,9 +33,11 @@ class HomeController extends Controller
         $doc_num = admin::count();
         return view('user.index',compact('clinics','patients','operations','doctors','doc_num'));
     }
+    
     public function contact()
     {
        $clinics = clinic::all();
        return view('user.clinic.contact',compact('clinics'));
     }
+
 }

@@ -85,7 +85,7 @@
 			                  	</td>
 								<td>
 									<a href="{{ route('nurse.patient.update',  $patient->id ) }}"  class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-
+									<a href="{{ route('nurse.patient.file', $patient->id) }}"  class="btn btn-warning btn-xs"><i class="fa fa-file-pdf"></i></a>
 									<a 
 										href="#" 
 										class="btn btn-danger btn-xs"

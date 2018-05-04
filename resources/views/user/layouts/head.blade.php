@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="{{ asset('/user_styles/css/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/user_styles/css/bootstrap.min.css') }}">
     
-
 	@yield('head')
 
 </head>
