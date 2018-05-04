@@ -15,6 +15,10 @@ $factory->define(nurse::class, function (Faker $faker) {
         'date_of_birth' => $faker->date('Y-m-d', 'now'),
         'gender' => $faker->randomElement(['male', 'female']),
         'salary' => $faker->numberBetween(1000, 5000),
+        'start_day'=>$faker->dayOfWeek(),
+        'end_day'=>$faker->dayOfWeek(),
+        'start_time'=>$faker->time(),
+        'end_time'=>$faker->time(),
         'clinic_id' => function() {
         	return clinic::all()->random();
         },

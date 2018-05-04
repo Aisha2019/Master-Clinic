@@ -186,4 +186,12 @@ Route::group(['namespace' => 'Admin'],function(){
 // admin searches for a date
 	Route::post('/admin/patient/reservations', 'ReservationsController@search');
 
+// admin view admins' working times 
+	Route::get('admin/admin/times','AdminsController@view_times')->name('admin.admin.times');
+
+// admin view nurses' working times 
+	Route::get('admin/nurse/times','NursesController@view_times')->name('admin.nurse.times');
+
+
+
 });

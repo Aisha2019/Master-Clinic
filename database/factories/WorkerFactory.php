@@ -14,5 +14,6 @@ $factory->define(worker::class, function (Faker $faker) {
         	return clinic::all()->random();
         },
         'position' => $faker->jobTitle,
+        'mobile' => $faker->phoneNumber
     ];
 });

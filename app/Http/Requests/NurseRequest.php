@@ -31,6 +31,10 @@ class NurseRequest extends FormRequest
             'password' => 'required|string|confirmed|min:8',
             'mobile' => 'nullable|numeric|digits_between:8,20',
             'birthday' => 'nullable|date|before:today',
+            'start_day'=>'required|alpha',
+            'end_day'=>'required|alpha',
+            'start_time'=>'required',
+            'end_time'=>'required',
             'gender' => [
                     'nullable',
                     Rule::in(['male', 'female']),

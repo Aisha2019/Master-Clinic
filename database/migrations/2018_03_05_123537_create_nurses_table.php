@@ -24,6 +24,10 @@ class CreateNursesTable extends Migration
             $table->date('date_of_birth')->nullable();
             $table->boolean('status')->default(0);
             $table->integer('salary');
+            $table->string('start_day'); //a week day : start of working days
+            $table->string('end_day'); //a week day : end of working days
+            $table->time('start_time');
+            $table->time('end_time');
             $table->integer('clinic_id')->unsigned();
             $table->foreign('clinic_id')->references('id')->on('clinics')->onDelete('cascade')->onUpdate('cascade');
             $table->rememberToken();

@@ -6,6 +6,8 @@
 
 @section('css')
   {{-- here goes the css of page --}}
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="{{ asset('/admin_styles/css/bootstrap-timepicker.min.css') }}">
 @endsection
 
 @section('body')
@@ -56,6 +58,54 @@
           </select>
         </div>
 
+        <div class="form-group">
+          <label>Start Day:</label>
+          <select class="form-control" name="start_day" required>
+            <option value="">From</option>
+              @for($i=0 ; $i<7 ; $i++)
+                  <option value="{{ $week[$i] }}" {{ (old('start_day') == $week[$i] ) ? 'selected="selected"' : ''}}>{{ $week[$i] }}</option>
+              @endfor
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>End Day:</label>
+          <select class="form-control" name="end_day" required>
+            <option value="">To</option>
+              @for($i=0 ; $i<7 ; $i++)
+                  <option value="{{ $week[$i] }}" {{ (old('end_day') == $week[$i] ) ? 'selected="selected"' : ''}}>{{ $week[$i] }}</option>
+              @endfor
+          </select>
+        </div>
+
+        <div class="bootstrap-timepicker">
+                <div class="form-group">
+                  <label>Start Time:</label>
+
+                  <div class="input-group">
+                    <input type="text" class="form-control timepicker" name="start_time" value="{{ old('start_time') }}">
+
+                    <div class="input-group-addon">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                  </div>
+                </div>
+        </div>
+
+        <div class="bootstrap-timepicker">
+                <div class="form-group">
+                  <label>End Time:</label>
+
+                  <div class="input-group">
+                    <input type="text" class="form-control timepicker" name="end_time" value="{{ old('end_time') }}">
+
+                    <div class="input-group-addon">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                  </div>
+                </div>
+        </div>
+
         <button type="submit" class="btn btn-primary  btn-flat" style="">Register</button>
       </form>
     </div>
@@ -65,4 +115,16 @@
 
 @section('js')
   {{-- here goes js files --}}
+
+  <!-- bootstrap time picker -->
+<script src="{{ asset('/admin_styles/js/bootstrap-timepicker.min.js') }}"></script>
+<script>
+  $(function () {
+    //Timepicker
+    $(".timepicker").timepicker({
+      showInputs: false
+    });
+
+  });
+</script>
 @endsection
