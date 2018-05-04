@@ -8,6 +8,8 @@
 @section('css')
   {{-- here goes the css of page --}}
   <link rel="stylesheet" href="{{ asset('/admin_styles/css/datepicker3.css') }}">
+  <!-- Bootstrap time Picker -->
+  <link rel="stylesheet" href="{{ asset('/admin_styles/css/bootstrap-timepicker.min.css') }}">
 @endsection
 
 @section('body')
@@ -65,6 +67,55 @@
           </select>
         </div>
 
+        <div class="form-group">
+          <label>Start Day:</label>
+          <select class="form-control" name="start_day" required>
+            <option value="">From</option>
+              @for($i=0 ; $i<7 ; $i++)
+                  <option value="{{ $week[$i] }}" {{ ($nurse->start_day == $week[$i] ) ? 'selected="selected"' : ''}}>{{ $week[$i] }}</option>
+              @endfor
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>End Day:</label>
+          <select class="form-control" name="end_day" required>
+            <option value="">To</option>
+              @for($i=0 ; $i<7 ; $i++)
+                  <option value="{{ $week[$i] }}" {{ ($nurse->end_day == $week[$i] ) ? 'selected="selected"' : ''}}>{{ $week[$i] }}</option>
+              @endfor
+          </select>
+        </div>
+
+
+        <div class="bootstrap-timepicker">
+                <div class="form-group">
+                  <label>Start Time:</label>
+
+                  <div class="input-group">
+                    <input type="text" class="form-control timepicker" name="start_time" value="{{ $nurse->start_time }}">
+
+                    <div class="input-group-addon">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                  </div>
+                </div>
+        </div>
+
+        <div class="bootstrap-timepicker">
+                <div class="form-group">
+                  <label>End Time:</label>
+
+                  <div class="input-group">
+                    <input type="text" class="form-control timepicker" name="end_time" value="{{ $nurse->end_time }}">
+
+                    <div class="input-group-addon">
+                      <i class="fas fa-clock"></i>
+                    </div>
+                  </div>
+                </div>
+        </div>
+
         <div class="custom-control custom-radio">
           <input type="radio" value="female" id="customRadio1" name="gender" {{ ($nurse->gender == 'female') ? 'checked' : '' }} class="custom-control-input">
           <label class="custom-control-label" for="customRadio1">Female</label>
@@ -115,4 +166,14 @@
       });
     });
   </script>
+  <!-- bootstrap time picker -->
+<script src="{{ asset('/admin_styles/js/bootstrap-timepicker.min.js') }}"></script>
+<script>
+  $(function () {
+    //Timepicker
+    $(".timepicker").timepicker({
+      showInputs: false
+    });
+  });
+</script>
 @endsection
