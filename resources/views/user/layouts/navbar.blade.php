@@ -30,7 +30,11 @@
                         <a class="nav-link" href="{{ route('contact_us') }}">Contacts</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="{{ App\Navigation::setActive('send.email') }}">
+                        <a class="nav-link" href="{{ route('send.email') }}">Email</a>
+                    </li>
+
+                    <li class="{{ App\Navigation::setActive('file') }}">
                         <a class="nav-link" href="{{ route('file') }}">File</a>
                     </li>
                 @endauth
