@@ -5,11 +5,11 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="{{ asset('/admin_styles/images/user4-128x128.jpg') }}" class="img-circle" alt="User Image">
-          {{-- (Auth::user()->image) ? Storage::disk('local')->url(Auth::user()->image) :  --}}
+          <img src="{{ (Auth::user()->image) ? Storage::disk('local')->url(Auth::user()->image) : asset('/admin_styles/images/user4-128x128.jpg') }}" class="img-circle" alt="User Image">
+          
         </div>
         <div class="pull-left info">
-          <p>Abdo</p>  {{-- {{ Auth::user()->name }} --}}
+          <p>{{ Auth::user()->name }}</p>  
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>

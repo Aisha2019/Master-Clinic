@@ -26,6 +26,6 @@ Route::group(['namespace' => 'Patient'],function(){
 	Route::get('/home', 'HomeController@home')->name('home');
 
 	// patient file route
-	Route::get('/file', 'HomeController@file')->name('file');
+	Route::get('/file', 'FileController@index')->name('file');
 	Route::get('/print_file', 'HomeController@print')->name('patient.print_file');
 });

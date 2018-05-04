@@ -15,6 +15,11 @@ use Storage;
 
 class FileController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth:admin');
+    }
+
     /**
      * Display the specified resource.
      *
@@ -38,13 +43,210 @@ class FileController extends Controller
     }
 
      /**
-     * Display the specified resource.
+     * Get add new appointment data form
      *
      * @param  Patient $patient
      * @return \Illuminate\Http\Response
      */
-    public function edit(Patient $patient){
-        return view('/admin/patient/updatefile', compact('patient'));
+    public function edit_add(Patient $patient){
+        return view('/admin/patient/addfile', compact('patient'));
+    }
+
+     /**
+     * Get update previous appointment data form
+     *
+     * @param  Patient $patient
+     * @return \Illuminate\Http\Response
+     */
+    public function edit_update(Request $request, Patient $patient){
+        $prescriptions = $patient->prescriptions;
+        $images = $this->groupImages($patient->images);
+        $comments = $patient->comments;
+        
+        $pages = $this->arrays2pages($prescriptions, $images, $comments);
+        
+        $pages = $this->sortPages($pages[1], $pages[0]);
+        $page = $pages[((int)$request->pageNumber) - 1];
+        $date = $page[5];
+
+        $ids[0] = null;
+        $ids[1] = null;
+        $ids[2] = null;
+
+        if ($page[0] != null) {
+            $ids[0] = $page[0]->id;
+        }
+
+        if($page[1] != null){
+            $images = $page[1];
+            for ($i = 0; $i < count($images); $i++) {
+                $imagesIds[] = $images[$i]->id;
+            }
+            $ids[1] = $imagesIds;
+        }
+
+        if ($page[2] != null) {
+            $ids[2] = $page[2]->id;
+        }
+
+        return view('/admin/patient/updatefile', compact('patient', 'page', 'ids', 'date'));
+    }
+
+    /**
+     * Store file photos
+     *
+     * @param  Image $photo
+     * @param  String $caption
+     * @param  Int $id
+     * @return void
+     */
+    private function update_photo($photo, $caption, $id, $date){
+        // store the picture (you must run this commant to view the pictures in the views `php artisan storage:link`)
+        $filePath = $photo->store('/public/patients/files/' . $id);
+
+        $photo = new image;
+
+        $photo->image = $filePath;
+        $photo->caption = $caption;
+        $photo->patient_id = $id;
+        $photo->admin_id = Auth::user()->id;
+        $photo->created_at = $date;
+
+        $photo->save();
+    }
+
+    /**
+     * Store file photos
+     *
+     * @param  Array $photos
+     * @param  Array $captions
+     * @param  Int $id
+     * @return void
+     */
+    private function update_photos($id, $photos, $captions, $date){
+        for ($i = 0; $i < count($photos); $i++) {
+            $this->update_photo($photos[$i], $captions[$i], $id, $date);
+        }
+    }
+
+     /**
+     * Update previous appointments data to patient file
+     *
+     * @param  Request $request
+     * @param  array $arr
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Patient $patient){
+
+        $ids[0] = (int)$request->prescriptions_id;
+        $ids[1] = explode(" ", $request->photos_ids);
+        $ids[2] = (int)$request->comments_id;
+        $photos_ids = $ids[1];
+        for ($i = 0; $i < count($photos_ids); $i++) {
+            $photos_ids[$i] = (int)$photos_ids[$i];
+        }
+
+        $date = $request->date;
+
+        $prescriptions = null;
+        $comments = null;
+        $photos = null;
+        $captions = null;
+        $pages = null;
+
+        echo $date;
+
+        $images = $ids[1];
+        foreach ($images as $image) {
+            image::find($image)->delete();
+        }
+
+        $this->validate($request, [
+            'photo_1' => 'image',
+            'photo_2' => 'image',
+            'photo_3' => 'image',
+            'photo_4' => 'image',
+            'photo_5' => 'image',
+            'photo_6' => 'image',
+            'photo_7' => 'image',
+            'photo_8' => 'image',
+            'photo_9' => 'image',
+            'photo_10' => 'image',
+        ]);
+
+        if ($request->photo_1 != "") {
+            $photos[] = $request->photo_1;
+            $captions[] = $request->photo_1_cap;
+        }
+
+        if ($request->photo_2 != "") {
+            $photos[] = $request->photo_2;
+            $captions[] = $request->photo_2_cap;
+        }
+
+        if ($request->photo_3 != "") {
+            $photos[] = $request->photo_3;
+            $captions[] = $request->photo_3_cap;
+        }
+
+        if ($request->photo_4 != "") {
+            $photos[] = $request->photo_4;
+            $captions[] = $request->photo_4_cap;
+        }
+
+        if ($request->photo_5 != "") {
+            $photos[] = $request->photo_5;
+            $captions[] = $request->photo_5_cap;
+        }
+
+        if ($request->photo_6 != "") {
+            $photos[] = $request->photo_6;
+            $captions[] = $request->photo_6_cap;
+        }
+
+        if ($request->photo_7 != "") {
+            $photos[] = $request->photo_7;
+            $captions[] = $request->photo_7_cap;
+        }
+
+        if ($request->photo_8 != "") {
+            $photos[] = $request->photo_8;
+            $captions[] = $request->photo_8_cap;
+        }
+
+        if ($request->photo_9 != "") {
+            $photos[] = $request->photo_9;
+            $captions[] = $request->photo_9_cap;
+        }
+
+        if ($request->photo_10 != "") {
+            $photos[] = $request->photo_10;
+            $captions[] = $request->photo_10_cap;
+        }
+
+        if ($photos != null) {
+            $this->update_photos($patient->id, $photos, $captions, $date);
+        }
+
+        if ($request->prescription == ""){
+            prescription::find($ids[0])->delete();
+        }
+        else{
+            $prescription = prescription::find($ids[0]);
+            $prescription->name = $request->prescription;
+            $prescription->save();
+        }
+
+        if ($request->comment == ""){
+            comment::find($ids[2])->delete();
+        }
+        else{
+            $comment = comment::find($ids[2]);
+            $comment->content = $request->comment;
+            $comment->save();
+        }
+
+        return redirect()->route("admin.patient.file", $patient->id)->with('status' ,'Patient File has been updated Successfully!!!');
     }
 
     /**
@@ -84,13 +286,13 @@ class FileController extends Controller
     }
 
      /**
-     * Display the specified resource.
+     * Add new appointment data to patient file
      *
      * @param  Request $request
      * @param  Patient $patient
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient){
+    public function add(Request $request, Patient $patient){
         $prescriptions = null;
         $comments = null;
         $photos = null;
@@ -110,18 +312,55 @@ class FileController extends Controller
             'photo_10' => 'image',
         ]);
 
-        $captions = array(
-            $request->photo_1_cap,
-            $request->photo_2_cap,
-            $request->photo_3_cap,
-            $request->photo_4_cap,
-            $request->photo_5_cap,
-            $request->photo_6_cap,
-            $request->photo_7_cap,
-            $request->photo_8_cap,
-            $request->photo_9_cap,
-            $request->photo_10_cap,
-        );
+        if ($request->photo_1 != "") {
+            $photos[] = $request->photo_1;
+            $captions[] = $request->photo_1_cap;
+        }
+
+        if ($request->photo_2 != "") {
+            $photos[] = $request->photo_2;
+            $captions[] = $request->photo_2_cap;
+        }
+
+        if ($request->photo_3 != "") {
+            $photos[] = $request->photo_3;
+            $captions[] = $request->photo_3_cap;
+        }
+
+        if ($request->photo_4 != "") {
+            $photos[] = $request->photo_4;
+            $captions[] = $request->photo_4_cap;
+        }
+
+        if ($request->photo_5 != "") {
+            $photos[] = $request->photo_5;
+            $captions[] = $request->photo_5_cap;
+        }
+
+        if ($request->photo_6 != "") {
+            $photos[] = $request->photo_6;
+            $captions[] = $request->photo_6_cap;
+        }
+
+        if ($request->photo_7 != "") {
+            $photos[] = $request->photo_7;
+            $captions[] = $request->photo_7_cap;
+        }
+
+        if ($request->photo_8 != "") {
+            $photos[] = $request->photo_8;
+            $captions[] = $request->photo_8_cap;
+        }
+
+        if ($request->photo_9 != "") {
+            $photos[] = $request->photo_9;
+            $captions[] = $request->photo_9_cap;
+        }
+
+        if ($request->photo_10 != "") {
+            $photos[] = $request->photo_10;
+            $captions[] = $request->photo_10_cap;
+        }
 
         if ($photos != null) {
             $this->store_photos($photos, $captions, $patient->id);
@@ -143,7 +382,21 @@ class FileController extends Controller
             $comment->save();
         }
 
-        redirect('/admin/patient/file/' . $patient->id);
+        return redirect()->route("admin.patient.file", $patient->id)->with('status' ,'Patient File has been added Successfully!!!');
+    }
+
+     /**
+     * Delete Patient File
+     *
+     * @param  Patient $patient
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Patient $patient){
+        $patient->prescriptions()->delete();
+        $patient->images()->delete();
+        $patient->comments()->delete();
+
+        return redirect()->route("admin.patient.file", $patient->id)->with('status' ,'Patient File has been deleted Successfully!!!');
     }
 
      /**
@@ -381,8 +634,20 @@ class FileController extends Controller
             $page = $pages[$i];
             $prescriptions = $page[0];
             $comments = $page[2];
-            $page[0] = $this->string2tags($prescriptions->name);
-            $page[2] = $this->string2tags($comments->content);
+            if ($prescriptions != null) {
+                $page[0] = $this->string2tags($prescriptions->name);
+            }
+            else{
+                $page[0] = array();
+            }
+
+            if ($comments != null) {
+                $page[2] = $this->string2tags($comments->content);
+            }
+            else{
+                $page[2] = array();
+            }
+
             $pages[$i] = $page;
         }
 

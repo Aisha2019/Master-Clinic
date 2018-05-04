@@ -25,7 +25,16 @@ Route::group(['namespace' => 'Nurse'],function(){
 
     Route::PATCH('/nurse/patient/status/{patient}','PatientsController@change_status')->name('nurse.patient.update.status');
 
-    Route::DELETE('/nurse/patient/table/{patient}','PatientsController@destroy')->name('nurse.patient.delete');
+	Route::DELETE('/nurse/patient/table/{patient}','PatientsController@destroy')->name('nurse.patient.delete');
+	
+	// view pateint file
+	Route::get('/nurse/patient/file/{patient}', 'FileController@index')->name('nurse.patient.file');
+	
+	// print pateint file
+	Route::get('/nurse/patient/printfile/{patient}', 'FileController@print')->name('nurse.patient.printfile');
+
+	// delete patient file
+    Route::DELETE('/nurse/patient/deletefile/{patient}','FileController@destroy')->name('nurse.patient.deletefile');
 
 	// get nurse login page
 	Route::GET('nurse/login','Auth\LoginController@showLoginForm')->name('nurse.login');

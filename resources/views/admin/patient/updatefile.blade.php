@@ -14,17 +14,19 @@
             <div class="alert alert-danger"><i class="fa fa-times fa-lg"></i> {{ $error }}</div>
         @endforeach
     </div>
-
     <form method="POST" action="{{ route('admin.patient.updatefile', $patient->id) }}" enctype="multipart/form-data">
         @csrf
-
+        <input type="hidden" value="{{ $date }}" name="date">
+        <input type="hidden" value="{{ $ids[0] }}" name="prescriptions_id">
+        <input type="hidden" value="{{ implode(" ", $ids[1]) }}" name="photos_ids">
+        <input type="hidden" value="{{ $ids[2] }}" name="comments_id">
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Prescriptions Section</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body pad">
-                <textarea class="prescription" name="prescription" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                <textarea class="prescription" name="prescription" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $page[0]->name }}</textarea>
             </div>
         </div>
 
@@ -34,56 +36,22 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body pad photos">
-                <div style="margin-bottom: 20px;">
-                    <input type="file" id="photo_1" class="upload-photo" style="display: none" name="photo_1"/>
-                    <label for="photo_1" class="btn btn-primary">Upload Photo</label>
-                    <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_1_cap" placeholder="photo 1 caption" disabled/>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <input type="file" id="photo_2" class="upload-photo" style="display: none" name="photo_2"/>
-                    <label for="photo_2" class="btn btn-primary">Upload Photo</label>
-                    <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_2_cap" placeholder="photo 2 caption" disabled/>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <input type="file" id="photo_3" class="upload-photo" style="display: none" name="photo_3"/>
-                    <label for="photo_3" class="btn btn-primary">Upload Photo</label>
-                    <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_3_cap" placeholder="photo 3 caption" disabled/>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <input type="file" id="photo_4" class="upload-photo" style="display: none" name="photo_4"/>
-                    <label for="photo_4" class="btn btn-primary">Upload Photo</label>
-                    <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_4_cap" placeholder="photo 4 caption" disabled/>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <input type="file" id="photo_5" class="upload-photo" style="display: none" name="photo_5"/>
-                    <label for="photo_5" class="btn btn-primary">Upload Photo</label>
-                    <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_5_cap" placeholder="photo 5 caption" disabled/>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <input type="file" id="photo_6" class="upload-photo" style="display: none" name="photo_6"/>
-                    <label for="photo_6" class="btn btn-primary">Upload Photo</label>
-                    <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_6_cap" placeholder="photo 6 caption" disabled/>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <input type="file" id="photo_7" class="upload-photo" style="display: none" name="photo_7"/>
-                    <label for="photo_7" class="btn btn-primary">Upload Photo</label>
-                    <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_7_cap" placeholder="photo 7 caption" disabled/>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <input type="file" id="photo_8" class="upload-photo" style="display: none" name="photo_8"/>
-                    <label for="photo_8" class="btn btn-primary">Upload Photo</label>
-                    <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_8_cap" placeholder="photo 8 caption" disabled/>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <input type="file" id="photo_9" class="upload-photo" style="display: none" name="photo_9"/>
-                    <label for="photo_9" class="btn btn-primary">Upload Photo</label>
-                    <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_9_cap" placeholder="photo 9 caption" disabled/>
-                </div>
-                <div style="margin-bottom: 20px;">
-                    <input type="file" id="photo_10" class="upload-photo" style="display: none" name="photo_10"/>
-                    <label for="photo_10" class="btn btn-primary">Upload Photo</label>
-                    <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_10_cap" placeholder="photo 10 caption" disabled/>
-                </div>
+                <?php $numImages = 10 - count($page[1]); $index = 0; ?>
+                @foreach ($page[1] as $photo)
+                    <div style="margin-bottom: 20px;">
+                        <input type="file" id="photo_{{ ++$index }}" class="upload-photo" style="display: none" name="photo_{{ $index }}" value="{{ Storage::disk('local')->url($photo->image) }}" />
+                        <label for="photo_{{ $index }}" class="btn btn-primary">Upload Photo</label>
+                        <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_{{ $index }}_cap" placeholder="photo {{ $index }} caption" value="{{ $photo->caption }}" />
+                    </div>
+                @endforeach
+
+                @for ($i = 0; $i < $numImages; $i++)
+                    <div style="margin-bottom: 20px;">
+                        <input type="file" id="photo_{{ ++$index }}" class="upload-photo" style="display: none" name="photo_{{ $index }}" />
+                        <label for="photo_{{ $index }}" class="btn btn-primary">Upload Photo</label>
+                        <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_{{ $index }}_cap" placeholder="photo {{ $index }} caption" disabled/>
+                    </div>
+                @endfor
             </div>
         </div>
 
@@ -93,7 +61,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body pad">
-                <textarea class="comments" name="comment" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                <textarea class="comments" name="comment" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $page[2]->content }}</textarea>
             </div>
         </div>
         {{ method_field('PATCH') }}

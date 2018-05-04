@@ -13,14 +13,60 @@
 
 @section('body')
 
+    @if (session('status'))
+		<div class="alert alert-success">{{ session('status') }}</div>
+	@endif
+
     @if ($pages != null)
         <div class="container">
-            <div class="btn file-button print-button">
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Choose an appointment to edit</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="page-number-form" action="{{ route('admin.patient.updatefile', $patient->id) }}" method="POST">
+                                @csrf
+                                <select class="form-control" name="pageNumber">
+                                    @for ($i = 0; $i < count($pages); $i++)
+                                        <option>{{$i + 1}}</option>
+                                    @endfor
+                                </select>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="$('.page-number-form').submit();">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn file-button print-button" style="top: 60%;">
                 <a class="ml-auto mr-auto" target="_blank" href="{{ route('admin.patient.printfile', $patient->id) }}"><i class="fa fa-print"></i> Print</a>
             </div>
-            <div class="btn btn-primary file-button update-button">
-                <a class="ml-auto mr-auto" href="{{ route('admin.patient.updatefile', $patient->id) }}"><i class="fa fa-edit"></i> Update</a>
+            <div class="btn btn-success file-button" style="top: 70%;">
+                <a class="ml-auto mr-auto" href="{{ route('admin.patient.addfile', $patient->id) }}"><i class="fa fa-plus"></i> Add</a>
             </div>
+            <div class="btn btn-primary file-button" style="top: 80%;">
+                <a class="ml-auto mr-auto" data-toggle="modal" data-target="#exampleModal" href="#"><i class="fa fa-edit"></i> Update</a>
+            </div>
+            <div class="btn btn-danger file-button" style="top: 90%;">
+                <a onclick=
+                    "event.preventDefault();
+                    if(confirm('Are you sure you want to delete this file?')) {
+                        $('.delete-form').submit();
+                    }"
+                    class="ml-auto mr-auto"
+                    href="#"><i class="fa fa-trash"></i> Delete</a>
+            </div>
+            <form class="delete-form" action="{{ route('admin.patient.deletefile', $patient->id) }}" method="POST">
+                @csrf
+                {{ method_field('DELETE') }}
+            </form>
         </div>
     
         <div class="book">
@@ -269,10 +315,13 @@
             </div>
         </div>
     @else
-        <br><br><br><br><br><br><br><br>
-        <img src="{{ asset('/admin_styles/images/file-icon.png') }}" style="margin-left: 30%;">
-        <h1 style="font-family: 'Economica', sans-serif; font-weight: bold; font-size: 40pt; color: #b9c0dc; margin-left: 41%;">No File Created Yet</h1>
-        <br><br>
+        <div class="container">
+            <img src="{{ asset('/admin_styles/images/file-icon.png') }}" style="position: fixed; left: 38%; top: 13%;">
+            <h1 style="font-family: 'Economica', sans-serif; font-weight: bold; font-size: 40pt; color: #b9c0dc; position: fixed; top: 75%; left: 47%;">No File Created Yet</h1>
+            <div class="btn btn-success file-button" style="top: 85%;">
+                <a class="ml-auto mr-auto" href="{{ route('admin.patient.updatefile', $patient->id) }}"><i class="fa fa-plus"></i> Create</a>
+            </div>
+        </div>
     @endif
 @endsection
 

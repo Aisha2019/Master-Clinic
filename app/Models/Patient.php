@@ -35,7 +35,7 @@ class Patient extends Authenticatable
      */
     public function comments()
     {
-        return $this->hasMany('App\Models\comment')->select('content', 'created_at', 'admin_id')->orderBy('created_at', 'Asc');
+        return $this->hasMany('App\Models\comment')->select('id', 'content', 'created_at', 'admin_id')->orderBy('created_at', 'Asc');
     }
 
     /**
@@ -43,7 +43,7 @@ class Patient extends Authenticatable
      */
     public function prescriptions()
     {
-        return $this->hasMany('App\Models\prescription')->select('name', 'created_at', 'admin_id')->orderBy('created_at', 'Asc');
+        return $this->hasMany('App\Models\prescription')->select('id', 'name', 'created_at', 'admin_id')->orderBy('created_at', 'Asc');
     }
 
     /**
@@ -51,7 +51,7 @@ class Patient extends Authenticatable
      */
     public function images()
     {
-        return $this->hasMany('App\Models\image')->select('image', 'caption', 'created_at', 'admin_id')->orderBy('created_at', 'Asc');
+        return $this->hasMany('App\Models\image')->select('id', 'image', 'caption', 'created_at', 'admin_id')->orderBy('created_at', 'Asc');
     }
 
     //Send password reset notification

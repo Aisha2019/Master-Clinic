@@ -1,4 +1,5 @@
-@extends('user.layouts.layout')
+
+@extends('nurse.layouts.layout')
 
 @section('title')
 	Patient File
@@ -7,11 +8,36 @@
 @section('css')
 	<link href="https://fonts.googleapis.com/css?family=Economica:400,700&amp;subset=latin-ext" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-	<link rel="stylesheet" href="{{ asset('/user_styles/css/file.css') }}">
+	<link rel="stylesheet" href="{{ asset('/nurse_styles/css/file.css') }}">
 @endsection
 
 @section('body')
-	@if ($pages != null)
+
+    @if (session('status'))
+		<div class="alert alert-success">{{ session('status') }}</div>
+	@endif
+
+    @if ($pages != null)
+        <div class="container">
+            
+            <div class="btn file-button print-button" style="top: 80%;">
+                <a class="ml-auto mr-auto" target="_blank" href="{{ route('nurse.patient.printfile', $patient->id) }}"><i class="fa fa-print"></i> Print</a>
+            </div>
+            <div class="btn btn-danger file-button" style="top: 90%;">
+                <a onclick=
+                    "event.preventDefault();
+                    if(confirm('Are you sure you want to delete this file?')) {
+                        $('.delete-form').submit();
+                    }"
+                    class="ml-auto mr-auto"
+                    href="#"><i class="fa fa-trash"></i> Delete</a>
+            </div>
+            <form class="delete-form" action="{{ route('nurse.patient.deletefile', $patient->id) }}" method="POST">
+                @csrf
+                {{ method_field('DELETE') }}
+            </form>
+        </div>
+    
         <div class="book">
             <?php $num_pages = 0; $num_figues = 0; ?>
 
@@ -39,7 +65,7 @@
                         <header class="head"></header>
                         <div class='content'>
                 @if ($num_pages == 0)
-                    <h1 style="font-family: 'Economica', sans-serif; font-weight: bold; font-size: 30pt; margin: 0px; padding: 0px">{{ Auth::user()->name }}</h1>
+                    <h1 style="font-family: 'Economica', sans-serif; font-weight: bold; font-size: 30pt; margin: 0px; padding: 0px">{{ $patient->name }}</h1>
                     <?php $num_pages++; $num_lines = 25; ?>
                 @else
                     <?php $num_lines = 27; ?>
@@ -266,7 +292,5 @@
 @endsection
 
 @section('js')
-	<script>
-		
-	</script>
+
 @endsection

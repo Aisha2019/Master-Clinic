@@ -51,9 +51,16 @@ Route::group(['namespace' => 'Admin'],function(){
 	// print pateint file
 	Route::get('/admin/patient/printfile/{patient}', 'FileController@print')->name('admin.patient.printfile');
 
+	// add pateint file
+	Route::get('/admin/patient/addfile/{patient}', 'FileController@edit_add')->name('admin.patient.addfile');
+	Route::PATCH('/admin/patient/addfile/{patient}', 'FileController@add');
+
 	// update pateint file
-	Route::get('/admin/patient/updatefile/{patient}', 'FileController@edit')->name('admin.patient.updatefile');
+	Route::post('/admin/patient/updatefile/{patient}', 'FileController@edit_update')->name('admin.patient.updatefile');
 	Route::PATCH('/admin/patient/updatefile/{patient}', 'FileController@update');
+
+	// delete patient file
+    Route::DELETE('/admin/patient/deletefile/{patient}','FileController@destroy')->name('admin.patient.deletefile');
 
     // add new nurse 
 	Route::get('/admin/nurse/add', 'NursesController@add')->name('admin.nurse.add');
