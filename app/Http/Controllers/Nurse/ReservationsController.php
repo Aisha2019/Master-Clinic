@@ -20,7 +20,7 @@ class ReservationsController extends Controller
         $this->middleware('auth:nurse');
     }
 
-    public function change_attendance(Reservation $reservation)
+    public function change_attendance(reservation $reservation)
     {
 
         $reservation=reservation::find($reservation->id);   
@@ -33,7 +33,8 @@ class ReservationsController extends Controller
     {
       $today=Date('Y-m-d');
       $reservations=reservation::where('time','LIKE',"%{$today}%")->orderBy('time','desc')->get();
-      $array=self::getdata($reservations);      
+      $array=self::getdata($reservations);   
+        
       return view('nurse.patient.reservations')->with('reservations',$array);
 
     }
@@ -46,7 +47,7 @@ class ReservationsController extends Controller
      return back()->with('status' ,'Reservation confirmed');
     }   
 
-    public function reject(Reservation $reservation)
+    public function reject(reservation $reservation)
     {
         $reservation=Reservation::find($reservation->id); 
         $reservation->reject=1;
