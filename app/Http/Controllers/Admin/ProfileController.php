@@ -69,7 +69,7 @@ class ProfileController extends Controller
     {
         // return $request->all();
         $this->validate($request, [
-            'oldPassword' => 'required|min:8',
+            'oldPassword' => 'required',
             'newPassword' => 'required|min:8|same:passwordConfirm',
         ]);
         $admin = Admin::find(Auth::id());

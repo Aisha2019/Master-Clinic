@@ -83,7 +83,7 @@ class PatientsController extends Controller
         $patient->mobile = $request->mobile;
         $patient->password = bcrypt($request->password);
         $patient->status = 1;
-        $patient->date_of_birth = $request->date;
+        $patient->date_of_birth = $request->birthday;
         $patient->gender = $request->gender;
 
         $patient->save();

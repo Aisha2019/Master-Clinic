@@ -71,7 +71,7 @@ class ProfileController extends Controller
     public function password(Request $request)
     {
         $this->validate($request, [
-            'oldPassword' => 'required|min:8',
+            'oldPassword' => 'required',
             'newPassword' => 'required|min:8|same:passwordConfirm',
         ]);
         $nurse = nurse::find(Auth::id());

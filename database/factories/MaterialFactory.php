@@ -15,6 +15,7 @@ $factory->define(material::class, function (Faker $faker) {
         	return category::all()->random();
         },
         'num' => $faker->numberBetween(10, 100),
+        'min_num' => $faker->numberBetween(10, 100),
         'cost' => $faker->numberBetween(10, 100),
     ];
 });

@@ -12,5 +12,9 @@ $factory->define(admin::class, function (Faker $faker) {
         'status' => $faker->numberBetween(0, 1),
         'mobile' => $faker->phoneNumber,
         'role' => 'super',
+        'start_day'=>$faker->dayOfWeek(),
+        'end_day'=>$faker->dayOfWeek(),
+        'start_time'=>$faker->time(),
+        'end_time'=>$faker->time()
     ];
 });

@@ -65,7 +65,7 @@ class PatientController extends Controller
     public function password(Request $request)
     {
     	$this->validate($request, [
-    		'oldPassword' => 'required|min:8',
+    		'oldPassword' => 'required',
     		'newPassword' => 'required|min:8|same:passwordConfirm',
     	]);
     	$patient = Patient::find(Auth::id());
