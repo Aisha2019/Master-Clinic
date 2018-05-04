@@ -119,4 +119,14 @@ class NursesController extends Controller
         $msg = ($nurse->status) ? 'Nurse has been activated Successfully!!' : 'Nurse has been deactivated Successfully!!';
         return back()->with('status' ,$msg); 
     }
+
+    // view nurses working times
+    public function view_times()
+    {
+       $nurses = nurse::all();
+       foreach ($nurses as $nurse) {
+            $nurse->clinic_name = DB::table('clinics')->where('id', $nurse->clinic_id)->value('name');
+        }
+       return view('admin.nurse.times',compact('nurses'));
+    }
 }

@@ -77,6 +77,27 @@
             </li>
           </ul>
         </li>
+
+
+        <li class="treeview {{ App\Navigation::setActive('admin.admin.times') }} {{ App\Navigation::setActive('admin.nurse.times') }}">
+          <a href="#">
+            <i class="fa fa-clock"></i>
+            <span>Working Times</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ App\Navigation::setActive('admin.admin.times') }}">
+              <a href="{{ route('admin.admin.times') }}"><i class="fa fa-circle text-red"></i> Doctors</a>
+            </li>
+            <li class="{{ App\Navigation::setActive('admin.nurse.times') }}">
+              <a href="{{ route('admin.nurse.times') }}"><i class="fa fa-circle text-aqua"></i> Nurses</a>
+            </li>
+          </ul>
+        </li>
+
+
         <li class="treeview {{ App\Navigation::setActive('admin.clinic.view') }} {{ App\Navigation::setActive('admin.clinic.add') }}">
           <a href="#">
             <i class="fa fa-hospital"></i>

@@ -124,5 +124,12 @@ class AdminsController extends Controller
         return back()->with('status' ,$msg); 
     }
 
+    // view admins working times
+    public function view_times()
+    {
+       $admins = admin::all();
+       return view('admin.admin.times',compact('admins'));
+    }
+
 }
 

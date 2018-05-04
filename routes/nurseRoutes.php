@@ -87,4 +87,10 @@ Route::group(['namespace' => 'Nurse'],function(){
 	Route::DELETE('/nurse/invoice/delete/{invoice}','InvoicesController@destroy')->name('nurse.invoice.delete');
 	// View details of an invoice
 	Route::get('/nurse/invoice/view/{invoice}', 'InvoicesController@show')->name('nurse.invoice.show');
+
+	// nurse view admins' working times 
+	Route::get('nurse/admin/times','AdminsController@view_times')->name('nurse.admin.times');
+
+// nurse view nurses' working times 
+	Route::get('nurse/nurse/times','NursesController@view_times')->name('nurse.nurse.times');
 });
