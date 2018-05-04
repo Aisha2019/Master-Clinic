@@ -33,7 +33,7 @@
  </form>
     <section class="content-header">
       <h1>
-        Timeline
+        Reservations
       </h1>
     </section>
 
