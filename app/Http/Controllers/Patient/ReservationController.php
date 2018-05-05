@@ -75,7 +75,7 @@ $this->validate($request,[
         ]);
          $reservation=reservation::find($reservation->id);
          $reservationdate= $request->date.' '.$request->time;
-         $reservationdate=Carbon::createFromFormat('d-m-Y H:i',$reservationdate)->toDateTimeString();
+         $reservationdate=Carbon::parse($reservationdate);
          if($request->admin!="Change Doctor")
          {
          $reservation->admin_id = $request->admin;
