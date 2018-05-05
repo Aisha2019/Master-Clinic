@@ -33,7 +33,7 @@
  </form>
     <section class="content-header">
       <h1>
-        Timeline
+        Reservations
       </h1>
     </section>
 
@@ -71,7 +71,7 @@
                    <br/>
                   Clinic : {{ $reservation['clinic'] }}
                   <br/>
-                   <br/>
+                  <br/>
                   @if($reservation['response']==1)
                   <a  class="bg-red btn-xs">
                Rejected by {{ $reservation['nurse'] }}
@@ -104,17 +104,10 @@
                      Attended
                       </a>                 
                       @else
-                     <a href="#" class="bg-aqua btn-xs"
-                     onclick="
-                      {
-                        $(this).siblings('form').submit();
-                      }">
-                      Confirm Attendance
-                     </a>
-                     <form action="{{ route('nurse.reservations.update.attendance', $reservation['id'])}}" method="POST">
-                        @csrf
-                        {{ method_field('PATCH') }}
-                    </form> 
+                      <a href="#" class="bg-yellow btn-xs">
+                      ...
+                      </a> 
+                     
                      @endif
                   @endif
                   @endif

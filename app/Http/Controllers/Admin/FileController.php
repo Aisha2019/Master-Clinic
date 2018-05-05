@@ -491,7 +491,7 @@ class FileController extends Controller
             $photos[] = $group;
         }
         else{
-            $photos = null;
+            $photos = array();
         }
 
         return $photos;
@@ -634,6 +634,7 @@ class FileController extends Controller
             $page = $pages[$i];
             $prescriptions = $page[0];
             $comments = $page[2];
+            
             if ($prescriptions != null) {
                 $page[0] = $this->string2tags($prescriptions->name);
             }

@@ -123,7 +123,7 @@ class FileController extends Controller
             $photos[] = $group;
         }
         else{
-            $photos = null;
+            $photos = array();
         }
 
         return $photos;
@@ -266,8 +266,21 @@ class FileController extends Controller
             $page = $pages[$i];
             $prescriptions = $page[0];
             $comments = $page[2];
-            $page[0] = $this->string2tags($prescriptions->name);
-            $page[2] = $this->string2tags($comments->content);
+
+            if ($prescriptions != null) {
+                $page[0] = $this->string2tags($prescriptions->name);
+            }
+            else{
+                $page[0] = array();
+            }
+
+            if ($comments != null) {
+                $page[2] = $this->string2tags($comments->content);
+            }
+            else{
+                $page[2] = array();
+            }
+            
             $pages[$i] = $page;
         }
 
