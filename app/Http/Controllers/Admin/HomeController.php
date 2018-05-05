@@ -29,7 +29,7 @@ class HomeController extends Controller
       $id=auth()->user()->id;
       $reservations=reservation::where('admin_id',$id)->where('time','LIKE',"%{$today}%")->whereNotNull('nurse_id')->where('reject',0)->orderBy('time','desc')->get();
 
-      $array=app('App\Http\Controllers\nurse\ReservationsController')->getdata($reservations);
+      $array=app('App\Http\Controllers\Nurse\ReservationsController')->getdata($reservations);
         return view('admin.home')->with('reservations',$array);
     }
 }

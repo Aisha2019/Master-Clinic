@@ -102,7 +102,7 @@ $this->validate($request,[
 
          $now=Carbon::now()->toDateTimeString();
          $date= $request->date.' '.$request->time;
-         $date=Carbon::createFromFormat('Y-m-d H:i',$date)->toDateTimeString();
+         $date=Carbon::parse($date);
 
          // return $request->all();
          $reservation= new reservation;

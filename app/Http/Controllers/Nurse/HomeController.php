@@ -30,7 +30,7 @@ class HomeController extends Controller
       $today=Date('Y-m-d');
       $reservations=reservation::where('time','LIKE',"%{$today}%")->whereNotNull('nurse_id')->where('reject',0)->orderBy('time','desc')->get();
 
-      $array=app('App\Http\Controllers\nurse\ReservationsController')->getdata($reservations);
+      $array=app('App\Http\Controllers\Nurse\ReservationsController')->getdata($reservations);
       return view('nurse.home')->with('reservations',$array);
     }
 

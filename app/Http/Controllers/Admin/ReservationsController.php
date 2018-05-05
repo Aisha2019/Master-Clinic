@@ -29,7 +29,7 @@ class ReservationsController extends Controller
       $id=auth()->user()->id;
 
       $reservations=reservation::where('admin_id',$id)->whereNotNull('nurse_id')->where('time','>',$today)->orderBy('time','desc')->get();
-      $array=app('App\Http\Controllers\nurse\ReservationsController')->getdata($reservations);
+      $array=app('App\Http\Controllers\Nurse\ReservationsController')->getdata($reservations);
       return view('admin.patient.reservations')->with('reservations',$array);
 
     }
@@ -40,7 +40,7 @@ class ReservationsController extends Controller
       $date=$request->Reservationdate;
       $id=auth()->user()->id;
       $reservations=reservation::where('admin_id',$id)->whereNotNull('nurse_id')->where('time','LIKE',"%{$date}%")->orderBy('time','desc')->get();
-      $array=app('App\Http\Controllers\nurse\ReservationsController')->getdata($reservations);
+      $array=app('App\Http\Controllers\Nurse\ReservationsController')->getdata($reservations);
       return view('admin.patient.reservations')->with('reservations',$array);
     }
 

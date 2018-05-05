@@ -66,7 +66,9 @@
                 <h3 class="timeline-header"><a href="#">{{ $reservation['patient'] }}</a></h3>
 
                 <div class="timeline-body">
-                 
+                 Doctor : {{ $reservation['doctor'] }}
+                  <br/>
+                   <br/>
                  Clinic : {{ $reservation['clinic'] }}
                   <br/>
                   <br/>
