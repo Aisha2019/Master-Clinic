@@ -114,7 +114,8 @@ $this->validate($request,[
          $reservation->nurse_id=null;
          $reservation->time=$date;
          $reservation->save();
-        return back()->with('status' ,'reservation Added Successfully!!');
+         return $this::history();
+        // return view('user.reservations.update')->with('status' ,'Reservation Added Successfully!!');
           
    }
 

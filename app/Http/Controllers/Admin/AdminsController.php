@@ -35,6 +35,7 @@ class AdminsController extends Controller
             'end_day'=>'required|alpha',
             'start_time'=>'required',
             'end_time'=>'required',
+            'about'=>'required',
 
             'role' => [
                     'nullable',
@@ -51,6 +52,7 @@ class AdminsController extends Controller
         $admin->role=$request->role;
         $admin->start_day =$request->start_day;
         $admin->end_day =$request->end_day;
+        $admin->about=$request->about;
         $admin->start_time =Carbon::parse($request->start_time)->format('H:i:s');
         $admin->end_time =Carbon::parse($request->end_time)->format('H:i:s');
         $admin->status = 1;
@@ -80,12 +82,12 @@ class AdminsController extends Controller
             $this->validate($request,[
             'fullName'=>'required|min:3|regex:/^[\pL\s\-]+$/u|max:35',
             'email'=>['required','email', Rule::unique('admins')->ignore($admin->id)],
-            'password'=>'required|string|confirmed|min:8',
             'mobile'=>'nullable|numeric|digits_between:8,20',
             'start_day'=>'required|alpha',
             'end_day'=>'required|alpha',
             'start_time'=>'required',
             'end_time'=>'required',
+            'about'=>'required',
 
             'role' => [
                     'nullable',
@@ -100,6 +102,7 @@ class AdminsController extends Controller
         $admin->role=$request->role;
         $admin->start_day =$request->start_day;
         $admin->end_day =$request->end_day;
+        $admin->about=$request->about;
         $admin->start_time =Carbon::parse($request->start_time)->format('H:i:s');
         $admin->end_time =Carbon::parse($request->end_time)->format('H:i:s');
         

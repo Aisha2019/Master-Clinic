@@ -11,6 +11,7 @@ $factory->define(admin::class, function (Faker $faker) {
         'remember_token' => str_random(10),
         'status' => $faker->numberBetween(0, 1),
         'mobile' => $faker->phoneNumber,
+        'about'=> $faker->paragraph,
         'role' => 'super',
         'start_day'=>$faker->dayOfWeek(),
         'end_day'=>$faker->dayOfWeek(),

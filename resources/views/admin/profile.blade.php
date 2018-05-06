@@ -74,6 +74,14 @@
                       <p class="text-muted">
                         {{ Auth::user()->mobile }}
                       </p>
+
+                      <hr>
+                      
+                      <strong><i class="fas fa-graduation-cap margin-r-5 "></i> Education</strong>
+
+                      <p class="text-muted">
+                        {{ Auth::user()->about }}
+                      </p>
                 </div>
                 <!-- /.box-body -->
             </div>
