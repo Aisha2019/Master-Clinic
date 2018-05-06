@@ -106,6 +106,11 @@
                 </div>
         </div>
 
+        <div class="form-group">
+                  <label>About:</label>
+                  <textarea class="form-control" rows="3" placeholder="Info , Education ....." required name="about" value="{{ old('end_time') }}"></textarea>
+        </div>
+
         <button type="submit" class="btn btn-primary  btn-flat" style="">Register</button>
       </form>
     </div>

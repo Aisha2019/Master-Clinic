@@ -104,6 +104,11 @@
                 </div>
         </div>
 
+        <div class="form-group">
+                  <label>About:</label>
+                  <textarea class="form-control" rows="3" placeholder="Info , Education ....." required name="about" value="{{ $admin->about }}">{{ $admin->about }}</textarea>
+        </div>
+
         
         
         <button class="btn btn-primary">Update</button>

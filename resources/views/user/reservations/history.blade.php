@@ -34,7 +34,11 @@
     <section class="content" style="margin-top: 100px; margin-bottom: 500px;">
       <h1 style="margin:20px;text-align:center;">
         Reservation History
+        <span>
+      <a class="btn btn-lg btn-info" href="{{ route('reservations.create') }}" style="margin-left: 300px" > Make an appointment</a>
+      </span>
       </h1>
+      
       <!-- row -->
 <table class="table table-bordered">
   <thead class="thead-dark" >
