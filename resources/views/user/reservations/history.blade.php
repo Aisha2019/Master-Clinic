@@ -34,7 +34,11 @@
     <section class="content" style="margin-top: 100px; margin-bottom: 500px;">
       <h1 style="margin:20px;text-align:center;">
         Reservation History
+        <span>
+      <a class="btn btn-lg btn-info" href="{{ route('reservations.create') }}" style="margin-left: 300px" > Make an appointment</a>
+      </span>
       </h1>
+      
       <!-- row -->
 <table class="table table-bordered">
   <thead class="thead-dark" >
@@ -46,7 +50,7 @@
       <th scope="col">Time</th>
       <th scope="col">Status</th>
       <th scope="col">Attendance</th>
-      <th scope="col"></th>
+      <th scope="col">Controls</th>
     </tr>
   </thead>
   <tbody>
@@ -88,6 +92,19 @@
       @if($reservation['response']!=1 && strtotime($reservation['date'])>=strtotime(date('d-m-Y'))&&$reservation['attend']!=1)
 
        <a class="btn btn-warning btn-xs" href="{{ route('reservations.update',  $reservation['id'] ) }}"><i class="fa fa-edit"></i></a>
+      <a 
+                    href="#" 
+                    class="btn btn-danger btn-xs"
+                    onclick="
+                                  event.preventDefault();
+                                  if(confirm('Are you sure you want to delete this reservation?')) {
+                                    $(this).siblings('form').submit();
+                                  }"
+                  ><i class="fa fa-times"></i></a>
+                  <form action="{{ route('user.reservation.delete',$reservation['id']) }}" method="POST">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                    </form>
       @endif
      </td>
     </tr>

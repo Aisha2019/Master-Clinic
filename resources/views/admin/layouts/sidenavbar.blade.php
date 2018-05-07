@@ -6,9 +6,10 @@
       <div class="user-panel">
         <div class="pull-left image">
           <img src="{{ (Auth::user()->image) ? Storage::disk('local')->url(Auth::user()->image) : asset('/admin_styles/images/user4-128x128.jpg') }}" class="img-circle" alt="User Image">
+          
         </div>
         <div class="pull-left info">
-          <p>{{ Auth::user()->name }}</p>
+          <p>{{ Auth::user()->name }}</p>  
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -76,6 +77,27 @@
             </li>
           </ul>
         </li>
+
+
+        <li class="treeview {{ App\Navigation::setActive('admin.admin.times') }} {{ App\Navigation::setActive('admin.nurse.times') }}">
+          <a href="#">
+            <i class="fa fa-clock"></i>
+            <span>Working Times</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="{{ App\Navigation::setActive('admin.admin.times') }}">
+              <a href="{{ route('admin.admin.times') }}"><i class="fa fa-circle text-red"></i> Doctors</a>
+            </li>
+            <li class="{{ App\Navigation::setActive('admin.nurse.times') }}">
+              <a href="{{ route('admin.nurse.times') }}"><i class="fa fa-circle text-aqua"></i> Nurses</a>
+            </li>
+          </ul>
+        </li>
+
+
         <li class="treeview {{ App\Navigation::setActive('admin.clinic.view') }} {{ App\Navigation::setActive('admin.clinic.add') }}">
           <a href="#">
             <i class="fa fa-hospital"></i>

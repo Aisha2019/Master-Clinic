@@ -159,32 +159,38 @@
 	</div>
 
 		<!-- Doctors -->
-	@for($i=0 ; $i<$doc_num ; $i+=4 )
+	@for($i=0 ; $i<$doc_num ; $i+=3 )
 	<div class="card-group mt-5 mb-5 mr-5 ml-5">
 
 	  <div class="card mr-3 ml-3" >
-	    <img class="card-img-top" src="{{ ($doctors[$i]->image) ? Storage::disk('local')->url($doctors[$i]->image) : asset('/admin_styles/images/defualt_male.png') }}" alt="Card image cap">
+	    <img class="card-img-top" src="{{ ($doctors[$i]->image) ? Storage::disk('local')->url($doctors[$i]->image) : asset('/admin_styles/images/defualt_male.png') }}" alt="Card image cap" style="width:370px; height:370px;">
 	    <div class="card-body">
 	      <h5 class="card-title text-center">{{$doctors[$i]->name}}</h5>
 	      <b> Email : </b>{{$doctors[$i]->email}}<br>
 	      <b> Mobile : </b>{{$doctors[$i]->mobile}}<br>
 	      <b> Working Hours : </b><br>
-	      <b> From : </b><br>
-	      <b> To : </b><br>
+	      <b> From : </b>{{$doctors[$i]->start_day}} <b> To : </b> {{$doctors[$i]->end_day}}<br>
+	      <b> From : </b>{{$doctors[$i]->start_time}} <b> To : </b> {{$doctors[$i]->end_time}}<br>
+	      <b> About : </b><br>
+	      {{$doctors[$i]->about}}
+
+
 	      
 	    </div>
 	  </div>
 	  
 	  <div class="card mr-3 ml-3" >
 	  	@if($i != $doc_num-1)
-	    <img class="card-img-top" src="{{ ($doctors[$i+1]->image) ? Storage::disk('local')->url($doctors[$i+1]->image) : asset('/admin_styles/images/defualt_male.png') }}" alt="Card image cap" style="width:270px; height:270px;">
+	    <img class="card-img-top" src="{{ ($doctors[$i+1]->image) ? Storage::disk('local')->url($doctors[$i+1]->image) : asset('/admin_styles/images/defualt_male.png') }}" alt="Card image cap" style="width:370px; height:370px;">
 	    <div class="card-body">
 	      <h5 class="card-title text-center">{{$doctors[$i+1]->name}}</h5>
 	      <b> Email : </b>{{$doctors[$i+1]->email}}<br>
 	      <b> Mobile : </b>{{$doctors[$i+1]->mobile}}<br>
 	      <b> Working Hours : </b><br>
-	      <b> From : </b><br>
-	      <b> To : </b><br>
+	      <b> From : </b>{{$doctors[$i+1]->start_day}} <b> To : </b> {{$doctors[$i+1]->end_day}}<br>
+	      <b> From : </b>{{$doctors[$i+1]->start_time}} <b> To : </b> {{$doctors[$i+1]->end_time}}<br>
+	      <b> About : </b><br>
+	      {{$doctors[$i+1]->about}}
 	      
 	    </div>
 	    @endif
@@ -193,34 +199,21 @@
 	  
 	  <div class="card mr-3 ml-3" >
 	  	@if($i < $doc_num-2)
-	    <img class="card-img-top" src="{{ ($doctors[$i+2]->image) ? Storage::disk('local')->url($doctors[$i+2]->image) : asset('/admin_styles/images/defualt_male.png') }}" alt="Card image cap" style="width:270px; height:270px;">
+	    <img class="card-img-top" src="{{ ($doctors[$i+2]->image) ? Storage::disk('local')->url($doctors[$i+2]->image) : asset('/admin_styles/images/defualt_male.png') }}" alt="Card image cap" style="width:370px; height:370px;">
 	    <div class="card-body">
 	      <h5 class="card-title text-center">{{$doctors[$i+2]->name}}</h5>
 	      <b> Email : </b>{{$doctors[$i+2]->email}}<br>
 	      <b> Mobile : </b>{{$doctors[$i+2]->mobile}}<br>
 	      <b> Working Hours : </b><br>
-	      <b> From : </b><br>
-	      <b> To : </b><br>
+	      <b> From : </b>{{$doctors[$i+2]->start_day}} <b> To : </b> {{$doctors[$i+2]->end_day}}<br>
+	      <b> From : </b>{{$doctors[$i+2]->start_time}} <b> To : </b> {{$doctors[$i+2]->end_time}}<br>
+	      <b> About : </b><br>
+	      {{$doctors[$i+2]->about}}
 	      
 	    </div>
 	    @endif
 	  </div>
-	  
-	  
-	  <div class="card mr-3 ml-3" >
-	  	@if($i < $doc_num-3)
-	    <img class="card-img-top" src="{{ ($doctors[$i+3]->image) ? Storage::disk('local')->url($doctors[$i+3]->image) : asset('/admin_styles/images/defualt_male.png') }}" alt="Card image cap" style="width:270px; height:270px;">
-	    <div class="card-body">
-	      <h5 class="card-title text-center">{{$doctors[$i+3]->name}}</h5>
-	      <b> Email : </b>{{$doctors[$i+3]->email}}<br>
-	      <b> Mobile : </b>{{$doctors[$i+3]->mobile}}<br>
-	      <b> Working Hours : </b><br>
-	      <b> From : </b><br>
-	      <b> To : </b><br>
-	      
-	    </div>
-	    @endif
-	  </div>
+
 	  
 	</div>
 	@endfor

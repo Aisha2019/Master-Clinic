@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\reservation;
+date_default_timezone_set('Africa/Cairo');
 class HomeController extends Controller
 {
     /**
@@ -24,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+      $today=Date('Y-m-d');
+      $id=auth()->user()->id;
+      $reservations=reservation::where('admin_id',$id)->where('time','LIKE',"%{$today}%")->whereNotNull('nurse_id')->where('reject',0)->orderBy('time','desc')->get();
+
+      $array=app('App\Http\Controllers\Nurse\ReservationsController')->getdata($reservations);
+        return view('admin.home')->with('reservations',$array);
     }
 }

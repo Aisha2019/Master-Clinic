@@ -22,6 +22,6 @@ $factory->define(reservation::class, function (Faker $faker) {
         	return Patient::all()->random();
         },
         'time' => $faker->dateTime('now'),
-        'attend' => $faker->numberBetween(0, 0),
+        'attend' => $faker->numberBetween(0, 1)
     ];
 });

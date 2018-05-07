@@ -48,8 +48,16 @@ Route::group(['namespace' => 'Nurse'],function(){
    Route::PATCH('/nurse/reservations/{reservation}','ReservationsController@change_attendance')->name('nurse.reservations.update.attendance');
 
 //  nurse deletes patient account
-    Route::DELETE('/nurse/patient/table/{patient}','PatientsController@destroy')->name('nurse.patient.delete');
+	Route::DELETE('/nurse/patient/table/{patient}','PatientsController@destroy')->name('nurse.patient.delete');
+	
+	// view pateint file
+	Route::get('/nurse/patient/file/{patient}', 'FileController@index')->name('nurse.patient.file');
+	
+	// print pateint file
+	Route::get('/nurse/patient/printfile/{patient}', 'FileController@print')->name('nurse.patient.printfile');
 
+	// delete patient file
+    Route::DELETE('/nurse/patient/deletefile/{patient}','FileController@destroy')->name('nurse.patient.deletefile');
 
 
 	// get nurse login page
@@ -79,4 +87,10 @@ Route::group(['namespace' => 'Nurse'],function(){
 	Route::DELETE('/nurse/invoice/delete/{invoice}','InvoicesController@destroy')->name('nurse.invoice.delete');
 	// View details of an invoice
 	Route::get('/nurse/invoice/view/{invoice}', 'InvoicesController@show')->name('nurse.invoice.show');
+
+	// nurse view admins' working times 
+	Route::get('nurse/admin/times','AdminsController@view_times')->name('nurse.admin.times');
+
+// nurse view nurses' working times 
+	Route::get('nurse/nurse/times','NursesController@view_times')->name('nurse.nurse.times');
 });

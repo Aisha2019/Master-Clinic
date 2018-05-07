@@ -32,9 +32,8 @@ Reservations
 <div class="form-row">
    <div class="input-group-prepend col-md-6">
     <label class="input-group-text" for="inputGroupSelect01">Doctor</label>
-  <select class="custom-select" id="inputGroupSelect01" name="admin" required>
-    <option selected>Choose...</option>
-
+  <select class="form-control" id="inputGroupSelect01" name="admin" required>
+            <option value="">Choose Doctor</option>
              @foreach ($admins as $admin)
                   <option value="{{ $admin->id }}" {{
                    (old('admin') == $admin->id ) ? 'selected="selected"' : ''}}>{{ $admin->name }}</option>
@@ -44,25 +43,25 @@ Reservations
 
    <div class="input-group-prepend col-md-6">
     <label class="input-group-text" for="inputGroupSelect01">Clinic</label>
-    <select class="custom-select" id="inputGroupSelect01" name="clinic" required>
-    <option selected>Choose...</option>
-
+    <select class="form-control" id="inputGroupSelect01" name="clinic" required>
+          <option value="">Choose Clinic</option>
               @foreach ($clinics as $clinic)
                   <option value="{{ $clinic->id }}" {{ (old('clinic') == $clinic->id ) ? 'selected="selected"' : ''}}>{{ $clinic->name }}</option>
               @endforeach
   </select>
 </div>
+
 </div>
   <br/>  
   <br/>
         <div class="form-group has-feedback">
-          <input type="text" id="datepicker" class="form-control " placeholder=" Reservation Date" value="{{ old('Reservationdate') }}" name="date">
+          <input type="text" id="datepicker" class="form-control " placeholder=" Reservation Date" value="{{ old('Reservationdate') }}" name="date" required>
         </div>
 
        <br/>
       <div class="form-group row">
         <div class="col-12">
-          <input class="form-control" type="time" id="example-time-input" name="time" value="{{ old('time') }}" placeholder="Reservation time">
+          <input class="form-control" type="time" id="example-time-input" name="time" value="{{ old('time') }}" placeholder="Reservation time" required>
         </div>
       </div>
 

@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\FileResource;
 use App\Http\Requests\PatientRequest;
 use App\Models\Patient;
 use File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
+
 class PatientsController extends Controller
 {
 
@@ -83,7 +85,7 @@ class PatientsController extends Controller
         $patient->mobile = $request->mobile;
         $patient->password = bcrypt($request->password);
         $patient->status = 1;
-        $patient->date_of_birth = $request->date;
+        $patient->date_of_birth = $request->birthday;
         $patient->gender = $request->gender;
 
         $patient->save();

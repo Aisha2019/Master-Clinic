@@ -22,6 +22,11 @@ class CreateAdminsTable extends Migration
             $table->string('mobile')->nullable();
             $table->boolean('status')->default(0);
             $table->string('role');
+            $table->text('about');
+            $table->string('start_day'); //a week day : start of working days
+            $table->string('end_day'); //a week day : end of working days
+            $table->time('start_time');
+            $table->time('end_time');
             $table->rememberToken();
             $table->timestamps();
         });

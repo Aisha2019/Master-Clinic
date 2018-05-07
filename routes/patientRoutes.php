@@ -49,4 +49,7 @@ Route::group(['namespace' => 'Patient'],function(){
 	// View details of an invoice
 	Route::get('/invoice/view/{invoice}', 'InvoicesController@show')->name('patient.invoice.show');
 
+
+	// patient file route
+	Route::get('/file', 'FileController@index')->name('file');
 });

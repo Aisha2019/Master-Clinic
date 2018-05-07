@@ -75,17 +75,22 @@ $this->validate($request,[
         ]);
          $reservation=reservation::find($reservation->id);
          $reservationdate= $request->date.' '.$request->time;
-         $reservationdate=Carbon::createFromFormat('d-m-Y H:i',$reservationdate)->toDateTimeString();
-         if($request->admin!="Change Doctor")
+         $reservationdate=Carbon::parse($reservationdate);
+         if($request->admin!="Change Doctor" && $reservation->admin_id != $request->admin)
          {
          $reservation->admin_id = $request->admin;
+         $reservation->nurse_id=null;
          }
-         if($request->clinic!="Change Clinic")
+         if($request->clinic!="Change Clinic" && $reservation->clinic_id != $request->clinic)
          {
          $reservation->clinic_id = $request->clinic;
-         }
          $reservation->nurse_id=null;
-         $reservation->time=$reservationdate;
+         }
+         if($reservation->time != $reservationdate)
+         {
+          $reservation->time=$reservationdate;
+          $reservation->nurse_id=null;
+         }
          $reservation->save();
          return back()->with('status' ,'reservation updated Successfully!!');
 
@@ -102,7 +107,7 @@ $this->validate($request,[
 
          $now=Carbon::now()->toDateTimeString();
          $date= $request->date.' '.$request->time;
-         $date=Carbon::createFromFormat('Y-m-d H:i',$date)->toDateTimeString();
+         $date=Carbon::parse($date);
 
          // return $request->all();
          $reservation= new reservation;
@@ -114,7 +119,8 @@ $this->validate($request,[
          $reservation->nurse_id=null;
          $reservation->time=$date;
          $reservation->save();
-        return back()->with('status' ,'reservation Added Successfully!!');
+         return redirect('/reservations/history')->with('status' ,'Reservation Added Successfully!!');
+        // return view('user.reservations.update')->with('status' ,'Reservation Added Successfully!!');
           
    }
 

@@ -30,9 +30,11 @@ class WorkersController extends Controller
     	$this->validate($request,[
             'fullName' => 'required|min:0|max:35|regex:/^[\pL\s\-]+$/u',
             'mobile' => 'nullable|numeric|digits_between:8,20',
-            'birthday' => 'nullable|date|before:today',
+            'birthday' => 'required|date|before:today',
             'salary' => 'required|numeric|min:0',
-            'clinic' => 'required|exists:clinics,id'
+            'clinic' => 'required|exists:clinics,id',
+            'position'=>'required|regex:/^[\pL\s\-]+$/u',
+            'start_date'=>'required|date'
         ]);
 
         $worker = new worker;
@@ -71,9 +73,11 @@ class WorkersController extends Controller
         $this->validate($request,[
             'fullName' => 'required|min:0|max:35|regex:/^[\pL\s\-]+$/u',
             'mobile' => 'nullable|numeric|digits_between:8,20',
-            'birthday' => 'nullable|date|before:today',
+            'birthday' => 'required|date|before:today',
             'salary' => 'required|numeric|min:0',
-            'clinic' => 'required|exists:clinics,id'
+            'clinic' => 'required|exists:clinics,id',
+            'position'=>'required|regex:/^[\pL\s\-]+$/u',
+            'start_date'=>'required|date'
         ]);
          
         $worker->name = ucwords(trans($request->fullName)); // to make the first letter of each name capital

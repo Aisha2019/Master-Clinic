@@ -66,15 +66,27 @@
                 <h3 class="timeline-header"><a href="#">{{ $reservation['patient'] }}</a></h3>
 
                 <div class="timeline-body">
-                 
+                 Doctor : {{ $reservation['doctor'] }}
+                  <br/>
+                   <br/>
                  Clinic : {{ $reservation['clinic'] }}
                   <br/>
-                 Nurse : {{ $reservation['nurse'] }}
-
+                  <br/>
+                  @if($reservation['response']==0)
+                   <a href="#" class="bg-green btn-xs">
+                  Confirmed by {{ $reservation['nurse'] }}
+                   </a>
+  
+                   @else
+                   <a href="#" class="bg-red btn-xs">
+                   Rejected by {{ $reservation['nurse'] }}
+                   </a>
+                   @endif
                 </div>
                 <div style="margin: 10px">
                 </div>
                 <div class="timeline-footer">
+                @if($reservation['response']==0)
                 @if(strtotime($reservation['date'])>=strtotime(date('d-M-Y')))
                   @if($reservation['attend']==1)
                       <a href="#" class="bg-green btn-xs">
@@ -92,8 +104,9 @@
                       </a>
                   @else
                       <a href="#" class="bg-red btn-xs">
-                       Didn't attended
+                       Didn't attend
                       </a>
+                @endif
                 @endif
                 @endif
                 </div>
