@@ -26,16 +26,15 @@
                         <a class="nav-link" href="{{ route('patient.invoice.view') }}">Invoices</a>
                     </li>
 
-                    <li class="{{ App\Navigation::setActive('contact_us') }}">
-                        <a class="nav-link" href="{{ route('contact_us') }}">Contacts</a>
-                    </li>
-
                     <li class="{{ App\Navigation::setActive('send.email') }}">
                         <a class="nav-link" href="{{ route('send.email') }}">Email</a>
                     </li>
 
                     <li class="{{ App\Navigation::setActive('file') }}">
                         <a class="nav-link" href="{{ route('file') }}">File</a>
+                    </li>
+                    <li class="{{ App\Navigation::setActive('contact_us') }}">
+                        <a class="nav-link" href="{{ route('contact_us') }}">Contacts</a>
                     </li>
                     @else
                     <li class="{{ App\Navigation::setActive('contact_us') }}">

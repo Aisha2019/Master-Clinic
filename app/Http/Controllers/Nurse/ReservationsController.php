@@ -32,7 +32,7 @@ class ReservationsController extends Controller
     public function get()
     {
       $today=date('Y-m-d'). ' 23:59:59';
-      $reservations=reservation::where('time','>',$today)->orderBy('time','desc')->get();
+      $reservations=reservation::where('time','>',$today)->where('clinic_id',auth()->user()->clinic_id)->orderBy('time','desc')->get();
       $array=self::getdata($reservations);   
         
       return view('nurse.patient.reservations')->with('reservations',$array);

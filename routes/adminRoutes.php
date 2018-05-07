@@ -192,6 +192,7 @@ Route::group(['namespace' => 'Admin'],function(){
 // admin view nurses' working times 
 	Route::get('admin/nurse/times','NursesController@view_times')->name('admin.nurse.times');
 
-
+// admin view statistics
+	Route::get('admin/statistics', 'HomeController@statistics')->name('admin.statistics');
 
 });

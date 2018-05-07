@@ -32,4 +32,8 @@ class HomeController extends Controller
       $array=app('App\Http\Controllers\Nurse\ReservationsController')->getdata($reservations);
         return view('admin.home')->with('reservations',$array);
     }
+
+    public function statistics() {
+        return view('admin.statistics');
+    }
 }

@@ -84,7 +84,6 @@
 			                  	</td>
 								<td>
 									<a href="{{ route('admin.patient.updatepatient', $patient->id) }}"  class="btn btn-warning btn-xs"><i class="fa fa-edit"></i></a>
-									<a href="{{ route('admin.patient.file', $patient->id) }}"  class="btn btn-warning btn-xs"><i class="fa fa-file-pdf"></i></a>
 									<a 
 										href="#" 
 										class="btn btn-danger btn-xs"
@@ -98,7 +97,7 @@
 								        @csrf
 								        {{ method_field('DELETE') }}
 								    </form>
-								    <a href="" class="btn btn-primary btn-xs"><i class="fas fa-file-alt"></i></a>
+								    <a href="{{ route('admin.patient.file', $patient->id) }}" class="btn btn-primary btn-xs"><i class="fas fa-file-pdf"></i></a>
 								    <a href="{{ route('admin.patient.email', $patient->id) }}" class="btn btn-success btn-xs"><i class="fas fa-envelope"></i></a>
 								</td>
 			                  </tr>

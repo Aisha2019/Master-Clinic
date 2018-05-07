@@ -48,21 +48,27 @@
             <div class="btn file-button print-button" style="top: 60%;">
                 <a class="ml-auto mr-auto" target="_blank" href="{{ route('admin.patient.printfile', $patient->id) }}"><i class="fa fa-print"></i> Print</a>
             </div>
+            <a class="ml-auto mr-auto" href="{{ route('admin.patient.addfile', $patient->id) }}">
             <div class="btn btn-success file-button" style="top: 70%;">
-                <a class="ml-auto mr-auto" href="{{ route('admin.patient.addfile', $patient->id) }}"><i class="fa fa-plus"></i> Add</a>
+                <i class="fa fa-plus"></i> Add
             </div>
+            </a>
+            <a class="ml-auto mr-auto" data-toggle="modal" data-target="#exampleModal" href="#">
             <div class="btn btn-primary file-button" style="top: 80%;">
-                <a class="ml-auto mr-auto" data-toggle="modal" data-target="#exampleModal" href="#"><i class="fa fa-edit"></i> Update</a>
+                <i class="fa fa-edit"></i> Update
             </div>
-            <div class="btn btn-danger file-button" style="top: 90%;">
-                <a onclick=
+            </a>
+            <a onclick=
                     "event.preventDefault();
                     if(confirm('Are you sure you want to delete this file?')) {
                         $('.delete-form').submit();
                     }"
                     class="ml-auto mr-auto"
-                    href="#"><i class="fa fa-trash"></i> Delete</a>
+                    href="#">
+            <div class="btn btn-danger file-button" style="top: 90%;">
+                <i class="fa fa-trash"></i> Delete
             </div>
+            </a>
             <form class="delete-form" action="{{ route('admin.patient.deletefile', $patient->id) }}" method="POST">
                 @csrf
                 {{ method_field('DELETE') }}
@@ -316,11 +322,13 @@
         </div>
     @else
         <div class="container">
-            <img src="{{ asset('/admin_styles/images/file-icon.png') }}" style="position: fixed; left: 38%; top: 13%;">
-            <h1 style="font-family: 'Economica', sans-serif; font-weight: bold; font-size: 40pt; color: #b9c0dc; position: fixed; top: 75%; left: 47%;">No File Created Yet</h1>
-            <div class="btn btn-success file-button" style="top: 85%;">
-                <a class="ml-auto mr-auto" href="{{ route('admin.patient.updatefile', $patient->id) }}"><i class="fa fa-plus"></i> Create</a>
+            <img src="{{ asset('/admin_styles/images/file-icon.png') }}" style="position: fixed; left: 38%;" height = "500">
+            <strong style="font-family: 'Economica', sans-serif; font-weight: bold; font-size: 40pt; color: #b9c0dc; position: fixed; top: 80%; left: 47%;">No File Created Yet</strong>
+            <a class="ml-auto mr-auto " href="{{ route('admin.patient.addfile', $patient->id) }}">
+            <div class="btn btn-success file-button" style=" top: 80%; left: 90%; padding-right:5px;">
+                <i class="fa fa-plus" ></i> Create 
             </div>
+            </a>
         </div>
     @endif
 @endsection

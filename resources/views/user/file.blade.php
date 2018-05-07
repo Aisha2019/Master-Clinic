@@ -259,8 +259,8 @@
         </div>
     @else
         <div class="container">
-            <img src="{{ asset('/admin_styles/images/file-icon.png') }}" style="position: fixed; left: 38%; top: 13%;">
-            <h1 style="font-family: 'Economica', sans-serif; font-weight: bold; font-size: 40pt; color: #b9c0dc; position: fixed; top: 75%; left: 47%;">No File Created Yet</h1>
+            <img src="{{ asset('/admin_styles/images/file-icon.png') }}" style="position: fixed; left: 30%; top: 13%;" height = "500">
+            <h1 style="font-family: 'Economica', sans-serif; font-weight: bold; font-size: 40pt; color: #b9c0dc; position: fixed; top: 85%; left: 30%;">No File Created Yet</h1>
         </div>
     @endif
 @endsection

@@ -18,16 +18,18 @@
         @csrf
         <input type="hidden" value="{{ $date }}" name="date">
         <input type="hidden" value="{{ $ids[0] }}" name="prescriptions_id">
-        <input type="hidden" value="{{ implode(" ", $ids[1]) }}" name="photos_ids">
+        <input type="hidden" value="{{ implode(" ",$ids[1]) }}" name="photos_ids">
         <input type="hidden" value="{{ $ids[2] }}" name="comments_id">
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Prescriptions Section</h3>
             </div>
             <!-- /.box-header -->
+            
             <div class="box-body pad">
-                <textarea class="prescription" name="prescription" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $page[0]->name }}</textarea>
+                <textarea class="prescription" name="prescription" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">@if($page[0]){{ $page[0]->name }}@endif</textarea>
             </div>
+            
         </div>
 
         <div class="box">
@@ -36,7 +38,12 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body pad photos">
+                @if($page[1])
                 <?php $numImages = 10 - count($page[1]); $index = 0; ?>
+                @else
+                <?php $numImages = 10; $index = 0; ?>
+                @endif
+                @if($page[1])
                 @foreach ($page[1] as $photo)
                     <div style="margin-bottom: 20px;">
                         <input type="file" id="photo_{{ ++$index }}" class="upload-photo" style="display: none" name="photo_{{ $index }}" value="{{ Storage::disk('local')->url($photo->image) }}" />
@@ -44,6 +51,7 @@
                         <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_{{ $index }}_cap" placeholder="photo {{ $index }} caption" value="{{ $photo->caption }}" />
                     </div>
                 @endforeach
+                @endif
 
                 @for ($i = 0; $i < $numImages; $i++)
                     <div style="margin-bottom: 20px;">
@@ -52,6 +60,7 @@
                         <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_{{ $index }}_cap" placeholder="photo {{ $index }} caption" disabled/>
                     </div>
                 @endfor
+                
             </div>
         </div>
 
@@ -60,9 +69,11 @@
                 <h3 class="box-title">Comments Section</h3>
             </div>
             <!-- /.box-header -->
+            
             <div class="box-body pad">
-                <textarea class="comments" name="comment" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{ $page[2]->content }}</textarea>
+                <textarea class="comments" name="comment" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">@if($page[2]){{ $page[2]->content }}@endif</textarea>
             </div>
+
         </div>
         {{ method_field('PATCH') }}
         <button type="submit" class="btn btn-primary btn-block mt-2 mb-4">Save</button>
