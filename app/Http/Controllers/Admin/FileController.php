@@ -70,7 +70,7 @@ class FileController extends Controller
         $date = $page[5];
 
         $ids[0] = null;
-        $ids[1] = null;
+        $ids[1] = array();
         $ids[2] = null;
 
         if ($page[0] != null) {
@@ -157,6 +157,7 @@ class FileController extends Controller
         echo $date;
 
         $images = $ids[1];
+        
         foreach ($images as $image) {
             image::find($image)->delete();
         }
