@@ -50,7 +50,7 @@
       <th scope="col">Time</th>
       <th scope="col">Status</th>
       <th scope="col">Attendance</th>
-      <th scope="col"></th>
+      <th scope="col">Controls</th>
     </tr>
   </thead>
   <tbody>
@@ -92,6 +92,19 @@
       @if($reservation['response']!=1 && strtotime($reservation['date'])>=strtotime(date('d-m-Y'))&&$reservation['attend']!=1)
 
        <a class="btn btn-warning btn-xs" href="{{ route('reservations.update',  $reservation['id'] ) }}"><i class="fa fa-edit"></i></a>
+      <a 
+                    href="#" 
+                    class="btn btn-danger btn-xs"
+                    onclick="
+                                  event.preventDefault();
+                                  if(confirm('Are you sure you want to delete this reservation?')) {
+                                    $(this).siblings('form').submit();
+                                  }"
+                  ><i class="fa fa-times"></i></a>
+                  <form action="{{ route('user.reservation.delete',$reservation['id']) }}" method="POST">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                    </form>
       @endif
      </td>
     </tr>

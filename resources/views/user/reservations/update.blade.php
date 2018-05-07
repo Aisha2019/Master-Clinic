@@ -77,12 +77,12 @@ Update Reservation
   <br/>
 
  <div class="form-group has-feedback">
-          <input type="text" id="datepicker" class="form-control " placeholder=" Reservation Date" value="{{ $reservation['date']  }}" name="date">
+          <input type="text" id="datepicker" class="form-control " placeholder=" Reservation Date" value="{{ $reservation['date']  }}" name="date" required>
         </div>
        <br/>
       <div class="form-group row">
         <div class="col-12">
-          <input class="form-control" type="time" id="example-time-input" name="time" value="{{ date('H:i:s', strtotime($reservation['time']))  }}">
+          <input class="form-control" type="time" id="example-time-input" name="time" value="{{ date('H:i', strtotime($reservation['time']))  }}" required>
         </div>
       </div>
        <br/>

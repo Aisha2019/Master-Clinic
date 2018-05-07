@@ -32,8 +32,8 @@ Reservations
 <div class="form-row">
    <div class="input-group-prepend col-md-6">
     <label class="input-group-text" for="inputGroupSelect01">Doctor</label>
-  <select class="custom-select" id="inputGroupSelect01" name="admin" required>
-
+  <select class="form-control" id="inputGroupSelect01" name="admin" required>
+            <option value="">Choose Doctor</option>
              @foreach ($admins as $admin)
                   <option value="{{ $admin->id }}" {{
                    (old('admin') == $admin->id ) ? 'selected="selected"' : ''}}>{{ $admin->name }}</option>
@@ -43,13 +43,14 @@ Reservations
 
    <div class="input-group-prepend col-md-6">
     <label class="input-group-text" for="inputGroupSelect01">Clinic</label>
-    <select class="custom-select" id="inputGroupSelect01" name="clinic" required>
-
+    <select class="form-control" id="inputGroupSelect01" name="clinic" required>
+          <option value="">Choose Clinic</option>
               @foreach ($clinics as $clinic)
                   <option value="{{ $clinic->id }}" {{ (old('clinic') == $clinic->id ) ? 'selected="selected"' : ''}}>{{ $clinic->name }}</option>
               @endforeach
   </select>
 </div>
+
 </div>
   <br/>  
   <br/>

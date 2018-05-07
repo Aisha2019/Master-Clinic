@@ -70,7 +70,7 @@ class FileController extends Controller
         $date = $page[5];
 
         $ids[0] = null;
-        $ids[1] = null;
+        $ids[1] = array();
         $ids[2] = null;
 
         if ($page[0] != null) {
@@ -158,7 +158,9 @@ class FileController extends Controller
 
         $images = $ids[1];
         foreach ($images as $image) {
-            image::find($image)->delete();
+            $i = image::find($image);
+            if($i)
+                $i->delete();
         }
 
         $this->validate($request, [
@@ -229,22 +231,28 @@ class FileController extends Controller
         }
 
         if ($request->prescription == ""){
-            prescription::find($ids[0])->delete();
+            $prescription = prescription::find($ids[0]);
+            if($prescription)
+            $prescription->delete();
         }
         else{
-            $prescription = prescription::find($ids[0]);
-            $prescription->name = $request->prescription;
-            $prescription->save();
-        }
+                $prescription = prescription::find($ids[0]);
+                if($prescription)
+                $prescription->content = $request->prescription;
+                $prescription->save();
+            }
 
         if ($request->comment == ""){
-            comment::find($ids[2])->delete();
+            $comment = comment::find($ids[2]);
+            if($comment)
+            $comment->delete();
         }
         else{
-            $comment = comment::find($ids[2]);
-            $comment->content = $request->comment;
-            $comment->save();
-        }
+                $comment = comment::find($ids[2]);
+                if($comment)
+                $comment->content = $request->comment;
+                $comment->save();
+            }
 
         return redirect()->route("admin.patient.file", $patient->id)->with('status' ,'Patient File has been updated Successfully!!!');
     }
@@ -365,23 +373,31 @@ class FileController extends Controller
         if ($photos != null) {
             $this->store_photos($photos, $captions, $patient->id);
         }
-      
-        if ($request->prescription != ""){
-            $prescription = new prescription;
+
+        $prescription = new prescription;
+        if ($request->prescription != "")
+        {
             $prescription->name = $request->prescription;
+        }
+        else 
+            {$prescription->name = "Empty";}
             $prescription->patient_id = $patient->id;
             $prescription->admin_id = Auth::id();
             $prescription->save();
-        }
-        
-        if ($request->comment != ""){
-            $comment = new comment;
+        $comment = new comment;
+        if ($request->comment != "")
+        {
             $comment->content = $request->comment;
+        }
+        else
+           { $comment->content = "Empty";}
             $comment->patient_id = $patient->id;
             $comment->admin_id = Auth::id();
             $comment->save();
+        if($request->prescription == "" && $request->comment == "" && $photos == null)
+        {
+            return back()->with('alarm','File is Empty !!!');
         }
-
         return redirect()->route("admin.patient.file", $patient->id)->with('status' ,'Patient File has been added Successfully!!!');
     }
 
