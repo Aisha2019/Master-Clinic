@@ -157,6 +157,7 @@ class FileController extends Controller
         echo $date;
 
         $images = $ids[1];
+        
         foreach ($images as $image) {
             $i = image::find($image);
             if($i)
