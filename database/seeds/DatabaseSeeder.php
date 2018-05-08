@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         factory(App\Models\receipt::class, 400)->create();
         factory(App\Models\reservation::class, 600)->create();
         factory(App\Models\worker::class, 200)->create();
+        // factory(App\Models\image::class, 500)->create();
     }
 }
