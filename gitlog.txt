@@ -1,3 +1,31 @@
+commit 64d897c2fb6abbdc70541604eb70fb80ea74450d
+Merge: 51f5e75 7e97f6d
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed May 9 01:57:32 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit 51f5e75fe150641710a801955bc878f84b88acea
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed May 9 01:57:15 2018 +0200
+
+    add release notes document
+
+commit 7e97f6d52f103a1f39cacf1b26406adf760c6060
+Merge: 3a0258d a277408
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Wed May 9 01:54:02 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    merging file update error fixed with master
+
+commit 3a0258d2c5fe91ee1b545f256ecdb6ad6f4f891f
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Wed May 9 01:53:31 2018 +0200
+
+    file update fixed
+
 commit a2774088260478bbd9457b964573a2a8105291e6
 Merge: c25ae97 2ff7efa
 Author: hadymaher <hadymaher31@yahoo.com>
