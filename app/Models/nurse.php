@@ -37,4 +37,8 @@ class nurse extends Authenticatable
     {
         $this->notify(new NurseResetPasswordNotification($token));
     }
+
+    public function clinic() {
+        return $this->belongsTo('App\Models\clinic');
+    }
 }
