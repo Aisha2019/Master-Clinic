@@ -231,7 +231,16 @@ class FileController extends Controller
             $this->update_photos($patient->id, $photos, $captions, $date);
         }
 
-        if ($request->prescription == ""){
+        
+        if ($ids[0] == null && $request->prescription != "") {
+            $prescription = new prescription;
+            $prescription->name = $request->prescription;
+            $prescription->patient_id = $patient->id;
+            $prescription->admin_id = Auth::id();
+            $prescription->created_at = $date;
+            $prescription->save();
+        }
+        else if ($request->prescription == ""){
             $prescription = prescription::find($ids[0]);
             if($prescription)
             $prescription->delete();
@@ -239,21 +248,29 @@ class FileController extends Controller
         else{
                 $prescription = prescription::find($ids[0]);
                 if($prescription)
-                $prescription->content = $request->prescription;
+                $prescription->name = $request->prescription;
                 $prescription->save();
             }
 
-        if ($request->comment == ""){
+        if ($ids[2] == null && $request->comment != "") {
+            $comment = new comment;
+            $comment->content = $request->comment;
+            $comment->patient_id = $patient->id;
+            $comment->admin_id = Auth::id();
+            $comment->created_at = $date;
+            $comment->save();
+        }
+        else if ($request->comment == "") {
             $comment = comment::find($ids[2]);
             if($comment)
             $comment->delete();
         }
         else{
-                $comment = comment::find($ids[2]);
-                if($comment)
-                $comment->content = $request->comment;
-                $comment->save();
-            }
+            $comment = comment::find($ids[2]);
+            if($comment)
+            $comment->content = $request->comment;
+            $comment->save();
+        }
 
         return redirect()->route("admin.patient.file", $patient->id)->with('status' ,'Patient File has been updated Successfully!!!');
     }

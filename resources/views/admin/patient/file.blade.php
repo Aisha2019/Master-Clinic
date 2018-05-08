@@ -33,7 +33,8 @@
                                 @csrf
                                 <select class="form-control" name="pageNumber">
                                     @for ($i = 0; $i < count($pages); $i++)
-                                        <option>{{$i + 1}}</option>
+                                    <?php $page = $pages[$i]; ?>
+                                        <option>{{ date('M d, Y', strtotime($page[5])) }}</option>
                                     @endfor
                                 </select>
                             </form>
