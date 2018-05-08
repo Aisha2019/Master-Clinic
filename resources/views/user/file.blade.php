@@ -4,7 +4,7 @@
 	Patient File
 @endsection
 
-@section('css')
+@section('head')
 	<link href="https://fonts.googleapis.com/css?family=Economica:400,700&amp;subset=latin-ext" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 	<link rel="stylesheet" href="{{ asset('/user_styles/css/file.css') }}">

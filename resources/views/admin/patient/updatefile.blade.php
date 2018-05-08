@@ -44,16 +44,16 @@
                 <?php $numImages = 10; $index = 0; ?>
                 @endif
                 @if($page[1])
-                @foreach ($page[1] as $photo)
+                {{-- @foreach ($page[1] as $photo)
                     <div style="margin-bottom: 20px;">
                         <input type="file" id="photo_{{ ++$index }}" class="upload-photo" style="display: none" name="photo_{{ $index }}" value="{{ Storage::disk('local')->url($photo->image) }}" />
                         <label for="photo_{{ $index }}" class="btn btn-primary">Upload Photo</label>
                         <input type="text" style="margin-top: 10px;" class="form-control cap-input" name="photo_{{ $index }}_cap" placeholder="photo {{ $index }} caption" value="{{ $photo->caption }}" />
                     </div>
-                @endforeach
+                @endforeach --}}
                 @endif
 
-                @for ($i = 0; $i < $numImages; $i++)
+                @for ($i = 0; $i < 10; $i++)
                     <div style="margin-bottom: 20px;">
                         <input type="file" id="photo_{{ ++$index }}" class="upload-photo" style="display: none" name="photo_{{ $index }}" />
                         <label for="photo_{{ $index }}" class="btn btn-primary">Upload Photo</label>
