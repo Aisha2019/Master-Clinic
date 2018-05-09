@@ -1,0 +1,1394 @@
+commit 64d897c2fb6abbdc70541604eb70fb80ea74450d
+Merge: 51f5e75 7e97f6d
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed May 9 01:57:32 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit 51f5e75fe150641710a801955bc878f84b88acea
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed May 9 01:57:15 2018 +0200
+
+    add release notes document
+
+commit 7e97f6d52f103a1f39cacf1b26406adf760c6060
+Merge: 3a0258d a277408
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Wed May 9 01:54:02 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    merging file update error fixed with master
+
+commit 3a0258d2c5fe91ee1b545f256ecdb6ad6f4f891f
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Wed May 9 01:53:31 2018 +0200
+
+    file update fixed
+
+commit a2774088260478bbd9457b964573a2a8105291e6
+Merge: c25ae97 2ff7efa
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Tue May 8 13:26:15 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit c25ae9711ace405e83ca6004a939779cd05ddc43
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Tue May 8 13:25:55 2018 +0200
+
+    merging with master
+
+commit 002ab109f45e41098f873981e492a74d1b87dca4
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Tue May 8 13:21:46 2018 +0200
+
+    add new image factory
+
+commit 2ff7efa74c1baab95bb61e2f61260a183fd9da0f
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Tue May 8 11:26:55 2018 +0200
+
+    added admin statistics
+
+commit 2b8defebb6eaf613ae5c71cbdda3b918366ab3b0
+Merge: 9a53e33 a5fdb36
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Mon May 7 23:27:56 2018 +0200
+
+    added statistics view and fixed prescription and comments faking
+
+commit 9a53e333ccb987a34ce7d0aaaa0eea8c46c43633
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Mon May 7 22:53:54 2018 +0200
+
+    pointless
+
+commit 1122b05619ee45a82690951d801bf1a9f0af4652
+Merge: 54f032e a5fdb36
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon May 7 17:14:57 2018 +0200
+
+    conflict in reservations file
+
+commit 54f032e9ebbd1c86df2183486eb8abca360362ae
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon May 7 17:03:36 2018 +0200
+
+    delete wrong reservation controller file
+
+commit a5fdb36e7ec59d6e5fa0d385ba0bf096ff5ab255
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Mon May 7 14:31:53 2018 +0200
+
+    Files of patient in admin's view is fixed , reservations modified
+
+commit 6d087910b0804ace83ce07b8d89780dc2ba4e2b2
+Merge: 4b53e19 99aa5de
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Sun May 6 23:37:32 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    mering route fix
+
+commit 4b53e19bbcc1220ce331da7318de71baac08d57f
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Sun May 6 23:37:21 2018 +0200
+
+    not working
+
+commit 99aa5de82bbdd499dae8da8f8d42d091a126678f
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Sun May 6 17:13:05 2018 +0200
+
+    About column is added to admins table, make an appointment button is added to reservations history page
+
+commit d767b876df97a8b0ed7d88c613f66469743d8063
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Sat May 5 21:22:23 2018 +0200
+
+    Merging
+
+commit 98ed11b47b486c870f8c58d871137a66a6e8a9c0
+Merge: b176386 2d435dc
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Sat May 5 19:47:09 2018 +0200
+
+    A problem in time in reservations fixed
+
+commit b1763861122fe582729df50ba4191adcef6931fc
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Sat May 5 19:45:09 2018 +0200
+
+    A problem in time in reservations fixed
+
+commit 2d435dc904de0df83a7ad82d6a910e8478958f6a
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Fri May 4 22:54:28 2018 +0200
+
+    fixed admin/reservationcontroller
+
+commit afa73a65522ea356b2e8621b52091c811cd9dc6e
+Merge: 1494daf baa86cb
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Fri May 4 20:56:23 2018 +0200
+
+    merged with master
+
+commit 1494daf31257f17cfeaf93fcfde9fea445463791
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Fri May 4 20:54:23 2018 +0200
+
+    file fixed patient and nurse views
+
+commit baa86cbb340ddfc5c8cee233683351827c3cbf6c
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Fri May 4 20:21:18 2018 +0200
+
+    changed titles of reservation pages
+
+commit 6e2c1f5f0c2e49d2494404038aeac7adaeb2af76
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Fri May 4 20:19:56 2018 +0200
+
+    added reservations to home page of nurse and admin
+
+commit 5c1f90a35b40088f64052a89614a5d6d605d3eac
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Fri May 4 15:58:04 2018 +0200
+
+    Admin can view doctors and nurses' working times in all clinics and nurse can view all doctors and nurses only in her clinic
+
+commit 29e81a768d7aee48d9005cb620009754eb8f3ee8
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Fri May 4 14:55:25 2018 +0200
+
+    Working days and hours is added in admins and nurses
+
+commit 5ee1c0b3686f10dfc94019014c518d7a89a783a1
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Fri May 4 13:56:34 2018 +0200
+
+    ReservationsController moved
+
+commit 571e610dc73f7910e8bd31a5435d9a5e33eba54a
+Merge: 173a6a6 0a4a762
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Fri May 4 03:32:06 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit 173a6a66c28142e4a07e5ad194752e245cde41bd
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Fri May 4 03:31:52 2018 +0200
+
+    Working days and hours are added in admin and nurse tables
+
+commit 0a4a7627c9d9deb0e3ab6ca6ad07de255f60b9b7
+Merge: 4def5a7 bce1268
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Fri May 4 03:06:08 2018 +0200
+
+    files added
+
+commit bce1268b464ab91c322cb1818d3fe256d8c3db0b
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Fri May 4 02:53:39 2018 +0200
+
+    added patient file view, print, create, update and delete for admin, view, print and delete for nurse and just view for patient
+
+commit 4def5a757de6311482daff3d137a9f080d2e2a7a
+Merge: a6d54ca dccd870
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Thu May 3 23:32:08 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    merging
+
+commit a6d54caee4329e151f272fc179779a92bcc2ffb1
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Thu May 3 23:30:52 2018 +0200
+
+    admins can view thier reservations and search for a certain date
+
+commit dccd870c7c3b5e90ec578bbc8f152e587709e14e
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu May 3 22:29:52 2018 +0200
+
+    Validations in patient's profile fixed
+
+commit 2b7eabd9a4ffde5bfab08629ffcb489c623b73a5
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu May 3 22:25:13 2018 +0200
+
+    Validations in nurse add and update patients and nurse's profile fixed
+
+commit 944c4475057377d9c331374145f28ead1aacef90
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu May 3 22:16:52 2018 +0200
+
+    Validations in nurse add and update invoices fixed
+
+commit 86fae8f415769095dc6f9bc02c4e5a074785f95a
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu May 3 22:00:57 2018 +0200
+
+    Validations in add and update patients, workers and admin's profile fixed
+
+commit b2daee563d8e1110e2c206eb6a8362a2ee787b9e
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu May 3 21:46:29 2018 +0200
+
+    Validations in add and update nurses fixed and number of unread notifications is shown in title of page
+
+commit d3eb97059c1a89da9fdc9b3eaf247d8792bf39a8
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu May 3 21:15:20 2018 +0200
+
+    Validations in add and update materials fixed
+
+commit ecb8ebec81d8941218fe3508282452aadf16bf66
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu May 3 18:43:43 2018 +0200
+
+    Validations in add and update invoices fixed
+
+commit ce54f24b71fbeb7f6f414ca5d068bd14e1b000c3
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu May 3 18:31:48 2018 +0200
+
+    Validations in add and update clinics fixed
+
+commit a270013fde97eb74587373041f27e168ba707215
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu May 3 18:18:16 2018 +0200
+
+    Validations in add and update admins and categories fixed
+
+commit 6cd24e47f15445197ac83da1248e4cc7e66076d5
+Merge: 7dd5648 4dd8c5e
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu May 3 16:28:36 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit 7dd5648bda7de4ead33a9fb27ee246ba3526c384
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu May 3 16:28:23 2018 +0200
+
+    Bug in notifications fixed
+
+commit c890575493c37a05058034978e866b9b3b160c60
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Thu May 3 14:00:25 2018 +0200
+
+    it works sort of...
+
+commit 9622d680ce3739f3d5ef478b8813640cfe8ad1ad
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Thu May 3 14:00:19 2018 +0200
+
+    it works sort of...
+
+commit 4dd8c5ea4af274796d7debd4480727f2ec974b68
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Thu May 3 01:21:44 2018 +0200
+
+    changed resrvation delete route
+
+commit 66f16bcabb8b92626d749e1e70766ac73b1d06b2
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Thu May 3 00:23:54 2018 +0200
+
+    fixed timepicker
+
+commit 6d4a7fd4bd41abe0772b94f79846f45caeba1bec
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Wed May 2 18:33:32 2018 +0200
+
+    commit you idiot
+
+commit 7d8d0839e94cc8aa8977bb877281a7214fc72b8b
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Tue May 1 13:08:51 2018 +0200
+
+    fixed timezone
+
+commit d106dd72b48394ac426be61695f804e5db8165d2
+Merge: 02ea90d 8a95b5f
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Sat Apr 28 21:58:18 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    fixing errors in nurse/patient/reservations and
+    user/reservations/history
+
+commit 02ea90d1d729e2b7404dcaf6b5a2c81bfdfadf7d
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Sat Apr 28 21:50:37 2018 +0200
+
+    fixed status and attendance in user/reservation/history and
+    nurse/patient/reservations
+
+commit b2a631838269ad9735e5a582ef8fee0c58590ae7
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Fri Apr 27 22:19:58 2018 +0200
+
+    Active tab in navbar in patient's view is now highlighted
+
+commit 8a95b5faadd99011da871acd4121fb7aac23aa4a
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Fri Apr 27 21:35:45 2018 +0200
+
+    Statistics in home page modified
+
+commit e12328242907cbdb8d96d8448d696530c7dd05f5
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Fri Apr 27 18:16:09 2018 +0200
+
+    Admin can view all his notifications,mark them as read and when an admin deletes a notification it's deleted at all admins'
+
+commit e7bd2fe6900252df5f39738403c329adf55a6b19
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu Apr 26 06:28:31 2018 +0200
+
+    Now when material number goes uder limit a notification is sent to all admins in navbar , view all is in progress
+
+commit 86e860bf6d40ad8d33ce186894f1eae2dc6c9315
+Merge: ced1652 29fe489
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Wed Apr 25 23:44:10 2018 +0200
+
+    Merging
+
+commit ced165258811225b5ccc8443114241f77f255ac3
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Wed Apr 25 23:42:32 2018 +0200
+
+    Merging
+
+commit 29fe4893a5d8b3a4cfc03b60143c774ba446a2a0
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed Apr 25 23:24:45 2018 +0200
+
+    problem of datepicker solved in profile page and create reservation
+
+commit b7fcf5f1380f35289c54894d4592604ed4464d1f
+Merge: 9620bb8 52b10e5
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed Apr 25 22:43:21 2018 +0200
+
+    merging from master
+
+commit 9620bb86b6901bea5b3e11367af1a795684c918c
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed Apr 25 22:42:52 2018 +0200
+
+    print number of unread emails in compose page
+
+commit 52b10e5d03c354a3465aa026f40a8bbb8cdb4d3e
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Wed Apr 25 22:29:57 2018 +0200
+
+    Patient can view and print his invoices
+
+commit a3b5fc649efa678dee4cfa651803b9c74d09da27
+Merge: 64245dc 3755a94
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Wed Apr 25 17:45:52 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit 64245dc59c4fdbc2b4384b8062b6b68b0098c2e0
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Wed Apr 25 17:45:01 2018 +0200
+
+    Merging
+
+commit 3755a94c54f2d72c09f60016a6e655dabc87bf2d
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Wed Apr 25 15:10:46 2018 +0200
+
+    fixed an error in reservation history
+
+commit b39cfc6b7cc0ecf92c1f10ec2f3dd70ddef662ff
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Wed Apr 25 12:09:38 2018 +0200
+
+    patient can add ,view and update reservations
+    nurse can reject and update reservations attendance
+
+commit 6e275f6e0c9e2bd4f96247e1b9855953cdf1db86
+Merge: a27b928 eed640b
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Fri Apr 20 08:38:27 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    merging
+
+commit a27b928f3f05deaeae481c1382fc5ef83b6a37d0
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Fri Apr 20 07:52:26 2018 +0200
+
+    nurse managing reservations
+
+commit eed640b0e1963465abb6bc6decabe8ba4b054804
+Merge: 6a41bd0 aad5344
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu Apr 19 21:38:09 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit 6a41bd0af2fc47cfd7958ef95cbcc81b1b10fd4a
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu Apr 19 20:21:45 2018 +0200
+
+    Nurse can add,view,update and print invoices
+
+commit aad53448480239fc65c6bc190731902a4621bff9
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed Apr 18 21:10:50 2018 +0200
+
+    fix delete emails bug
+
+commit 2868a0dced38373f0b99b216661e37f64c546f21
+Merge: 5924e08 304c559
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed Apr 18 20:47:11 2018 +0200
+
+    merging my last work with aisha's work
+
+commit 5924e0873a6cb1a2814f17f2807561ddcff47765
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed Apr 18 20:44:45 2018 +0200
+
+    email system works for admin and patient
+
+commit 304c55949eb88893669ab646558155e64ccdbe41
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Tue Apr 17 21:42:07 2018 +0200
+
+    Tax and discount added to the invoice
+
+commit cae9dbe9ef8a05e149f13168e487185954c50adb
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Tue Apr 17 11:43:42 2018 +0200
+
+    Admin can print invoice
+
+commit 72451003563c789c40c97a111fd07f12af23817b
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Mon Apr 16 15:45:50 2018 +0200
+
+    Admin can add,view and delete invoices,Printing invoices is in progress
+
+commit 0728189dd433e46ddb9c378838abad05a2ca1157
+Merge: 58c6659 21da9fe
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Sat Apr 14 21:09:22 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit 58c6659505dacdf31f8f140b5b3caa21bbe2a9f9
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Sat Apr 14 21:08:48 2018 +0200
+
+    reordering the data in tables and make active links in admin panel
+
+commit 21da9feb72c4906bcabe1d69a5320007cc5b25b6
+Merge: e701730 4fdcfa0
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Sat Apr 14 20:45:05 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit e70173087e100f46be73f7acaaf9aee854433fb5
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Sat Apr 14 20:37:14 2018 +0200
+
+    Admin can add,view and update materials and categories of materials of inventory
+
+commit 4fdcfa0ddf0e4edb9fed5753775ad48a63c99018
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Sat Apr 14 20:18:07 2018 +0200
+
+    send email with queue
+
+commit c0c3961c77c559eb8aa8f4d9285dcbd9c856b348
+Merge: 19ce67a 61831cc
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Sat Apr 14 20:09:00 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit 19ce67a08dccfeb9b1084d02f43d747b3f9b3705
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Sat Apr 14 20:08:09 2018 +0200
+
+    admin send email to patients
+
+commit 61831cc5375fca1574958d824469c004e3a20a1b
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Tue Apr 10 20:36:36 2018 +0200
+
+    phase1 release
+
+commit 237205839bcebd684311aa92675cc3ce1858f8d6
+Merge: 6400d0e f0546eb
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon Apr 9 00:32:03 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit 6400d0e1356b4de1ec26878355aa2a5444d4fce6
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon Apr 9 00:31:44 2018 +0200
+
+    remove documents tasks from taskboard document
+
+commit 7e76f6edd43897d95987ce287519eae0468d446a
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon Apr 9 00:27:12 2018 +0200
+
+    Adding STP, test cases and task board documents
+
+commit f0546eb6f1a1e1fe6560e6df84add7c5d69658f7
+Merge: 7f1b5de e80d858
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Sun Apr 8 22:22:55 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    pulling last changes
+
+commit 7f1b5decbe0e06d640c66d057d0248f2a49cbba1
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Sun Apr 8 22:15:45 2018 +0200
+
+    edited the er diagram
+
+commit e80d858146c11212788c3def47abaa052768f434
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Sun Apr 8 21:33:20 2018 +0200
+
+    Release notes document
+
+commit c679572aecfd47d09cc71ecdc1a92b8c63348f4a
+Merge: ff244e4 0b7ab12
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Sun Apr 8 18:17:12 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit ff244e43855271b8c6d2ee13fc2a069c391e75cb
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Sun Apr 8 18:16:41 2018 +0200
+
+    Phase 2 tasks
+
+commit 0b7ab12a9c4af914268239b3a538151c6a2577d9
+Merge: dcf124e 398db0d
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Sun Apr 8 16:25:37 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    adding SDS document version 1.0 alpha release and updating diagrams
+
+commit dcf124e1fa96e9745cb953a497cd7659abe13314
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Sun Apr 8 16:25:00 2018 +0200
+
+    added class diagram and SDS_1.0 alpha version
+
+commit de4f1b6e75109b0801a19dcb054d5e8f290d73a6
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Sun Apr 8 16:24:31 2018 +0200
+
+    added class diagram and SDS_1.0 alpha version
+
+commit 398db0df3390eaa8fd817a1cd5cb54a833630a36
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Sun Apr 8 06:58:16 2018 +0200
+
+    adding er diagrams to doc
+
+commit 7522b8f3519b43f7b32d25ab38c41e8efa5dbb54
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Sun Apr 8 03:55:22 2018 +0200
+
+    diagrams updated
+
+commit 92cf13db2ed203217cafa3017f6b0d7221cadd3b
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Fri Apr 6 01:56:15 2018 +0200
+
+    added architecture diagram
+
+commit e1cb183a79c1e3585dd9dca0ff58b43cd9509195
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Fri Apr 6 01:04:39 2018 +0200
+
+    added diagrams images and xmls version 1.0
+
+commit 1e2bd06ec3189749e55b56c2870fe44cb56dfd70
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Mon Apr 2 17:19:04 2018 +0200
+
+    Admin can view,add and update workers
+
+commit 1331e030341ef1aef29d9953bd7f2bc984b52868
+Merge: e19ee20 4d46b06
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Mon Apr 2 15:01:53 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit e19ee202ff89e7f498ffe697e61bb4fc8d0a6eff
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Mon Apr 2 15:01:37 2018 +0200
+
+    Fixing Time problems in add and update clinic
+
+commit 4d46b061d24243b6cdbd7f0eabb4b1a6833e1c64
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon Apr 2 00:58:58 2018 +0200
+
+    fixing email unique problem in update patient from nurse's panel
+
+commit f026ff9a1c030f0603949a086b0b73e4c011cfd4
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon Apr 2 00:30:50 2018 +0200
+
+    fixing time problem
+
+commit 9b2df575c8416d68cb79d6b4442bf593881a5aba
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Sun Apr 1 23:57:17 2018 +0200
+
+    Admin can view,add and update clinics
+
+commit 9f3645454a7c66daee762439d5f6fb73a68a8c86
+Merge: ee5a39e fd1a81b
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Fri Mar 30 01:27:53 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit ee5a39ed6fcd01b3a1c0ff53d2a73885fca589e0
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Fri Mar 30 01:27:28 2018 +0200
+
+    fixing change password in users profiles and encrypt it
+
+commit fd1a81b0b94589b9688488a899ddac6f9d9eb049
+Merge: fa4ba57 7134ffd
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Fri Mar 30 01:14:55 2018 +0200
+
+    Merging
+
+commit fa4ba5717c90be45e0d64f7fe9ba7e70334e2d01
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Fri Mar 30 00:58:40 2018 +0200
+
+    Merging
+
+commit 7134ffd1a4739e951a5ffa90d474208591c8af3e
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Thu Mar 29 21:56:50 2018 +0200
+
+    improve all nurses views and functionality
+
+commit 6e34681b5a99a85b5619acd945b92dfaf6cf44a4
+Merge: 4ae2c9e 7bc78c8
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Thu Mar 29 21:20:11 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit 4ae2c9ec738fce06b9667736d7cfc73e16e52f87
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Thu Mar 29 21:19:43 2018 +0200
+
+    improve all admin views and functionality
+
+commit 7bc78c865fcf20a51e1840fdf3bdb99417815484
+Merge: afe4812 a0355aa
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu Mar 29 19:21:02 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit afe481294dffe4a8c84be57111dc9e63b1c90db0
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu Mar 29 19:19:35 2018 +0200
+
+    Fixing the route of user's profile and homepage's links
+
+commit a0355aa0ae88e2fa1000a07ee1f769713c0b4b4a
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Thu Mar 29 19:01:33 2018 +0200
+
+    fixing admin control patient and patient login problem
+
+commit e495fdecdf281b82a28db97b36f89c8d8bcac2a6
+Merge: b937129 75fa09f
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu Mar 29 14:26:27 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit b937129d7b6d5a97cb3cadcd40f8e26d04574398
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu Mar 29 14:26:02 2018 +0200
+
+    Fixing the route of admin's change status
+
+commit 75fa09f02ee09fc932f656d2951e5aca71b8cd7f
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Thu Mar 29 13:26:42 2018 +0200
+
+    making account activation/deactivation of patient account similar to
+    that of admin and nurse
+
+commit 850e672050c7adc5f808dd312d36c5a583e58d5a
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Tue Mar 27 20:01:28 2018 +0200
+
+    side navigation bar edits
+
+commit 5191b3bcb70d660f630e807468302a7785170eba
+Merge: 45c0624 cd5b4f3
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Tue Mar 27 19:12:46 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    patient functions
+
+commit 45c062463c3d2bdbe269ce22177f96d49b1a43b9
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Tue Mar 27 18:59:29 2018 +0200
+
+    patient update ,delete & deactivate
+
+commit cd5b4f327607b1a329b97dfac1e3329041bd06d8
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Tue Mar 27 15:22:17 2018 +0200
+
+    fixing view of admins, nurses and patients
+
+commit 195454366bc655335a87e16d17ca9f4aabce40d4
+Merge: 88f8637 f1dc79b
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Tue Mar 27 14:29:25 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit 88f8637a801947623e7d2ba18ab9b17214e0711b
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Tue Mar 27 14:29:19 2018 +0200
+
+    change icon in side navbar
+
+commit f1dc79b49dd6447441581d55efd55abab59cad94
+Merge: 4d4b006 170008d
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Tue Mar 27 12:39:41 2018 +0200
+
+    Now Admin can view,update and delete admins and nurses
+
+commit 4d4b0066a191c7284cfc2fe6ecdc10731e931140
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Tue Mar 27 00:28:46 2018 +0200
+
+    Admin updates other admins
+
+commit 379ac30fcb11b534a157eeca35e7ad358f6f1a29
+Merge: ed5e07e 170008d
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Tue Mar 27 00:27:27 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    merging
+
+commit ed5e07ef3bcf60dace25fa34d280b0642bacbf89
+Merge: 513019b 6b7b7d9
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Tue Mar 27 00:25:40 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    merging
+
+commit 170008d847bb4cb9bf70fcedfc49081d2cf155d8
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Tue Mar 27 00:15:24 2018 +0200
+
+    fix admin data tabel
+
+commit 9b4c4f9d35e4995f92cbdc733dc5f4e897d5f076
+Merge: a9ae35f 6b7b7d9
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon Mar 26 22:35:32 2018 +0200
+
+    sove conflict in web.php because of sepration of the file
+
+commit a9ae35f92183c88f412186136a1db0125a9a9063
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon Mar 26 22:26:16 2018 +0200
+
+    fix and complete nurse profile
+
+commit 513019bf334a23203b4f44bbaab11841fcbad961
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Mon Mar 26 21:49:37 2018 +0200
+
+    patientcontroller merge
+
+commit 5bebcc4a36bc09756e319da978ec1f76b13ebee4
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Mon Mar 26 21:36:57 2018 +0200
+
+    delete,update & deactivate patient (nurse)
+
+commit c3152b972067eb771891b45de7bc68f8dfe30b0f
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon Mar 26 21:17:55 2018 +0200
+
+    fix and complete admin profile and seprate web.php file to 3 sub files
+
+commit 4540dfa6f5c5c5f47ed7d10b22f04bb64c130ba5
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon Mar 26 20:23:51 2018 +0200
+
+    aisha and reham work on view, add, update and delete users
+
+commit f4e376d37fa1380cc38053e64a2b2d4d1863d035
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon Mar 26 19:22:42 2018 +0200
+
+    SRS report
+
+commit 6b7b7d9399a004504a10926d5477fdb847f3ea64
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Mon Mar 26 15:36:27 2018 +0200
+
+    Admin Can View All Patients,Nurses and Admins
+
+commit dab578683d613861f55852c40ac4dac253466636
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Mon Mar 26 14:34:22 2018 +0200
+
+    Admin Can View All Patients,Nurses and Admins
+
+commit ce802e6263c1259c81d8120a0cf800b660cc7438
+Merge: eb7db58 a54d5dd
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Mon Mar 26 01:27:49 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    nurse and admin patient info updating
+
+commit eb7db58f20645429ec1783d01a69e6f5df374438
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Mon Mar 26 00:00:51 2018 +0200
+
+    nurse update
+
+commit 0e2d9dd1e745e2a29eb7b03c636305f71dc98f52
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Sun Mar 25 21:44:41 2018 +0200
+
+    Patient's Table in admin's view is added
+
+commit 64ed69896201748338471d2aef638bb080cb9084
+Merge: 51adbe6 a54d5dd
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu Mar 22 14:23:42 2018 +0200
+
+    Patient's Table in admin's view is added
+
+commit a54d5dd0bbf369bf9d00fb5a0bcee6193495510b
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed Mar 21 22:19:53 2018 +0200
+
+    fix change profile photo in admin and nurse and remove Intervention library
+
+commit 0604f24f7748bc7835fd8c5963aa96ec27da0f7b
+Merge: de391c2 c8c112a
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed Mar 21 22:06:36 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit de391c26492df461434a0803326258dbdb6b8085
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed Mar 21 22:05:58 2018 +0200
+
+    Patient profile full function
+
+commit 51adbe63bcd46e53b7abf2e183c84cdc789b7b58
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Wed Mar 21 06:08:16 2018 +0200
+
+    Patient's Table in admin's view is added
+
+commit 6c282e5d69173d40b34cb8808b73c023432ee048
+Merge: c9e913c c8c112a
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Tue Mar 20 14:09:44 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    merging
+
+commit 1451e940fce8d5b3d054ae795724705d93fda63f
+Merge: dd920d3 c8c112a
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Tue Mar 20 13:49:02 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit dd920d3315abb41c2f005a74e705d3495ed05ca9
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Tue Mar 20 13:48:53 2018 +0200
+
+    merging
+
+commit c8c112a563a4e56e3cbee289fbfa8f5221665dd4
+Merge: d63b881 ccd8fe9
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Tue Mar 20 13:32:39 2018 +0200
+
+    added admin and nurse profiles
+
+commit cfd035c120c5ad138e3b4f4d5286f251d06fde02
+Merge: 55617ec d63b881
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Tue Mar 20 12:10:18 2018 +0200
+
+    merging
+
+commit 55617ecc18625cb9ab08da3b1c8c1bfaa9a1cf92
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Tue Mar 20 11:57:33 2018 +0200
+
+    merging
+
+commit c9e913c12ec5787eb107677bcbdf51a2d2b0c205
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Tue Mar 20 11:34:37 2018 +0200
+
+    </form>I
+    patients table
+
+commit ccd8fe93938291933fbc5b4d893850a165bb89a5
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Tue Mar 20 01:42:02 2018 +0200
+
+    admin and nurse profiles
+
+commit 413e3e959077870081f5a107436b20c1e5231c83
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Mon Mar 19 22:40:36 2018 +0200
+
+    added admin and nurse profiles incomplete
+
+commit d63b8811711cb018c2212b746f5a33dcaf999fd2
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Mon Mar 19 22:37:06 2018 +0200
+
+    syntax fixed
+
+commit f20cdf4f0542e05da7a48ccef93b306148cbb0d5
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Sun Mar 18 22:07:23 2018 +0200
+
+    some cleaning of code
+
+commit 7cefc59002c2ab9954eeef114613381212428197
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Sat Mar 17 19:10:31 2018 +0200
+
+    fixed controller syntax
+
+commit 014cfbb137bafd78580406cf3ed275e075c3b0f7
+Merge: 6a4d681 e79f7d9
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Sat Mar 17 14:51:15 2018 +0200
+
+    Admin add nurse files are added
+
+commit 6a4d681f782b73d29b5e86075d67fa4051bdef5d
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Sat Mar 17 14:45:10 2018 +0200
+
+    Admin add nurse files are added
+
+commit e79f7d97597d428bea4b144116911c472fb127c4
+Merge: 2cd7c25 25193e5
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Sat Mar 17 14:43:39 2018 +0200
+
+    added patient password reset via email
+
+commit 2cd7c25123863427d4c47f707fc51713dc4f3387
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Sat Mar 17 14:05:02 2018 +0200
+
+    routes fixed
+
+commit 25193e555ee547e93e34fc86ae9c6b5b9c287f9e
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Sat Mar 17 13:53:14 2018 +0200
+
+    added user reset password
+
+commit 93d673e4ae663ea1c44dc9e743df38da78d55085
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Sat Mar 17 00:04:05 2018 +0200
+
+    registeration
+
+commit a78e708e4077eca5f601cad495e41c64229d2c3b
+Merge: 94ec0f4 7903b62
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Fri Mar 16 22:59:18 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    git commit
+
+commit 94ec0f4025db06a016e35d0995e8a69e752429e4
+Merge: cb23fb3 15d2c9b
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Fri Mar 16 22:32:07 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    git commit
+
+commit 2208d6339187bf2c6a04deb2ae95e212ca7ff35f
+Merge: e31729e 7903b62
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Fri Mar 16 19:52:29 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit e31729e8478fa7d6dcdc5d2604692bd6357620ac
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Fri Mar 16 19:47:17 2018 +0200
+
+    Nurse-Patient Controller added
+
+commit 7903b621853327c819fcfbd87352a683db1eecff
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Fri Mar 16 17:01:56 2018 +0200
+
+    add factories files for seeding the database tables
+
+commit c452b86f34423f27e4282436ebfb65b9c37ea829
+Merge: 6381cc1 244aed8
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Fri Mar 16 16:05:47 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit 6381cc1ad693b13ec82f1095d1f5b436b37850d3
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Fri Mar 16 16:04:52 2018 +0200
+
+    Nurse-Patient Controller completed
+
+commit 244aed887a86037b0c0da4ad11b859c7969f2996
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Fri Mar 16 15:55:25 2018 +0200
+
+    fixing some files and structure of web.php
+
+commit 907f5875922d58383c0e8c727458ceefdbba62cd
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Fri Mar 16 15:19:48 2018 +0200
+
+    nurse can login and reset the password
+
+commit 2ae42582d865c77ae5fb446970be9e6fe5fa1e56
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Fri Mar 16 14:57:51 2018 +0200
+
+    admin reset password successfully
+
+commit cb23fb368edc05a76eb3ccb5dc69b679ef27c9d3
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Fri Mar 16 14:22:37 2018 +0200
+
+    git commit
+
+commit 15d2c9b3114097cabfb7771a8f369af3f74c5e48
+Merge: f81b38b b8ae1f5
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Fri Mar 16 14:17:09 2018 +0200
+
+    solving conflict in web.php because of the new admin routes
+
+commit f81b38bd8a77f7a157f86d18b74ab4cbbfad9bb0
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Fri Mar 16 14:15:03 2018 +0200
+
+    admin login successfullry
+
+commit 8b6fa7b4d39b5435a09bd479b5838978c93aafd2
+Merge: 422199f b8ae1f5
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Fri Mar 16 11:41:50 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    git commit
+
+commit 422199fdd63b5da83c007e9872b6cf51dbe402ab
+Merge: 496be8a acf686b
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Fri Mar 16 11:34:48 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    registeration pages
+
+commit b8ae1f53329c24c657a4c473ffd4ac8864894f76
+Merge: 63db648 acf686b
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu Mar 15 22:57:00 2018 +0200
+
+    Nurse-Patient Controller added
+
+commit 63db6489dff967412adb1343173fcc244fd3bd18
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Thu Mar 15 22:48:27 2018 +0200
+
+    Nurse-Patient Controller added
+
+commit 2d814cd785619aa400b442d9790553b1831f7f0c
+Merge: 33f45f1 acf686b
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Thu Mar 15 12:28:20 2018 +0200
+
+    solving conflict of abdo's login work with my new file structure
+
+commit 33f45f1f7f2f8d4a5239e115625dfd84c2873d1c
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Thu Mar 15 11:56:01 2018 +0200
+
+    working on admin login
+
+commit acf686b9ad9db5b2bdaffac614b5556aac5a15e2
+Merge: 725f212 73c4c84
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Thu Mar 15 03:47:51 2018 +0200
+
+    Merge branch 'master' of https://gitlab.com/hadymaher/MasterClinic
+    this merge is necessary to take new changes in remote repo and compine it with new patient login system
+
+commit 725f212890d067d1315a82ea2f09c127f90fbf17
+Merge: aa3fd9a 349fe06
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Thu Mar 15 03:47:23 2018 +0200
+
+    added patient login and logout, removed register routes and controller and if logged in removed login button
+
+commit 349fe06d09676b977c8a639244c6774614210caf
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Thu Mar 15 03:38:17 2018 +0200
+
+    added auth patient login and logout
+
+commit 63ca6c73e5cdd468fac2560103134b73694fc185
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Thu Mar 15 03:38:00 2018 +0200
+
+    added auth patient login and logout
+
+commit a465d3b88fb9412663a2d0586ea6534d5611c252
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed Mar 14 22:51:45 2018 +0200
+
+    add favicon
+
+commit 496be8a1f0221e44e3e65278efc72d390d718bf4
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Wed Mar 14 13:38:00 2018 +0200
+
+    patient registeration form for admin
+
+commit 73c4c84fdef90febd1b80ce1ee0a4f99bec79c14
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed Mar 14 12:48:43 2018 +0200
+
+    add nurse and admin login
+
+commit f233a48683bee8923e0eb2264f5ab660fb2294bb
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed Mar 14 12:47:00 2018 +0200
+
+    add remember me to login view
+
+commit aa3fd9ae21b71c0de79a20cbf8e18eba33921314
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Wed Mar 14 12:32:21 2018 +0200
+
+    dump
+
+commit 7d8e8ea6869fc4e957488a3e8a7fa68355ce4b62
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Wed Mar 14 12:21:43 2018 +0200
+
+    added home route
+
+commit e6ea4a10b098582c646ad1dbf4ff8104f881a3da
+Merge: 5e00338 4253adf
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Wed Mar 14 12:21:09 2018 +0200
+
+    added home route
+
+commit 094704e1ca42890ff9192a43491e330ee5dd1647
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Wed Mar 14 12:19:10 2018 +0200
+
+    added patient login
+
+commit 4253adf3b9c5061d2c1cb487b18cba65a7f7b7a2
+Merge: 83d3d7a fa53dfb
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed Mar 14 12:00:31 2018 +0200
+
+    solve conflict at web.php file
+
+commit 83d3d7a4c4688606a5adfff975f8eff697c05b4b
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Wed Mar 14 11:58:09 2018 +0200
+
+    Login page design
+
+commit d23f2ac1cfadd3f8365b47c9597b3d6bbeab8483
+Merge: 7fde90a fa53dfb
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Tue Mar 13 10:41:29 2018 +0200
+
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+    
+    "Home Page Design"
+
+commit 7fde90ae9244806fbb731d1dc20c9905e865154a
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Tue Mar 13 10:41:05 2018 +0200
+
+    Home Page Design
+
+commit 5e00338f333c9ba85b62d6b9589e8d04eb7a0f1f
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Mon Mar 12 22:26:47 2018 +0200
+
+    added auth routes
+
+commit fa53dfbccc2e888637bbdefcbd9fcccac88600cd
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Mon Mar 12 19:38:54 2018 +0200
+
+    forgot to save routes file changes!!!
+
+commit 441c6ac917575e7a8ec32899ae436263273fea03
+Merge: 576fd0e 66c7745
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Mon Mar 12 19:35:52 2018 +0200
+
+    fixed routes conflict -> added nurse and admin routes from remote
+
+commit 576fd0e2189d8d126886a9812d4dc4d5b113c621
+Author: abdo <abdomedono2014@gmail.com>
+Date:   Mon Mar 12 19:33:05 2018 +0200
+
+    added aush files
+
+commit 66c7745fe2f8231f474245db3f2c12aeb147b82c
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon Mar 12 19:29:42 2018 +0200
+
+    adding layouts for admin and nurse pages
+
+commit 2d94cbcf1bc951ac4161eda47828ca47fb876df7
+Merge: 4b8e86a e829067
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon Mar 12 14:03:07 2018 +0200
+
+    what is this
+    
+    Merge branch 'master' of gitlab.com:hadymaher/MasterClinic
+
+commit 4b8e86a0b0b8b8b61071c73c9500e3e884bb4dce
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon Mar 12 14:02:58 2018 +0200
+
+    adding images folder in public
+
+commit e829067762979a1ad79d6d8f5725e084e99a709f
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Sun Mar 11 23:26:43 2018 +0200
+
+    Home Page Design Finished
+
+commit 51fb6215c53de90b735d83db8d9141941be2a343
+Merge: c18ecc3 e9e2f71
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Sun Mar 11 20:17:51 2018 +0200
+
+    Home Page Design
+
+commit c18ecc3c2505b7a27b9ffc5eab61993609656a3a
+Author: Aisha2019 <aishamousa632@yahoo.com>
+Date:   Sun Mar 11 20:13:22 2018 +0200
+
+    Home Page Design
+
+commit e9e2f71cbbdfc6c6c687c2c7cbad7f34c033a6d7
+Author: reham6 <rihamhamdy6@gmail.com>
+Date:   Sun Mar 11 19:28:43 2018 +0200
+
+    add intro and about section in homepage
+
+commit 455c59ae15cfc1a9b9be1d0130592c6f2ae57921
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Thu Mar 8 23:18:26 2018 +0200
+
+    first files layout
+
+commit 8db8016be4690effb314a7ee3d314c12747f3244
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Thu Mar 8 23:08:16 2018 +0200
+
+    first files layout
+
+commit e2a49609f965094073e98d8dd828346ed51c6d52
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Mon Mar 5 15:20:01 2018 +0200
+
+    migartions and database tables
+
+commit bd954481f35bc2d95d4357b61fa99cb51116330a
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Fri Mar 2 00:36:29 2018 +0200
+
+    correcting team member name
+
+commit c7ab87643c798e191653e734aeac1970b254130e
+Author: hadymaher <hadymaher31@yahoo.com>
+Date:   Fri Mar 2 00:34:21 2018 +0200
+
+    init with the laravel project

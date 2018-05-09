@@ -1,0 +1,37 @@
+Master Clinic
+Version 1.0 beta
+
+New Features
+1. Admin can add, update and delete clinics, workers, materials and categories.
+2. Add working times for doctors and nurses.
+3. Admin can view some statistics.
+4. Admin can view his reservations.
+5. Admin can send an email to patients and view his inbox emails.
+6. All admins are notefied when materials is less than some value.
+7. Admin can view, add, update, delete and print invoices.
+8. Nurse can view here clinic reservations and accept, reject and search them.
+9. Nurse can view, add, update, delete and print invoices.
+10. Nurse can view time of work of all doctors and nurses who work in same clinic.
+11. Patient can make an appointment and view his old reservations and its status.
+12. Patient can view his old invoices and print them.
+13. Patient can contact his doctors.
+14. Patient can view his file.
+15. Add new page for contacts of the clinics.
+16. Home page can view all doctors.
+ 
+Removed Features
+There is no removed features in this release.
+
+Enhanced Performance
+Emails is sent instantaneously.
+
+Enhanced Look-and-Feel
+There is no enhanced look in this release.
+
+Unsupported Functionality
+Every feature above is supported in this release.
+
+Fixed Bugs
+1. All password must be more than 6 characters.
+2. Salary is only positive number.
+
