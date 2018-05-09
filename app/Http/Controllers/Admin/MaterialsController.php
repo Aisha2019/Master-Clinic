@@ -47,7 +47,7 @@ class MaterialsController extends Controller
         $material->cost= $request->cost;
         $material->num= $request->num;
         $material->min_num= $request->min_num;
-        $this::check_material($material);
+        $this->check_material($material);
         $material->save();
         return redirect('/admin/material/view')->with('status' ,'Material Added Successfully!!');
     }
@@ -87,7 +87,7 @@ class MaterialsController extends Controller
         $material->cost= $request->cost;
         $material->num= $request->num;
         $material->min_num= $request->min_num;
-        $this::check_material($material);
+        $this->check_material($material);
         $material->save();
 
         return back()->with('status', 'updated Successfully!!');   
@@ -111,7 +111,7 @@ class MaterialsController extends Controller
         {
             $material->num = $material->num-1 ;
             $admins = admin::all();
-            $this::check_material($material);
+            $this->check_material($material);
             $material->save();
             return back()->with('status' ,'You used '.$material->name);
         }
@@ -140,6 +140,7 @@ class MaterialsController extends Controller
     {
         $admins = admin::all();
         $clinic_name = DB::table('clinics')->where('id', $material->clinic_id)->value('name');
+        $material->name = ucfirst(trans($material->name));
         $content = $material->name ." needs to be refilled in ".$clinic_name;
 
         if($material->num < $material->min_num)
@@ -148,7 +149,7 @@ class MaterialsController extends Controller
             }
         else
             {
-                $this::delete_material_notification($material,$content);
+                $this->delete_material_notification($material,$content);
             }
     }
 

@@ -23,9 +23,11 @@
         <li class="{{ App\Navigation::setActive('admin.profile') }}">
           <a href="{{ route('admin.reservations') }}"><i class="fa fa-circle text-blue"></i> <span>Reservations</span></a>
         </li>
-        <li class="{{ App\Navigation::setActive('admin.statistics') }}">
-          <a href="{{ route('admin.statistics') }}"><i class="fa fa-circle text-purple"></i> <span>statistics</span></a>
-        </li>
+        @if(Auth::user()->role == "super")
+          <li class="{{ App\Navigation::setActive('admin.statistics') }}">
+            <a href="{{ route('admin.statistics') }}"><i class="fa fa-circle text-purple"></i> <span>statistics</span></a>
+          </li>
+        @endif
 
         <li class="treeview {{ App\Navigation::setActive('admin.patient.view') }} {{ App\Navigation::setActive('admin.patient.add') }}">
           <a href="#">
@@ -63,23 +65,25 @@
           </ul>
         </li>
 
-        <li class="treeview {{ App\Navigation::setActive('admin.admin.view') }} {{ App\Navigation::setActive('admin.admin.add') }}">
-          <a href="#">
-            <i class="fa fa-stethoscope"></i>
-            <span>Admins</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="{{ App\Navigation::setActive('admin.admin.view') }}">
-              <a href="{{ route('admin.admin.view') }}"><i class="fa fa-circle text-red"></i> View</a>
+        @if(Auth::user()->role == "super")
+            <li class="treeview {{ App\Navigation::setActive('admin.admin.view') }} {{ App\Navigation::setActive('admin.admin.add') }}">
+              <a href="#">
+                <i class="fa fa-stethoscope"></i>
+                <span>Admins</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu">
+                <li class="{{ App\Navigation::setActive('admin.admin.view') }}">
+                  <a href="{{ route('admin.admin.view') }}"><i class="fa fa-circle text-red"></i> View</a>
+                </li>
+                <li class="{{ App\Navigation::setActive('admin.admin.add') }}">
+                  <a href="{{ route('admin.admin.add') }}"><i class="fa fa-circle text-aqua"></i> Add</a>
+                </li>
+              </ul>
             </li>
-            <li class="{{ App\Navigation::setActive('admin.admin.add') }}">
-              <a href="{{ route('admin.admin.add') }}"><i class="fa fa-circle text-aqua"></i> Add</a>
-            </li>
-          </ul>
-        </li>
+        @endif
 
 
         <li class="treeview {{ App\Navigation::setActive('admin.admin.times') }} {{ App\Navigation::setActive('admin.nurse.times') }}">
