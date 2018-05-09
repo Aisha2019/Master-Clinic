@@ -43,7 +43,8 @@ class ReservationsController extends Controller
       return view('admin.patient.reservations')->with('reservations',$array);
     }
 
-           public function getdata($reservations)
+
+    public function getdata($reservations)
    {
    	$array= array();
       foreach ($reservations as $reservation) {
@@ -53,16 +54,20 @@ class ReservationsController extends Controller
       $patient=Patient::where('id',$reservation->patient_id)->value('name');
       $clinic=clinic::where('id',$reservation->clinic_id)->value('name');
       $nurse=nurse::where('id',$reservation->nurse_id)->value('name');
+      $doctor=admin::where('id', $reservation->admin_id)->value('name');
+
        $attendance=$reservation->attend;
        array_push($array, 
         array(
         	'id'=>$reservation->id,
             'clinic'=>$clinic,
+            'doctor'=>$doctor,
             'nurse'=>$nurse,
             'patient'=>$patient,
             'date'=>$date,
             'time'=>$time,
             'attend'=>$attendance,
+            'response' => $reservation->reject
            )
         );
     }  
