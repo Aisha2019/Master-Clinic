@@ -37,11 +37,7 @@
                   <!-- Inner Menu: contains the notifications -->
 
                   <ul class="menu">
-<<<<<<< HEAD
                     <?php $notifications = Auth::user()->notifications->where('type','App\Notifications\MaterialsNotifications'); ?>
-=======
-                    <?php $notifications = Auth::user()->notifications->where('type','App\Notifications\MaterialsNotifications') ?>
->>>>>>> 6ad6c67ad13fd6170977893c4baf123eb8bb160b
                     <?php ?>
                     @foreach ($notifications as $notification)
                     <li ><!-- start notification -->
